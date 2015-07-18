@@ -112,20 +112,22 @@
   </section>
 
   <section data-ng-if="response" class="panel panel-default">
-    <div class="panel-heading">
-      Response
+    <div class="panel-heading one-line-text">
+      Response - {{response.config.url}}
     </div>
     <div class="panel-body">
       <h2 class="col-xs-12" data-ng-style="{color: (response.status | status)}">
         {{response.status}} <small>{{response.statusText}}</small>
       </h2>
 
-      <content-slider title="Headers"
+      <content-slider class="col-xs-12"
+                      title="Headers"
                       content="response.headers"
                       start-hidden="true">
       </content-slider>
 
-      <content-slider title="Response body"
+      <content-slider class="col-xs-12"
+                      title="Response body"
                       content="response.data">
       </content-slider>
     </div>

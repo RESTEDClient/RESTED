@@ -8,6 +8,12 @@
   display: none;
 }
 
+.one-line-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .animate {
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
