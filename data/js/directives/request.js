@@ -28,13 +28,7 @@ angular.module('RestedApp')
         // Strip empty headers and re-map headers to
         // something we can use in $http.
         if (scope.headers) {
-          scope.headers.filter(function(header) {
-            return header && header.name;
-          }).forEach(function(header) {
-            headers[header.name] = header.value;
-          });
-
-          request.headers = headers;
+          request.headers = reMapHeaders(scope.headers, true);
         }
 
         // Append http:// if missing
@@ -67,6 +61,11 @@ angular.module('RestedApp')
         scope.headers.push(newHeader);
       };
 
+      scope.addRequest = function(request) {
+        request.headers = reMapHeaders(scope.headers, true);
+        scope.addToCollection(request);
+      };
+
       scope.toggleHeaders = function() {
         scope.showHeaders = !scope.showHeaders;
         $('#headerSlider').slideToggle();
@@ -86,19 +85,32 @@ angular.module('RestedApp')
         }
       });
 
-      var reMapHeaders = function(headersAsObject) {
-        if(!headersAsObject) {
+      var reMapHeaders = function(headers, asObject) {
+        if(!headers && !asObject) {
           return [];
+        } else if(!headers && asObject) {
+          return {};
         }
 
-        var headersAsArray = headersAsObject.keys().map(function (key) {
-          return {
-            name: key,
-            value: scope.request.headers[key]
-          }
-        });
+        if(asObject) {
+          var headersAsObject = {};
+          headers.filter(function(header) {
+            return header && header.name;
+          }).forEach(function(header) {
+            headersAsObject[header.name] = header.value;
+          });
 
-        return headersAsArray;
+          return headersAsObject;
+        } else {
+          var headersAsArray = Object.keys(headers).map(function (key) {
+            return {
+              name: key,
+              value: scope.request.headers[key]
+            }
+          });
+
+          return headersAsArray;
+        }
       };
 
       // Generate placeholder and cache so we don't over-fetch
