@@ -29,19 +29,6 @@ angular.module('RestedApp')
         $http(scope.request)
           .then(processReturnData, processReturnData);
       };
-
-      scope.parseJSON = function(json) {
-        return JSON.stringify(json, ' ', 2);
-      };
-
-      // Holds elements which have been animated with slideToggle
-      scope.slidden = {};
-
-      scope.slideToggle = function(id) {
-        scope.slidden[id] = !scope.slidden[id];
-        var $item = $('#' + id);
-        $item.slideToggle();
-      };
     }
   };
 });
