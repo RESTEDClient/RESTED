@@ -5,7 +5,9 @@ angular.module('RestedApp')
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
-    scope: {},
+    scope: {
+      selectedRequest: '='
+    },
     link: function(scope, element, attrs, controllers) {
 
       // This is an array so we can later
@@ -26,6 +28,10 @@ angular.module('RestedApp')
         }
       ];
 
+      scope.selectRequest = function(request) {
+        console.log(request);
+        scope.selectedRequest = request;
+      };
 
     }
   }

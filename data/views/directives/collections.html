@@ -8,7 +8,8 @@
         <div class="list-group">
           <a href="#"
              class="list-group-item"
-             data-ng-class="{active: false}">
+             data-ng-class="{active: request == selectedRequest}"
+             data-ng-click="selectRequest(request)">
             <h4 class="list-group-item-heading">
               {{request.method}}
             </h4>
