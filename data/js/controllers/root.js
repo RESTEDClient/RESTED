@@ -29,9 +29,8 @@ angular.module('RestedApp')
 
   // This is exposed to lower scopes
   $scope.addRequestToCollection = function(request) {
-    console.log('Adding request:', request);
 
-    // Create new collection
+    // Create new collection if none exist
     if (!$scope.collections[0]) {
       $scope.collections.push({
         name: 'Collection',
@@ -42,7 +41,6 @@ angular.module('RestedApp')
     } else if ($scope.collections[0].requests.indexOf(request) === -1) {
       $scope.collections[0].requests.push(request);
 
-      console.log('collection is now', $scope.collections[0]);
       Collections.set($scope.collections[0]);
     } else {
 
@@ -51,5 +49,14 @@ angular.module('RestedApp')
       // (Looking at you, alert box)
       alert('Request is already in collection');
     }
+  };
+
+  // This is exposed to lower scopes
+  $scope.removeRequestFromCollection = function(request) {
+    $scope.collections[0].requests = $scope.collections[0].requests.filter(function(item) {
+      return item.url !== request.url;
+    });
+
+    Collections.set($scope.collections[0]);
   };
 });

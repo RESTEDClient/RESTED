@@ -7,7 +7,8 @@ angular.module('RestedApp')
     templateUrl: 'views/directives/collections.html',
     scope: {
       collections: '=',
-      selectedRequest: '='
+      selectedRequest: '=',
+      removeFromCollection: '&'
     },
     link: function(scope, element, attrs, controllers) {
 

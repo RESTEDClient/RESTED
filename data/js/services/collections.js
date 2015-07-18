@@ -65,12 +65,12 @@ angular.module('RestedApp')
 
       var transaction = db.result.transaction(['collections'], 'readwrite');
 
-      transaction.oncomplete = function(event) {
-        deferred.resolve(message(true, 'Object was added', collection));
-      };
-
       transaction.onerror = function(event) {
         deferred.reject(message(false, 'An error occured when adding to database!', event));
+      };
+
+      transaction.oncomplete = function() {
+        deferred.resolve(message(true, 'Successfully added an entry to the database', collection));
       };
 
       var objectStore = transaction.objectStore('collections');
@@ -87,8 +87,25 @@ angular.module('RestedApp')
       requestUpdate.onerror = function(event) {
         deferred.reject(message(false, 'An error occured when updating an entry in the database!', event));
       };
-      requestUpdate.onsuccess = function(event) {
-        deferred.resolve(message(true, 'An error occured when updating an entry in the database!', event));
+
+      requestUpdate.onsuccess = function() {
+        deferred.resolve(message(true, 'Successfully updated an entry', collection));
+      };
+
+      return deferred.promise;
+    },
+    delete: function(collection) {
+      var deferred = $q.defer();
+
+      var objectStore = db.result.transaction(['collections'], "readwrite").objectStore("collections");
+      var requestDelete = objectStore.delete(collection.name);
+
+      requestDelete.onerror = function(event) {
+        deferred.reject(message(false, 'An error occured when deleting an entry in the database!', event));
+      };
+
+      requestDelete.onsuccess = function() {
+        deferred.resolve(message(true, 'Successfully deleted an entry from the database', collection));
       };
 
       return deferred.promise;

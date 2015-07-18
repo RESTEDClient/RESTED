@@ -2,6 +2,13 @@
   <section class="panel panel-default">
     <div class="panel-heading">
       Collections
+
+      <div class="pull-right">
+        <div
+          data-ng-click="selectedRequest = {}"
+           class="fa fa-plus">
+        </div>
+      </div>
     </div>
     <div class="panel-body">
       <div data-ng-repeat="request in collections[0].requests track by request.url">
@@ -12,7 +19,14 @@
              data-ng-click="selectRequest(request)">
             <h4 class="list-group-item-heading">
               {{request.method}}
+            <div class="pull-right">
+              <div
+                data-ng-click="removeFromCollection(request)"
+                 class="fa fa-times">
+              </div>
+            </div>
             </h4>
+
             <p class="list-group-item-text">
               {{request.url}}
             </p>
