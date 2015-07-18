@@ -17,7 +17,7 @@ angular.module('RestedApp')
       };
 
       scope.resetRequest = function() {
-        scope.selectedRequest = DEFAULT_REQUEST;
+        scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
       };
     }
   }

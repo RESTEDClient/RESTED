@@ -3,7 +3,7 @@
 angular.module('RestedApp')
 .controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections) {
 
-  $scope.request = DEFAULT_REQUEST;
+  $scope.request = angular.copy(DEFAULT_REQUEST);
 
   var errorHandler = function(event) {
     console.error(event);
