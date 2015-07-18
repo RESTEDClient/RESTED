@@ -22,9 +22,10 @@
             <input type="text"
                    class="form-control"
                    id="url"
-                   placeholder="http://reddit.com"
-                   data-ng-model="request.url" />
-           </div>
+                   placeholder="{{::getRandomURL()}}"
+                   data-ng-model="request.url"
+            />
+          </div>
         </div>
 
         <div class="form-group">
@@ -43,7 +44,8 @@
           <div class="col-sm-3">
             <input type="submit"
                    class="btn btn-primary"
-                   value="Send request" />
+                   value="Send request"
+            />
           </div>
         </div>
 
@@ -59,18 +61,18 @@
 
         <div id="headerSlider" class="row start-hidden">
           <div class="header-item"
-               data-ng-repeat="(name, value) in request.headers">
+               data-ng-repeat="header in headers">
             <div class="form-group col-xs-6">
               <input type="text"
                      class="form-control"
-                     data-ng-model="name"
+                     data-ng-model="header.name"
                      placeholder="Name"
               />
             </div>
             <div class="form-group col-xs-6">
               <input type="text"
                      class="form-control"
-                     data-ng-model="value"
+                     data-ng-model="header.value"
                      placeholder="Value"
               />
             </div>
@@ -84,6 +86,7 @@
       </form>
     </div>
   </section>
+
   <section data-ng-if="response" class="panel panel-default">
     <div class="panel-heading">
       Response

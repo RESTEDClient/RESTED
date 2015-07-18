@@ -24,3 +24,14 @@ module.constant('DEFAULT_REQUEST', {
   method: 'GET',
   headers: {}
 });
+
+module.constant('PLACEHOLDER_URLS', [
+  'http://google.com',
+  'http://bojackhorseman.com',
+  'http://reddit.com',
+  'http://visitnorway.com',
+  'http://www.aperturescience.com',
+  'http://www.pennyjuice.com/htmlversion/whoispj.htm',
+  'http://www.arngren.net/',
+  'http://bing.com'
+]);
