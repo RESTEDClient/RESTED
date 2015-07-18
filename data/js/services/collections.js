@@ -11,20 +11,14 @@ angular.module('RestedApp')
 
   // Initialize DB
   localDB.onupgradeneeded = function(event) {
-    console.log('onupgradeneeded');
+    console.info('DB upgrade needed, running initialize');
+
     var db = event.target.result;
     db.createObjectStore(DB_OBJECT_STORE_NAME, { keyPath: 'name' });
   };
 
   var onDBReady = function(fn) {
-    localDB.onsuccess = function(event) {
-      /*if (!store) {
-        store = this.result;
-        console.log(localDB.result);
-      }*/
-
-      fn(event);
-    }
+    localDB.onsuccess = fn;
   };
 
   var message = function(success, message, object) {
@@ -37,16 +31,13 @@ angular.module('RestedApp')
 
       onDBReady(function(event) {
 
-        window.db = localDB;
         // Fetch objectStore
         var objectStore = localDB.result.transaction(DB_OBJECT_STORE_NAME).objectStore(DB_OBJECT_STORE_NAME);
 
-        console.log('objectStore', objectStore);
         // Open cursor for iteration
         var result = [];
         objectStore.openCursor().onsuccess = function(event) {
 
-          console.log('in it');
           var cursor = event.target.result;
           if (cursor) {
             result.push(cursor.value);

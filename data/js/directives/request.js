@@ -14,15 +14,7 @@ angular.module('RestedApp')
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
       };
 
-      // Set defaults
-      scope.request = {
-        method: scope.options.methods[0],
-        url: 'http://www.vg.no',
-        headers: {'Test-Header': 'hello'}
-      };
-
       var processReturnData = function(response) {
-        console.log(response);
         scope.response = response;
         scope.headers = response.headers();
       };

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function($scope, Collections) {
+.controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections) {
+
+  $scope.request = DEFAULT_REQUEST;
 
   // This is saved in the db like this:
   //  [
@@ -24,7 +26,6 @@ angular.module('RestedApp')
   // to add more collections later.
   Collections.get().then(function(data) {
     $scope.collections = data;
-    console.log('collections', data);
   });
 
   // This is exposed to lower scopes

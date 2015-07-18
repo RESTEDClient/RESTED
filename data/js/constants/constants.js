@@ -16,3 +16,10 @@ module.constant('DB_NAME', 'RESTED');
 // The name of the "table" in indexedDB we use for
 // our collections.
 module.constant('DB_OBJECT_STORE_NAME', 'collections');
+
+// This is the request used to initialize the
+// request panel. This can be either on
+// application load or on request reset.
+module.constant('DEFAULT_REQUEST', {
+  method: 'GET'
+});

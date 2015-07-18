@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', function() {
+.directive('collections', function(DEFAULT_REQUEST) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -14,6 +14,10 @@ angular.module('RestedApp')
 
       scope.selectRequest = function(request) {
         scope.selectedRequest = request;
+      };
+
+      scope.resetRequest = function() {
+        scope.selectedRequest = DEFAULT_REQUEST;
       };
     }
   }
