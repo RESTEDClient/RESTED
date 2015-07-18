@@ -15,6 +15,7 @@ angular.module('RestedApp')
       };
 
       scope.headers = [];
+      scope.slidden = {};
 
       var processReturnData = function(response) {
         scope.response = response;
@@ -66,9 +67,9 @@ angular.module('RestedApp')
         scope.addToCollection(request);
       };
 
-      scope.toggleHeaders = function() {
-        scope.showHeaders = !scope.showHeaders;
-        $('#headerSlider').slideToggle();
+      scope.slideToggle = function(id) {
+        scope.slidden[id] = !scope.slidden[id];
+        $('#' + id).slideToggle();
       };
 
       scope.$watch('request', function(newVal, oldVal) {

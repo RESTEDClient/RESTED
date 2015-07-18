@@ -5,10 +5,10 @@ angular.module('RestedApp')
   return function (status) {
     if(status >= 200 && status < 300) {
       return 'green';
-    } else if (status >= 500 && status < 600) {
+    } else if (status >= 400 && status < 600) {
       return 'red';
     } else {
-      return 'teal';
+      return 'orange';
     }
   }
 });

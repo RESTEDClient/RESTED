@@ -5,7 +5,8 @@
 
       <div class="pull-right hoverhand">
         <div data-ng-click="addRequest(request)"
-             class="fa fa-plus">
+             class="fa fa-plus"
+             title="Add request to collection">
         </div>
       </div>
     </div>
@@ -50,11 +51,12 @@
         </div>
 
         <div class="hoverhand"
-             data-ng-click="toggleHeaders()">
+             data-ng-click="slideToggle('headerSlider')"
+             title="Show headers">
           <h4>
             Headers
             <i class="fa fa-angle-right animate"
-                data-ng-class="{'fa-rotate-90': !!showHeaders}">
+                data-ng-class="{'fa-rotate-90': !!slidden.headerSlider}">
             </i>
           </h4>
         </div>
@@ -78,10 +80,32 @@
             </div>
           </div>
           <h5 class="col-xs-12 hoverhand"
-              data-ng-click="addHeader()">
+              data-ng-click="addHeader()"
+              title="Add header">
             <i class="fa fa-plus"></i>
             Add header
           </h5>
+        </div>
+
+        <!-- POST, PUT, PATCH get data -->
+        <div class="hoverhand"
+             data-ng-click="slideToggle('bodySlider')"
+             title="Show request body">
+          <h4>
+            Request body
+            <i class="fa fa-angle-right animate"
+                data-ng-class="{'fa-rotate-90': !!slidden.bodySlider}">
+            </i>
+          </h4>
+        </div>
+
+        <div id="bodySlider" class="row start-hidden">
+          <div class="col-xs-12">
+            <textarea class="form-control"
+                      rows="10"
+                      data-ng-model="request.data">
+            </textarea>
+          </div>
         </div>
       </form>
     </div>

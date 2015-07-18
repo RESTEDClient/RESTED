@@ -3,7 +3,8 @@
     <div class="panel-heading">
       Collections
 
-      <div class="pull-right hoverhand">
+      <div class="pull-right hoverhand"
+           title="Start fresh request">
         <div data-ng-click="resetRequest()"
            class="fa fa-plus">
         </div>
@@ -19,9 +20,9 @@
             <h4 class="list-group-item-heading">
               {{request.method}}
             <div class="pull-right">
-              <div
-                data-ng-click="removeFromCollection(request)"
-                 class="fa fa-times">
+              <div tooltip="Remove request from collection"
+                   data-ng-click="removeFromCollection(request)"
+                   class="fa fa-times">
               </div>
             </div>
             </h4>
