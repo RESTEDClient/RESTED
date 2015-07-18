@@ -1,0 +1,16 @@
+/* This CSS holds reusable styling rules */
+
+.hoverhand {
+  cursor: pointer;
+}
+
+.start-hidden {
+  display: none;
+}
+
+.animate {
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+}

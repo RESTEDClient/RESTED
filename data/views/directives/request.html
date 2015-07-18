@@ -1,0 +1,32 @@
+<div>
+  <form data-ng-submit="sendRequest()">
+    <div class="form-group">
+      <label for="url">URL</label>
+      <select data-ng-model="request.method"
+              data-ng-options="method for method in options.methods">
+      </select>
+      <input type="text"
+             class="form-control"
+             id="url"
+             placeholder="Email"
+             data-ng-model="request.url" />
+      <input type="submit"
+             class="btn btn-default"
+             value="Send request" />
+    </div>
+  </form>
+  <section data-ng-if="response" class="row">
+    <h3 class="col-xs-12" style="color: {{response.status | status}}">
+      {{response.status}} {{response.statusText}}
+    </h3>
+
+    <content-slider title="Headers"
+                    content="headers"
+                    start-hidden="true">
+    </content-slider>
+
+    <content-slider title="Response body"
+                    content="response.data">
+    </content-slider>
+  </section>
+</div>

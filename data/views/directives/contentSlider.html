@@ -1,0 +1,11 @@
+<div class="col-xs-12 col-md-6">
+  <h4 class="hoverhand" data-ng-click="slideToggle()">
+    {{title}}
+    <i class="fa fa-angle-right animate"
+      data-ng-class="{'fa-rotate-90': slidden}">
+    </i>
+  </h4>
+  <pre class="content" data-ng-class="{'start-hidden': startHidden}">
+    {{content | json}}
+  </pre>
+</div>
