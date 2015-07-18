@@ -2,6 +2,12 @@
   <section class="panel panel-default">
     <div class="panel-heading">
       Request
+      <div class="pull-right">
+        <div
+          data-ng-click="addToCollection(request)"
+           class="fa fa-plus">
+        </div>
+      </div>
     </div>
     <div class="panel-body">
       <form data-ng-submit="sendRequest()"

@@ -6,33 +6,14 @@ angular.module('RestedApp')
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
     scope: {
+      collections: '=',
       selectedRequest: '='
     },
     link: function(scope, element, attrs, controllers) {
 
-      // This is an array so we can later
-      // extend ability to add more collections
-      scope.collections = [
-        {
-          name: 'Collection',
-          requests: [
-            {
-              url: 'www.reddit.com',
-              method: 'GET'
-            },
-            {
-              url: 'www.esphen.com',
-              method: 'GET'
-            }
-          ]
-        }
-      ];
-
       scope.selectRequest = function(request) {
-        console.log(request);
         scope.selectedRequest = request;
       };
-
     }
   }
 });

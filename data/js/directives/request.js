@@ -6,7 +6,8 @@ angular.module('RestedApp')
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
     scope: {
-      request: '='
+      request: '=',
+      addToCollection: '&'
     },
     link: function(scope, element, attrs, controllers) {
       scope.options = {
@@ -32,9 +33,7 @@ angular.module('RestedApp')
       };
 
       scope.$watch('request', function(newVal, oldVal) {
-        console.log('recieved Request:', newVal);
         if(newVal && newVal !== oldVal) {
-          console.log('Request set to:', newVal);
           scope.request = newVal;
         }
       });
