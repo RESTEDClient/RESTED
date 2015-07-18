@@ -13,8 +13,14 @@ angular.module('RestedApp')
     link: function(scope, element, attrs, controllers) {
       scope.slidden = !scope.startHidden;
 
-      scope.parseJSON = function(json) {
-        return JSON.stringify(json, ' ', 2);
+      // prettyprint handles js and html but not json,
+      // here we assume that if it starts with [ or {
+      // it is json, and we parse it as such.
+      scope.parseJSON = function(body) {
+        if(body !== null && (typeof body === 'object' || /^[\[\{]/.test(body))) {
+          return JSON.stringify(body, ' ', 2);
+        }
+        return body;
       };
 
       scope.slideToggle = function() {
