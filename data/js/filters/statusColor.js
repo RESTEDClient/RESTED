@@ -2,12 +2,13 @@
 
 angular.module('RestedApp')
 .filter('status', function () {
-  var status = 503;
-  if(status >= 200 && status < 300) {
-    return 'green';
-  } else if (status >= 500 && status < 600) {
-    return 'red';
-  } else {
-    return 'teal';
+  return function (status) {
+    if(status >= 200 && status < 300) {
+      return 'green';
+    } else if (status >= 500 && status < 600) {
+      return 'red';
+    } else {
+      return 'teal';
+    }
   }
 });

@@ -20,9 +20,10 @@ angular.module('RestedApp')
         headers: {'Test-Header': 'hello'}
       };
 
-      var processReturnData = function(data, status, headers, config) {
-        scope.response = data;
-        scope.headers = data.headers();
+      var processReturnData = function(response) {
+        console.log(response);
+        scope.response = response;
+        scope.headers = response.headers();
       };
 
       scope.sendRequest = function() {
