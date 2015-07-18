@@ -3,3 +3,11 @@
 .fa-angle-right {
   margin-left: 5px;
 }
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header .logo {
+  margin-top: -5px;
+}
