@@ -22,7 +22,7 @@
             <input type="text"
                    class="form-control"
                    id="url"
-                   placeholder="http://google.com"
+                   placeholder="http://reddit.com"
                    data-ng-model="request.url" />
            </div>
         </div>
@@ -59,18 +59,18 @@
 
         <div id="headerSlider" class="row start-hidden">
           <div class="header-item"
-               data-ng-repeat="header in request.headers">
+               data-ng-repeat="(name, value) in request.headers">
             <div class="form-group col-xs-6">
               <input type="text"
                      class="form-control"
-                     data-ng-model="header.name"
+                     data-ng-model="name"
                      placeholder="Name"
               />
             </div>
             <div class="form-group col-xs-6">
               <input type="text"
                      class="form-control"
-                     data-ng-model="header.value"
+                     data-ng-model="value"
                      placeholder="Value"
               />
             </div>

@@ -18,25 +18,30 @@ angular.module('RestedApp')
   };
 
   var onDBReady = function(fn) {
-    localDB.onsuccess = fn;
+    if(localDB.readyState === 'done') {
+      fn();
+    } else {
+      localDB.onsuccess = fn;
+    }
   };
 
   var message = function(success, message, object) {
-    return {success: success, message: message, object: object}
+    return {success: success, message: message, object: object};
   };
 
   return {
     get: function() {
       var deferred = $q.defer();
 
-      onDBReady(function(event) {
+      onDBReady(function() {
 
         // Fetch objectStore
         var objectStore = localDB.result.transaction(DB_OBJECT_STORE_NAME).objectStore(DB_OBJECT_STORE_NAME);
 
         // Open cursor for iteration
         var result = [];
-        objectStore.openCursor().onsuccess = function(event) {
+        var cursorObject = objectStore.openCursor();
+        cursorObject.onsuccess = function(event) {
 
           var cursor = event.target.result;
           if (cursor) {
@@ -47,6 +52,10 @@ angular.module('RestedApp')
             deferred.resolve(result);
           }
         };
+
+        cursorObject.onerror = function(event) {
+          deferred.reject(message(false, 'An error occured when fetching from database!', event));
+        };
       });
 
       return deferred.promise;
@@ -54,50 +63,56 @@ angular.module('RestedApp')
     add: function(collection) {
       var deferred = $q.defer();
 
-      var transaction = db.result.transaction(['collections'], 'readwrite');
+      onDBReady(function() {
+        var transaction = localDB.result.transaction([DB_OBJECT_STORE_NAME], 'readwrite');
 
-      transaction.onerror = function(event) {
-        deferred.reject(message(false, 'An error occured when adding to database!', event));
-      };
+        transaction.onerror = function(event) {
+          deferred.reject(message(false, 'An error occured when adding to database!', event));
+        };
 
-      transaction.oncomplete = function() {
-        deferred.resolve(message(true, 'Successfully added an entry to the database', collection));
-      };
+        transaction.oncomplete = function() {
+          deferred.resolve(message(true, 'Successfully added an entry to the database', collection));
+        };
 
-      var objectStore = transaction.objectStore('collections');
-      objectStore.add(collection);
+        var objectStore = transaction.objectStore(DB_OBJECT_STORE_NAME);
+        objectStore.add(collection);
+      });
 
       return deferred.promise;
     },
     set: function(collection) {
       var deferred = $q.defer();
 
-      var objectStore = db.result.transaction(['collections'], "readwrite").objectStore("collections");
-      var requestUpdate = objectStore.put(collection);
+      onDBReady(function() {
+        var objectStore = localDB.result.transaction([DB_OBJECT_STORE_NAME], "readwrite").objectStore(DB_OBJECT_STORE_NAME);
+        var requestUpdate = objectStore.put(collection);
 
-      requestUpdate.onerror = function(event) {
-        deferred.reject(message(false, 'An error occured when updating an entry in the database!', event));
-      };
+        requestUpdate.onerror = function(event) {
+          deferred.reject(message(false, 'An error occured when updating an entry in the database!', event));
+        };
 
-      requestUpdate.onsuccess = function() {
-        deferred.resolve(message(true, 'Successfully updated an entry', collection));
-      };
+        requestUpdate.onsuccess = function() {
+          deferred.resolve(message(true, 'Successfully updated an entry', collection));
+        };
+      });
 
       return deferred.promise;
     },
     delete: function(collection) {
       var deferred = $q.defer();
 
-      var objectStore = db.result.transaction(['collections'], "readwrite").objectStore("collections");
-      var requestDelete = objectStore.delete(collection.name);
+      onDBReady(function() {
+        var objectStore = localDB.result.transaction([DB_OBJECT_STORE_NAME], "readwrite").objectStore(DB_OBJECT_STORE_NAME);
+        var requestDelete = objectStore.delete(collection.name);
 
-      requestDelete.onerror = function(event) {
-        deferred.reject(message(false, 'An error occured when deleting an entry in the database!', event));
-      };
+        requestDelete.onerror = function(event) {
+          deferred.reject(message(false, 'An error occured when deleting an entry in the database!', event));
+        };
 
-      requestDelete.onsuccess = function() {
-        deferred.resolve(message(true, 'Successfully deleted an entry from the database', collection));
-      };
+        requestDelete.onsuccess = function() {
+          deferred.resolve(message(true, 'Successfully deleted an entry from the database', collection));
+        };
+      });
 
       return deferred.promise;
     }

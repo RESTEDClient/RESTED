@@ -22,5 +22,5 @@ module.constant('DB_OBJECT_STORE_NAME', 'collections');
 // application load or on request reset.
 module.constant('DEFAULT_REQUEST', {
   method: 'GET',
-  headers: []
+  headers: {}
 });

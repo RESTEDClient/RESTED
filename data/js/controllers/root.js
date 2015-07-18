@@ -5,6 +5,11 @@ angular.module('RestedApp')
 
   $scope.request = DEFAULT_REQUEST;
 
+  var errorHandler = function(event) {
+    console.error(event);
+    alert(event.message);
+  };
+
   // This is saved in the db like this:
   //  [
   //   {
@@ -28,7 +33,7 @@ angular.module('RestedApp')
   // to add more collections later.
   Collections.get().then(function(data) {
     $scope.collections = data;
-  });
+  }, errorHandler);
 
   // This is exposed to lower scopes
   $scope.addRequestToCollection = function(request) {
@@ -40,11 +45,11 @@ angular.module('RestedApp')
         requests: [request]
       });
 
-      Collections.add($scope.collections[0]);
+      Collections.add($scope.collections[0]).then(null, errorHandler);
     } else if ($scope.collections[0].requests.indexOf(request) === -1) {
       $scope.collections[0].requests.push(request);
 
-      Collections.set($scope.collections[0]);
+      Collections.set($scope.collections[0]).then(null, errorHandler);
     } else {
 
       // Todo: Replace this with a generic message
@@ -60,6 +65,6 @@ angular.module('RestedApp')
       return item.url !== request.url;
     });
 
-    Collections.set($scope.collections[0]);
+    Collections.set($scope.collections[0]).then(null, errorHandler);
   };
 });

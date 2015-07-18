@@ -26,15 +26,14 @@ angular.module('RestedApp')
 
       scope.addHeader = function() {
         var newHeader = {
-          name: '',
+          name: 'Header name',
           value: ''
         };
 
-        if(Array.isArray(scope.request.headers)) {
-          scope.request.headers.push(newHeader);
-        } else {
-          scope.request.headers = [newHeader];
+        if(!scope.request.headers) {
+          scope.request.headers = {};
         }
+        scope.request.headers[newHeader.name] = newHeader.value;
       };
 
       scope.toggleHeaders = function() {
