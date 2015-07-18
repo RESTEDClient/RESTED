@@ -21,5 +21,6 @@ module.constant('DB_OBJECT_STORE_NAME', 'collections');
 // request panel. This can be either on
 // application load or on request reset.
 module.constant('DEFAULT_REQUEST', {
-  method: 'GET'
+  method: 'GET',
+  headers: []
 });

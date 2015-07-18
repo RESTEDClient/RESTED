@@ -24,6 +24,24 @@ angular.module('RestedApp')
           .then(processReturnData, processReturnData);
       };
 
+      scope.addHeader = function() {
+        var newHeader = {
+          name: '',
+          value: ''
+        };
+
+        if(Array.isArray(scope.request.headers)) {
+          scope.request.headers.push(newHeader);
+        } else {
+          scope.request.headers = [newHeader];
+        }
+      };
+
+      scope.toggleHeaders = function() {
+        scope.showHeaders = !scope.showHeaders;
+        $('#headerSlider').slideToggle();
+      };
+
       scope.$watch('request', function(newVal, oldVal) {
         if(newVal && newVal !== oldVal) {
           scope.request = newVal;

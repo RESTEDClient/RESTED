@@ -11,3 +11,12 @@
 .header .logo {
   margin-top: -7px;
 }
+
+#headerSlider {
+  margin-top: 30px;
+}
+
+#headerSlider .header-item>div.form-group {
+  margin-right: 0px;
+  margin-left: 0px;
+}

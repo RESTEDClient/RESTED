@@ -11,18 +11,20 @@ angular.module('RestedApp')
   //     name: 'Collection',
   //     requests: [
   //       {
-  //         url: 'www.reddit.com',
-  //         method: 'GET'
-  //       },
-  //       {
   //         url: 'www.vg.no',
+  //         headers: [
+  //          {
+  //            name: 'Content-Type',
+  //            value: 'angular/awesomeness'
+  //          }
+  //         ],
   //         method: 'GET'
   //       }
   //     ]
   //   }
   // ]
-  // This is an array so we can easily
-  // extend app with the ability
+  // Root node is an array so we
+  // can easily extend app with the ability
   // to add more collections later.
   Collections.get().then(function(data) {
     $scope.collections = data;
