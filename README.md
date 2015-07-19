@@ -2,6 +2,8 @@
 
 A REST client for the rest of us
 
+_Note: This extension is currently in the Mozilla review process and is not on the AMO yet._
+
 RESTED is a new take on rest clients on Firefox.
 It is meant to be easy to use to let you work as effective as possible.
 It features all the most commonly used HTTP methods, setting headers,
