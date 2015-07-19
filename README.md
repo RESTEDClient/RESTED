@@ -21,6 +21,7 @@ What features are on the to-do list:
  - Improve collections with collapsible collection groups
  - Templates in the URLs (example: www.vg.no?authToken={token})
  - Replace alert boxes with bootstrap modals
+ - Improve pretty-printing or results
  - Basic auth
 
 In order to work on this project, you're going to need a few things:
