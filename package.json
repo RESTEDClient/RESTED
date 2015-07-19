@@ -2,9 +2,10 @@
   "name": "rested",
   "title": "RESTED",
   "id": "rested@restedclient",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 2.0",
+  "homepage": "https://github.com/esphen/RESTED",
+  "description": "A REST client for the rest of us",
+  "author": "Espen Henriksen",
+  "license": "GPL-2.0",
   "version": "0.1.0",
   "main": "lib/main.js"
 }
