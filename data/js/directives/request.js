@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(PLACEHOLDER_URLS, $http) {
+.directive('request', function(Request, RequestUtils) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -29,15 +29,10 @@ angular.module('RestedApp')
         // Strip empty headers and re-map headers to
         // something we can use in $http.
         if (scope.headers) {
-          request.headers = reMapHeaders(scope.headers, true);
+          request.headers = RequestUtils.reMapHeaders(scope.headers, true);
         }
 
-        // Append http:// if missing
-        if(!(/^http:\/\//.test(request.url))) {
-          request.url = 'http://' + request.url;
-        }
-
-        $http(request)
+        Request.run(request)
           .then(processReturnData, processReturnData);
       };
 
@@ -63,7 +58,7 @@ angular.module('RestedApp')
       };
 
       scope.addRequest = function(request) {
-        request.headers = reMapHeaders(scope.headers, true);
+        request.headers = RequestUtils.reMapHeaders(scope.headers, true);
         scope.addToCollection(request);
       };
 
@@ -79,49 +74,14 @@ angular.module('RestedApp')
           // Map headers from {name: value} => [{name: xxx, value: xxx}]
           // This is so we can mutate them from the template.
           if (scope.request.headers) {
-            scope.headers = reMapHeaders(scope.request.headers);
+            scope.headers = RequestUtils.reMapHeaders(scope.request.headers);
           } else {
             scope.headers = [];
           }
         }
       });
 
-      var reMapHeaders = function(headers, asObject) {
-        if(!headers && !asObject) {
-          return [];
-        } else if(!headers && asObject) {
-          return {};
-        }
-
-        if(asObject) {
-          var headersAsObject = {};
-          headers.filter(function(header) {
-            return header && header.name;
-          }).forEach(function(header) {
-            headersAsObject[header.name] = header.value;
-          });
-
-          return headersAsObject;
-        } else {
-          var headersAsArray = Object.keys(headers).map(function (key) {
-            return {
-              name: key,
-              value: scope.request.headers[key]
-            }
-          });
-
-          return headersAsArray;
-        }
-      };
-
-      // Generate placeholder and cache so we don't over-fetch
-      var placeholder;
-      scope.getRandomURL = function() {
-        if (!placeholder) {
-          placeholder = PLACEHOLDER_URLS[Math.floor(Math.random() * PLACEHOLDER_URLS.length)];
-        }
-        return placeholder;
-      }
+      scope.getRandomURL = RequestUtils.randomURL;
     }
   };
 });
