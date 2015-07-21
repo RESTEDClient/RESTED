@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections) {
+.controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections, Modal) {
 
   $scope.request = angular.copy(DEFAULT_REQUEST);
 
   var errorHandler = function(event) {
     console.error(event);
-    alert(event.message);
+    Modal.set({
+      title: 'An error occured',
+      body: event.message
+    });
   };
 
   // This is saved in the db like this:
@@ -51,11 +54,10 @@ angular.module('RestedApp')
 
       Collections.set($scope.collections[0]).then(null, errorHandler);
     } else {
-
-      // Todo: Replace this with a generic message
-      // modal that doesn't look like shit.
-      // (Looking at you, alert box)
-      alert('Request is already in collection');
+      Modal.set({
+        title: 'Sorry',
+        body: 'Request is already in collection'
+      });
     }
   };
 
