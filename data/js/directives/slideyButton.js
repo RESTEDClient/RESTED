@@ -22,7 +22,7 @@ angular.module('RestedApp')
     templateUrl: 'views/directives/slideyButton.html',
     scope: {
       config: '=',
-      onClick: '&'
+      clickEvent: '&'
     },
     link: function(scope, element) {
 
