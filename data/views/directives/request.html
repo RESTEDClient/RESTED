@@ -4,10 +4,9 @@
       Request
 
       <div class="pull-right hoverhand">
-        <div data-ng-click="addRequest(request)"
-             class="fa fa-plus"
-             title="Add request to collection">
-        </div>
+        <slidey-button data-config="addRequestConfig"
+                       data-on-click="addRequest(request)">
+        </slidey-button>
       </div>
     </div>
     <div class="panel-body">

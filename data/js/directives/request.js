@@ -72,6 +72,11 @@ angular.module('RestedApp')
         $('#' + id).slideToggle();
       };
 
+      scope.addRequestConfig = {
+        title: 'Add request to collection',
+        classes: ['fa', 'fa-plus']
+      };
+
       scope.$watch('request', function(newVal, oldVal) {
         if(newVal && newVal !== oldVal) {
           scope.request = newVal;
