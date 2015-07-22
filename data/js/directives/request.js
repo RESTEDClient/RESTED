@@ -63,6 +63,12 @@ angular.module('RestedApp')
       };
 
       scope.addRequest = function(request) {
+        if(!request.url) {
+          // The non-hiding text for the add button
+          // will be fixed when we implement modals.
+          alert('Please provide a URL for the request');
+        }
+
         request.headers = reMapHeaders(scope.headers, true);
         scope.addToCollection(request);
       };

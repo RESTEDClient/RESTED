@@ -15,6 +15,8 @@ angular.module('RestedApp')
     }
   };
 
+  var waitTime = 450;
+
   return {
     restricted: 'E',
     templateUrl: 'views/directives/slideyButton.html',
@@ -24,7 +26,8 @@ angular.module('RestedApp')
     },
     link: function(scope, element) {
 
-      var gracePeriod = false;
+      // If user hovers over the component for waitTime
+      // milliseconds, show the text. Hide on mouse out.
       scope.$watch('isOver', function(isOver, oldVal) {
         if (isOver === oldVal) {
           return;
@@ -32,9 +35,15 @@ angular.module('RestedApp')
 
         var $text = element.find('.slidey-text');
 
-        isOver
-          ? $text.animate(animate.in, animate.options)
-          : $text.animate(animate.out, animate.options);
+        if(isOver) {
+          setTimeout(function() {
+            if(scope.isOver) {
+              $text.animate(animate.in, animate.options);
+            }
+          }, waitTime);
+        } else {
+          $text.animate(animate.out, animate.options);
+        }
       });
     }
   };

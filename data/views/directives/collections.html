@@ -19,11 +19,11 @@
              data-ng-click="selectRequest(request)">
             <h4 class="list-group-item-heading">
               {{request.method}}
-            <div class="pull-right">
-              <div tooltip="Remove request from collection"
-                   data-ng-click="removeFromCollection(request)"
-                   class="fa fa-times">
-              </div>
+            <div class="pull-right"
+                 id="removeRequest">
+              <slidey-button data-config="removeRequestConfig"
+                             data-on-click="removeFromCollection(request)">
+              </slidey-button>
             </div>
             </h4>
 

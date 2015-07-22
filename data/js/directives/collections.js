@@ -24,6 +24,11 @@ angular.module('RestedApp')
         title: 'Clear request selection',
         classes: ['fa', 'fa-plus']
       };
+
+      scope.removeRequestConfig = {
+        title: 'Remove request',
+        classes: ['fa', 'fa-times']
+      };
     }
   }
 });
