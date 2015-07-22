@@ -1,8 +1,8 @@
 <div title="{{config.title}}"
      class="slidey-box hoverhand"
      data-ng-click="onClick()"
-     data-ng-mouseover="isOver = true"
-     data-ng-mouseout="isOver = false">
-     <span class="slidey-text">{{config.title}}</span>
+     data-ng-mousemove="isOver = true"
+     data-ng-mouseleave="isOver = false">
+  <span class="slidey-text">{{config.title}}</span>
   <div data-ng-class="config.classes"></div>
 </div>

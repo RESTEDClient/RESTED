@@ -23,9 +23,15 @@ angular.module('RestedApp')
       onClick: '&'
     },
     link: function(scope, element) {
-      scope.$watch('isOver', function(isOver) {
+
+      var gracePeriod = false;
+      scope.$watch('isOver', function(isOver, oldVal) {
+        if (isOver === oldVal) {
+          return;
+        }
+
         var $text = element.find('.slidey-text');
-        console.log(isOver);
+
         isOver
           ? $text.animate(animate.in, animate.options)
           : $text.animate(animate.out, animate.options);
