@@ -17,8 +17,8 @@ angular.module('RestedApp')
       // here we assume that if it starts with [ or {
       // it is json, and we parse it as such.
       scope.parseJSON = function(body) {
-        if(body !== null && (typeof body === 'object' || /^[\[\{]/.test(body))) {
-          return JSON.stringify(body, ' ', 2);
+        if(body !== null && (typeof body === 'object' || /^\s*[\[\{]/.test(body))) {
+          return JSON.stringify(body, null, 2);
         }
         return body;
       };

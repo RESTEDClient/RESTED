@@ -36,4 +36,4 @@ If you use the Extension Auto-Installer, clone this project and run `jpm watchpo
 The extension will then be reinstalled every time you save a file, without you having to do a thing.
 
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
-That is, `jpm xpi && firefox rested@restedclient-0.1.0.xpi`.
+That is, `jpm xpi && firefox rested@restedclient-0.1.1.xpi`.

@@ -58,6 +58,13 @@ angular.module('RestedApp')
       };
 
       scope.addRequest = function(request) {
+        if(!request.url) {
+          // The non-hiding text for the add button
+          // will be fixed when we implement modals.
+          alert('Please provide a URL for the request');
+          return;
+        }
+
         request.headers = RequestUtils.reMapHeaders(scope.headers, true);
         scope.addToCollection(request);
       };
@@ -65,6 +72,11 @@ angular.module('RestedApp')
       scope.slideToggle = function(id) {
         scope.slidden[id] = !scope.slidden[id];
         $('#' + id).slideToggle();
+      };
+
+      scope.addRequestConfig = {
+        title: 'Add request to collection',
+        classes: ['fa', 'fa-plus']
       };
 
       scope.$watch('request', function(newVal, oldVal) {

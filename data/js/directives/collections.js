@@ -19,6 +19,16 @@ angular.module('RestedApp')
       scope.resetRequest = function() {
         scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
       };
+
+      scope.resetRequestConfig = {
+        title: 'Clear request selection',
+        classes: ['fa', 'fa-plus']
+      };
+
+      scope.removeRequestConfig = {
+        title: 'Remove request',
+        classes: ['fa', 'fa-times']
+      };
     }
   }
 });
