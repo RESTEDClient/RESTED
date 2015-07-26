@@ -1,6 +1,6 @@
 ![RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-logo-full.png)
 
-A REST client for the rest of us
+A REST client for the rest of us.
 
 _Note: This extension is currently in the Mozilla review process and is not on the AMO yet._
 
@@ -21,8 +21,8 @@ It is basically just an angular 1.4 app inside of Firefox, so if you know angula
 
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
- - Templates in the URLs (example: www.vg.no?authToken={token})
- - Replace alert boxes with bootstrap modals
+ - Templates in the URLs (example: www.vg.no?authToken={{token}}) - In progress on next branch
+ - ~~Replace alert boxes with bootstrap modals~~ - Done on next branch
  - Improve pretty-printing or results
  - Basic auth
 
@@ -32,8 +32,13 @@ In order to work on this project, you're going to need a few things:
  - [Extension Auto-Installer](https://palant.de/2012/01/13/extension-auto-installer). Not neccecary, but highly reccomended
 
 Once these formalities are in order, you can start developing.
+
 If you use the Extension Auto-Installer, clone this project and run `jpm watchpost --post-url http://localhost:8888` in the root folder.
 The extension will then be reinstalled every time you save a file, without you having to do a thing.
 
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
-That is, `jpm xpi && firefox rested@restedclient-0.1.1.xpi`.
+That is, `jpm xpi && firefox rested@restedclient-0.1.2.xpi`.
+
+**Please develop on the next branch.**
+This makes it easier forfor me to merge and prepare releases in the future.
+Thanks for the interest!
