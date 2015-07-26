@@ -26,7 +26,7 @@ angular.module('RestedApp')
     return url.replace(/\{\{(\w+)\}\}/g, function(match, capture) {
       var param = params ? params[capture] : null;
       return param ? param : '';
-    }).replace(/\/{2,}/g, "/");
+    }).replace(/([^:]\/)\/+/g, '$1');
   };
 
   return {
