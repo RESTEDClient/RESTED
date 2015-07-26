@@ -47,7 +47,7 @@ angular.module('RestedApp')
       var headersAsArray = Object.keys(headers).map(function(key) {
         return {
           name: key,
-          value: scope.request.headers[key]
+          value: headers[key]
         }
       });
 

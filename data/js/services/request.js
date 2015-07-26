@@ -30,12 +30,13 @@ angular.module('RestedApp')
   };
 
   return {
-    run: function(request) {
-      var url = prependHttp(request.url);
-      url = mapParameters(url, request.parameters);
+    run: function(request, parameters) {
+      var requestCopy = angular.copy(request);
+      var url = prependHttp(requestCopy.url);
+      url = mapParameters(url, parameters);
 
-      request.url = url;
-      return $http(request);
+      requestCopy.url = url;
+      return $http(requestCopy);
     }
   };
 });

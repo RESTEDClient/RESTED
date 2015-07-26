@@ -33,7 +33,7 @@ angular.module('RestedApp')
           request.headers = RequestUtils.reMapHeaders(scope.headers, true);
         }
 
-        Request.run(request)
+        Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true))
           .then(processReturnData, processReturnData);
       };
 

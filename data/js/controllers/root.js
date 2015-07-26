@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections, Modal) {
+.controller('RootCtl', function(DEFAULT_REQUEST, $rootScope, Collections, Modal) {
 
-  $scope.request = angular.copy(DEFAULT_REQUEST);
-  $scope.$root.urlVariables = [];
+  $rootScope.request = angular.copy(DEFAULT_REQUEST);
+  $rootScope.urlVariables = [];
 
   var errorHandler = function(event) {
     console.error(event);
@@ -36,24 +36,24 @@ angular.module('RestedApp')
   // can easily extend app with the ability
   // to add more collections later.
   Collections.get().then(function(data) {
-    $scope.collections = data;
+    $rootScope.collections = data;
   }, errorHandler);
 
   // This is exposed to lower scopes
-  $scope.addRequestToCollection = function(request) {
+  $rootScope.addRequestToCollection = function(request) {
 
     // Create new collection if none exist
-    if (!$scope.collections[0]) {
-      $scope.collections.push({
+    if (!$rootScope.collections[0]) {
+      $rootScope.collections.push({
         name: 'Collection',
         requests: [request]
       });
 
-      Collections.add($scope.collections[0]).then(null, errorHandler);
-    } else if ($scope.collections[0].requests.indexOf(request) === -1) {
-      $scope.collections[0].requests.push(request);
+      Collections.add($rootScope.collections[0]).then(null, errorHandler);
+    } else if ($rootScope.collections[0].requests.indexOf(request) === -1) {
+      $rootScope.collections[0].requests.push(request);
 
-      Collections.set($scope.collections[0]).then(null, errorHandler);
+      Collections.set($rootScope.collections[0]).then(null, errorHandler);
     } else {
       Modal.set({
         title: 'Sorry',
@@ -63,18 +63,18 @@ angular.module('RestedApp')
   };
 
   // This is exposed to lower scopes
-  $scope.removeRequestFromCollection = function(request) {
-    $scope.collections[0].requests = $scope.collections[0].requests.filter(function(item) {
+  $rootScope.removeRequestFromCollection = function(request) {
+    $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
       return item.url !== request.url;
     });
 
-    Collections.set($scope.collections[0]).then(null, errorHandler);
+    Collections.set($rootScope.collections[0]).then(null, errorHandler);
   };
 
 
-  $scope.$root.newVariable = function() {
-    $scope.$root.urlVariables.push({
-      item: null,
+  $rootScope.newVariable = function() {
+    $rootScope.urlVariables.push({
+      name: null,
       value: null
     });
   };
