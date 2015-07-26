@@ -4,6 +4,7 @@ angular.module('RestedApp')
 .controller('RootCtl', function(DEFAULT_REQUEST, $scope, Collections, Modal) {
 
   $scope.request = angular.copy(DEFAULT_REQUEST);
+  $scope.$root.urlVariables = [];
 
   var errorHandler = function(event) {
     console.error(event);
@@ -68,5 +69,13 @@ angular.module('RestedApp')
     });
 
     Collections.set($scope.collections[0]).then(null, errorHandler);
+  };
+
+
+  $scope.$root.newVariable = function() {
+    $scope.$root.urlVariables.push({
+      item: null,
+      value: null
+    });
   };
 });

@@ -15,9 +15,9 @@ angular.module('RestedApp')
         }
 
         if(newVal) {
-          element.find(".modal").modal('show');
+          element.find('.modal').modal('show');
         } else {
-          element.find(".modal").modal('hide');
+          element.find('.modal').modal('hide');
         }
       });
     }

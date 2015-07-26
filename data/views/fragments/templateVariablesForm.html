@@ -1,0 +1,35 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="item in $root.urlVariables">
+      <td>
+        <input type="text"
+               class="form-control"
+               placeholder="Key"
+               data-ng-model="item.key"
+        />
+      </td>
+      <td>
+        <input type="text"
+               class="form-control"
+               placeholder="Value"
+               data-ng-model="item.value"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h5 class="hoverhand"
+            data-ng-click="$root.newVariable()">
+          <i class="fa fa-plus"></i>
+          Add a variable
+        </h5>
+      </td>
+    </tr>
+  </tbody>
+</table>

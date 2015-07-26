@@ -11,12 +11,16 @@
                 </span>
         </button>
         <h4 class="modal-title">
-          {{modal.title}}
+          {{options.title}}
         </h4>
       </div>
 
       <div class="modal-body">
-        <p>{{modal.body}}</p>
+        <p data-ng-show="options.body">
+          {{options.body}}
+        </p>
+        <div data-ng-include="options.includeURL">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button"
@@ -26,9 +30,9 @@
         </button>
         <button type="button"
                 class="btn btn-primary"
-                data-ng-show="modal.action"
-                data-ng-click="modal.action.click">
-                {{modal.action.text}}
+                data-ng-show="options.action"
+                data-ng-click="options.action.click">
+                {{options.action.text}}
         </button>
       </div>
     </div><!-- /.modal-content -->

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(Request, RequestUtils) {
+.directive('request', function(Request, RequestUtils, Modal) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -14,6 +14,7 @@ angular.module('RestedApp')
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
       };
 
+      scope.urlVariables = [];
       scope.headers = [];
       scope.slidden = {};
 
@@ -77,6 +78,23 @@ angular.module('RestedApp')
       scope.addRequestConfig = {
         title: 'Add request to collection',
         classes: ['fa', 'fa-plus']
+      };
+
+      scope.showVariablesConfig = {
+        title: 'Show URL parameters',
+        classes: ['fa', 'fa-cog']
+      };
+
+      scope.showVariablesModal = function() {
+        Modal.set({
+          title: 'URL parameters',
+          body: 'You can include dynamic elements into your URLs. Simply type {{something}} into your URL, and then add "something" here, and it will be resolved for you. This works across all requests you have saved.',
+          includeURL: 'views/fragments/templateVariablesForm.html',
+          action: {
+            text: 'Save',
+            click: null
+          }
+        });
       };
 
       scope.$watch('request', function(newVal, oldVal) {
