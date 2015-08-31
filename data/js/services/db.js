@@ -24,11 +24,20 @@ angular.module('RestedApp')
     console.info('Upgrade completed. DB is now:', storeNames);
   };
 
+  var queuedTransactions = [];
   var onDBReady = function(fn) {
     if(localDB.readyState === 'done') {
       fn();
     } else {
-      localDB.onsuccess = fn;
+      // We need to queue transactions against the
+      // database so transactions can run parallel
+      // and not overwrite each other.
+      queuedTransactions.push(fn);
+      localDB.onsuccess = function runQueuedOperations() {
+        queuedTransactions.forEach(function(transaction) {
+          transaction();
+        });
+      };
     }
   };
 

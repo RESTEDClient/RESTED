@@ -4,6 +4,7 @@ angular.module('RestedApp')
 .controller('RootCtl', function(DEFAULT_REQUEST, $rootScope, DB, Modal) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
+  $rootScope.collections = [];
   $rootScope.urlVariables = [];
 
   var errorHandler = function(event) {
@@ -43,7 +44,7 @@ angular.module('RestedApp')
   //  [
   //   {
   //     name: 'urlVariables',
-  //     requests: [
+  //     variables: [
   //       {
   //         name: 'TLD',
   //         value: '.no'
@@ -51,8 +52,8 @@ angular.module('RestedApp')
   //     ]
   //   }
   // ]
-  // Defaults to empty array so we don't break
-  // anything when undefined is returned.
+  // $rootScope.urlVariables to empty array so
+  // we don't break iteration when undefined is returned.
   DB.urlVariables.get().then(function(data) {
     $rootScope.urlVariables = data[0].variables || [];
   }, errorHandler);
