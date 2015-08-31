@@ -11,7 +11,8 @@ saving requests to local storage, and more.
 
 Since this is a relatively new project, I am also happy to announce that
 it is also awesomely easy to contribute to the project! Everything is
-javascript and html, so come join! All contributions welcome.
+javascript and html, so come join! All contributions welcome (but no guarantees
+that they will be merged - requests will be reviewed).
 
 ![Image of RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-app.png)
 
@@ -21,9 +22,9 @@ It is basically just an angular 1.4 app inside of Firefox, so if you know angula
 
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
- - Templates in the URLs (example: www.vg.no?authToken={{token}}) - In progress on next branch
+ - ~~Templates in the URLs (example: www.vg.no?authToken={{token}})~~ - Done on next branch
  - ~~Replace alert boxes with bootstrap modals~~ - Done on next branch
- - Improve pretty-printing or results
+ - Improve pretty-printing of results
  - Basic auth
 
 In order to work on this project, you're going to need a few things:
@@ -39,6 +40,12 @@ The extension will then be reinstalled every time you save a file, without you h
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
 That is, `jpm xpi && firefox rested@restedclient-0.1.2.xpi`.
 
+Protip: If you are working on IndexedDB and fail to inspect the contents with the dev tools, that may be because you can't do that in
+a chrome URL. Try starting up a [static webserver](https://www.npmjs.com/package/static-server) in the data directory of the project and
+dev tools should work as normal. Note that you cannot run requests from the static web server, as one does not have the elevated
+permissions the chrome URLs get.
+
 **Please develop on the next branch.**
-This makes it easier forfor me to merge and prepare releases in the future.
+This makes it easier for me to merge and prepare releases in the future.
 Thanks for the interest!
+
