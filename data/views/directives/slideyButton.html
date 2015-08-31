@@ -3,6 +3,9 @@
      data-ng-click="clickEvent()"
      data-ng-mousemove="isOver = true"
      data-ng-mouseleave="isOver = false">
-  <span class="slidey-text">{{config.title}}</span>
+  <span class="slidey-wrapper">
+    <span class="slidey-text">{{config.title}}</span>
+  </span>
   <div data-ng-class="config.classes"></div>
 </div>
+

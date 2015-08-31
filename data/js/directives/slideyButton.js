@@ -4,11 +4,9 @@ angular.module('RestedApp')
 .directive('slideyButton', function() {
 
   var animate = {
-    in: {
-      'left': 0
-    },
     out: {
-      'left': 250
+      'width': '0px',
+      'opacity': 0
     },
     options: {
       queue: false
@@ -33,12 +31,17 @@ angular.module('RestedApp')
           return;
         }
 
-        var $text = element.find('.slidey-text');
+        var $text = element.find('.slidey-wrapper');
 
         if(isOver) {
           setTimeout(function() {
             if(scope.isOver) {
-              $text.animate(animate.in, animate.options);
+              var toState = {
+                width: $text.find('.slidey-text').width(),
+                opacity: 1
+              };
+
+              $text.animate(toState, animate.options);
             }
           }, waitTime);
         } else {

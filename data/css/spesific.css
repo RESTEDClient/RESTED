@@ -25,3 +25,32 @@
 #removeRequest .slidey-text {
   font-size: 14px;
 }
+
+/* Rules for allowing sliding ins slidey-button */
+slidey-button {
+  float: right;
+}
+
+.slidey-box {
+  overflow: hidden;
+  white-space: nowrap;
+
+  margin-left: 10px;
+}
+
+.slidey-wrapper {
+  overflow: hidden;
+  display: inline-block;
+  opacity: 0;
+  width: 0px;
+}
+
+.slidey-text {
+  position: relative;
+}
+
+.slidey-box>.fa {
+position: relative;
+bottom: 3px;
+}
+
