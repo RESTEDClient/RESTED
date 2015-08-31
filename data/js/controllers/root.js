@@ -14,7 +14,7 @@ angular.module('RestedApp')
     });
   };
 
-  // This is saved in the db like this:
+  // Data is saved in the db like so:
   //  [
   //   {
   //     name: 'Collection',

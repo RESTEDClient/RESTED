@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', function(DEFAULT_REQUEST) {
+.directive('collections', function(DEFAULT_REQUEST, Modal) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -17,11 +17,21 @@ angular.module('RestedApp')
       };
 
       scope.resetRequest = function() {
-        scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
+        Modal.set({
+          title: 'Create new request',
+          body: 'Please confirm clearing current selection.\n Unsaved progress will be lost.',
+          action: {
+            text: 'OK',
+            click: function() {
+              scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
+              Modal.remove();
+            }
+          }
+        });
       };
 
       scope.resetRequestConfig = {
-        title: 'Clear request selection',
+        title: 'Clear selection',
         classes: ['fa', 'fa-plus']
       };
 
