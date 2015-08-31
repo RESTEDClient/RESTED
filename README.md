@@ -2,7 +2,7 @@
 
 A REST client for the rest of us.
 
-_Note: This extension is currently in the Mozilla review process and is not on the AMO yet._
+_Note: This is the source code, the AMO download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
 
 RESTED is a new take on rest clients on Firefox.
 It is meant to be easy to use to let you work as effective as possible.
