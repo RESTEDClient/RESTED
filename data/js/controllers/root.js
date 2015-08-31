@@ -39,6 +39,24 @@ angular.module('RestedApp')
     $rootScope.collections = data;
   }, errorHandler);
 
+  // Data is saved in db like so:
+  //  [
+  //   {
+  //     name: 'urlVariables',
+  //     requests: [
+  //       {
+  //         name: 'TLD',
+  //         value: '.no'
+  //       }
+  //     ]
+  //   }
+  // ]
+  // Defaults to empty array so we don't break
+  // anything when undefined is returned.
+  DB.urlVariables.get().then(function(data) {
+    $rootScope.urlVariables = data[0].variables || [];
+  }, errorHandler);
+
   // This is exposed to lower scopes
   $rootScope.addRequestToCollection = function(request) {
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(Request, RequestUtils, Modal) {
+.directive('request', function(DB, Request, RequestUtils, Modal) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -99,6 +99,7 @@ angular.module('RestedApp')
         classes: ['fa', 'fa-cog']
       };
 
+      // urlVariables logic
       scope.showVariablesModal = function() {
         Modal.set({
           title: 'URL parameters',
@@ -106,7 +107,25 @@ angular.module('RestedApp')
           includeURL: 'views/fragments/templateVariablesForm.html',
           action: {
             text: 'Save',
-            click: null
+            click: function saveVariables() {
+              var payload = {
+                name: 'urlVariables',
+                variables: scope.$root.urlVariables
+              };
+
+              DB.urlVariables.set(payload).then(
+                function successHandler() {
+                  Modal.remove();
+                },
+                function errorHandler(error) {
+                  console.error(event);
+                  Modal.set({
+                    title: 'An error occured',
+                    body: event.message
+                  });
+                }
+              );
+            }
           }
         });
       };
