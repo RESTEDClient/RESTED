@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, $rootScope, Collections, Modal) {
+.controller('RootCtl', function(DEFAULT_REQUEST, $rootScope, DB, Modal) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.urlVariables = [];
@@ -35,7 +35,7 @@ angular.module('RestedApp')
   // Root node is an array so we
   // can easily extend app with the ability
   // to add more collections later.
-  Collections.get().then(function(data) {
+  DB.collections.get().then(function(data) {
     $rootScope.collections = data;
   }, errorHandler);
 
@@ -49,11 +49,11 @@ angular.module('RestedApp')
         requests: [request]
       });
 
-      Collections.add($rootScope.collections[0]).then(null, errorHandler);
+      DB.collections.add($rootScope.collections[0]).then(null, errorHandler);
     } else if ($rootScope.collections[0].requests.indexOf(request) === -1) {
       $rootScope.collections[0].requests.push(request);
 
-      Collections.set($rootScope.collections[0]).then(null, errorHandler);
+      DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
     } else {
       Modal.set({
         title: 'Sorry',
@@ -68,7 +68,7 @@ angular.module('RestedApp')
       return item.url !== request.url;
     });
 
-    Collections.set($rootScope.collections[0]).then(null, errorHandler);
+    DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
   };
 
 

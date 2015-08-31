@@ -40,5 +40,5 @@ angular.module('RestedApp')
         classes: ['fa', 'fa-times']
       };
     }
-  }
+  };
 });
