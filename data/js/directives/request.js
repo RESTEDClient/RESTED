@@ -27,6 +27,17 @@ angular.module('RestedApp')
         var request = scope.request;
         var headers = {};
 
+        // Check for sillyness
+        // If no URL is provided, assume user wants the placeholder URL.
+        if (!request.url) {
+          request.url = RequestUtils.randomURL();
+        } else if (request.url === 'chrome://rested/content/rested.html') {
+          return Modal.set({
+            title: 'But... Why?',
+            body: 'You are aware of what you just did, right?'
+          });
+        }
+
         // Strip empty headers and re-map headers to
         // something we can use in $http.
         if (scope.headers) {
@@ -62,7 +73,10 @@ angular.module('RestedApp')
         if(!request.url) {
           // The non-hiding text for the add button
           // will be fixed when we implement modals.
-          alert('Please provide a URL for the request');
+          Modal.set({
+            title: 'Don\'t be silly',
+            body: 'Please provide a URL for the request to be added.'
+          });
           return;
         }
 
