@@ -19,7 +19,7 @@ angular.module('RestedApp')
       scope.resetRequest = function() {
         Modal.set({
           title: 'Create new request',
-          body: 'Please confirm clearing current selection.\n Unsaved progress will be lost.',
+          body: 'Please confirm clearing current request selection.\n Unsaved progress will be lost.',
           action: {
             text: 'OK',
             click: function() {
@@ -32,7 +32,7 @@ angular.module('RestedApp')
 
       scope.resetRequestConfig = {
         title: 'Clear selection',
-        classes: ['fa', 'fa-plus']
+        classes: ['fa', 'fa-times']
       };
 
       scope.removeRequestConfig = {
