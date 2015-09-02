@@ -55,6 +55,9 @@
         <!-- Headers -->
         <div data-ng-include="'views/fragments/request/headerDropdown.html'"></div>
 
+        <!-- Basic auth -->
+        <div data-ng-include="'views/fragments/request/basicAuthDropdown.html'"></div>
+
         <!-- POST, PUT, PATCH request body -->
         <div data-ng-include="'views/fragments/request/requestBodyDropdown.html'"
              data-ng-show="['POST', 'PUT', 'PATCH'].indexOf(request.method) > -1">

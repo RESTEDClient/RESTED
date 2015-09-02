@@ -52,10 +52,9 @@ angular.module('RestedApp')
   //     ]
   //   }
   // ]
-  // $rootScope.urlVariables to empty array so
-  // we don't break iteration when undefined is returned.
   DB.urlVariables.get().then(function(data) {
-    $rootScope.urlVariables = data[0].variables || [];
+    // Defensive programming ftw
+    $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
   }, errorHandler);
 
   // This is exposed to lower scopes

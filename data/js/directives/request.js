@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(DB, Request, RequestUtils, Modal) {
+.directive('request', function(DB, Request, RequestUtils, Base64, Modal) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -42,6 +42,14 @@ angular.module('RestedApp')
         // something we can use in $http.
         if (scope.headers) {
           request.headers = RequestUtils.reMapHeaders(scope.headers, true);
+        }
+
+        // Add basic auth header
+        var basicAuth = scope.request.basicAuth;
+        if (basicAuth && basicAuth.username) {
+          var password = basicAuth.password ? basicAuth.password : '';
+          console.log('auth', basicAuth.username, basicAuth.password);
+          request.headers.Authorization = 'Basic ' + Base64.encode(basicAuth.username + ':' + password);
         }
 
         Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true))
