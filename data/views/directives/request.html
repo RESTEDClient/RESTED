@@ -52,62 +52,12 @@
           </div>
         </div>
 
-        <div class="hoverhand"
-             data-ng-click="slideToggle('headerSlider')"
-             title="Show headers">
-          <h4>
-            Headers
-            <i class="fa fa-angle-right animate"
-                data-ng-class="{'fa-rotate-90': !!slidden.headerSlider}">
-            </i>
-          </h4>
-        </div>
+        <!-- Headers -->
+        <div data-ng-include="'views/fragments/request/headerDropdown.html'"></div>
 
-        <div id="headerSlider" class="row start-hidden">
-          <div class="header-item"
-               data-ng-repeat="header in headers">
-            <div class="form-group col-xs-6">
-              <input type="text"
-                     class="form-control"
-                     data-ng-model="header.name"
-                     placeholder="Name"
-              />
-            </div>
-            <div class="form-group col-xs-6">
-              <input type="text"
-                     class="form-control"
-                     data-ng-model="header.value"
-                     placeholder="Value"
-              />
-            </div>
-          </div>
-          <h5 class="col-xs-12 hoverhand"
-              data-ng-click="addHeader()"
-              title="Add header">
-            <i class="fa fa-plus"></i>
-            Add header
-          </h5>
-        </div>
-
-        <!-- POST, PUT, PATCH get data -->
-        <div class="hoverhand"
-             data-ng-click="slideToggle('bodySlider')"
-             title="Show request body">
-          <h4>
-            Request body
-            <i class="fa fa-angle-right animate"
-                data-ng-class="{'fa-rotate-90': !!slidden.bodySlider}">
-            </i>
-          </h4>
-        </div>
-
-        <div id="bodySlider" class="row start-hidden">
-          <div class="col-xs-12">
-            <textarea class="form-control"
-                      rows="10"
-                      data-ng-model="request.data">
-            </textarea>
-          </div>
+        <!-- POST, PUT, PATCH request body -->
+        <div data-ng-include="'views/fragments/request/requestBodyDropdown.html'"
+             data-ng-show="['POST', 'PUT', 'PATCH'].indexOf(request.method) > -1">
         </div>
       </form>
     </div>

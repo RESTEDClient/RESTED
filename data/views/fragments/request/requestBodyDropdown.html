@@ -1,0 +1,20 @@
+<div class="hoverhand"
+     data-ng-click="slideToggle('bodySlider')"
+     title="Show request body">
+  <h4>
+    Request body
+    <i class="fa fa-angle-right animate"
+        data-ng-class="{'fa-rotate-90': !!slidden.bodySlider}">
+    </i>
+  </h4>
+</div>
+
+<div id="bodySlider" class="row start-hidden">
+  <div class="col-xs-12">
+    <textarea class="form-control"
+              rows="10"
+              data-ng-model="request.data">
+    </textarea>
+  </div>
+</div>
+
