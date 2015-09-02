@@ -25,7 +25,7 @@ What features are on the to-do list:
  - ~~Templates in the URLs (example: www.vg.no?authToken={{token}})~~ - Done on next branch
  - ~~Replace alert boxes with bootstrap modals~~ - Done on next branch
  - Improve pretty-printing of results
- - Basic auth
+ - ~~Basic auth~~ - Done on next branch
 
 In order to work on this project, you're going to need a few things:
  - [Firefox](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
