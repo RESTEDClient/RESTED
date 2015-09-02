@@ -74,8 +74,15 @@ angular.module('RestedApp')
       DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
     } else {
       Modal.set({
-        title: 'Sorry',
-        body: 'Request is already in collection'
+        title: 'Hey!',
+        body: 'Request is already in collection. Overwrite existing entry?',
+        action: {
+          text: 'OK',
+          click: function() {
+            DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
+            Modal.remove();
+          }
+        }
       });
     }
   };
