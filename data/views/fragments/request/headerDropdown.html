@@ -1,37 +1,39 @@
-<div class="hoverhand"
-     data-ng-click="slideToggle('headerSlider')"
-     title="Show headers">
-  <h4>
-    Headers
-    <i class="fa fa-angle-right animate"
-        data-ng-class="{'fa-rotate-90': !!slidden.headerSlider}">
-    </i>
-  </h4>
-</div>
-
-<div id="headerSlider" class="row start-hidden">
-  <div class="header-item"
-       data-ng-repeat="header in headers">
-    <div class="form-group col-xs-6">
-      <input type="text"
-             class="form-control"
-             data-ng-model="header.name"
-             placeholder="Name"
-      />
-    </div>
-    <div class="form-group col-xs-6">
-      <input type="text"
-             class="form-control"
-             data-ng-model="header.value"
-             placeholder="Value"
-      />
-    </div>
+<div>
+  <div class="hoverhand"
+       data-ng-click="slideToggle('headerSlider')"
+       title="Show headers">
+    <h4>
+      Headers
+      <i class="fa fa-angle-right animate"
+          data-ng-class="{'fa-rotate-90': !!slidden.headerSlider}">
+      </i>
+    </h4>
   </div>
-  <h5 class="col-xs-12 hoverhand"
-      data-ng-click="addHeader()"
-      title="Add header">
-    <i class="fa fa-plus"></i>
-    Add header
-  </h5>
+
+  <div id="headerSlider" class="row start-hidden">
+    <div class="header-item"
+         data-ng-repeat="header in headers">
+      <div class="form-group col-xs-6">
+        <input type="text"
+               class="form-control"
+               data-ng-model="header.name"
+               placeholder="Name"
+        />
+      </div>
+      <div class="form-group col-xs-6">
+        <input type="text"
+               class="form-control"
+               data-ng-model="header.value"
+               placeholder="Value"
+        />
+      </div>
+    </div>
+    <h5 class="col-xs-12 hoverhand"
+        data-ng-click="addHeader()"
+        title="Add header">
+      <i class="fa fa-plus"></i>
+      Add header
+    </h5>
+  </div>
 </div>
 

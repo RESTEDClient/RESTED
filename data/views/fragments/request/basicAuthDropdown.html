@@ -1,15 +1,16 @@
-<div class="hoverhand"
-     data-ng-click="slideToggle('basicAuthSlider')"
-     title="Show basic auth">
-  <h4>
-    Basic auth
-    <i class="fa fa-angle-right animate"
-        data-ng-class="{'fa-rotate-90': !!slidden.basicAuthSlider}">
-    </i>
-  </h4>
-</div>
+<div>
+  <div class="hoverhand"
+       data-ng-click="slideToggle('basicAuthSlider')"
+       title="Show basic auth">
+    <h4>
+      Basic auth
+      <i class="fa fa-angle-right animate"
+          data-ng-class="{'fa-rotate-90': !!slidden.basicAuthSlider}">
+      </i>
+    </h4>
+  </div>
 
-<div id="basicAuthSlider" class="row start-hidden">
+  <div id="basicAuthSlider" class="row start-hidden">
     <div class="form-group col-xs-6">
       <input type="text"
              class="form-control"
@@ -24,5 +25,5 @@
              placeholder="Password"
       />
     </div>
+  </div>
 </div>
-
