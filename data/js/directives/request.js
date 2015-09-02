@@ -97,6 +97,16 @@ angular.module('RestedApp')
         $('#' + id).slideToggle();
       };
 
+      scope.showCollections = function() {
+        // Logic handled in css and ngHide
+        scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
+      };
+
+      scope.showCollectionsConfig = {
+        title: 'Show collections',
+        classes: ['fa', 'fa-step-forward']
+      };
+
       scope.addRequestConfig = {
         title: 'Add request to collection',
         classes: ['fa', 'fa-plus']

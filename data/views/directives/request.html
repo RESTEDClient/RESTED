@@ -1,7 +1,17 @@
 <div>
   <section class="panel panel-default">
     <div class="panel-heading">
-      Request
+
+      <span class="pull-left">
+        Request
+      </span>
+
+      <div data-ng-show="$root.collectionsMinimized"
+           class="pull-left hoverhand">
+        <slidey-button data-config="showCollectionsConfig"
+                       data-click-event="showCollections()">
+        </slidey-button>
+      </div>
 
       <div class="pull-right hoverhand">
         <slidey-button data-config="showVariablesConfig"

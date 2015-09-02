@@ -30,6 +30,16 @@ angular.module('RestedApp')
         });
       };
 
+      scope.hideCollections = function() {
+        // Logic handled in css and ngHide
+        scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
+      };
+
+      scope.hideCollectionsConfig = {
+        title: 'Hide collections',
+        classes: ['fa', 'fa-step-backward']
+      };
+
       scope.resetRequestConfig = {
         title: 'Clear selection',
         classes: ['fa', 'fa-times']
