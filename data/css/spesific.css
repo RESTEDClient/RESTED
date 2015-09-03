@@ -1,5 +1,9 @@
 /* This CSS file holds spesific non-reusable styling */
 
+body {
+  overflow-x: hidden;
+}
+
 .fa-angle-right {
   margin-left: 5px;
 }
@@ -54,6 +58,7 @@ slidey-button {
   position: relative;
   bottom: 5px;
 }
+/* End slidey rules */
 
 /* Lets us float text in the header */
 .panel-heading {
@@ -64,5 +69,8 @@ slidey-button {
   float: left;
   opacity: 0;
   width: 0px;
+
+  /* Makes the animation look a bit more sane */
+  white-space: nowrap;
 }
 
