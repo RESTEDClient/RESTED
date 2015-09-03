@@ -2,7 +2,7 @@
 
 A REST client for the rest of us.
 
-_Note: This is the source code, the AMO download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
+_Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
 
 RESTED is a new take on rest clients on Firefox.
 It is meant to be easy to use to let you work as effective as possible.
@@ -20,12 +20,15 @@ that they will be merged - requests will be reviewed).
 This project was from the very beginning intended to be easy to work with.
 It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
 
+Features in 0.2, currently in review:
+ - Templates in the URLs (example: www.vg.no?authToken={{token}})
+ - Basic auth
+ - Fullscreen request panel (minimize collections)
+ - Other UI goodies
+
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
- - ~~Templates in the URLs (example: www.vg.no?authToken={{token}})~~ - Done on next branch
- - ~~Replace alert boxes with bootstrap modals~~ - Done on next branch
  - Improve pretty-printing of results
- - ~~Basic auth~~ - Done on next branch
 
 In order to work on this project, you're going to need a few things:
  - [Firefox](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
@@ -39,6 +42,10 @@ The extension will then be reinstalled every time you save a file, without you h
 
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
 That is, `jpm xpi && firefox rested@restedclient-0.1.2.xpi`.
+
+Note: Soon Mozilla will require unsigned extenstions (not from addons.mozilla.org) to be run in [Nightly](https://www.mozilla.org/firefox/nightly/).
+If you see a "RESTED could not be verified for use in Firefox", you may need to go get Nightly and develop from there. You also need to go to
+[about:config](about:config) and the following flags to false: `xpinstall.signatures.required` and `xpinstall.whitelist.required`.
 
 Protip: If you are working on IndexedDB and fail to inspect the contents with the dev tools, that may be because you can't do that in
 a chrome URL. Try starting up a [static webserver](https://www.npmjs.com/package/static-server) in the data directory of the project and
