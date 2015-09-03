@@ -6,14 +6,10 @@
         Request
       </span>
 
-      <div data-ng-show="$root.collectionsMinimized"
-           class="pull-left hoverhand">
-        <slidey-button data-config="showCollectionsConfig"
-                       data-click-event="showCollections()">
-        </slidey-button>
-      </div>
-
       <div class="pull-right hoverhand">
+        <slidey-button data-config="toggleCollectionsConfig"
+                       data-click-event="toggleCollections()">
+        </slidey-button>
         <slidey-button data-config="showVariablesConfig"
                        data-click-event="showVariablesModal()">
         </slidey-button>

@@ -97,15 +97,17 @@ angular.module('RestedApp')
         $('#' + id).slideToggle();
       };
 
-      scope.showCollections = function() {
+      scope.toggleCollections = function() {
         // Logic handled in css and ngHide
         scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
       };
 
-      scope.showCollectionsConfig = {
-        title: 'Show collections',
-        classes: ['fa', 'fa-step-forward']
-      };
+      scope.$watch('$root.collectionsMinimized', function(isMinimized) {
+        scope.toggleCollectionsConfig = {
+          title: (isMinimized ? 'Show' : 'Hide') + ' collections',
+          classes: ['fa', (isMinimized ? 'fa-compress' : 'fa-expand')]
+        };
+      });
 
       scope.addRequestConfig = {
         title: 'Add request to collection',

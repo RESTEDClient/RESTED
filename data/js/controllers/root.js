@@ -57,6 +57,7 @@ angular.module('RestedApp')
     $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
   }, errorHandler);
 
+  // Called on request addition
   // This is exposed to lower scopes
   $rootScope.addRequestToCollection = function(request) {
 
@@ -87,6 +88,7 @@ angular.module('RestedApp')
     }
   };
 
+  // Called on request removal
   // This is exposed to lower scopes
   $rootScope.removeRequestFromCollection = function(request) {
     Modal.set({
@@ -107,6 +109,7 @@ angular.module('RestedApp')
   };
 
 
+  // Called when new urlVariables are added
   $rootScope.newVariable = function() {
     $rootScope.urlVariables.push({
       name: null,
