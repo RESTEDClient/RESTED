@@ -89,11 +89,21 @@ angular.module('RestedApp')
 
   // This is exposed to lower scopes
   $rootScope.removeRequestFromCollection = function(request) {
-    $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
-      return item.url !== request.url;
-    });
+    Modal.set({
+      title: 'Confirm deletion',
+      body: 'Please confirm you wish to remove this request from your saved collection',
+      action: {
+        text: 'Confirm',
+        click: function() {
+          $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
+            return item.url !== request.url;
+          });
 
-    DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
+          DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
+          Modal.remove();
+        }
+      }
+    });
   };
 
 
