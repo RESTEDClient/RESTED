@@ -14,6 +14,6 @@ angular.module('RestedApp')
        */
       return window.btoa(unescape(encodeURIComponent(str)));
     }
-  }
+  };
 });
 
