@@ -7,7 +7,7 @@ angular.module('RestedApp')
   * Prepend http:// if missing from url
   */
   var prependHttp = function(url) {
-    if(!(/^http:\/\//.test(url))) {
+    if(!(/^https?:\/\//.test(url))) {
       url = 'http://' + url;
     }
     return url;
