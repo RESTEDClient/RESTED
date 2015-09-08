@@ -71,7 +71,7 @@
 
   <section data-ng-if="response" class="panel panel-default">
     <div class="panel-heading one-line-text">
-      Response - {{response.config.url}}
+      Response - {{response.responseURL}}
     </div>
     <div class="panel-body">
       <h2 class="col-xs-12" data-ng-style="{color: (response.status | status)}">
@@ -86,7 +86,7 @@
 
       <content-slider class="col-xs-12"
                       title="Response body"
-                      content="response.data">
+                      content="response.response">
       </content-slider>
     </div>
   </section>

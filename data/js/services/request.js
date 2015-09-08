@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Request', function($http) {
+.factory('Request', function() {
 
   /**
   * Prepend http:// if missing from url
+  * Make sure to allow https
   */
   var prependHttp = function(url) {
     if(!(/^https?:\/\//.test(url))) {
@@ -29,14 +30,29 @@ angular.module('RestedApp')
     }).replace(/([^:]\/)\/+/g, '$1');
   };
 
+  var createXMLHttpRequest = function(req) {
+    var request = new XMLHttpRequest(true, true);
+    console.log(req.url, req.method);
+    request.open(req.method, req.url);
+
+    req.headers.forEach(function(header) {
+      request.setRequestHeader(header.name, header.value);
+    });
+
+    return request;
+  };
+
   return {
-    run: function(request, parameters) {
+    run: function(request, parameters, fn) {
       var requestCopy = angular.copy(request);
       var url = prependHttp(requestCopy.url);
       url = mapParameters(url, parameters);
 
       requestCopy.url = url;
-      return $http(requestCopy);
+      var req = createXMLHttpRequest(requestCopy);
+      req.onload = fn.bind(req);
+
+      req.send();
     }
   };
 });
