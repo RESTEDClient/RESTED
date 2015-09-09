@@ -50,7 +50,7 @@ angular.module('RestedApp')
 
       requestCopy.url = url;
       var req = createXMLHttpRequest(requestCopy);
-      req.onprogress = fn.bind(req);
+      req.onloadend = fn.bind(req);
 
       req.send(request.data);
     }
