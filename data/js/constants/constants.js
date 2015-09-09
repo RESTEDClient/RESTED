@@ -26,7 +26,10 @@ module.constant('DB_URL_VARIABLES_STORE_NAME', 'urlVariables');
 // application load or on request reset.
 module.constant('DEFAULT_REQUEST', {
   method: 'GET',
-  headers: {},
+  headers: [{
+    name: '',
+    value: ''
+  }],
   cache: false
 });
 
