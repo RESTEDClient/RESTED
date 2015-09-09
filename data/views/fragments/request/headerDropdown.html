@@ -13,7 +13,7 @@
   <div id="headerSlider" class="row start-hidden">
     <div class="header-item"
          data-ng-repeat="header in request.headers track by $index">
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-5">
         <input type="text"
                class="form-control"
                data-ng-model="header.name"
@@ -26,6 +26,12 @@
                data-ng-model="header.value"
                placeholder="Value"
         />
+      </div>
+      <div class="col-xs-1 hidden-xs">
+        <i class="fa fa-trash hoverhand remove-header"
+           data-ng-click="removeHeader(header)"
+           title="Remove header">
+        </i>
       </div>
     </div>
     <h5 class="col-xs-12 hoverhand"

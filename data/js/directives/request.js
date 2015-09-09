@@ -87,6 +87,12 @@ angular.module('RestedApp')
         scope.request.headers.push(newHeader);
       };
 
+      scope.removeHeader = function(header) {
+        scope.request.headers = scope.request.headers.filter(function(item) {
+          return item !== header;
+        });
+      };
+
       scope.addRequest = function(request) {
         if(!request.url) {
           // The non-hiding text for the add button
