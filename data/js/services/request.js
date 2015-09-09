@@ -32,11 +32,12 @@ angular.module('RestedApp')
 
   var createXMLHttpRequest = function(req) {
     var request = new XMLHttpRequest(true, true);
-    console.log(req.url, req.method);
     request.open(req.method, req.url);
 
     req.headers.forEach(function(header) {
-      request.setRequestHeader(header.name, header.value);
+      if(header.name) {
+        request.setRequestHeader(header.name, header.value);
+      }
     });
 
     return request;

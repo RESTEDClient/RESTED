@@ -28,6 +28,7 @@ angular.module('RestedApp')
    * ]
    */
   var reMapHeaders = function(headers, asObject) {
+    // TODO - we no longer use asObject = false
     if(!headers && !asObject) {
       return [];
     } else if(!headers && asObject) {

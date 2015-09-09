@@ -12,7 +12,7 @@
 
   <div id="headerSlider" class="row start-hidden">
     <div class="header-item"
-         data-ng-repeat="header in headers">
+         data-ng-repeat="header in request.headers track by $index">
       <div class="form-group col-xs-6">
         <input type="text"
                class="form-control"

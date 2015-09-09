@@ -14,9 +14,9 @@ angular.module('RestedApp')
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
       };
 
+      scope.slidden = {};
       scope.urlVariables = [];
       scope.headers = [];
-      scope.slidden = {};
 
       var processReturnData = function() {
         var response = this;
@@ -37,8 +37,8 @@ angular.module('RestedApp')
       };
 
       scope.sendRequest = function() {
-        var request = scope.request;
-        var headers = {};
+        var request = angular.copy(scope.request);
+        var headers = request.headers || [];
 
         // Check for sillyness
         // If no URL is provided, assume user wants the placeholder URL.
@@ -51,17 +51,17 @@ angular.module('RestedApp')
           });
         }
 
-        request.headers = scope.headers;
-
         // Add basic auth header
         var basicAuth = scope.request.basicAuth;
         if (basicAuth && basicAuth.username) {
           var password = basicAuth.password ? basicAuth.password : '';
-          request.headers.push({
+          headers.push({
             name: 'Authorization',
             value: 'Basic ' + Base64.encode(basicAuth.username + ':' + password)
           });
         }
+
+        request.headers = headers;
 
         Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true), processReturnData);
       };
@@ -72,11 +72,11 @@ angular.module('RestedApp')
           value: ''
         };
 
-        if(!Array.isArray(scope.headers)) {
-          scope.headers = [];
+        if(!Array.isArray(scope.request.headers)) {
+          scope.request.headers = [];
         }
 
-        var isAlreadyAdded = scope.headers.some(function(item) {
+        var isAlreadyAdded = scope.request.headers.some(function(item) {
           return newHeader.name == item.name;
         });
 
@@ -84,7 +84,7 @@ angular.module('RestedApp')
           return;
         }
 
-        scope.headers.push(newHeader);
+        scope.request.headers.push(newHeader);
       };
 
       scope.addRequest = function(request) {
@@ -162,18 +162,6 @@ angular.module('RestedApp')
           }
         });
       };
-
-      scope.$watch('request', function(newVal, oldVal) {
-        if(newVal && newVal !== oldVal) {
-          scope.request = newVal;
-
-          // Map headers from {name: value} => [{name: xxx, value: xxx}]
-          // This is so we can mutate them from the template.
-          if (!scope.request.headers) {
-            scope.headers = [];
-          }
-        }
-      });
 
       scope.getRandomURL = RequestUtils.randomURL;
     }
