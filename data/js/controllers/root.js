@@ -117,3 +117,4 @@ angular.module('RestedApp')
     });
   };
 });
+

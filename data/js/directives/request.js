@@ -19,14 +19,20 @@ angular.module('RestedApp')
       scope.slidden = {};
 
       var processReturnData = function() {
-        var request = this;
-        console.log(request);
+        var response = this;
 
         // Manually start $digest because angular does not know
-        // about the async XMLHttpRequest
+        // about the async XMLHttpresponse
         scope.$apply(function() {
-          scope.response = request;
-          scope.response.headers = request.getAllResponseHeaders();
+          scope.response = response;
+          scope.response.headers = response.getAllResponseHeaders();
+
+          // Format json pretty-like
+          if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
+            scope.response.formattedResponse = JSON.parse(response.responseText);
+          } else {
+            scope.response.formattedResponse = response.responseText;
+          }
         });
       };
 
@@ -103,14 +109,18 @@ angular.module('RestedApp')
       scope.toggleCollections = function() {
         // Logic handled in css and ngHide
         scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
-      };
 
-      scope.$watch('$root.collectionsMinimized', function(isMinimized) {
+        var isMinimized = scope.$root.collectionsMinimized;
         scope.toggleCollectionsConfig = {
           title: (isMinimized ? 'Show' : 'Hide') + ' collections',
           classes: ['fa', (isMinimized ? 'fa-compress' : 'fa-expand')]
         };
-      });
+      };
+
+      scope.toggleCollectionsConfig = {
+        title: 'Hide collections',
+        classes: ['fa', 'fa-expand']
+      };
 
       scope.addRequestConfig = {
         title: 'Add request to collection',
