@@ -16,6 +16,11 @@ angular.module('RestedApp')
 
         if(newVal) {
           element.find('.modal').modal('show');
+
+          // Focus OK button after fade-in so user can press Enter
+          setTimeout(function() {
+            element.find('#modalAction').focus();
+          }, 500);
         } else {
           element.find('.modal').modal('hide');
         }
