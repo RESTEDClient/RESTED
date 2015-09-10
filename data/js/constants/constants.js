@@ -33,6 +33,10 @@ module.constant('DEFAULT_REQUEST', {
   cache: false
 });
 
+// The milliseconds we delay showing spinners
+// after a request has been sent.
+module.constant('SPINNER_SHOW_DELAY', 300);
+
 // The URLs shown in the URL bar on load.
 // Add more if you want!
 // The only rule for these: Nothing NSFW or illegal

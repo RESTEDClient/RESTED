@@ -69,7 +69,15 @@
     </div>
   </section>
 
-  <section data-ng-if="response" class="panel panel-default">
+  <!--data-ng-if="requestInProgress"-->
+  <section data-ng-if="requestInProgress"
+           id="spinnerPanel"
+           class="panel panel-default text-center">
+    <i class="fa fa-gear fa-spin spinner"></i>
+  </section>
+
+  <section data-ng-if="response && !requestInProgress"
+           class="panel panel-default">
     <div class="panel-heading one-line-text">
       Response -
       <a class="text-muted"

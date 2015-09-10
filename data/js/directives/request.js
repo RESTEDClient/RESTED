@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(DB, Request, RequestUtils, Base64, Modal) {
+.directive('request', function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -18,6 +18,8 @@ angular.module('RestedApp')
       scope.urlVariables = [];
       scope.headers = [];
 
+      var spinnerTimeout;
+
       var processReturnData = function() {
         var response = this;
 
@@ -33,6 +35,9 @@ angular.module('RestedApp')
           } else {
             scope.response.formattedResponse = response.responseText;
           }
+
+          $timeout.cancel(spinnerTimeout);
+          scope.requestInProgress = false;
         });
       };
 
@@ -65,6 +70,11 @@ angular.module('RestedApp')
         request.headers = headers;
 
         Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true), processReturnData);
+
+        // Delay showing spinner for fast connections
+        spinnerTimeout = $timeout(function() {
+          scope.requestInProgress = true;
+        }, SPINNER_SHOW_DELAY);
       };
 
       scope.addHeader = function() {
