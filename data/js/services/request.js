@@ -34,11 +34,13 @@ angular.module('RestedApp')
     var request = new XMLHttpRequest(true, true);
     request.open(req.method, req.url);
 
-    req.headers.forEach(function(header) {
-      if(header.name) {
-        request.setRequestHeader(header.name, header.value);
-      }
-    });
+    if(Array.isArray(req.headers)) {
+      req.headers.forEach(function(header) {
+        if(header.name) {
+          request.setRequestHeader(header.name, header.value);
+        }
+      });
+    }
 
     return request;
   };
