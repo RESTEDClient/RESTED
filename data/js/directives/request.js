@@ -29,7 +29,7 @@ angular.module('RestedApp')
 
           // Format json pretty-like
           if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
-            scope.response.formattedResponse = JSON.parse(response.responseText);
+            scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
           } else {
             scope.response.formattedResponse = response.responseText;
           }
