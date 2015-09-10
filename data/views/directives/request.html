@@ -71,7 +71,12 @@
 
   <section data-ng-if="response" class="panel panel-default">
     <div class="panel-heading one-line-text">
-      Response - {{response.responseURL}}
+      Response -
+      <a class="text-muted"
+         target="_blank"
+         data-ng-href="{{response.responseURL}}">
+         {{response.responseURL}}
+      </a>
     </div>
     <div class="panel-body">
       <h2 class="col-xs-12" data-ng-style="{color: (response.status | status)}">
