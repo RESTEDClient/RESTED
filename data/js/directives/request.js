@@ -43,7 +43,8 @@ angular.module('RestedApp')
         // Check for sillyness
         // If no URL is provided, assume user wants the placeholder URL.
         if (!request.url) {
-          request.url = RequestUtils.randomURL();
+          // This is supposed to mutate both request panel and temp request
+          scope.request.url = request.url = RequestUtils.randomURL();
         } else if (request.url === 'chrome://rested/content/rested.html') {
           return Modal.set({
             title: 'But... Why?',
