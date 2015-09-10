@@ -9,14 +9,14 @@
     </h1>
   </div>
 
-  <collections class="animate"
+  <collections class="animate hidden-xs"
                data-ng-class="{'minimized': collectionsMinimized, 'col-xs-4': !collectionsMinimized}"
                selected-request="request"
                collections="collections"
                remove-from-collection="removeRequestFromCollection(request)">
   </collections>
   <request class="animate"
-           data-ng-class="{'col-xs-12': collectionsMinimized, 'col-xs-8': !collectionsMinimized}"
+           data-ng-class="{'col-xs-12': collectionsMinimized, 'col-xs-12 col-sm-8': !collectionsMinimized}"
            request="request"
            add-to-collection="addRequestToCollection(request)">
   </request>
