@@ -1,4 +1,4 @@
 'use strict';
 
-var app = angular.module('RestedApp', []);
+angular.module('RestedApp', []);
 

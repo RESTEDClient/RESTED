@@ -26,9 +26,16 @@ module.constant('DB_URL_VARIABLES_STORE_NAME', 'urlVariables');
 // application load or on request reset.
 module.constant('DEFAULT_REQUEST', {
   method: 'GET',
-  headers: {},
+  headers: [{
+    name: '',
+    value: ''
+  }],
   cache: false
 });
+
+// The milliseconds we delay showing spinners
+// after a request has been sent.
+module.constant('SPINNER_SHOW_DELAY', 300);
 
 // The URLs shown in the URL bar on load.
 // Add more if you want!

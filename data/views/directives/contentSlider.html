@@ -5,7 +5,9 @@
        data-ng-class="{'fa-rotate-90': slidden}">
     </i>
   </h4>
-  <pre class="content" data-ng-class="{'start-hidden': startHidden}">
-    {{parseJSON(content)}}
+  <pre class="content"
+       data-ng-class="{'start-hidden': startHidden}"
+       data-ng-bind="content">
   </pre>
 </div>
+

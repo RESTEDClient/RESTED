@@ -1,4 +1,4 @@
-<div class="modal fade">
+<div class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,6 +29,7 @@
                 Close
         </button>
         <button type="button"
+                id="modalAction"
                 class="btn btn-primary"
                 data-ng-show="options.action"
                 data-ng-click="options.action.click()">
@@ -38,3 +39,4 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+

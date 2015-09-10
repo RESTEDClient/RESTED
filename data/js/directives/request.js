@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(DB, Request, RequestUtils, Base64, Modal) {
+.directive('request', function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -14,23 +14,42 @@ angular.module('RestedApp')
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
       };
 
+      scope.slidden = {};
       scope.urlVariables = [];
       scope.headers = [];
-      scope.slidden = {};
 
-      var processReturnData = function(response) {
-        scope.response = response;
-        scope.response.headers = response.headers();
+      var spinnerTimeout;
+
+      var processReturnData = function() {
+        var response = this;
+
+        // Manually start $digest because angular does not know
+        // about the async XMLHttpresponse
+        scope.$apply(function() {
+          scope.response = response;
+          scope.response.headers = response.getAllResponseHeaders();
+
+          // Format json pretty-like
+          if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
+            scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
+          } else {
+            scope.response.formattedResponse = response.responseText;
+          }
+
+          $timeout.cancel(spinnerTimeout);
+          scope.requestInProgress = false;
+        });
       };
 
       scope.sendRequest = function() {
-        var request = scope.request;
-        var headers = {};
+        var request = angular.copy(scope.request);
+        var headers = request.headers || [];
 
         // Check for sillyness
         // If no URL is provided, assume user wants the placeholder URL.
         if (!request.url) {
-          request.url = RequestUtils.randomURL();
+          // This is supposed to mutate both request panel and temp request
+          scope.request.url = request.url = RequestUtils.randomURL();
         } else if (request.url === 'chrome://rested/content/rested.html') {
           return Modal.set({
             title: 'But... Why?',
@@ -38,22 +57,24 @@ angular.module('RestedApp')
           });
         }
 
-        // Strip empty headers and re-map headers to
-        // something we can use in $http.
-        if (scope.headers) {
-          request.headers = RequestUtils.reMapHeaders(scope.headers, true);
-        }
-
         // Add basic auth header
         var basicAuth = scope.request.basicAuth;
         if (basicAuth && basicAuth.username) {
           var password = basicAuth.password ? basicAuth.password : '';
-          console.log('auth', basicAuth.username, basicAuth.password);
-          request.headers.Authorization = 'Basic ' + Base64.encode(basicAuth.username + ':' + password);
+          headers.push({
+            name: 'Authorization',
+            value: 'Basic ' + Base64.encode(basicAuth.username + ':' + password)
+          });
         }
 
-        Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true))
-          .then(processReturnData, processReturnData);
+        request.headers = headers;
+
+        Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true), processReturnData);
+
+        // Delay showing spinner for fast connections
+        spinnerTimeout = $timeout(function() {
+          scope.requestInProgress = true;
+        }, SPINNER_SHOW_DELAY);
       };
 
       scope.addHeader = function() {
@@ -62,11 +83,11 @@ angular.module('RestedApp')
           value: ''
         };
 
-        if(!Array.isArray(scope.headers)) {
-          scope.headers = [];
+        if(!Array.isArray(scope.request.headers)) {
+          scope.request.headers = [];
         }
 
-        var isAlreadyAdded = scope.headers.some(function(item) {
+        var isAlreadyAdded = scope.request.headers.some(function(item) {
           return newHeader.name == item.name;
         });
 
@@ -74,7 +95,13 @@ angular.module('RestedApp')
           return;
         }
 
-        scope.headers.push(newHeader);
+        scope.request.headers.push(newHeader);
+      };
+
+      scope.removeHeader = function(header) {
+        scope.request.headers = scope.request.headers.filter(function(item) {
+          return item !== header;
+        });
       };
 
       scope.addRequest = function(request) {
@@ -88,7 +115,6 @@ angular.module('RestedApp')
           return;
         }
 
-        request.headers = RequestUtils.reMapHeaders(scope.headers, true);
         scope.addToCollection(request);
       };
 
@@ -100,14 +126,18 @@ angular.module('RestedApp')
       scope.toggleCollections = function() {
         // Logic handled in css and ngHide
         scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
-      };
 
-      scope.$watch('$root.collectionsMinimized', function(isMinimized) {
+        var isMinimized = scope.$root.collectionsMinimized;
         scope.toggleCollectionsConfig = {
           title: (isMinimized ? 'Show' : 'Hide') + ' collections',
           classes: ['fa', (isMinimized ? 'fa-compress' : 'fa-expand')]
         };
-      });
+      };
+
+      scope.toggleCollectionsConfig = {
+        title: 'Hide collections',
+        classes: ['fa', 'fa-expand']
+      };
 
       scope.addRequestConfig = {
         title: 'Add request to collection',
@@ -149,20 +179,6 @@ angular.module('RestedApp')
           }
         });
       };
-
-      scope.$watch('request', function(newVal, oldVal) {
-        if(newVal && newVal !== oldVal) {
-          scope.request = newVal;
-
-          // Map headers from {name: value} => [{name: xxx, value: xxx}]
-          // This is so we can mutate them from the template.
-          if (scope.request.headers) {
-            scope.headers = RequestUtils.reMapHeaders(scope.request.headers);
-          } else {
-            scope.headers = [];
-          }
-        }
-      });
 
       scope.getRandomURL = RequestUtils.randomURL;
     }

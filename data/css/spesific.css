@@ -31,6 +31,10 @@ body {
   font-size: 14px;
 }
 
+#spinnerPanel {
+  padding: 40px 0 40px;
+}
+
 /* Rules for allowing sliding ins slidey-button */
 slidey-button {
   float: right;
@@ -73,4 +77,6 @@ slidey-button {
   /* Makes the animation look a bit more sane */
   white-space: nowrap;
 }
-
+.remove-header {
+  margin-top: 10px;
+}

@@ -5,7 +5,7 @@ A REST client for the rest of us.
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
 
 RESTED is a new take on rest clients on Firefox.
-It is meant to be easy to use to let you work as effective as possible.
+It is designed to be easy to use to let you work as effective as possible.
 It features all the most commonly used HTTP methods, setting headers,
 saving requests to local storage, and more.
 
@@ -20,14 +20,17 @@ that they will be merged - requests will be reviewed).
 This project was from the very beginning intended to be easy to work with.
 It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
 
-Features in 0.2, currently in review:
- - Templates in the URLs (example: www.vg.no?authToken={{token}})
- - Basic auth
- - Fullscreen request panel (minimize collections)
- - Other UI goodies
+Features in 0.3, currently in review:
+ - Remove headers from request
+ - Spinner for slow requests
+ - Changes undelying implementation $http -> XHR
+ - Https urls should no longer break
+ - Responsive adjustments - should now look good on monitors for mice
 
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
+ - Request history
+ - Export and import collections from file
  - Improve pretty-printing of results
 
 In order to work on this project, you're going to need a few things:
