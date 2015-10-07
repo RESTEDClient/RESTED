@@ -80,3 +80,7 @@ slidey-button {
 .remove-header {
   margin-top: 10px;
 }
+
+.list-group-item-text {
+  word-break: break-all;
+}
