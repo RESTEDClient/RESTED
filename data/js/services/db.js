@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, $q) {
+.factory('DB', function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, $q, Modal) {
   var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
 
   localDB.onerror = function(event) {
-    console.error(event);
-    alert('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work.');
+    Modal.throwError('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work. ', event);
   };
 
   // Initialize DB
