@@ -20,13 +20,13 @@ angular.module('RestedApp')
         Modal.set({
           title: 'Create new request',
           body: 'Please confirm clearing current request selection.\n Unsaved progress will be lost.',
-          action: {
+          actions: [{
             text: 'OK',
             click: function() {
               scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
               Modal.remove();
             }
-          }
+          }]
         });
       };
 

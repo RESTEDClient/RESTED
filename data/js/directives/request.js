@@ -155,7 +155,7 @@ angular.module('RestedApp')
           title: 'URL parameters',
           body: 'You can include dynamic elements into your URLs. Simply type {{something}} into your URL, and then add "something" here, and it will be resolved for you. This works across all requests you have saved.',
           includeURL: 'views/fragments/templateVariablesForm.html',
-          action: {
+          actions: [{
             text: 'Save',
             click: function saveVariables() {
               var payload = {
@@ -176,7 +176,7 @@ angular.module('RestedApp')
                 }
               );
             }
-          }
+          }]
         });
       };
 

@@ -8,11 +8,7 @@ angular.module('RestedApp')
   $rootScope.urlVariables = [];
 
   var errorHandler = function(event) {
-    console.error(event);
-    Modal.set({
-      title: 'An error occured',
-      body: event.message
-    });
+    Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
   };
 
   // Data is saved in the db like so:
@@ -77,13 +73,28 @@ angular.module('RestedApp')
       Modal.set({
         title: 'Hey!',
         body: 'Request is already in collection. Overwrite existing entry?',
-        action: {
-          text: 'OK',
+        actions: [{
+          text: 'Overwrite',
           click: function() {
             DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
             Modal.remove();
           }
-        }
+        }, {
+          text: 'Save',
+          click: function() {
+            DB.collections.get().then(function(data) {
+              var unalteredCollections = data[0];
+
+              if (unalteredCollections && unalteredCollections.requests) {
+                unalteredCollections.requests.push(request);
+                DB.collections.set(unalteredCollections).then(null, errorHandler);
+                Modal.remove();
+              } else {
+                Modal.throwError('Sorry, something went wrong! Unaltered collections: ', unalteredCollections);
+              }
+            }, errorHandler);
+          }
+        }]
       });
     }
   };
@@ -94,7 +105,7 @@ angular.module('RestedApp')
     Modal.set({
       title: 'Confirm deletion',
       body: 'Please confirm you wish to remove this request from your saved collection',
-      action: {
+      actions: [{
         text: 'Confirm',
         click: function() {
           $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
@@ -104,7 +115,7 @@ angular.module('RestedApp')
           DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
           Modal.remove();
         }
-      }
+      }]
     });
   };
 
