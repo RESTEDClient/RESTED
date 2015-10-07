@@ -55,6 +55,9 @@ a chrome URL. Try starting up a [static webserver](https://www.npmjs.com/package
 dev tools should work as normal. Note that you cannot run requests from the static web server, as one does not have the elevated
 permissions the chrome URLs get.
 
+Another indexedDB tip: If you need to empty and reset the database, enter `indexedDB.deleteDatabase('RESTED');` into your developer console.
+That should clear the entire database and force a clean install on refresh.
+
 **Please develop on the next branch.**
 This makes it easier for me to merge and prepare releases in the future.
 Thanks for the interest!
