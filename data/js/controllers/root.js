@@ -72,12 +72,11 @@ angular.module('RestedApp')
     } else {
       Modal.set({
         title: 'Hey!',
-        body: 'Request is already in collection. Overwrite existing entry?',
+        body: 'Request is already in collection. Overwrite existing entry, or save as a new entry?',
         actions: [{
           text: 'Overwrite',
           click: function() {
-            DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
-            Modal.remove();
+            DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
           }
         }, {
           text: 'Save',
@@ -87,8 +86,8 @@ angular.module('RestedApp')
 
               if (unalteredCollections && unalteredCollections.requests) {
                 unalteredCollections.requests.push(request);
-                DB.collections.set(unalteredCollections).then(null, errorHandler);
-                Modal.remove();
+                $rootScope.collections[0] = unalteredCollections;
+                DB.collections.set(unalteredCollections).then(Modal.remove, errorHandler);
               } else {
                 Modal.throwError('Sorry, something went wrong! Unaltered collections: ', unalteredCollections);
               }
@@ -101,19 +100,16 @@ angular.module('RestedApp')
 
   // Called on request removal
   // This is exposed to lower scopes
-  $rootScope.removeRequestFromCollection = function(request) {
+  $rootScope.removeRequestFromCollection = function(collection, index) {
     Modal.set({
       title: 'Confirm deletion',
       body: 'Please confirm you wish to remove this request from your saved collection',
       actions: [{
         text: 'Confirm',
         click: function() {
-          $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
-            return item.url !== request.url;
-          });
-
-          DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
-          Modal.remove();
+          collection.requests.splice(index, 1);
+          $rootScope.collections[0] = collection;
+          DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
         }
       }]
     });
