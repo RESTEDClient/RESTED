@@ -43,14 +43,19 @@ module.constant('SPINNER_SHOW_DELAY', 300);
 
 // These are the themes available on bootswatch,
 // alphabethic order - except application default
-// first, then bootstrap default
+// (yeti) first, then bootstrap default (retro).
+//
+// TODO: There are some themes (Black backgrounds)
+// that simply DO NOT work with the logo. We need
+// to figure out something if we want to add them
+// back in. (Make logo white?)
 module.constant('THEMES', [
   'yeti',
   'retro',
   'cerulean',
   'cosmo',
-  'cyborg',
-  'darkly',
+  //'cyborg',
+  //'darkly',
   'flatly',
   'journal',
   'lumen',
@@ -58,7 +63,7 @@ module.constant('THEMES', [
   'readable',
   'sandstone',
   'simplex',
-  'slate',
+  //'slate',
   'spacelab',
   'superhero',
   'united'

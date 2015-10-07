@@ -18,6 +18,9 @@ body {
 }
 
 /* TODO: Figure out logo on black themes */
+.header>h1 {
+  color: #222222;
+}
 
 #headerSlider {
   margin-top: 30px;
