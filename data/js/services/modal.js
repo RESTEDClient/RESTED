@@ -39,7 +39,7 @@ angular.module('RestedApp')
 
       $rootScope.modalOptions = {
         title: 'Error!',
-        body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below, please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data beforehand.'),
+        body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below, please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.'),
         includeURL: 'views/fragments/errorField.html'
       };
     }
