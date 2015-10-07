@@ -1,0 +1,19 @@
+<div class="row" data-ng-init="activeTab='templateVariablesForm'">
+  <ul class="nav nav-tabs">
+    <li data-ng-class="{active: activeTab==='templateVariablesForm'}">
+      <a href="#"
+         data-ng-click="activeTab='templateVariablesForm'">
+        URL templates
+      </a>
+    </li>
+    <li data-ng-class="{active: activeTab==='optionsForm'}">
+      <a href="#"
+         data-ng-click="activeTab='optionsForm'">
+        Options
+      </a>
+    </li>
+  </ul>
+  <br>
+  <div data-ng-include="'views/fragments/' + activeTab + '.html'"></div>
+</div>
+

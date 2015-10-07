@@ -144,17 +144,16 @@ angular.module('RestedApp')
         classes: ['fa', 'fa-plus']
       };
 
-      scope.showVariablesConfig = {
-        title: 'Show URL parameters',
+      scope.showOptionsConfig = {
+        title: 'Show options',
         classes: ['fa', 'fa-cog']
       };
 
-      // urlVariables logic
-      scope.showVariablesModal = function() {
+      // options modal logic
+      scope.showOptionsModal = function() {
         Modal.set({
-          title: 'URL parameters',
-          body: 'You can include dynamic elements into your URLs. Simply type {{something}} into your URL, and then add "something" here, and it will be resolved for you. This works across all requests you have saved.',
-          includeURL: 'views/fragments/templateVariablesForm.html',
+          title: 'Options',
+          includeURL: 'views/fragments/optionsTabs.html',
           actions: [{
             text: 'Save',
             click: function saveVariables() {
