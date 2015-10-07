@@ -51,6 +51,7 @@ angular.module('RestedApp')
   DB.urlVariables.get().then(function(data) {
     // Defensive programming ftw
     $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
+    $rootScope.options      = data && data[0] && data[0].options ? data[0].options : {};
   }, errorHandler);
 
   // Called on request addition
