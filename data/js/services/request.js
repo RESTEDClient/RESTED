@@ -56,7 +56,11 @@ angular.module('RestedApp')
       req.onloadend = fn.bind(req);
 
       req.send(request.data);
-    }
+    },
+    /* For unit tests only */
+    _prependHttp: prependHttp,
+    _mapParameters: mapParameters,
+    _createXMLHttpRequest: createXMLHttpRequest
   };
 });
 
