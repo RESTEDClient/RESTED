@@ -12,6 +12,7 @@ angular.module('RestedApp')
       var importObj = JSON.parse($scope.importText);
       requests = Import['from' + $scope.importMethod](importObj);
     } catch(e) {
+      console.error(e);
       return $scope.importFeedback = 'Error while parsing. Is your text formatted correctly?';
     }
 
