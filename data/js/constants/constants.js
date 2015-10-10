@@ -85,6 +85,7 @@ module.constant('PLACEHOLDER_URLS', [
   'http://www.aperturescience.com',
   'http://www.pennyjuice.com/htmlversion/whoispj.htm',
   'http://www.arngren.net/',
+  'http://www.lingscars.com/',
   'http://bojackhorseman.com',
   'http://visitnorway.com',
 ]);

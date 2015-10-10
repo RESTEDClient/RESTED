@@ -1,15 +1,21 @@
-<div class="row" data-ng-init="activeTab='templateVariablesForm'">
+<div class="row" data-ng-controller="OptionsCtl">
   <ul class="nav nav-tabs">
-    <li data-ng-class="{active: activeTab==='templateVariablesForm'}">
+    <li data-ng-class="{active: activeTab === 'templateVariablesForm'}">
       <a href="#"
-         data-ng-click="activeTab='templateVariablesForm'">
+         data-ng-click="setTab('templateVariablesForm')">
         URL templates
       </a>
     </li>
-    <li data-ng-class="{active: activeTab==='optionsForm'}">
+    <li data-ng-class="{active: activeTab === 'optionsForm'}">
       <a href="#"
-         data-ng-click="activeTab='optionsForm'">
+        data-ng-click="setTab('optionsForm')">
         Options
+      </a>
+    </li>
+    <li data-ng-class="{active: activeTab === 'importForm'}">
+      <a href="#"
+         data-ng-click="setTab('importForm')">
+        Import data
       </a>
     </li>
   </ul>

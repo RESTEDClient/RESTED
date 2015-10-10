@@ -89,3 +89,12 @@ slidey-button {
 .list-group-item-text {
   word-break: break-all;
 }
+
+.import-type-buttons {
+  margin-top: 15px;
+}
+
+.import-textarea {
+  margin-top: 15px;
+  resize: vertical;
+}

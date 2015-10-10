@@ -48,8 +48,8 @@ describe('Service: Import', function () {
               "url": "www.vg.no",
               "headers": [
                 {
-                  name: 'Content-Type',
-                  value: 'angular/awesomeness'
+                  "name": "Content-Type",
+                  "value": "angular/awesomeness"
                 }
               ]
             }
