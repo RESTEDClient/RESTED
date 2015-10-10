@@ -70,6 +70,9 @@ angular.module('RestedApp')
         actions: [{
           text: 'Confirm',
           click: function() {
+            if (!$rootScope.collections || !$rootScope.collections[0]) {
+              return callback();
+            }
             $rootScope.collections[0].requests = [];
             DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
             callback();

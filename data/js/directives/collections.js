@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', function(DEFAULT_REQUEST, Modal) {
+.directive('collections', function(DEFAULT_REQUEST, Modal, Collection) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -14,6 +14,21 @@ angular.module('RestedApp')
 
       scope.selectRequest = function(request) {
         scope.selectedRequest = request;
+      };
+
+      /*
+       * This is only temporary. When collection groups
+       * are implemented, we want to be able to delete
+       * individual collection groups, not the entire
+       * collections array.
+       */
+      scope.clearCollectionConfig = {
+        title: 'Delete collection',
+        classes: ['fa', 'fa-trash']
+      };
+
+      scope.clearCollection = function() {
+        Collection.clearCollection(Modal.remove);
       };
 
       scope.removeRequestConfig = {
