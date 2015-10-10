@@ -124,22 +124,11 @@ angular.module('RestedApp')
       };
 
       scope.toggleCollections = function() {
-        // Logic handled in css and ngHide
-        scope.$root.options.collectionsExpanded = !scope.$root.options.collectionsExpanded;
-
-        var isMinimized = scope.$root.options.collectionsExpanded;
-        scope.toggleCollectionsConfig = {
-          title: (isMinimized ? 'Show' : 'Hide') + ' collections',
-          classes: ['fa', (isMinimized ? 'fa-compress' : 'fa-expand')]
-        };
+        // Animation logic handled in css and ngHide
+        scope.$root.options.collectionsMinimized = !scope.$root.options.collectionsMinimized;
 
         // Persist to DB
         DB.options.set({name: 'options', options: scope.$root.options}).then(null, Modal.errorHandler);
-      };
-
-      scope.toggleCollectionsConfig = {
-        title: 'Hide collections',
-        classes: ['fa', 'fa-expand']
       };
 
       scope.addRequestConfig = {

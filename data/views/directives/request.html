@@ -5,7 +5,8 @@
 
       <div class="pull-right hoverhand">
         <slidey-button class="hidden-xs"
-                       data-config="toggleCollectionsConfig"
+                       data-config="{title: ($root.options.collectionsMinimized ? 'Show' : 'Hide') + ' collections',
+                       classes: ['fa', ($root.options.collectionsMinimized ? 'fa-compress' : 'fa-expand')]}"
                        data-click-event="toggleCollections()">
         </slidey-button>
         <slidey-button data-config="showOptionsConfig"
