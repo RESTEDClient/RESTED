@@ -82,7 +82,8 @@ slidey-button {
   /* Makes the animation look a bit more sane */
   white-space: nowrap;
 }
-.remove-header {
+.remove-header,
+.remove-url-parameter {
   margin-top: 10px;
 }
 
