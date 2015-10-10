@@ -9,9 +9,7 @@ angular.module('RestedApp')
         variables: $rootScope.urlVariables
       };
 
-      DB.urlVariables.set(payload).then(Modal.remove, function errorHandler(error) {
-        Modal.throwError('An error occured: ', error);
-      });
+      DB.urlVariables.set(payload).then(Modal.remove, Modal.errorHandler);
     }
   };
 });

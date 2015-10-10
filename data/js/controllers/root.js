@@ -8,10 +8,7 @@ angular.module('RestedApp')
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
 
-  var errorHandler = function(event) {
-    Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
-  };
-
+  var errorHandler = Modal.errorHandler;
   // Data is saved in the db like so:
   //  [
   //   {

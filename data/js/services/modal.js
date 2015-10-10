@@ -2,6 +2,23 @@
 
 angular.module('RestedApp')
 .factory('Modal', function($rootScope, $sce) {
+
+  var throwError = function() {
+    $rootScope.errorData = '';
+    var args = Array.prototype.slice.call(arguments);
+    if (Array.isArray(args)) {
+      $rootScope.errorData = args.reduce(function(prev, val) {
+        return prev + JSON.stringify(val, ' ', 2);
+      }, '');
+    }
+
+    $rootScope.modalOptions = {
+      title: 'Error!',
+      body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below, please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.'),
+      includeURL: 'views/fragments/errorField.html'
+    };
+  };
+
   /**
    * Options:
    * {
@@ -28,20 +45,9 @@ angular.module('RestedApp')
     remove: function() {
       $rootScope.modalOptions = undefined;
     },
-    throwError: function() {
-      $rootScope.errorData = '';
-      var args = Array.prototype.slice.call(arguments);
-      if (Array.isArray(args)) {
-        $rootScope.errorData = args.reduce(function(prev, val) {
-          return prev + JSON.stringify(val, ' ', 2);
-        }, '');
-      }
-
-      $rootScope.modalOptions = {
-        title: 'Error!',
-        body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below, please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.'),
-        includeURL: 'views/fragments/errorField.html'
-      };
+    throwError: throwError,
+    errorHandler: function(event) {
+      throwError('An error occured when reading/writing to indexedDB: ', event);
     }
   };
 });
