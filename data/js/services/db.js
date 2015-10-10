@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, $q) {
+.factory('DB', function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
   var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
 
   localDB.onerror = function(event) {
-    console.error(event);
-    alert('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work.');
+    Modal.throwError('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work. ', event);
   };
 
   // Initialize DB
@@ -21,6 +20,10 @@ angular.module('RestedApp')
     if (!storeNames.contains(DB_URL_VARIABLES_STORE_NAME)) {
       db.createObjectStore(DB_URL_VARIABLES_STORE_NAME, { keyPath: 'name' });
     }
+    if (!storeNames.contains(DB_OPTIONS_STORE_NAME)) {
+      db.createObjectStore(DB_OPTIONS_STORE_NAME, { keyPath: 'name' });
+    }
+
     console.info('Upgrade completed. DB is now:', storeNames);
   };
 
@@ -101,7 +104,7 @@ angular.module('RestedApp')
         var deferred = $q.defer();
 
         onDBReady(function() {
-          var objectStore = localDB.result.transaction([storeName], "readwrite").objectStore(storeName);
+          var objectStore = localDB.result.transaction([storeName], 'readwrite').objectStore(storeName);
           var requestUpdate = objectStore.put(item);
 
           requestUpdate.onerror = function(event) {
@@ -119,7 +122,7 @@ angular.module('RestedApp')
         var deferred = $q.defer();
 
         onDBReady(function() {
-          var objectStore = localDB.result.transaction([storeName], "readwrite").objectStore(storeName);
+          var objectStore = localDB.result.transaction([storeName], 'readwrite').objectStore(storeName);
           var requestDelete = objectStore.delete(item.name);
 
           requestDelete.onerror = function(event) {
@@ -138,6 +141,7 @@ angular.module('RestedApp')
 
   return {
     collections: createStore(DB_OBJECT_STORE_NAME),
-    urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME)
+    urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME),
+    options: createStore(DB_OPTIONS_STORE_NAME)
   };
 });

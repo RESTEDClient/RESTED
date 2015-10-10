@@ -1,0 +1,22 @@
+<div class="col-xs-12">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td>
+          <div class="form-group">
+            <label>
+              Theme
+            </label>
+            <select class="form-control"
+              data-ng-model="$root.options.theme"
+              data-ng-change="$root.setTheme($root.options.theme)"
+              data-ng-options="theme for theme in $root.themes">
+            </select>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

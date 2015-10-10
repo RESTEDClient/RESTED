@@ -1,0 +1,25 @@
+<div class="row" data-ng-controller="OptionsCtl">
+  <ul class="nav nav-tabs">
+    <li data-ng-class="{active: activeTab === 'templateVariablesForm'}">
+      <a href="#"
+         data-ng-click="setTab('templateVariablesForm')">
+        URL templates
+      </a>
+    </li>
+    <li data-ng-class="{active: activeTab === 'optionsForm'}">
+      <a href="#"
+        data-ng-click="setTab('optionsForm')">
+        Options
+      </a>
+    </li>
+    <li data-ng-class="{active: activeTab === 'importForm'}">
+      <a href="#"
+         data-ng-click="setTab('importForm')">
+        Import data
+      </a>
+    </li>
+  </ul>
+  <br>
+  <div data-ng-include="'views/fragments/' + activeTab + '.html'"></div>
+</div>
+

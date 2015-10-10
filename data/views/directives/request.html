@@ -5,11 +5,12 @@
 
       <div class="pull-right hoverhand">
         <slidey-button class="hidden-xs"
-                       data-config="toggleCollectionsConfig"
+                       data-config="{title: ($root.options.collectionsMinimized ? 'Show' : 'Hide') + ' collections',
+                       classes: ['fa', ($root.options.collectionsMinimized ? 'fa-compress' : 'fa-expand')]}"
                        data-click-event="toggleCollections()">
         </slidey-button>
-        <slidey-button data-config="showVariablesConfig"
-                       data-click-event="showVariablesModal()">
+        <slidey-button data-config="showOptionsConfig"
+                       data-click-event="showOptionsModal()">
         </slidey-button>
         <slidey-button data-config="addRequestConfig"
                        data-click-event="addRequest(request)">
@@ -70,7 +71,6 @@
     </div>
   </section>
 
-  <!--data-ng-if="requestInProgress"-->
   <section data-ng-if="requestInProgress"
            id="spinnerPanel"
            class="panel panel-default text-center">
@@ -105,3 +105,4 @@
     </div>
   </section>
 </div>
+

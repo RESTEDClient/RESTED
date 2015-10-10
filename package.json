@@ -6,6 +6,18 @@
   "description": "A REST client for the rest of us",
   "author": "Espen Henriksen",
   "license": "GPL-2.0",
-  "version": "0.3.0",
-  "main": "lib/main.js"
+  "version": "0.4.0",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start test/karma.conf.js",
+    "dev": "node_modules/karma/bin/karma start --no-single-run test/karma.conf.js"
+  },
+  "devDependencies": {
+    "karma": "~0.13.10",
+    "jasmine-core": "~2.3.4",
+    "karma-jasmine": "~0.3.6",
+    "karma-chrome-launcher": "~0.2.1",
+    "angular-mocks": "~1.4.7",
+    "karma-firefox-launcher": "~0.1.6"
+  }
 }

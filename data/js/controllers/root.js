@@ -1,20 +1,14 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, $rootScope, DB, Modal) {
+.controller('RootCtl', function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
+  $rootScope.themes = THEMES;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
 
-  var errorHandler = function(event) {
-    console.error(event);
-    Modal.set({
-      title: 'An error occured',
-      body: event.message
-    });
-  };
-
+  var errorHandler = Modal.errorHandler;
   // Data is saved in the db like so:
   //  [
   //   {
@@ -57,57 +51,26 @@ angular.module('RestedApp')
     $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
   }, errorHandler);
 
+  // Data is saved in db like so:
+  //  [
+  //   {
+  //     name: 'options',
+  //     options: {
+  //       key: 'value'
+  //     }
+  //   }
+  // ]
+  DB.options.get().then(function(data) {
+    $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
+  }, errorHandler);
+
   // Called on request addition
   // This is exposed to lower scopes
-  $rootScope.addRequestToCollection = function(request) {
-
-    // Create new collection if none exist
-    if (!$rootScope.collections[0]) {
-      $rootScope.collections.push({
-        name: 'Collection',
-        requests: [request]
-      });
-
-      DB.collections.add($rootScope.collections[0]).then(null, errorHandler);
-    } else if ($rootScope.collections[0].requests.indexOf(request) === -1) {
-      $rootScope.collections[0].requests.push(request);
-
-      DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
-    } else {
-      Modal.set({
-        title: 'Hey!',
-        body: 'Request is already in collection. Overwrite existing entry?',
-        action: {
-          text: 'OK',
-          click: function() {
-            DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
-            Modal.remove();
-          }
-        }
-      });
-    }
-  };
+  $rootScope.addRequestToCollection = Collection.addRequestToCollection;
 
   // Called on request removal
   // This is exposed to lower scopes
-  $rootScope.removeRequestFromCollection = function(request) {
-    Modal.set({
-      title: 'Confirm deletion',
-      body: 'Please confirm you wish to remove this request from your saved collection',
-      action: {
-        text: 'Confirm',
-        click: function() {
-          $rootScope.collections[0].requests = $rootScope.collections[0].requests.filter(function(item) {
-            return item.url !== request.url;
-          });
-
-          DB.collections.set($rootScope.collections[0]).then(null, errorHandler);
-          Modal.remove();
-        }
-      }
-    });
-  };
-
+  $rootScope.removeRequestFromCollection = Collection.removeRequestFromCollection;
 
   // Called when new urlVariables are added
   $rootScope.newVariable = function() {
@@ -115,6 +78,11 @@ angular.module('RestedApp')
       name: null,
       value: null
     });
+  };
+
+  $rootScope.setTheme = function(theme) {
+    $rootScope.options.theme = theme;
+    DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
   };
 });
 

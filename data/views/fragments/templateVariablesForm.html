@@ -1,36 +1,54 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="col-xs-12">
+  <p>
+    You can include dynamic elements into your URLs. Simply type
+    <code data-ng-non-bindable="">{{something}}</code> into your URL, and
+    then add <code>something</code> as a key here, along with
+    a value for that key, and it will be resolved for you. This
+    value will be resolved across all requests you have saved,
+    making it great for things like API keys or IDs that you may
+    have to change in several URLs at once.
+  </p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
     <tr data-ng-repeat="item in $root.urlVariables">
       <td>
         <input type="text"
-               class="form-control"
-               placeholder="Key"
-               data-ng-model="item.name"
+        class="form-control"
+        placeholder="Key"
+        data-ng-model="item.name"
         />
       </td>
       <td>
         <input type="text"
-               class="form-control"
-               placeholder="Value"
-               data-ng-model="item.value"
+        class="form-control"
+        placeholder="Value"
+        data-ng-model="item.value"
         />
+      </td>
+      <td>
+        <i class="fa fa-trash hoverhand remove-url-parameter"
+           data-ng-click="$parent.removeParam(item)"
+           title="Remove URL parameter">
+        </i>
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <h5 class="hoverhand"
-            data-ng-click="$root.newVariable()">
+          data-ng-click="$root.newVariable()">
           <i class="fa fa-plus"></i>
           Add a variable
         </h5>
       </td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 

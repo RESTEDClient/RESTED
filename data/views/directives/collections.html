@@ -4,13 +4,13 @@
       Collections
 
       <div class="pull-right hoverhand">
-        <slidey-button data-config="resetRequestConfig"
-                       data-click-event="resetRequest()">
+        <slidey-button data-config="clearCollectionConfig"
+                       data-click-event="clearCollection()">
         </slidey-button>
       </div>
     </div>
     <div class="panel-body">
-      <div data-ng-repeat="request in collections[0].requests track by request.url">
+      <div data-ng-repeat="request in collections[0].requests track by $index">
         <div class="list-group">
           <a href="#"
              class="list-group-item"
@@ -21,7 +21,7 @@
             <div class="pull-right"
                  id="removeRequest">
               <slidey-button data-config="removeRequestConfig"
-                             data-click-event="removeFromCollection(request)">
+                             data-click-event="removeFromCollection({collection: collections[0], index: $index})">
               </slidey-button>
             </div>
             </h4>

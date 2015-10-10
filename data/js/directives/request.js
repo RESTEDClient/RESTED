@@ -124,38 +124,29 @@ angular.module('RestedApp')
       };
 
       scope.toggleCollections = function() {
-        // Logic handled in css and ngHide
-        scope.$root.collectionsMinimized = !scope.$root.collectionsMinimized;
+        // Animation logic handled in css and ngHide
+        scope.$root.options.collectionsMinimized = !scope.$root.options.collectionsMinimized;
 
-        var isMinimized = scope.$root.collectionsMinimized;
-        scope.toggleCollectionsConfig = {
-          title: (isMinimized ? 'Show' : 'Hide') + ' collections',
-          classes: ['fa', (isMinimized ? 'fa-compress' : 'fa-expand')]
-        };
-      };
-
-      scope.toggleCollectionsConfig = {
-        title: 'Hide collections',
-        classes: ['fa', 'fa-expand']
+        // Persist to DB
+        DB.options.set({name: 'options', options: scope.$root.options}).then(null, Modal.errorHandler);
       };
 
       scope.addRequestConfig = {
-        title: 'Add request to collection',
+        title: 'Save or update request',
         classes: ['fa', 'fa-plus']
       };
 
-      scope.showVariablesConfig = {
-        title: 'Show URL parameters',
+      scope.showOptionsConfig = {
+        title: 'Show options',
         classes: ['fa', 'fa-cog']
       };
 
-      // urlVariables logic
-      scope.showVariablesModal = function() {
+      // options modal logic
+      scope.showOptionsModal = function() {
         Modal.set({
-          title: 'URL parameters',
-          body: 'You can include dynamic elements into your URLs. Simply type {{something}} into your URL, and then add "something" here, and it will be resolved for you. This works across all requests you have saved.',
-          includeURL: 'views/fragments/templateVariablesForm.html',
-          action: {
+          title: 'Options',
+          includeURL: 'views/fragments/optionsTabs.html',
+          actions: [{
             text: 'Save',
             click: function saveVariables() {
               var payload = {
@@ -163,20 +154,11 @@ angular.module('RestedApp')
                 variables: scope.$root.urlVariables
               };
 
-              DB.urlVariables.set(payload).then(
-                function successHandler() {
-                  Modal.remove();
-                },
-                function errorHandler(error) {
-                  console.error(event);
-                  Modal.set({
-                    title: 'An error occured',
-                    body: event.message
-                  });
-                }
-              );
+              DB.urlVariables.set(payload).then(Modal.remove, function errorHandler(error) {
+                Modal.throwError('An error occured: ', error);
+              });
             }
-          }
+          }]
         });
       };
 

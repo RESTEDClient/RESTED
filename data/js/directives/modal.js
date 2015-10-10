@@ -10,10 +10,6 @@ angular.module('RestedApp')
     },
     link: function(scope, element) {
       scope.$watch('options', function(newVal, oldVal) {
-        if(newVal === oldVal) {
-          return;
-        }
-
         if(newVal) {
           element.find('.modal').modal('show');
 

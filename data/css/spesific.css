@@ -17,6 +17,11 @@ body {
   margin-top: -7px;
 }
 
+/* TODO: Figure out logo on black themes */
+.header>h1 {
+  color: #222222;
+}
+
 #headerSlider {
   margin-top: 30px;
 }
@@ -77,6 +82,20 @@ slidey-button {
   /* Makes the animation look a bit more sane */
   white-space: nowrap;
 }
-.remove-header {
+.remove-header,
+.remove-url-parameter {
   margin-top: 10px;
+}
+
+.list-group-item-text {
+  word-break: break-all;
+}
+
+.import-type-buttons {
+  margin-top: 15px;
+}
+
+.import-textarea {
+  margin-top: 15px;
+  resize: vertical;
 }
