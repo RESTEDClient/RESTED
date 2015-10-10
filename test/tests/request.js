@@ -17,11 +17,13 @@ describe('Service: Request', function () {
 
   it('should have a run method', function () {
     expect(Request.run).toBeDefined();
+    expect(typeof Request.run).toBe('function');
   });
 
   /* prependHttp tests */
   it('should have a prependHttp method', function () {
     expect(Request._prependHttp).toBeDefined();
+    expect(typeof Request._prependHttp).toBe('function');
   });
 
   it('should prepend http when appropriate', function () {
@@ -38,6 +40,7 @@ describe('Service: Request', function () {
   /* mapParameters tests */
   it('should have a mapParameters method', function () {
     expect(Request._mapParameters).toBeDefined();
+    expect(typeof Request._mapParameters).toBe('function');
   });
 
   it('should have a map parameters to a url template', function () {
@@ -56,6 +59,19 @@ describe('Service: Request', function () {
   /* createXMLHttpRequest tests */
   it('should have a createXMLHttpRequest method', function () {
     expect(Request._createXMLHttpRequest).toBeDefined();
+    expect(typeof Request._createXMLHttpRequest).toBe('function');
+  });
+
+  xit('should generate an XMLHttpRequest when passed a request object', function () {
+    var request = {
+      "method":"GET",
+      "headers":[{"name":"","value":""}],
+      "cache":false,
+      "url":"http://www.aperturescience.com"
+    };
+    console.log('req', request);
+    console.log('reqsult', Request._createXMLHttpRequest(request));
+    expect(Request._createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
   });
 });
 

@@ -30,10 +30,12 @@ describe('Service: Import', function () {
 
   it('should have a HAR import method', function () {
     expect(Import.fromHAR).toBeDefined();
+    expect(typeof Import.fromHAR).toBe('function');
   });
 
   it('should have a Postman import method', function () {
     expect(Import.fromPostman).toBeDefined();
+    expect(typeof Import.fromPostman).toBe('function');
   });
 
   it('should convert HAR to correct format when invoked', function () {
