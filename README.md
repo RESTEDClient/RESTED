@@ -4,11 +4,11 @@ A REST client for the rest of us.
 
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
 
-[![Next branch build status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
+[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=master)](https://travis-ci.org/esphen/RESTED)
 
 RESTED is a new take on rest clients on Firefox.
 It is designed to be easy to use to let you work as effective as possible.
-It features all the most commonly used HTTP methods, setting headers,
+It features all the most commonly used HTTP methods, setting headers, beautiful themes,
 saving requests in your browser, and more.
 
 Since this is a relatively new project, I am also happy to announce that
@@ -25,7 +25,7 @@ It is basically just an angular 1.4 app inside of Firefox, so if you know angula
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
  - Request history
- - Export and import collections from file
+ - Export collections
  - Improve pretty-printing of results
 
 In order to work on this project, you're going to need a few things:
@@ -39,7 +39,7 @@ If you use the Extension Auto-Installer, clone this project and run `jpm watchpo
 The extension will then be reinstalled every time you save a file, without you having to do a thing.
 
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
-That is, `jpm xpi && firefox rested@restedclient-0.1.2.xpi`.
+That is, `jpm xpi && firefox rested@restedclient-0.x.y.xpi` (remember to change the version number).
 
 Note: Soon Mozilla will require unsigned extenstions (not from addons.mozilla.org) to be run in [Nightly](https://www.mozilla.org/firefox/nightly/).
 If you see a "RESTED could not be verified for use in Firefox", you may need to go get Nightly and develop from there. You also need to go to

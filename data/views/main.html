@@ -10,13 +10,13 @@
   </div>
 
   <collections class="animate hidden-xs"
-               data-ng-class="{'minimized': !options.collectionsExpanded, 'col-xs-4': options.collectionsExpanded}"
+               data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}"
                selected-request="request"
                collections="collections"
                remove-from-collection="removeRequestFromCollection(collection, index)">
   </collections>
   <request class="animate"
-           data-ng-class="{'col-xs-12': !options.collectionsExpanded, 'col-xs-12 col-sm-8': options.collectionsExpanded}"
+           data-ng-class="{'col-xs-12': options.collectionsMinimized, 'col-xs-12 col-sm-8': !options.collectionsMinimized}"
            request="request"
            add-to-collection="addRequestToCollection(request)">
   </request>
