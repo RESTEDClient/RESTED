@@ -4,6 +4,8 @@ A REST client for the rest of us.
 
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
 
+[![Next branch build status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
+
 RESTED is a new take on rest clients on Firefox.
 It is designed to be easy to use to let you work as effective as possible.
 It features all the most commonly used HTTP methods, setting headers,
@@ -19,13 +21,6 @@ that they will be merged - requests will be reviewed).
 ## How to contribute
 This project was from the very beginning intended to be easy to work with.
 It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
-
-Features in 0.3, currently in review:
- - Remove headers from request
- - Spinner for slow requests
- - Changes undelying implementation $http -> XHR
- - Https urls should no longer break
- - Responsive adjustments - should now look good on monitors for mice
 
 What features are on the to-do list:
  - Improve collections with collapsible collection groups
@@ -61,4 +56,22 @@ That should clear the entire database and force a clean install on refresh.
 **Please develop on the next branch.**
 This makes it easier for me to merge and prepare releases in the future.
 Thanks for the interest!
+
+### Tests
+This project runs unit tests through travis-ci. This is to ensure critical components correctness, there is no 100% test coverage requirement.
+If you make an addition, please consider if your change is critical in nature, i.e. would cause grief if stops working or is not correct.
+If this is the case, please write unit tests for your feature.
+
+In order to run the test suite on your machine, the following is required:
+ - [nodejs](https://nodejs.org/en/)
+ - [npm](https://www.npmjs.com/)
+ - [nvm](https://github.com/creationix/nvm)
+
+After installing the required components, navigate to the root folder of the project and set up the test suite:
+```
+$ nvm use
+$ npm install
+```
+
+Now you can `npm test` for a single-run test, or `npm run dev` for continually watching files and running tests on change.
 
