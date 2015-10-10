@@ -57,7 +57,7 @@ describe('Service: Import', function () {
         ]
       }
     };
-    expect(Import.fromHAR(HAR)).toBeEqual(expectedResult);
+    expect(Import.fromHAR(HAR)).toEqual(expectedResult);
   });
 
   it('should convert Postman json to correct format when invoked', function () {
@@ -67,8 +67,7 @@ describe('Service: Import', function () {
         {
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
-          "method": "GET",
-          "name": "vg.no",
+          "method": "GET"
         }
       ]
     };
