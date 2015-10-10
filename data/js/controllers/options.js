@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', function($scope, $rootScope, Import, Modal) {
+.controller('OptionsCtl', function($scope, $rootScope, Import, Modal, Collection) {
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
 
@@ -22,14 +22,16 @@ angular.module('RestedApp')
         text: 'Add',
         click: function() {
           requests.forEach(function(request) {
-            $rootScope.addRequestToCollection(request);
+            Collection.addRequestToCollection(request);
             Modal.remove();
           });
         }
       }, {
         text: 'Replace',
         click: function() {
-
+          Collection.clearCollection(function callback() {
+            requests.forEach(Collection.addRequestToCollection);
+          });
         }
       }]
     });
