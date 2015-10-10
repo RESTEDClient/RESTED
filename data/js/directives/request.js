@@ -143,7 +143,7 @@ angular.module('RestedApp')
       };
 
       scope.addRequestConfig = {
-        title: 'Add request to collection',
+        title: 'Save or update request',
         classes: ['fa', 'fa-plus']
       };
 

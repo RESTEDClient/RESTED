@@ -31,7 +31,7 @@ angular.module('RestedApp')
               DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
             }
           }, {
-            text: 'Save',
+            text: 'New',
             click: function() {
               DB.collections.get().then(function(data) {
                 var unalteredCollections = data[0];

@@ -16,25 +16,6 @@ angular.module('RestedApp')
         scope.selectedRequest = request;
       };
 
-      scope.resetRequest = function() {
-        Modal.set({
-          title: 'Create new request',
-          body: 'Please confirm clearing current request selection.\n Unsaved progress will be lost.',
-          actions: [{
-            text: 'OK',
-            click: function() {
-              scope.selectedRequest = angular.copy(DEFAULT_REQUEST);
-              Modal.remove();
-            }
-          }]
-        });
-      };
-
-      scope.resetRequestConfig = {
-        title: 'Clear selection',
-        classes: ['fa', 'fa-times']
-      };
-
       scope.removeRequestConfig = {
         title: 'Remove request',
         classes: ['fa', 'fa-times']
