@@ -13,6 +13,7 @@
       <tr>
         <th>Key</th>
         <th>Value</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -31,9 +32,15 @@
         data-ng-model="item.value"
         />
       </td>
+      <td>
+        <i class="fa fa-trash hoverhand remove-url-parameter"
+           data-ng-click="$parent.removeParam(item)"
+           title="remove URL parameter">
+        </i>
+      </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <h5 class="hoverhand"
           data-ng-click="$root.newVariable()">
           <i class="fa fa-plus"></i>

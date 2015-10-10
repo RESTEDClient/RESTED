@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', function($scope, $rootScope, Import, Modal, Collection) {
+.controller('OptionsCtl', function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
 
@@ -40,16 +40,7 @@ angular.module('RestedApp')
   var actions = {
     templateVariablesForm: [{
       text: 'Save',
-      click: function saveVariables() {
-        var payload = {
-          name: 'urlVariables',
-          variables: scope.$root.urlVariables
-        };
-
-        DB.urlVariables.set(payload).then(Modal.remove, function errorHandler(error) {
-          Modal.throwError('An error occured: ', error);
-        });
-      }
+      click: UrlVariables.setVariables
     }],
     optionsForm: [{
       text: 'Save'
@@ -62,6 +53,12 @@ angular.module('RestedApp')
 
   $scope.setTab = function(tabName) {
     $scope.activeTab = tabName;
-    $scope.$root.modalOptions.actions = actions[tabName];
+    $rootScope.modalOptions.actions = actions[tabName];
+  };
+
+  $scope.removeParam = function(param) {
+    $rootScope.urlVariables = $rootScope.urlVariables.filter(function(item) {
+      return item !== param;
+    });
   };
 });
