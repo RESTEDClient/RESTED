@@ -74,6 +74,19 @@ slidey-button {
   min-height: 40px;
 }
 
+.panel-heading>hr {
+  margin: 8px 0 0 0;
+}
+
+.update-collection {
+  font-size: 0.8em;
+  margin-top: 3px;
+}
+
+.update-collection .slidey-wrapper {
+  margin-bottom: 2px;
+}
+
 .minimized {
   float: left;
   opacity: 0;

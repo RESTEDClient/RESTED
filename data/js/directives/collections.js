@@ -16,6 +16,22 @@ angular.module('RestedApp')
         scope.selectedRequest = request;
       };
 
+      scope.toggleCollectionsOptions = function(collection) {
+        Modal.set({
+          title: 'Update collection "' + collection.name + '"',
+          includeURL: '',
+          actions: [{
+            text: 'Save',
+            click: ''
+          }]
+        });
+      };
+
+      scope.collectionOptionsConfig = {
+        title: 'Preferences',
+        classes: ['fa', 'fa-pencil']
+      };
+
       scope.removeRequestConfig = {
         title: 'Remove request',
         classes: ['fa', 'fa-times']
@@ -23,3 +39,4 @@ angular.module('RestedApp')
     }
   };
 });
+

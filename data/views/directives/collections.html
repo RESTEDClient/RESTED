@@ -4,29 +4,45 @@
       Collections
     </div>
     <div class="panel-body">
-      <div data-ng-repeat="request in collections[0].requests track by $index">
-        <div class="list-group">
-          <a href="#"
-             class="list-group-item"
-             data-ng-class="{active: request == selectedRequest}"
-             data-ng-click="selectRequest(request)">
-            <h4 class="list-group-item-heading">
-              {{request.method}}
-            <div class="pull-right"
-                 id="removeRequest">
-              <slidey-button data-config="removeRequestConfig"
-                             data-click-event="removeFromCollection({collection: collections[0], index: $index})">
-              </slidey-button>
-            </div>
-            </h4>
-
-            <p class="list-group-item-text">
-              {{request.url}}
-            </p>
-          </a>
+      <section class="panel row"
+               data-ng-repeat="collection in collections track by $index">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            {{collection.name}}
+            <slidey-button class="update-collection"
+                           data-config="collectionOptionsConfig"
+                           data-click-event="toggleCollectionsOptions(collection)">
+            </slidey-button>
+          </h4>
+          <hr></hr>
         </div>
-      </div>
-      <div data-ng-hide="collections[0].requests.length > 0">
+        <div class="panel-body">
+          <div data-ng-repeat="request in collection.requests track by $index">
+
+            <div class="list-group">
+              <a href="#"
+                 class="list-group-item"
+                 data-ng-class="{active: request == selectedRequest}"
+                 data-ng-click="selectRequest(request)">
+                <h4 class="list-group-item-heading">
+                  {{request.method}}
+                <div class="pull-right"
+                     id="removeRequest">
+                  <slidey-button data-config="removeRequestConfig"
+                                 data-click-event="removeFromCollection({collection: collections[0], index: $index})">
+                  </slidey-button>
+                </div>
+                </h4>
+
+                <p class="list-group-item-text">
+                  {{request.url}}
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div data-ng-show="collections.length === 0 || (collections.length === 1 &amp;&amp; collections[0].requests.length === 0)">
         <h5>
           No collected requests. Add by pressing "plus" in the top right of the request panel.
         </h5>
