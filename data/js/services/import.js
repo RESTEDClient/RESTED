@@ -49,7 +49,7 @@ angular.module('RestedApp')
      * spec that can be found here:
      * http://www.softwareishard.com/blog/har-12-spec
      *
-     * We don't import everything, as there is a
+     * We don't use everything, as there is a
      * fair bit of fluff that is not needed to
      * archive a request to a collection.
      */

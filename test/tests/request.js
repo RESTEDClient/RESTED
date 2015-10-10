@@ -62,15 +62,13 @@ describe('Service: Request', function () {
     expect(typeof Request._createXMLHttpRequest).toBe('function');
   });
 
-  xit('should generate an XMLHttpRequest when passed a request object', function () {
+  it('should generate an XMLHttpRequest when passed a request object', function () {
     var request = {
       "method":"GET",
-      "headers":[{"name":"","value":""}],
+      "headers":[{"name":"test","value":"blah"}],
       "cache":false,
       "url":"http://www.aperturescience.com"
     };
-    console.log('req', request);
-    console.log('reqsult', Request._createXMLHttpRequest(request));
     expect(Request._createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
   });
 });

@@ -15,6 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/requirejs/require.js',
+      'node_modules/karma-requirejs/adapter.js',
+      'node_modules/punycode/punycode.js',
+      'node_modules/url/url.js',
+      'node_modules/xmlhttprequest/lib/XMLHttpRequest.js',
       'data/ext/angular.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'data/js/*.js',
@@ -59,7 +64,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Firefox', 'Chrome'],
 
 
     // Continuous Integration mode
