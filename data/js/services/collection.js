@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Collection', function($rootScope, DB, Modal) {
+.factory('Collection', ['$rootScope', 'DB', 'Modal',
+function($rootScope, DB, Modal) {
   var errorHandler = function(event) {
     Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
   };
@@ -81,4 +82,5 @@ angular.module('RestedApp')
       });
     }
   };
-});
+}]);
+

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
+.controller('OptionsCtl', ['$scope', '$rootScope', 'Import', 'Modal', 'Collection', 'UrlVariables',
+function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
+
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
 
@@ -62,4 +64,5 @@ angular.module('RestedApp')
       return item !== param;
     });
   };
-});
+}]);
+

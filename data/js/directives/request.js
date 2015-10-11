@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
+.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Base64', 'Modal', '$timeout',
+function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
+
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
@@ -165,4 +167,5 @@ angular.module('RestedApp')
       scope.getRandomURL = RequestUtils.randomURL;
     }
   };
-});
+}]);
+
