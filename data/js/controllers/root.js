@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', '$rootScope', 'DB', 'Collection', 'Modal',
+function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.themes = THEMES;
@@ -84,5 +85,5 @@ angular.module('RestedApp')
     $rootScope.options.theme = theme;
     DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
   };
-});
+}]);
 

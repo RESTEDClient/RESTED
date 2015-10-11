@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', function(DEFAULT_REQUEST, Modal, Collection) {
+.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection',
+function(DEFAULT_REQUEST, Modal, Collection) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -37,4 +38,5 @@ angular.module('RestedApp')
       };
     }
   };
-});
+}]);
+

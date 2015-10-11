@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('UrlVariables', function($rootScope, DB, Modal) {
+.factory('UrlVariables', ['$rootScope', 'DB', 'Modal',
+function($rootScope, DB, Modal) {
+
   return {
     setVariables: function () {
       var payload = {
@@ -12,5 +14,5 @@ angular.module('RestedApp')
       DB.urlVariables.set(payload).then(Modal.remove, Modal.errorHandler);
     }
   };
-});
+}]);
 

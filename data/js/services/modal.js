@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Modal', function($rootScope, $sce) {
+.factory('Modal', ['$rootScope', '$sce',
+function($rootScope, $sce) {
 
   var throwError = function() {
     $rootScope.errorData = '';
@@ -50,5 +51,5 @@ angular.module('RestedApp')
       throwError('An error occured when reading/writing to indexedDB: ', event);
     }
   };
-});
+}]);
 

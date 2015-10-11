@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Base64', function(Modal) {
+.factory('Base64', ['Modal',
+function(Modal) {
 
   return {
     encode: function(str) {
@@ -15,5 +16,5 @@ angular.module('RestedApp')
       return window.btoa(unescape(encodeURIComponent(str)));
     }
   };
-});
+}]);
 

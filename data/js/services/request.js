@@ -31,7 +31,7 @@ angular.module('RestedApp')
   };
 
   var createXMLHttpRequest = function(req) {
-    var request = new XMLHttpRequest(true, true);
+    var request = new XMLHttpRequest({ mozSystem: true });
     request.open(req.method, req.url);
 
     if(Array.isArray(req.headers)) {
