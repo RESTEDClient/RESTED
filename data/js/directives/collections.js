@@ -18,19 +18,25 @@ function(DEFAULT_REQUEST, Modal, Collection) {
       };
 
       scope.toggleCollectionsOptions = function(collection) {
-        Modal.set({
-          title: 'Update collection "' + collection.name + '"',
-          includeURL: '',
-          actions: [{
-            text: 'Save',
-            click: ''
-          }]
-        });
+        scope.editing = collection.name;
+      };
+
+      scope.updateCollectionName = function(collection, newName) {
+        scope.editing = null;
+        collection.name = newName;
+
+        // TODO save to DB
+        // TODO check if key exists in db to prevent dupes
       };
 
       scope.collectionOptionsConfig = {
-        title: 'Preferences',
+        title: 'Change name',
         classes: ['fa', 'fa-pencil']
+      };
+
+      scope.collectionUpdateConfig = {
+        title: 'Save',
+        classes: ['fa', 'fa-check']
       };
 
       scope.removeRequestConfig = {

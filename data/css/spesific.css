@@ -78,6 +78,10 @@ slidey-button {
   margin: 8px 0 0 0;
 }
 
+input.edit-collection-name {
+  margin-top: -10px;
+}
+
 .update-collection {
   font-size: 0.8em;
   margin-top: 3px;
