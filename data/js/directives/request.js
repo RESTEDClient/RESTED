@@ -1,15 +1,14 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Base64', 'Modal', '$timeout',
-function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
+.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Collection', 'Base64', 'Modal', '$timeout',
+function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Modal, $timeout) {
 
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
     scope: {
-      request: '=',
-      addToCollection: '&'
+      request: '='
     },
     link: function(scope, element, attrs, controllers) {
       scope.options = {
@@ -117,7 +116,15 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout)
           return;
         }
 
-        scope.addToCollection(request);
+        Modal.set({
+          title: 'Select collection',
+          body: 'Which collection would you like to save this request to?',
+          includeURL: 'views/fragments/selectCollectionGroupForm.html',
+          actions: [{
+            text: 'Save',
+            click: Collection.addRequestToCollection.bind(this, request, scope.$root.selectedCollectionIndex)
+          }]
+        });
       };
 
       scope.slideToggle = function(id) {

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', '$rootScope', 'DB', 'Collection', 'Modal',
-function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal',
+function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
+  $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
   $rootScope.themes = THEMES;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
@@ -64,10 +65,6 @@ function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
   DB.options.get().then(function(data) {
     $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
   }, errorHandler);
-
-  // Called on request addition
-  // This is exposed to lower scopes
-  $rootScope.addRequestToCollection = Collection.addRequestToCollection;
 
   // Called on request removal
   // This is exposed to lower scopes
