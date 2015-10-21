@@ -123,7 +123,9 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
           includeURL: 'views/fragments/selectCollectionGroupForm.html?didCollectionGroupsTakeALongTimeToMake=yes&wouldIDoItAgain=ifYouBakeMeACookie',
           actions: [{
             text: 'Save',
-            click: Collection.addRequestToCollection.bind(this, request, scope.$root.selectedCollectionIndex)
+            click: function() {
+              Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
+            }
           }]
         });
       };

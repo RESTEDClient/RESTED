@@ -30,7 +30,7 @@ module.constant('DB_OPTIONS_STORE_NAME', 'options');
 // collection that groups will be added to if a
 // different collection is not specified by the
 // user.
-module.constant('DEFAULT_SELECTED_COLLECTION', 0);
+module.constant('DEFAULT_SELECTED_COLLECTION', '0');
 
 // This is the request used to initialize the
 // request panel. This can be either on

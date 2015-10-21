@@ -10,7 +10,7 @@
               </label>
               <select class="form-control"
                 data-ng-model="$root.selectedCollectionIndex"
-                data-ng-options="collection.name for collection in $root.collections track by $index">
+                data-ng-options="i as collection.name for (i, collection) in $root.collections">
               </select>
             </div>
           </td>
