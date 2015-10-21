@@ -86,6 +86,21 @@ collections>div>.panel>.panel-body {
   margin-bottom: 0;
 }
 
+collections li {
+  list-style: none
+}
+
+.dndDraggingSource {
+    display: none;
+}
+
+.dndPlaceholder {
+  display: block;
+  background-color: #ddd;
+  min-height: 65px;
+  margin-bottom: 20px;
+}
+
 input.edit-collection-name {
   margin-top: -10px;
 }
