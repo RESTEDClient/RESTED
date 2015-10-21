@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection',
-function(DEFAULT_REQUEST, Modal, Collection) {
+.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection', 'DB',
+function(DEFAULT_REQUEST, Modal, Collection, DB) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -41,9 +41,16 @@ function(DEFAULT_REQUEST, Modal, Collection) {
         Collection.updateCollectionName(collection, newName);
       };
 
+      /**
+       * Minimized state is persisted. The collection-body
+       * is initialized to display: none via a static inline
+       * style binding, and the rest of the logic is handled
+       * here.
+       */
       scope.minimizeCollection = function(collection, index) {
         collection.minimized = !collection.minimized;
-        $(element.find('.collection-body')[index]).slideToggle();
+        $(element.find('.collection-body')[index])[collection.minimized ? 'slideUp' : 'slideDown']();
+        DB.collections.set(collection);
       };
 
       scope.addNewCollectionConfig = {

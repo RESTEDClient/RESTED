@@ -46,6 +46,7 @@
           <hr></hr>
         </div>
         <div class="panel-body collection-body"
+             data-ng-style="::{'display': collection.minimized ? 'none' : 'inherit'}"
              dnd-list="collection.requests">
           <div data-ng-repeat="request in collection.requests track by $index"
                data-dnd-draggable="request"
