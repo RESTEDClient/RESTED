@@ -26,12 +26,10 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
   //         ],
   //         method: 'GET'
   //       }
-  //     ]
+  //     ],
+  //     minimized: true
   //   }
   // ]
-  // Root node is an array so we
-  // can easily extend app with the ability
-  // to add more collections later.
   DB.collections.get().then(function(data) {
     $rootScope.collections = data;
   }, errorHandler);
