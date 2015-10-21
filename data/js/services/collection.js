@@ -7,7 +7,30 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
     Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
   };
 
+  // Checks whether the collection name is taken
+  var isUnique = function(name) {
+    return $rootScope.collections.every(function(item) {
+      return item.name.trim() !== name.trim();
+    });
+  };
+
   return {
+    newCollection: function() {
+      var i = 0;
+      do {
+        var name = 'Collection ' + (i++ ? i : '');
+      } while (!isUnique(name));
+      DB.collections.add({ name: name, requests: [] }).then(function() {
+        $rootScope.collections.push({ name: name, requests: [] });
+      }, errorHandler);
+    },
+    deleteCollection: function(collection) {
+      DB.collections.delete(collection).then(function() {
+        $rootScope.collections = $rootScope.collections.filter(function(item) {
+          return item !== collection;
+        });
+      }, errorHandler);
+    },
     addRequestToCollection: function(request, collectionIndex) {
       if (!collectionIndex && collectionIndex !== 0) {
         collectionIndex = DEFAULT_SELECTED_COLLECTION;
@@ -15,6 +38,7 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
       }
 
       try {
+
         // Create new collection if none exist
         if (!$rootScope.collections || !$rootScope.collections[0]) {
           if (!$rootScope.collections) {
@@ -26,10 +50,14 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
           });
 
           DB.collections.add($rootScope.collections[0]).then(Modal.remove, errorHandler);
+
+        // If there is no dupe in selected collection, add
         } else if ($rootScope.collections[collectionIndex].requests.indexOf(request) === -1) {
           $rootScope.collections[collectionIndex].requests.push(request);
 
           DB.collections.set($rootScope.collections[collectionIndex]).then(Modal.remove, errorHandler);
+
+        // If there is a duplicate request, query user for action
         } else {
           Modal.set({
             title: 'Hey!',

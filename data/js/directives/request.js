@@ -116,10 +116,11 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
           return;
         }
 
+        // TODO: If collections.length === 1, just add?
         Modal.set({
           title: 'Select collection',
           body: 'Which collection would you like to save this request to?',
-          includeURL: 'views/fragments/selectCollectionGroupForm.html',
+          includeURL: 'views/fragments/selectCollectionGroupForm.html?didCollectionGroupsTakeALongTimeToMake=yes&wouldIDoItAgain=ifYouBakeMeACookie',
           actions: [{
             text: 'Save',
             click: Collection.addRequestToCollection.bind(this, request, scope.$root.selectedCollectionIndex)

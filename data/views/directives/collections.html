@@ -4,13 +4,13 @@
       Collections
 
       <div class="pull-right hoverhand">
-        <slidey-button data-config="clearCollectionConfig"
-                       data-click-event="clearCollection()">
+        <slidey-button data-config="addNewCollectionConfig"
+                       data-click-event="addNewCollection()">
         </slidey-button>
       </div>
     </div>
     <div class="panel-body">
-      <section class="panel row"
+      <section class="panel row collection"
                data-ng-repeat="collection in collections track by $index"
                data-ng-init="updatedName = collection.name">
         <div class="panel-heading">
@@ -29,6 +29,10 @@
             </span>
             <span data-ng-hide="$parent.editing === collection.name">
               {{collection.name}}
+              <slidey-button class="update-collection"
+                             data-config="deleteCollectionConfig"
+                             data-click-event="deleteCollection(collection)">
+              </slidey-button>
               <slidey-button class="update-collection"
                              data-config="collectionOptionsConfig"
                              data-click-event="toggleCollectionsOptions(collection)">

@@ -17,6 +17,9 @@ function(DEFAULT_REQUEST, Modal, Collection) {
         scope.selectedRequest = request;
       };
 
+      scope.addNewCollection = Collection.newCollection;
+      scope.deleteCollection = Collection.deleteCollection;
+
       scope.toggleCollectionsOptions = function(collection) {
         scope.editing = collection.name;
       };
@@ -27,6 +30,16 @@ function(DEFAULT_REQUEST, Modal, Collection) {
 
         // TODO save to DB
         // TODO check if key exists in db to prevent dupes
+      };
+
+      scope.addNewCollectionConfig = {
+        title: 'Create collection',
+        classes: ['fa', 'fa-plus']
+      };
+
+      scope.deleteCollectionConfig = {
+        title: 'Delete',
+        classes: ['fa', 'fa-trash']
       };
 
       scope.collectionOptionsConfig = {

@@ -78,6 +78,14 @@ slidey-button {
   margin: 8px 0 0 0;
 }
 
+collections>div>.panel>.panel-body {
+  padding-bottom: 0;
+}
+
+.collection {
+  margin-bottom: 0;
+}
+
 input.edit-collection-name {
   margin-top: -10px;
 }
