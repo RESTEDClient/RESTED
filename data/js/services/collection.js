@@ -15,7 +15,7 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
   };
 
   return {
-    newCollection: function() {
+    newCollection: function(requests) {
       var i = 0;
 
       // Iterate over collections named Collection and add
@@ -24,8 +24,13 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
         var name = 'Collection ' + (i++ ? i : '');
       } while (!isUnique(name));
 
-      DB.collections.add({ name: name, requests: [] }).then(function() {
-        $rootScope.collections.push({ name: name, requests: [] });
+      if(!Array.isArray(requests)) {
+        requests = [];
+      }
+
+      DB.collections.add({ name: name, requests: requests }).then(function() {
+        $rootScope.collections.push({ name: name, requests: requests });
+        Modal.remove();
       }, errorHandler);
     },
     deleteCollection: function(collection) {
