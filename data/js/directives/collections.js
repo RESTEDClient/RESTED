@@ -18,7 +18,19 @@ function(DEFAULT_REQUEST, Modal, Collection) {
       };
 
       scope.addNewCollection = Collection.newCollection;
-      scope.deleteCollection = Collection.deleteCollection;
+      scope.deleteCollection = function(collection) {
+        Modal.set({
+          title: 'Goodbye collection',
+          body: 'You are about to delete the collection "' + collection.name + '". Are you sure?',
+          actions: [{
+            text: 'Delete',
+            click: function() {
+              Collection.deleteCollection(collection);
+              Modal.remove();
+            }
+          }]
+        });
+      };
 
       scope.toggleCollectionsOptions = function(collection) {
         scope.editing = collection.name;
