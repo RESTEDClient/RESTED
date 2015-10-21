@@ -26,10 +26,7 @@ function(DEFAULT_REQUEST, Modal, Collection) {
 
       scope.updateCollectionName = function(collection, newName) {
         scope.editing = null;
-        collection.name = newName;
-
-        // TODO save to DB
-        // TODO check if key exists in db to prevent dupes
+        Collection.updateCollectionName(collection, newName);
       };
 
       scope.addNewCollectionConfig = {

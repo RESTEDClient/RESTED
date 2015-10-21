@@ -17,9 +17,13 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
   return {
     newCollection: function() {
       var i = 0;
+
+      // Iterate over collections named Collection and add
+      // index to collection name to prevent duplicates.
       do {
         var name = 'Collection ' + (i++ ? i : '');
       } while (!isUnique(name));
+
       DB.collections.add({ name: name, requests: [] }).then(function() {
         $rootScope.collections.push({ name: name, requests: [] });
       }, errorHandler);
@@ -29,6 +33,29 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
         $rootScope.collections = $rootScope.collections.filter(function(item) {
           return item !== collection;
         });
+      }, errorHandler);
+    },
+    updateCollectionName: function(collection, newName) {
+      if (!isUnique(newName)) {
+        return Modal.set({
+          title: 'Sorry doc',
+          body: 'A collection with that name already exists'
+        });
+      } else if (!newName) {
+        return Modal.set({
+          title: 'Sorry doc',
+          body: 'You need a collection name to go with that name change'
+        });
+      } else if (!collection) {
+        return Modal.throwError('You seem to be missing a collection to update. How strange. Collection: ', collection);
+      }
+
+      // Delete old collection
+      DB.collections.delete({ name: collection.name }).then(function() {
+
+        // Add new collection with updated name (primary key)
+        collection.name = newName;
+        DB.collections.set(collection).then(null, errorHandler);
       }, errorHandler);
     },
     addRequestToCollection: function(request, collectionIndex) {
