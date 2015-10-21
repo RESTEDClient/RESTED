@@ -28,7 +28,10 @@
               </slidey-button>
             </span>
             <span data-ng-hide="$parent.editing === collection.name">
-              {{collection.name}}
+              <span class="hoverhand"
+                    data-ng-click="minimizeCollection(collection, $index)">
+                {{collection.name}}
+              </span>
               <slidey-button class="update-collection"
                              data-config="deleteCollectionConfig"
                              data-click-event="deleteCollection(collection)">
@@ -41,7 +44,8 @@
           </h4>
           <hr></hr>
         </div>
-        <div class="panel-body" dnd-list="collection.requests">
+        <div class="panel-body collection-body"
+             dnd-list="collection.requests">
           <div data-ng-repeat="request in collection.requests track by $index"
                data-dnd-draggable="request"
                data-dnd-moved="collection.requests.splice($index, 1)"

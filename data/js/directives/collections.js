@@ -41,6 +41,11 @@ function(DEFAULT_REQUEST, Modal, Collection) {
         Collection.updateCollectionName(collection, newName);
       };
 
+      scope.minimizeCollection = function(collection, index) {
+        collection.minimized = !collection.minimized;
+        $(element.find('.collection-body')[index]).slideToggle();
+      };
+
       scope.addNewCollectionConfig = {
         title: 'Create collection',
         classes: ['fa', 'fa-plus']
