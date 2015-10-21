@@ -29,6 +29,7 @@
             </span>
             <span data-ng-hide="$parent.editing === collection.name">
               <span class="hoverhand"
+                    data-ng-style="{'font-style': collection.minimized ? 'italic' : 'normal'}"
                     data-ng-click="minimizeCollection(collection, $index)">
                 {{collection.name}}
               </span>
