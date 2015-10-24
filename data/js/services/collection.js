@@ -28,7 +28,7 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
         requests = [];
       }
 
-      DB.collections.add({ name: name, requests: requests }).then(function() {
+      DB.collections.add({ name: name.trim(), requests: requests }).then(function() {
         $rootScope.collections.push({ name: name, requests: requests });
         Modal.remove();
       }, errorHandler);
@@ -62,6 +62,11 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
         collection.name = newName;
         DB.collections.set(collection).then(null, errorHandler);
       }, errorHandler);
+    },
+    saveAllCollections: function() {
+      $rootScope.collections.forEach(function(collection) {
+        DB.collections.set(collection).then(null, errorHandler);
+      });
     },
     addRequestToCollection: function(request, collectionIndex) {
       if (!collectionIndex && collectionIndex !== 0) {

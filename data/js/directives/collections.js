@@ -41,6 +41,16 @@ function(DEFAULT_REQUEST, Modal, Collection, DB) {
         Collection.updateCollectionName(collection, newName);
       };
 
+      scope.handleDrop = function(item) {
+        item.id = undefined;
+        return item;
+      };
+
+      scope.handleMoved = function(collection, index) {
+        collection.requests.splice(index, 1);
+        Collection.saveAllCollections();
+      };
+
       /**
        * Minimized state is persisted. The collection-body
        * is initialized to display: none via a static inline

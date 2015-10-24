@@ -45,15 +45,13 @@
           </h4>
           <hr></hr>
         </div>
-        <div class="panel-body collection-body"
-             data-ng-style="::{'display': collection.minimized ? 'none' : 'inherit'}"
-             dnd-list="collection.requests">
-          <div data-ng-repeat="request in collection.requests track by $index"
-               data-dnd-draggable="request"
-               data-dnd-moved="collection.requests.splice($index, 1)"
-               data-dnd-effect-allowed="move"
-               data-dnd-selected="models.selected = request"
-               data-ng-class="{'selected': models.selected === request}">
+        <ul class="panel-body collection-body"
+            data-ng-style="::{'display': collection.minimized ? 'none' : 'inherit'}"
+            data-dnd-drop="handleDrop(item)"
+            data-dnd-list="collection.requests">
+          <li data-ng-repeat="request in collection.requests | uuidAssign:'array' track by request.id"
+              data-dnd-draggable="request"
+              data-dnd-moved="handleMoved(collection, $index)">
 
             <div class="list-group">
               <a href="#"
@@ -75,8 +73,8 @@
                 </p>
               </a>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
       <div data-ng-show="collections.length === 0 || (collections.length === 1 &amp;&amp; collections[0].requests.length === 0)">
         <h5>
