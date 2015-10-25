@@ -41,11 +41,6 @@ function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
         Collection.updateCollectionName(collection, newName);
       };
 
-      var updateCollectionsOrder = function() {
-        scope.collections = $filter('orderBy')(scope.collections, 'order');
-        Collection.saveAllCollections();
-      };
-
       scope.handleDrop = function(item) {
         // Invalidate id - we track by id, and ngRepeat throws
         // up if it gets duplicate ids. This happens when we drag
@@ -53,7 +48,6 @@ function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
         // in the list until manually removed (by the code).
         item.id = undefined;
 
-        updateCollectionsOrder();
         return item;
       };
 
