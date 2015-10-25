@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal',
-function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal', '$filter',
+function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
@@ -15,8 +15,12 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
   //  [
   //   {
   //     name: 'Collection',
+  //     order: 2,
+  //     id: 'some-UUID',
+  //     minimized: true
   //     requests: [
   //       {
+  //         id: 'some-UUID',
   //         url: 'www.vg.no',
   //         headers: [
   //          {
@@ -26,12 +30,11 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
   //         ],
   //         method: 'GET'
   //       }
-  //     ],
-  //     minimized: true
+  //     ]
   //   }
   // ]
   DB.collections.get().then(function(data) {
-    $rootScope.collections = data;
+    $rootScope.collections = $filter('orderBy')(data, 'order');
   }, errorHandler);
 
   // Data is saved in db like so:

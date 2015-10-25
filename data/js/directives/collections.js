@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection', 'DB',
-function(DEFAULT_REQUEST, Modal, Collection, DB) {
+.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection', 'DB', '$filter',
+function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -41,9 +41,31 @@ function(DEFAULT_REQUEST, Modal, Collection, DB) {
         Collection.updateCollectionName(collection, newName);
       };
 
+      var updateCollectionsOrder = function() {
+        scope.collections = $filter('orderBy')(scope.collections, 'order');
+        Collection.saveAllCollections();
+      };
+
       scope.handleDrop = function(item) {
+        // Invalidate id - we track by id, and ngRepeat throws
+        // up if it gets duplicate ids. This happens when we drag
+        // and drop; the old item is invisible, but still present
+        // in the list until manually removed (by the code).
         item.id = undefined;
+
+        updateCollectionsOrder();
         return item;
+      };
+
+      scope.handleCollectionMoved = function(collections, index) {
+        collections.splice(index, 1);
+        collections = $filter('setOrder')(collections);
+
+        // We place this on $root immediately so we can
+        // save the current state as it is currently
+        // (Don't have to wait for next digest)
+        scope.$root.collections = collections;
+        Collection.saveAllCollections();
       };
 
       scope.handleMoved = function(collection, index) {

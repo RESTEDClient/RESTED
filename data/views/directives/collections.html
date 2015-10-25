@@ -9,10 +9,16 @@
         </slidey-button>
       </div>
     </div>
-    <div class="panel-body">
-      <section class="panel row collection"
-               data-ng-repeat="collection in collections track by $index"
-               data-ng-init="updatedName = collection.name">
+    <div class="panel-body"
+         data-dnd-drop="handleDrop(item, collections)"
+         data-dnd-allowed-types="['collection']"
+         data-dnd-list="collections">
+      <div class="panel row collection"
+           data-dnd-type="'collection'"
+           data-dnd-draggable="collection"
+           data-dnd-moved="handleCollectionMoved(collections, $index)"
+           data-ng-repeat="collection in collections | uuidAssign:'array' track by collection.id"
+           data-ng-init="updatedName = collection.name">
         <div class="panel-heading">
           <h4 class="panel-title">
             <span data-ng-show="$parent.editing === collection.name"
@@ -48,8 +54,10 @@
         <ul class="panel-body collection-body"
             data-ng-style="::{'display': collection.minimized ? 'none' : 'inherit'}"
             data-dnd-drop="handleDrop(item)"
+            data-dnd-allowed-types="['request']"
             data-dnd-list="collection.requests">
           <li data-ng-repeat="request in collection.requests | uuidAssign:'array' track by request.id"
+              data-dnd-type="'request'"
               data-dnd-draggable="request"
               data-dnd-moved="handleMoved(collection, $index)">
 
@@ -75,7 +83,7 @@
             </div>
           </li>
         </ul>
-      </section>
+      </div>
       <div data-ng-show="collections.length === 0 || (collections.length === 1 &amp;&amp; collections[0].requests.length === 0)">
         <h5>
           No collected requests. Add by pressing "plus" in the top right of the request panel.
