@@ -107,27 +107,30 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
 
       scope.addRequest = function(request) {
         if(!request.url) {
-          // The non-hiding text for the add button
-          // will be fixed when we implement modals.
-          Modal.set({
+          return Modal.set({
             title: 'Don\'t be silly',
             body: 'Please provide a URL for the request to be added.'
           });
-          return;
         }
 
-        // TODO: If collections.length === 1, just add?
-        Modal.set({
-          title: 'Select collection',
-          body: 'Which collection would you like to save this request to?',
-          includeURL: 'views/fragments/selectCollectionGroupForm.html?didCollectionGroupsTakeALongTimeToMake=yes&wouldIDoItAgain=ifYouBakeMeACookie',
-          actions: [{
-            text: 'Save',
-            click: function() {
-              Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
-            }
-          }]
-        });
+        // Only prompt to select collection if there is two or more
+        // collections to choose from. Otherwise just add without
+        // prompting.
+        if (scope.$root.collections && scope.$root.collections.length > 1) {
+          Modal.set({
+            title: 'Select collection',
+            body: 'Which collection would you like to save this request to?',
+            includeURL: 'views/fragments/selectCollectionGroupForm.html?didCollectionGroupsTakeALongTimeToMake=yes&wouldIDoItAgain=ifYouBakeMeACookie',
+            actions: [{
+              text: 'Save',
+              click: function() {
+                Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
+              }
+            }]
+          });
+        } else {
+          Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
+        }
       };
 
       scope.slideToggle = function(id) {
