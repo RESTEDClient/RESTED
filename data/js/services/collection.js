@@ -90,6 +90,7 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
 
         // If there is no dupe in selected collection, add
         } else if ($rootScope.collections[collectionIndex].requests.indexOf(request) === -1) {
+          request.id = undefined;
           $rootScope.collections[collectionIndex].requests.push(request);
 
           DB.collections.set($rootScope.collections[collectionIndex]).then(Modal.remove, errorHandler);
