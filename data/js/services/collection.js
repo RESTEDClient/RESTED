@@ -135,7 +135,6 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
       }
     },
     removeRequestFromCollection: function(collection, index, collectionIndex) {
-      console.log('collectionIndex', collectionIndex);
       Modal.set({
         title: 'Confirm deletion',
         body: 'Please confirm you wish to remove this request from your saved collection',
