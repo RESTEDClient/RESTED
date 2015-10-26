@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Collection', ['DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Modal',
-function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
+.factory('Collection', ['DEFAULT_SELECTED_COLLECTION', '$rootScope', '$filter', 'DB', 'Modal',
+function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
   var errorHandler = function(event) {
     Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
   };
@@ -108,10 +108,16 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Modal) {
               text: 'New',
               click: function() {
                 DB.collections.get().then(function(data) {
-                  var unalteredCollections = data[collectionIndex];
+                  var unalteredCollections = $filter('orderBy')(data, 'order')[collectionIndex];
 
                   if (unalteredCollections && unalteredCollections.requests) {
-                    unalteredCollections.requests.push(request);
+
+                    // Ensure we dont get dupe ids
+                    var newRequest = angular.copy(request);
+                    newRequest.id = undefined;
+                    $filter('uuidAssign')(newRequest);
+                    unalteredCollections.requests.push(newRequest);
+
                     $rootScope.collections[collectionIndex] = unalteredCollections;
                     DB.collections.set(unalteredCollections).then(Modal.remove, errorHandler);
                   } else {
