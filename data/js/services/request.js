@@ -45,6 +45,37 @@ angular.module('RestedApp')
     return request;
   };
 
+  /**
+   * According to MDN, this makes us more adherent
+   * to RFC 3986, which is good, I guess?!
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+   */
+  function fixedEncodeURIComponent (str) {
+    return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+      return '%' + c.charCodeAt(0).toString(16);
+    });
+  }
+
+  /**
+   * Take an array of objects and transform it into
+   * a URL encoded form data string suitable to be
+   * posted to a server.
+   */
+  var formDataToFormString = function(formData) {
+    if (!formData) {
+      return '';
+    }
+
+    var result = formData.filter(function(item) {
+      return item && item.name;
+    }).reduce(function(prev, item, i) {
+      return prev + (i !== 0 ? '&' : '') + fixedEncodeURIComponent(item.name) + '=' + (item.value ? fixedEncodeURIComponent(item.value) : '');
+    }, '');
+
+    return result.replace(/%20/g, '+');
+  };
+
   return {
     run: function(request, parameters, fn) {
       var requestCopy = angular.copy(request);
@@ -55,12 +86,17 @@ angular.module('RestedApp')
       var req = createXMLHttpRequest(requestCopy);
       req.onloadend = fn.bind(req);
 
-      req.send(request.data);
+      if (request.useFormData) {
+        req.send(formDataToFormString(request.formData));
+      } else {
+        req.send(request.data);
+      }
     },
     /* For unit tests only */
     _prependHttp: prependHttp,
     _mapParameters: mapParameters,
-    _createXMLHttpRequest: createXMLHttpRequest
+    _createXMLHttpRequest: createXMLHttpRequest,
+    _formDataToFormString: formDataToFormString
   };
 });
 

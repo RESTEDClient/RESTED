@@ -41,6 +41,10 @@ module.constant('DEFAULT_REQUEST', {
     name: '',
     value: ''
   }],
+  formData: [{
+    name: '',
+    value: ''
+  }],
   cache: false
 });
 

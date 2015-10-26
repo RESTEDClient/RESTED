@@ -177,6 +177,44 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
         });
       };
 
+      scope.addParameter = function(req) {
+        var newParam = { name: '', value: '' };
+        var isAlreadyAdded = req.formData.some(function(item) {
+          return newParam.name == item.name;
+        });
+
+        if(isAlreadyAdded) {
+          return;
+        }
+
+        req.formData.push(newParam);
+      };
+
+      scope.toggleFormData = function(req) {
+        req.formData = [{ name: '', value: '' }];
+        req.data = '';
+
+        // If switching TO form mode, add form
+        // Content-Type header if not present.
+        // If switching FROM form mode to
+        // normal mode, remove said header if
+        // present.
+        if (req.useFormData) {
+          var contentTypeIndex = req.headers.findIndex(function(header) {
+            return header.name === 'Content-Type';
+          });
+          if (contentTypeIndex >= 0) {
+            req.headers[contentTypeIndex].value = 'application/x-www-form-urlencoded';
+          } else {
+            req.headers.push({ name: 'Content-Type', value: 'application/x-www-form-urlencoded' });
+          }
+        } else {
+          req.headers = req.headers.filter(function(header) {
+            return header.name !== 'Content-Type' || (header.name === 'Content-Type' && header.value !== 'application/x-www-form-urlencoded');
+          });
+        }
+      };
+
       scope.getRandomURL = RequestUtils.randomURL;
     }
   };

@@ -22,13 +22,21 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
   //       {
   //         id: 'some-UUID',
   //         url: 'www.vg.no',
+  //         method: 'POST',
+  //         data: '',
+  //         useFormData: true,
+  //         formData: [
+  //           {
+  //             name: 'BodyOfPOST...',
+  //             value: '...SentViaFormData'
+  //           }
+  //         ],
   //         headers: [
   //          {
   //            name: 'Content-Type',
   //            value: 'angular/awesomeness'
   //          }
-  //         ],
-  //         method: 'GET'
+  //         ]
   //       }
   //     ]
   //   }

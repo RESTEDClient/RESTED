@@ -27,6 +27,7 @@ body {
 }
 
 #headerSlider .header-item>div.form-group,
+#bodySlider .header-item>div.form-group,
 #basicAuthSlider>div.form-group {
   margin-right: 0px;
   margin-left: 0px;
