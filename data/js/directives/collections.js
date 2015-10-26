@@ -8,10 +8,11 @@ function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
     templateUrl: 'views/directives/collections.html',
     scope: {
       collections: '=',
-      selectedRequest: '=',
-      removeFromCollection: '&'
+      selectedRequest: '='
     },
     link: function(scope, element, attrs, controllers) {
+
+      scope.removeFromCollection = Collection.removeRequestFromCollection;
 
       scope.selectRequest = function(request) {
         scope.selectedRequest = request;

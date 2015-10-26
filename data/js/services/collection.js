@@ -133,7 +133,8 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
         Modal.throwError('error in Collection.addRequestToCollection: ', e.toString());
       }
     },
-    removeRequestFromCollection: function(collection, index) {
+    removeRequestFromCollection: function(collection, index, collectionIndex) {
+      console.log('collectionIndex', collectionIndex);
       Modal.set({
         title: 'Confirm deletion',
         body: 'Please confirm you wish to remove this request from your saved collection',
@@ -141,8 +142,7 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
           text: 'Confirm',
           click: function() {
             collection.requests.splice(index, 1);
-            $rootScope.collections[0] = collection;
-            DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
+            DB.collections.set(collection).then(Modal.remove, errorHandler);
           }
         }]
       });

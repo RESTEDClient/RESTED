@@ -75,9 +75,6 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
     $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
   }, errorHandler);
 
-  // Called on request removal
-  // This is exposed to lower scopes
-  $rootScope.removeRequestFromCollection = Collection.removeRequestFromCollection;
 
   // Called when new urlVariables are added
   $rootScope.newVariable = function() {
