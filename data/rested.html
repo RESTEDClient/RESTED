@@ -5,10 +5,12 @@
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <link rel="stylesheet" data-ng-if="$root.options.theme === 'retro'" data-ng-href="ext/bootstrap.min.css">
   <link rel="stylesheet" data-ng-if="$root.options.theme !== 'retro'" data-ng-href="ext/bootswatch/{{$root.options.theme || 'yeti'}}.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/spesific.css">
+  <link rel="stylesheet" type="text/css" href="ext/font-awesome-4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/spesific.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="img/favicon/favicon-128x128.png">
   <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon/favicon-64x64.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
   <meta name="theme-color" content="#ffffff">
@@ -23,6 +25,7 @@
   <script type="text/javascript" src="ext/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="ext/angular.min.js"></script>
   <script type="text/javascript" src="ext/bootstrap.min.js"></script>
+  <script type="text/javascript" src="ext/angular-drag-and-drop-lists.js"></script>
 
   <!-- Bootstrapping -->
   <script type="text/javascript" src="js/app.js"></script>
@@ -32,6 +35,8 @@
 
   <!-- Filters -->
   <script type="text/javascript" src="js/filters/statusColor.js"></script>
+  <script type="text/javascript" src="js/filters/uuidAssign.js"></script>
+  <script type="text/javascript" src="js/filters/setOrder.js"></script>
 
   <!-- Directives -->
   <script type="text/javascript" src="js/directives/contentSlider.js"></script>

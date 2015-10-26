@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('RestedApp', []);
+angular.module('RestedApp', ['dndLists']);
 

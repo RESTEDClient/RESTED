@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('RequestUtils', function(PLACEHOLDER_URLS) {
+.factory('RequestUtils', ['PLACEHOLDER_URLS',
+function(PLACEHOLDER_URLS) {
 
   /**
    * Translates data from the way we can use it
@@ -72,4 +73,5 @@ angular.module('RestedApp')
     reMapHeaders: reMapHeaders,
     randomURL: randomURL
   };
-});
+}]);
+

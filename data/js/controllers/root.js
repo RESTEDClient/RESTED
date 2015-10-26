@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', function(DEFAULT_REQUEST, THEMES, $rootScope, DB, Collection, Modal) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal', '$filter',
+function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
+  $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
   $rootScope.themes = THEMES;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
@@ -13,25 +15,34 @@ angular.module('RestedApp')
   //  [
   //   {
   //     name: 'Collection',
+  //     order: 2,
+  //     id: 'some-UUID',
+  //     minimized: true
   //     requests: [
   //       {
+  //         id: 'some-UUID',
   //         url: 'www.vg.no',
+  //         method: 'POST',
+  //         data: '',
+  //         useFormData: true,
+  //         formData: [
+  //           {
+  //             name: 'BodyOfPOST...',
+  //             value: '...SentViaFormData'
+  //           }
+  //         ],
   //         headers: [
   //          {
   //            name: 'Content-Type',
   //            value: 'angular/awesomeness'
   //          }
-  //         ],
-  //         method: 'GET'
+  //         ]
   //       }
   //     ]
   //   }
   // ]
-  // Root node is an array so we
-  // can easily extend app with the ability
-  // to add more collections later.
   DB.collections.get().then(function(data) {
-    $rootScope.collections = data;
+    $rootScope.collections = $filter('orderBy')(data, 'order');
   }, errorHandler);
 
   // Data is saved in db like so:
@@ -64,13 +75,6 @@ angular.module('RestedApp')
     $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
   }, errorHandler);
 
-  // Called on request addition
-  // This is exposed to lower scopes
-  $rootScope.addRequestToCollection = Collection.addRequestToCollection;
-
-  // Called on request removal
-  // This is exposed to lower scopes
-  $rootScope.removeRequestFromCollection = Collection.removeRequestFromCollection;
 
   // Called when new urlVariables are added
   $rootScope.newVariable = function() {
@@ -84,5 +88,5 @@ angular.module('RestedApp')
     $rootScope.options.theme = theme;
     DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
   };
-});
+}]);
 

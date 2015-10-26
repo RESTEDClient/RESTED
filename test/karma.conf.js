@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'data/ext/angular.min.js',
+      'data/ext/angular-drag-and-drop-lists.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'data/js/*.js',
       'data/js/**/*.js',

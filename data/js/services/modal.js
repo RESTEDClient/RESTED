@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Modal', function($rootScope, $sce) {
+.factory('Modal', ['$rootScope', '$sce',
+function($rootScope, $sce) {
 
   var throwError = function() {
     $rootScope.errorData = '';
@@ -14,7 +15,7 @@ angular.module('RestedApp')
 
     $rootScope.modalOptions = {
       title: 'Error!',
-      body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below, please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.'),
+      body: $sce.trustAsHtml('Sorry, something went wrong.. If there is anything useful in a gray box below (or the web console), please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.'),
       includeURL: 'views/fragments/errorField.html'
     };
   };
@@ -50,5 +51,5 @@ angular.module('RestedApp')
       throwError('An error occured when reading/writing to indexedDB: ', event);
     }
   };
-});
+}]);
 

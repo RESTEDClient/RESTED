@@ -25,12 +25,23 @@ module.constant('DB_URL_VARIABLES_STORE_NAME', 'urlVariables');
 // storing application options
 module.constant('DB_OPTIONS_STORE_NAME', 'options');
 
+// This is the index of the selected collection
+// group on load of the application. This is the
+// collection that groups will be added to if a
+// different collection is not specified by the
+// user.
+module.constant('DEFAULT_SELECTED_COLLECTION', '0');
+
 // This is the request used to initialize the
 // request panel. This can be either on
 // application load or on request reset.
 module.constant('DEFAULT_REQUEST', {
   method: 'GET',
   headers: [{
+    name: '',
+    value: ''
+  }],
+  formData: [{
     name: '',
     value: ''
   }],

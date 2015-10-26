@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
+.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
+function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
+
   var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
 
   localDB.onerror = function(event) {
@@ -144,4 +146,4 @@ angular.module('RestedApp')
     urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME),
     options: createStore(DB_OPTIONS_STORE_NAME)
   };
-});
+}]);

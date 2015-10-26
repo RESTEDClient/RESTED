@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Base64, Modal, $timeout) {
+.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Collection', 'Base64', 'Modal', '$timeout',
+function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Modal, $timeout) {
+
   return {
     restrict: 'E',
     templateUrl: 'views/directives/request.html',
     scope: {
-      request: '=',
-      addToCollection: '&'
+      request: '='
     },
     link: function(scope, element, attrs, controllers) {
       scope.options = {
@@ -106,16 +107,30 @@ angular.module('RestedApp')
 
       scope.addRequest = function(request) {
         if(!request.url) {
-          // The non-hiding text for the add button
-          // will be fixed when we implement modals.
-          Modal.set({
+          return Modal.set({
             title: 'Don\'t be silly',
             body: 'Please provide a URL for the request to be added.'
           });
-          return;
         }
 
-        scope.addToCollection(request);
+        // Only prompt to select collection if there is two or more
+        // collections to choose from. Otherwise just add without
+        // prompting.
+        if (scope.$root.collections && scope.$root.collections.length > 1) {
+          Modal.set({
+            title: 'Select collection',
+            body: 'Which collection would you like to save this request to?',
+            includeURL: 'views/fragments/selectCollectionGroupForm.html?didCollectionGroupsTakeALongTimeToMake=yes&wouldIDoItAgain=ifYouBakeMeACookie',
+            actions: [{
+              text: 'Save',
+              click: function() {
+                Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
+              }
+            }]
+          });
+        } else {
+          Collection.addRequestToCollection(request, scope.$root.selectedCollectionIndex);
+        }
       };
 
       scope.slideToggle = function(id) {
@@ -162,7 +177,46 @@ angular.module('RestedApp')
         });
       };
 
+      scope.addParameter = function(req) {
+        var newParam = { name: '', value: '' };
+        var isAlreadyAdded = req.formData.some(function(item) {
+          return newParam.name == item.name;
+        });
+
+        if(isAlreadyAdded) {
+          return;
+        }
+
+        req.formData.push(newParam);
+      };
+
+      scope.toggleFormData = function(req) {
+        req.formData = [{ name: '', value: '' }];
+        req.data = '';
+
+        // If switching TO form mode, add form
+        // Content-Type header if not present.
+        // If switching FROM form mode to
+        // normal mode, remove said header if
+        // present.
+        if (req.useFormData) {
+          var contentTypeIndex = req.headers.findIndex(function(header) {
+            return header.name === 'Content-Type';
+          });
+          if (contentTypeIndex >= 0) {
+            req.headers[contentTypeIndex].value = 'application/x-www-form-urlencoded';
+          } else {
+            req.headers.push({ name: 'Content-Type', value: 'application/x-www-form-urlencoded' });
+          }
+        } else {
+          req.headers = req.headers.filter(function(header) {
+            return header.name !== 'Content-Type' || (header.name === 'Content-Type' && header.value !== 'application/x-www-form-urlencoded');
+          });
+        }
+      };
+
       scope.getRandomURL = RequestUtils.randomURL;
     }
   };
-});
+}]);
+

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
+.controller('OptionsCtl', ['$scope', '$rootScope', 'Import', 'Modal', 'Collection', 'UrlVariables',
+function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
+
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
 
@@ -18,21 +20,19 @@ angular.module('RestedApp')
 
     Modal.set({
       title: 'Successfy parsed imports',
-      body: 'Would you like to add the following to your collection or replace your existing collection?',
+      body: 'Would you like to add the following to an existing collection or add as a new collection?',
+      includeURL: 'views/fragments/selectCollectionGroupForm.html',
       actions: [{
-        text: 'Add',
+        text: 'Add to collection',
         click: function() {
           requests.forEach(function(request) {
-            Collection.addRequestToCollection(request);
-            Modal.remove();
+            Collection.addRequestToCollection(request, $rootScope.selectedCollectionIndex);
           });
         }
       }, {
-        text: 'Replace',
+        text: 'New collection',
         click: function() {
-          Collection.clearCollection(function callback() {
-            requests.forEach(Collection.addRequestToCollection);
-          });
+          Collection.newCollection(requests);
         }
       }]
     });
@@ -62,4 +62,5 @@ angular.module('RestedApp')
       return item !== param;
     });
   };
-});
+}]);
+
