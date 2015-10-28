@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="ext/font-awesome-4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/common.css">
   <link rel="stylesheet" type="text/css" href="css/spesific.css">
+  <link rel="stylesheet" data-ng-if="$root.options.highlightStyle !== null" data-ng-href="ext/highlight.js/styles/{{$root.options.highlightStyle || 'default'}}.css">
   <link rel="icon" type="image/png" sizes="128x128" href="img/favicon/favicon-128x128.png">
   <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="64x64" href="img/favicon/favicon-64x64.png">
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-  <main class="container-fluid" data-ng-show="$root.options">
+  <main class="container-fluid" data-ng-cloak="">
     <div data-ng-include="'views/main.html'"></div>
   </main>
 
@@ -26,6 +27,8 @@
   <script type="text/javascript" src="ext/angular.min.js"></script>
   <script type="text/javascript" src="ext/bootstrap.min.js"></script>
   <script type="text/javascript" src="ext/angular-drag-and-drop-lists.js"></script>
+  <script type="text/javascript" src="ext/highlight.js/highlight.pack.js"></script>
+
 
   <!-- Bootstrapping -->
   <script type="text/javascript" src="js/app.js"></script>
@@ -54,6 +57,7 @@
   <script type="text/javascript" src="js/services/import.js"></script>
   <script type="text/javascript" src="js/services/collection.js"></script>
   <script type="text/javascript" src="js/services/urlVariables.js"></script>
+  <script type="text/javascript" src="js/services/highlight.js"></script>
 
   <!-- Controllers -->
   <script type="text/javascript" src="js/controllers/root.js"></script>

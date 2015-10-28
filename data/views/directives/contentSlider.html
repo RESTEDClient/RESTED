@@ -5,9 +5,7 @@
        data-ng-class="{'fa-rotate-90': slidden}">
     </i>
   </h4>
-  <pre class="content"
-       data-ng-class="{'start-hidden': startHidden}"
-       data-ng-bind="content">
-  </pre>
+  <!-- This must be on one line, because line breaks will be line breaks in a <pre> -->
+  <pre class="content" data-ng-class="{'start-hidden': startHidden}"><code data-ng-style="{'white-space': $root.options.wrapResponse ? 'pre-wrap' : 'inherit' }" data-ng-bind="content"></code></pre>
 </div>
 

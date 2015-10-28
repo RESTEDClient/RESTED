@@ -140,3 +140,8 @@ input.edit-collection-name {
   margin-top: 15px;
   resize: vertical;
 }
+
+/* Allow highlighting to extend to the edges */
+pre {
+  padding: 0;
+}

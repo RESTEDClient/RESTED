@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal', '$filter',
-function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Highlight, Collection, Modal, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
-  $rootScope.themes = THEMES;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
 
@@ -84,8 +83,14 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
     });
   };
 
-  $rootScope.setTheme = function(theme) {
-    $rootScope.options.theme = theme;
+  $rootScope.setOption = function(option, val) {
+    // If we are changing style or turning styling on
+    if (option === 'highlightStyle' || (option === 'disableHighlighting' && val === false)) {
+      // Redraw highlight styles
+      Highlight.highlightAll();
+    }
+
+    $rootScope.options[option] = val;
     DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
   };
 }]);
