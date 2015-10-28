@@ -25,7 +25,6 @@ It is basically just an angular 1.4 app inside of Firefox, so if you know angula
 What features are on the to-do list:
  - Request history
  - Export collections
- - Improve pretty-printing of results
 
 In order to work on this project, you're going to need a few things:
  - [Firefox](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
