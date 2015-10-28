@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-  <table class="table table-striped">
+  <table class="table">
     <tbody>
       <tr>
         <td>
@@ -9,9 +9,58 @@
             </label>
             <select class="form-control"
               data-ng-model="$root.options.theme"
-              data-ng-change="$root.setTheme($root.options.theme)"
-              data-ng-options="theme for theme in $root.themes">
+              data-ng-change="$root.setOption('theme', $root.options.theme)"
+              data-ng-options="theme for theme in $parent.themes">
             </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <label>
+              Highlight Style
+            </label>
+            <select class="form-control"
+              data-ng-model="$root.options.highlightStyle"
+              data-ng-change="$root.setOption('highlightStyle', $root.options.highlightStyle)"
+              data-ng-options="style.style as style.title for style in $parent.styles">
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <pre><code>
+              {
+                example: "json",
+                soThatYouCan: 7357,
+                your: "HIGHLIGHT_STYLE"
+              }
+            </code></pre>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                data-ng-model="$root.options.disableHighlighting"
+                data-ng-change="$root.setOption('disableHighlighting', $root.options.disableHighlighting)"
+              />
+              Disable highlight styles (for performance)
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                data-ng-model="$root.options.wrapResponse"
+                data-ng-change="$root.setOption('wrap', $root.options.wrap)"
+              />
+              Wrap response
+            </label>
           </div>
         </td>
       </tr>

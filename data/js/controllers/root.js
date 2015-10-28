@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'THEMES', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal', '$filter',
-function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
-  $rootScope.themes = THEMES;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
 
@@ -84,8 +83,23 @@ function(DEFAULT_REQUEST, THEMES, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, C
     });
   };
 
-  $rootScope.setTheme = function(theme) {
-    $rootScope.options.theme = theme;
+  $rootScope.setOption = function(option, val) {
+    $rootScope.$broadcast(option + '-change', val);
+
+    // If we are changing style or turning styling on
+    if (option === 'highlightStyle' || (option === 'disableHighlighting' && val === false)) {
+      // For performance reasons, we close the response when changing style.
+      // This is because if we change styles mid-flight, it can cause the
+      // browser to become really undesponsive.
+
+      // Wait for request directive to remove response
+      $timeout(function() {
+        // Redraw highlight styles
+        Highlight.highlightAll();
+      });
+    }
+
+    $rootScope.options[option] = val;
     DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
   };
 }]);

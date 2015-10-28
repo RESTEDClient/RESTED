@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', ['$scope', '$rootScope', 'Import', 'Modal', 'Collection', 'UrlVariables',
-function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
+.controller('OptionsCtl', ['HIGHLIGHT_STYLES', 'THEMES', '$scope', '$rootScope', '$timeout', 'Highlight', 'Import', 'Modal', 'Collection', 'UrlVariables',
+function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Highlight, Import, Modal, Collection, UrlVariables) {
 
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
+  $scope.themes = THEMES;
+  $scope.styles = HIGHLIGHT_STYLES;
 
   var doImport = function() {
     var requests;
@@ -55,6 +57,10 @@ function($scope, $rootScope, Import, Modal, Collection, UrlVariables) {
   $scope.setTab = function(tabName) {
     $scope.activeTab = tabName;
     $rootScope.modalOptions.actions = actions[tabName];
+
+    if (tabName === 'optionsForm') {
+      $timeout(Highlight.highlightAll, 30);
+    }
   };
 
   $scope.removeParam = function(param) {
