@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
-function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Highlight, Collection, Modal, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
@@ -84,10 +84,19 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Highlight
   };
 
   $rootScope.setOption = function(option, val) {
+    $rootScope.$broadcast(option + '-change', val);
+
     // If we are changing style or turning styling on
     if (option === 'highlightStyle' || (option === 'disableHighlighting' && val === false)) {
-      // Redraw highlight styles
-      Highlight.highlightAll();
+      // For performance reasons, we close the response when changing style.
+      // This is because if we change styles mid-flight, it can cause the
+      // browser to become really undesponsive.
+
+      // Wait for request directive to remove response
+      $timeout(function() {
+        // Redraw highlight styles
+        Highlight.highlightAll();
+      });
     }
 
     $rootScope.options[option] = val;

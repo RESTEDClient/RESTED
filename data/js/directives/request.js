@@ -15,6 +15,10 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
       };
 
+      scope.$on('highlightStyle-change', function() {
+        scope.response = null;
+      });
+
       scope.slidden = {};
       scope.urlVariables = [];
       scope.headers = [];
