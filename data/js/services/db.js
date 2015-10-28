@@ -4,7 +4,13 @@ angular.module('RestedApp')
 .factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
 function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
 
-  var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
+  try {
+    var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
+  } catch(e) {
+    console.error(e);
+    alert('A critical error occured when loading indexedDB. Your collections will not work. Please look at the developer console (F12) and post ' +
+         'a bug on my github (github.com/esphen/RESTED');
+  }
 
   localDB.onerror = function(event) {
     Modal.throwError('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work. ', event);
