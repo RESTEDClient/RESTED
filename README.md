@@ -23,7 +23,6 @@ This project was from the very beginning intended to be easy to work with.
 It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
 
 What features are on the to-do list:
- - Improve collections with collapsible collection groups
  - Request history
  - Export collections
  - Improve pretty-printing of results
