@@ -9,6 +9,7 @@ describe('Service: Import', function () {
     {
       url: 'www.vg.no',
       method: 'GET',
+      data: 'username=admin&password=awesome',
       headers: [
         {
           name: 'Content-Type',
@@ -51,7 +52,21 @@ describe('Service: Import', function () {
                   "name": "Content-Type",
                   "value": "angular/awesomeness"
                 }
-              ]
+              ],
+              "postData": {
+                "mimeType": "application/x-www-form-urlencoded",
+                "params": [
+                  {
+                    "name": "a",
+                    "value": "b"
+                  },
+                  {
+                    "name": "c",
+                    "value": "d"
+                  }
+                ],
+                "text": "username=admin&password=awesome"
+              }
             }
           }
         ]
@@ -67,9 +82,23 @@ describe('Service: Import', function () {
         {
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
-          "method": "GET"
+          "method": "GET",
+          "data": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "text",
+              "enabled": true
+            },
+            {
+              "key": "password",
+              "value": "awesome",
+              "type": "text",
+              "enabled": true
+            }
+          ]
         }
-      ]
+      ],
     };
     expect(Import.fromPostman(postmanJson)).toEqual(expectedResult);
   });

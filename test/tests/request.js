@@ -71,45 +71,5 @@ describe('Service: Request', function () {
     };
     expect(Request._createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
   });
-
-  /* formDataToFormString tests */
-  it('should have a formDataToFormString method', function () {
-    expect(Request._formDataToFormString).toBeDefined();
-    expect(typeof Request._formDataToFormString).toBe('function');
-  });
-
-  it('should properly map from formData array to string', function () {
-    expect(Request._formDataToFormString(null)).toBe('');
-    expect(Request._formDataToFormString(undefined)).toBe('');
-    expect(Request._formDataToFormString([])).toBe('');
-    expect(Request._formDataToFormString([{ name: 'Content-Type', value: 'test123' }])).toBe('Content-Type=test123');
-    expect(Request._formDataToFormString([{ name: 'Some-Test', value: 'test123' }])).toBe('Some-Test=test123');
-
-    var complexRequest = [{
-      name: 'logfile',
-      value: 'blabla'
-    }, {
-      name: 'configfile',
-      value: 'more blabla'
-    }, {
-      name: 'usercomment',
-      value: 'hello'
-    }, {
-      name: 'useremail',
-      value: ''
-    }];
-    var complexResult = 'logfile=blabla&configfile=more+blabla&usercomment=hello&useremail=';
-    expect(Request._formDataToFormString(complexRequest)).toBe(complexResult);
-  });
-
-  it('should cover corner cases like special characters and spaces', function () {
-    expect(Request._formDataToFormString([{ name: '', value: '{€$@¡¡@"' }])).toBe('');
-    expect(Request._formDataToFormString([{ name: '$o114$o114Bi11z', value: '{€$@¡¡@"' }])).toBe('%24o114%24o114Bi11z=%7B%E2%82%AC%24%40%C2%A1%C2%A1%40%22');
-    expect(Request._formDataToFormString([{ name: 'E!xclamation(Mark)', value: '***' }])).toBe('E%21xclamation%28Mark%29=%2a%2a%2a');
-  });
-
-  it('should not prefix & when passed empty objects', function () {
-    expect(Request._formDataToFormString([{}, {}, {}, { name: '$o114$o114Bi11z', value: '{€$@¡¡@"' } ])).toBe('%24o114%24o114Bi11z=%7B%E2%82%AC%24%40%C2%A1%C2%A1%40%22');
-  });
 });
 

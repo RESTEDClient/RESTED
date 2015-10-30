@@ -6,7 +6,7 @@
   "description": "A REST client for the rest of us",
   "author": "Espen Henriksen",
   "license": "GPL-2.0",
-  "version": "0.5.0",
+  "version": "0.6.1",
   "main": "lib/main.js",
   "scripts": {
     "test": "node_modules/karma/bin/karma start test/karma.conf.js",

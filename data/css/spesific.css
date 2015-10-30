@@ -79,6 +79,10 @@ slidey-button {
   margin: 8px 0 0 0;
 }
 
+.request-data {
+  resize: vertical;
+}
+
 collections>div>.panel>.panel-body {
   padding-bottom: 0;
 }
@@ -88,7 +92,7 @@ collections>div>.panel>.panel-body {
 }
 
 collections li {
-  list-style: none
+  list-style: none;
 }
 
 .dndDraggingSource {
