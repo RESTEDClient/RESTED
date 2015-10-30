@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Import', function() {
+.factory('Import', ['RequestUtils',
+function(RequestUtils) {
   var stringHeadersToObject = function(string) {
     var result = [];
 
@@ -38,7 +39,20 @@ angular.module('RestedApp')
 
       entries.forEach(function(request) {
         request.headers = stringHeadersToObject(request.headers);
-        result.push(request);
+
+        if (Array.isArray(request.data)) {
+          request.data = RequestUtils.formDataToFormString(request.data.map(function(data) {
+            return { name: data.key, value: data.value};
+          }));
+        }
+
+        // Trim away fluff
+        result.push({
+          'method': request.method,
+          'url': request.url,
+          'headers': request.headers,
+          'data': request.data
+        });
       });
 
       return result;
@@ -62,11 +76,18 @@ angular.module('RestedApp')
       var result  = [];
 
       entries.forEach(function(entry) {
-        result.push(entry.request);
+
+        // Trim away fluff
+        result.push({
+          'method': entry.request.method,
+          'url': entry.request.url,
+          'headers': entry.request.headers,
+          'data': entry.request.postData.text
+        });
       });
 
       return result;
     }
   };
-});
+}]);
 

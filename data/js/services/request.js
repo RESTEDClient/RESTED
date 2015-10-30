@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Request', function() {
+.factory('Request', ['RequestUtils',
+function(RequestUtils) {
 
   /**
   * Prepend http:// if missing from url
@@ -45,37 +46,6 @@ angular.module('RestedApp')
     return request;
   };
 
-  /**
-   * According to MDN, this makes us more adherent
-   * to RFC 3986, which is good, I guess?!
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
-   */
-  function fixedEncodeURIComponent (str) {
-    return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-      return '%' + c.charCodeAt(0).toString(16);
-    });
-  }
-
-  /**
-   * Take an array of objects and transform it into
-   * a URL encoded form data string suitable to be
-   * posted to a server.
-   */
-  var formDataToFormString = function(formData) {
-    if (!formData) {
-      return '';
-    }
-
-    var result = formData.filter(function(item) {
-      return item && item.name;
-    }).reduce(function(prev, item, i) {
-      return prev + (i !== 0 ? '&' : '') + fixedEncodeURIComponent(item.name) + '=' + (item.value ? fixedEncodeURIComponent(item.value) : '');
-    }, '');
-
-    return result.replace(/%20/g, '+');
-  };
-
   return {
     run: function(request, parameters, fn) {
       var requestCopy = angular.copy(request);
@@ -87,7 +57,7 @@ angular.module('RestedApp')
       req.onloadend = fn.bind(req);
 
       if (request.useFormData) {
-        req.send(formDataToFormString(request.formData));
+        req.send(RequestUtils.formDataToFormString(request.formData));
       } else {
         req.send(request.data);
       }
@@ -95,8 +65,7 @@ angular.module('RestedApp')
     /* For unit tests only */
     _prependHttp: prependHttp,
     _mapParameters: mapParameters,
-    _createXMLHttpRequest: createXMLHttpRequest,
-    _formDataToFormString: formDataToFormString
+    _createXMLHttpRequest: createXMLHttpRequest
   };
-});
+}]);
 
