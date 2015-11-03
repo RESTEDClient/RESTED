@@ -71,5 +71,18 @@ describe('Service: Request', function () {
     };
     expect(Request._createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
   });
+
+  // withCredentials means that setCookie headers in the response will send the set cookie
+  // in subequent requests to that domain. This is useful for RESTful services behind
+  // logins.
+  it('should generate an XMLHttpRequest with "withCredentials" set', function () {
+    var request = {
+      "method":"GET",
+      "headers":[{"name":"test","value":"blah"}],
+      "cache":false,
+      "url":"http://www.aperturescience.com"
+    };
+    expect(Request._createXMLHttpRequest(request).withCredentials).toEqual(true);
+  });
 });
 
