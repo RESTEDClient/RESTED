@@ -82,7 +82,7 @@ function(RequestUtils) {
           'method': entry.request.method,
           'url': entry.request.url,
           'headers': entry.request.headers,
-          'data': entry.request.postData.text
+          'data': entry.request.postData ? entry.request.postData.text : undefined
         });
       });
 
