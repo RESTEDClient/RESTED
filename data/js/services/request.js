@@ -32,8 +32,9 @@ function(RequestUtils) {
   };
 
   var createXMLHttpRequest = function(req) {
-    var request = new XMLHttpRequest({ mozSystem: true });
+    var request = new XMLHttpRequest();
     request.open(req.method, req.url);
+    request.withCredentials = true;
 
     if(Array.isArray(req.headers)) {
       req.headers.forEach(function(header) {
