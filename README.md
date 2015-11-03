@@ -2,7 +2,7 @@
 
 A REST client for the rest of us.
 
-_Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=search)._
+_Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
 [![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=master)](https://travis-ci.org/esphen/RESTED)
 
@@ -39,11 +39,11 @@ If you use the Extension Auto-Installer, clone this project and run `jpm watchpo
 The extension will then be reinstalled every time you save a file, without you having to do a thing.
 
 If you don't use Extension Auto-Installer, you need to do what the extension does for you manually every time you save.
-That is, `jpm xpi && firefox rested@restedclient-0.x.y.xpi` (remember to change the version number).
+That is, `jpm run -b <Path to your firefox binary> -p <Path to your firefox profile>`.
 
 Note: Soon Mozilla will require unsigned extenstions (not from addons.mozilla.org) to be run in [Nightly](https://www.mozilla.org/firefox/nightly/).
 If you see a "RESTED could not be verified for use in Firefox", you may need to go get Nightly and develop from there. You also need to go to
-[about:config](about:config) and the following flags to false: `xpinstall.signatures.required` and `xpinstall.whitelist.required`.
+[about:config](about:config) and the following flag to false: `xpinstall.signatures.required`.
 
 Protip: If you are working on IndexedDB and fail to inspect the contents with the dev tools, that may be because you can't do that in
 a chrome URL. Try starting up a [static webserver](https://www.npmjs.com/package/static-server) in the data directory of the project and
