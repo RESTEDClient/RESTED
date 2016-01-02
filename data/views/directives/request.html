@@ -80,13 +80,19 @@
 
   <section data-ng-if="response &amp;&amp; !requestInProgress"
            class="panel panel-default">
-    <div class="panel-heading one-line-text">
+    <div class="panel-heading">
       Response -
       <a class="text-muted"
          target="_blank"
          data-ng-href="{{response.responseURL}}">
          {{response.responseURL}}
       </a>
+      <div class="pull-right hoverhand">
+        <slidey-button
+                data-config="{title: 'Close Response', classes: ['fa', 'fa-close']}"
+                data-click-event="toggleRemoveResponse()">
+        </slidey-button>
+      </div>
     </div>
     <div class="panel-body">
       <h2 class="col-xs-12" data-ng-style="{color: (response.status | status)}">

@@ -222,6 +222,10 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
         }
       };
 
+      scope.toggleRemoveResponse = function() {
+        scope.response = null;
+      };
+
       scope.getRandomURL = RequestUtils.randomURL;
     }
   };
