@@ -3,17 +3,28 @@
 angular.module('RestedApp')
 .factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
 function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
+  var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+                          .getService(Components.interfaces.nsIPromptService);
 
   try {
     var localDB = window.indexedDB.open(DB_NAME, DB_VERSION);
   } catch(e) {
     console.error(e);
-    alert('A critical error occured when loading indexedDB. Your collections will not work. Please look at the developer console (F12) and post ' +
-         'a bug on my github (github.com/esphen/RESTED');
+    if (prompts.confirm(null, 'A critical error', 'A critical error occured when loading indexedDB.\n\n' +
+                        'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
+      indexedDB.deleteDatabase('RESTED');
+      location.reload();
+    }
   }
 
   localDB.onerror = function(event) {
     Modal.throwError('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work. ', event);
+
+    if (prompts.confirm(null, 'A critical error', 'A critical error occured when loading indexedDB.\n\n' +
+                        'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
+      indexedDB.deleteDatabase('RESTED');
+      location.reload();
+    }
   };
 
   // Initialize DB
