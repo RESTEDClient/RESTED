@@ -2,6 +2,19 @@
 
 var module = angular.module('RestedApp');
 
+
+var IDB_SUPPORTED = true;
+try {
+  window.indexedDB;
+} catch (err) {
+  IDB_SUPPORTED = false;
+}
+
+// This constant uses the logic above to determine
+// whether or not the client supports (or more
+// likely has disabled) indexedDB.
+module.constant('IDB_SUPPORTED', IDB_SUPPORTED);
+
 // Used to have the ability to migrate users
 // if we change the db schema. When a connection
 // to indexedDB is opened with a higher version,

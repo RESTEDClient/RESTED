@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('collections', ['DEFAULT_REQUEST', 'Modal', 'Collection', 'DB', '$filter',
-function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
+.directive('collections', ['DEFAULT_REQUEST', 'IDB_SUPPORTED', 'Modal', 'Collection', 'DB', '$filter',
+function(DEFAULT_REQUEST, IDB_SUPPORTED, Modal, Collection, DB, $filter) {
   return {
     restrict: 'E',
     templateUrl: 'views/directives/collections.html',
@@ -12,6 +12,7 @@ function(DEFAULT_REQUEST, Modal, Collection, DB, $filter) {
     },
     link: function(scope, element, attrs, controllers) {
 
+      scope.indexedDBSupported = IDB_SUPPORTED;
       scope.removeFromCollection = Collection.removeRequestFromCollection;
 
       scope.selectRequest = function(request) {
