@@ -1,26 +1,24 @@
-<div  data-ng-if="$root.IDB_SUPPORTED !== undefined">
-  <div class="row" data-ng-controller="MainCtl">
-    <div class="header col-xs-12">
-      <h1>
-        <img class="logo"
-             height="40"
-             src="img/rested-logo.png"
-        />
-        RESTED
-      </h1>
-    </div>
-
-    <collections class="animate hidden-xs"
-                 data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}"
-                 data-selected-request="request"
-                 data-collections="collections">
-    </collections>
-    <request class="animate"
-             data-ng-class="{'col-xs-12': options.collectionsMinimized, 'col-xs-12 col-sm-8': !options.collectionsMinimized}"
-             data-request="request">
-    </request>
-
-    <modal data-options="modalOptions"></modal>
+<div class="row" data-ng-controller="RootCtl">
+  <div class="header col-xs-12">
+    <h1>
+      <img class="logo"
+           height="40"
+           src="img/rested-logo.png"
+      />
+      RESTED
+    </h1>
   </div>
+
+  <collections class="animate hidden-xs"
+               data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}"
+               data-selected-request="request"
+               data-collections="collections">
+  </collections>
+  <request class="animate"
+           data-ng-class="{'col-xs-12': options.collectionsMinimized, 'col-xs-12 col-sm-8': !options.collectionsMinimized}"
+           data-request="request">
+  </request>
+
+  <modal data-options="modalOptions"></modal>
 </div>
 

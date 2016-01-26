@@ -1,23 +1,50 @@
 'use strict';
 
+// Register app
+angular.module('RestedApp', ['dndLists']);
+
+// Prevent double-bootstrap by storing
+// bootstrap status.
+var isBootstrapped = false;
+
 // We have to delay the entire
-// loading of the main route until we
+// bootstrapping of the app until we
 // know of the client supports
 // indexeddb because of how firefox
 // handles private mode.
-angular.module('RestedApp', ['dndLists', 'ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+function bootstrapApp(doesSupportIDB) {
+  if (!isBootstrapped) {
+    window.IDB_SUPPORTED = doesSupportIDB;
+    var app = angular.element('#app');
+    angular.bootstrap(app, ['RestedApp']);
 
-  $routeProvider
-    .when('/', {
-      controller: 'RootCtl',
-      templateUrl: 'views/main.html',
-      resolve:{
-        'IDB_SUPPORTED': function(checkIDBSupport){
-          return checkIDBSupport();
-        }
-      }
-    })
-    .otherwise('/');
-}]);
+    if (doesSupportIDB) {
+      (window.indexedDB || window.mozIndexedDB).deleteDatabase('_RESTED_TEST_IDB_SUPPORT');
+    }
+  }
+}
+
+function checkIDBSupportAndCallManualBootstrap() {
+  try {
+    var indexedDB = window.indexedDB || window.mozIndexedDB;
+
+    // In Firefox private mode, this will throw
+    // an error because IndexedDB is only read,
+    // not write.
+    var test = indexedDB.open('_RESTED_TEST_IDB_SUPPORT', 1);
+
+    // Check if we successfully created test DB
+    test.onerror = function() {
+      bootstrapApp(false);
+    }
+    test.onsuccess = function() {
+      bootstrapApp(true);
+    }
+  } catch(e) {
+    bootstrapApp(false);
+  }
+};
+
+// Done setting up, check for support and bootstrap
+checkIDBSupportAndCallManualBootstrap();
 

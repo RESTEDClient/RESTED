@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="RestedApp">
+<html lang="en" id="app">
 <head>
   <title>RESTED Client</title>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -19,13 +19,12 @@
 
 <body>
   <main class="container-fluid" data-ng-cloak="">
-    <div data-ng-view=""></div>
+    <div data-ng-include="'views/main.html'"></div>
   </main>
 
   <!-- Libraries -->
   <script type="text/javascript" src="ext/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="ext/angular.min.js"></script>
-  <script type="text/javascript" src="ext/angular-route.min.js"></script>
   <script type="text/javascript" src="ext/bootstrap.min.js"></script>
   <script type="text/javascript" src="ext/angular-drag-and-drop-lists.js"></script>
   <script type="text/javascript" src="ext/highlight.js/highlight.pack.js"></script>
@@ -50,7 +49,6 @@
   <script type="text/javascript" src="js/directives/slideyButton.js"></script>
 
   <!-- Services -->
-  <script type="text/javascript" src="js/services/checkIDBSupport.js"></script>
   <script type="text/javascript" src="js/services/db.js"></script>
   <script type="text/javascript" src="js/services/base64.js"></script>
   <script type="text/javascript" src="js/services/request.js"></script>
@@ -63,7 +61,6 @@
 
   <!-- Controllers -->
   <script type="text/javascript" src="js/controllers/root.js"></script>
-  <script type="text/javascript" src="js/controllers/main.js"></script>
   <script type="text/javascript" src="js/controllers/options.js"></script>
 </body>
 </html>
