@@ -21,7 +21,8 @@ class Collections {
 
 class Request {
     .. Description ..
-    Holds the logic for
+    Holds the view logic for sending
+    new requests to a server.
 }
 
 class OptionsCtl {
@@ -83,3 +84,4 @@ class "constants.js" as Constants {
     that is used by the app globally.
 }
 @enduml
+
