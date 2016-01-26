@@ -1,5 +1,5 @@
 <div>
-  <section class="panel panel-default" data-ng-show="indexedDBSupported">
+  <section class="panel panel-default" data-ng-show="$root.IDB_SUPPORTED">
     <div class="panel-heading">
       Collections
 
@@ -91,9 +91,9 @@
       </div>
     </div>
   </section>
-  <section class="panel panel-default" data-ng-if="!indexedDBSupported">
+  <section class="panel panel-default" data-ng-if="!$root.IDB_SUPPORTED">
     <div class="panel-body">
-      Your browser does not support indexedDB :( - or you have disabled it, you mischievous you.
+      Your browser does not support indexedDB :( - or you are in private mode, you mischievous you.
       Don't worry, I don't judge, but you will not be able to save requests to collections without indexedDB.
       Since collections would normally be here, here is a picure of a fiery fox instead!
       <a href="http://www.boltgraphics.com/the-fox-unleashed/" target="_blank">

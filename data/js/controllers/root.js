@@ -10,6 +10,9 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   $rootScope.urlVariables = [];
   $rootScope.options = {};
 
+  // Set IndexedDBSupport for views
+  $rootScope.IDB_SUPPORTED = window.IDB_SUPPORTED;
+
   var errorHandler = Modal.errorHandler;
   // Data is saved in the db like so:
   //  [

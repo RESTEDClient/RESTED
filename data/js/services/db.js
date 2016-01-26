@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', 'IDB_SUPPORTED', '$q', 'Modal',
-function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, IDB_SUPPORTED, $q, Modal) {
+.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
+function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
   var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                           .getService(Components.interfaces.nsIPromptService);
 
   try {
-    var localDB = IDB_SUPPORTED ? window.indexedDB.open(DB_NAME, DB_VERSION) : {};
+    // Depends on IDB_SUPPORTED being resolved during bootstrapping
+    var localDB = window.IDB_SUPPORTED ? window.indexedDB.open(DB_NAME, DB_VERSION) : {};
   } catch(e) {
     console.error(e);
     if (prompts.confirm(null, 'A critical error', 'A critical error occured when loading indexedDB.\n\n' +
@@ -161,6 +162,6 @@ function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME,
   return {
     collections: createStore(DB_OBJECT_STORE_NAME),
     urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME),
-    options: createStore(DB_OPTIONS_STORE_NAME)
+    options: createStore(DB_OPTIONS_STORE_NAME),
   };
 }]);
