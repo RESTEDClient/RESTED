@@ -2,6 +2,7 @@
 
 var module = angular.module('RestedApp');
 
+
 // Used to have the ability to migrate users
 // if we change the db schema. When a connection
 // to indexedDB is opened with a higher version,

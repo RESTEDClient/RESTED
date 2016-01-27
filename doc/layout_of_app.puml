@@ -1,0 +1,87 @@
+@startuml
+class "app.js" as App {
+    .. Description ..
+    Where the app is bootstrapped
+}
+
+class RootCtl {
+    .. Description ..
+    Holds <b>$rootScope</b> and fetches
+    initial data from DB.
+    ..
+    Can generally be considered the
+    top level of the app.
+}
+
+class Collections {
+    .. Description ..
+    Holds the list where the
+    collections are displayed.
+}
+
+class Request {
+    .. Description ..
+    Holds the view logic for sending
+    new requests to a server.
+}
+
+class OptionsCtl {
+    ..Description..
+    The controller for the options
+    modal (popup box).
+}
+
+class Modal {
+    ..Description..
+    The directive that controls
+    the currently visible Modal
+    (popup box), if any.
+}
+
+note "There are also several services with\nglobally accessible utility functions" as Services
+
+App --> RootCtl
+
+OptionsCtl --> Modal
+
+RootCtl --> Collections
+RootCtl --> Request
+RootCtl.OptionsCtl
+
+RootCtl-->Modal
+
+RootCtl.Services
+
+class DB {
+  ..Description..
+  Holds the database API
+
+  Each collection placed
+  in IndexedDB gets these
+  methods:
+  --Methods--
+  get()
+  add(item)
+  set(item)
+  delete(item)
+}
+
+class Collection {
+    ..Description..
+    Holds CRUD methods
+    on collections
+}
+
+class "... And more!" as More
+
+Services .. DB
+Services .. Collection
+Services .. More
+
+class "constants.js" as Constants {
+    ..Description..
+    Holds any and all constants
+    that is used by the app globally.
+}
+@enduml
+

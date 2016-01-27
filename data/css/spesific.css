@@ -132,6 +132,11 @@ input.edit-collection-name {
   margin-top: 10px;
 }
 
+/* For CUSTOM method */
+.form-control.col-xs-6 {
+  width: 50% !important;
+}
+
 .list-group-item-text {
   word-break: break-all;
 }
@@ -148,4 +153,11 @@ input.edit-collection-name {
 /* Allow highlighting to extend to the edges */
 pre {
   padding: 0;
+}
+
+/* He is really cool, though */
+img.really-cool-fox {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
