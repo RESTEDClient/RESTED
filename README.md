@@ -4,7 +4,10 @@ A REST client for the rest of us.
 
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
-[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=master)](https://travis-ci.org/esphen/RESTED)
+Some users have reported a bug with the button disappearing. I have not been able to fix this as of yet, as a
+workaround, you can bookmark a link directly to the addon - chrome://rested/content/rested.html.
+
+[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
 
 RESTED is a new take on rest clients on Firefox.
 It is designed to be easy to use to let you work as effective as possible.
@@ -21,6 +24,8 @@ that they will be merged - requests will be reviewed).
 ## How to contribute
 This project was from the very beginning intended to be easy to work with.
 It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
+
+For a short read on how the app works, go to [this page](https://github.com/esphen/RESTED/wiki).
 
 What features are on the to-do list:
  - Request history
