@@ -5,7 +5,8 @@ A REST client for the rest of us.
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
 Some users have reported a bug with the button disappearing. I have not been able to fix this as of yet, as a
-workaround, you can bookmark a link directly to the addon - chrome://rested/content/rested.html.
+workaround, you can bookmark a link directly to the addon - chrome://rested/content/rested.html. See
+[issue #16](https://github.com/esphen/RESTED/issues/16) for more info.
 
 [![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
 
