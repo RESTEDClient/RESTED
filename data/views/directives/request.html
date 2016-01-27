@@ -73,9 +73,9 @@
         <!-- Basic auth -->
         <div data-ng-include="'views/fragments/request/basicAuthDropdown.html'"></div>
 
-        <!-- POST, PUT, PATCH request body -->
+        <!-- POST, PUT, PATCH, CUSTOM request body -->
         <div data-ng-include="'views/fragments/request/requestBodyDropdown.html'"
-             data-ng-show="['POST', 'PUT', 'PATCH'].indexOf(request.method) > -1">
+             data-ng-show="['POST', 'PUT', 'PATCH', 'CUSTOM'].indexOf(displayedRequest) > -1">
         </div>
       </form>
     </div>
