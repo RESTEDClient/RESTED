@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A REST client for the rest of us",
   "homepage_url": "https://github.com/esphen/RESTED",
+  "contributors": [
+    "Espen Henriksen"
+  ],
+  "license": "GPL-2.0",
   "manifest_version": 2,
   "applications": {
     "gecko": {
@@ -10,19 +14,27 @@
       "strict_min_version": "45.0"
     }
   },
-  "background": {
-    "scripts": ["main.js"]
+  "icons": {
+    "16": "data/img/favicon/favicon-16x16.png",
+    "32": "data/img/favicon/favicon-32x32.png",
+    "64": "data/img/favicon/favicon-64x64.png",
+    "96": "data/img/favicon/favicon-96x96.png",
+    "128": "data/img/favicon/favicon-128x128.png"
   },
   "browser_action": {
     "default_title": "RESTED",
     "default_icon": {
-      "16": "/data/img/favicon/favicon-16x16.png",
-      "32": "/data/img/favicon/favicon-32x32.png",
-      "64": "/data/img/favicon/favicon-64x64.png",
-      "128": "/data/img/favicon/favicon-128x128.png"
+      "16": "data/img/favicon/favicon-16x16.png",
+      "32": "data/img/favicon/favicon-32x32.png",
+      "64": "data/img/favicon/favicon-64x64.png",
+      "96": "data/img/favicon/favicon-96x96.png",
+      "128": "data/img/favicon/favicon-128x128.png"
     }
   },
+  "background": {
+    "scripts": ["main.js"]
+  },
   "permissions": [
-    "tabs"
+    "<all_urls>"
   ]
 }
