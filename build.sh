@@ -1,18 +1,26 @@
 #!/bin/bash
 
-FILES="data main.js"
+if test $# -ne 1; then
+  echo "Usage: build.sh <pem path>"
+  exit 1
+fi
+
+PEM=$1
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+FILES="data main.js manifest.json"
 
 echo Packaging for Chrome
 
 rm -fv manifest.json
 ln -vs google-chrome/manifest.json
-zip -qr RESTED.crx $FILES
+echo "$(dirname "$0")" $0
+$DIR/mkcrx.sh $DIR $PEM
 
 echo Done
 
 echo Packaging for Opera
 
-zip -qr RESTED.nex $FILES
+cp -v RESTED.crx RESTED.nex
 
 echo Done
 
