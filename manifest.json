@@ -4,7 +4,9 @@
   "description": "A REST client for the rest of us",
   "homepage_url": "https://github.com/esphen/RESTED",
   "contributors": [
-    "Espen Henriksen"
+    "Espen Henriksen",
+    "Mostafa Mirmousavi",
+    "Tibor Katelbach"
   ],
   "license": "GPL-2.0",
   "manifest_version": 2,
