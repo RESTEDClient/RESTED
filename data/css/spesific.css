@@ -121,6 +121,7 @@ input.edit-collection-name {
 
 .minimized {
   float: left;
+  clear: both;
   opacity: 0;
   width: 0px;
 
