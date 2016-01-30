@@ -2,3 +2,4 @@
 install.rdf
 node_modules
 bootstrap.js
+dist/

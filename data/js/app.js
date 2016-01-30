@@ -7,6 +7,8 @@ angular.module('RestedApp', ['dndLists']);
 // bootstrap status.
 var isBootstrapped = false;
 
+var dbTestName = '_RESTED_TEST_IDB_SUPPORT' + (Math.random() * 10000);
+
 // We have to delay the entire
 // bootstrapping of the app until we
 // know of the client supports
@@ -15,11 +17,13 @@ var isBootstrapped = false;
 function bootstrapApp(doesSupportIDB) {
   if (!isBootstrapped) {
     window.IDB_SUPPORTED = doesSupportIDB;
+
     var app = angular.element('#app');
     angular.bootstrap(app, ['RestedApp']);
+    isBootstrapped = true;
 
     if (doesSupportIDB) {
-      (window.indexedDB || window.mozIndexedDB).deleteDatabase('_RESTED_TEST_IDB_SUPPORT');
+      (window.indexedDB || window.mozIndexedDB).deleteDatabase(dbTestName);
     }
   }
 }
@@ -31,7 +35,7 @@ function checkIDBSupportAndCallManualBootstrap() {
     // In Firefox private mode, this will throw
     // an error because IndexedDB is only read,
     // not write.
-    var test = indexedDB.open('_RESTED_TEST_IDB_SUPPORT', 1);
+    var test = indexedDB.open(dbTestName, 1);
 
     // Check if we successfully created test DB
     test.onerror = function() {
@@ -41,7 +45,10 @@ function checkIDBSupportAndCallManualBootstrap() {
       bootstrapApp(true);
     }
   } catch(e) {
-    bootstrapApp(false);
+    // Run async to allow controllers to register
+    setTimeout(function() {
+      bootstrapApp(false);
+    });
   }
 };
 
