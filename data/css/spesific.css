@@ -132,6 +132,11 @@ input.edit-collection-name {
   margin-top: 10px;
 }
 
+/* For CUSTOM method */
+.form-control.col-xs-6 {
+  width: 50% !important;
+}
+
 .list-group-item-text {
   word-break: break-all;
 }

@@ -12,7 +12,7 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
     },
     link: function(scope, element, attrs, controllers) {
       scope.options = {
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP']
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'JSONP', 'CUSTOM']
       };
 
       scope.$on('highlightStyle-change', function() {
@@ -22,6 +22,7 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
       scope.slidden = {};
       scope.urlVariables = [];
       scope.headers = [];
+      scope.displayedRequest = scope.request.method || scope.options[0];
 
       var spinnerTimeout;
 
@@ -227,6 +228,27 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
       };
 
       scope.getRandomURL = RequestUtils.randomURL;
+
+      /**
+       * We keep the dropdown selection and the request.method
+       * in separate variables to allow the text input to hold
+       * the truth when both are visible. If the <select> is
+       * changed, it just changes the request.method manually.
+       */
+      scope.handleMethodSelectChange = function(method) {
+        scope.request.method = method;
+      }
+
+      scope.$watch('request.method', function(method) {
+        if (method === 'CUSTOM' || scope.options.methods.indexOf(method) === -1) {
+          scope.showCustomField = true;
+          scope.displayedRequest = 'CUSTOM';
+        } else {
+          scope.showCustomField = false;
+          // To reset select
+          scope.displayedRequest = method;
+        }
+      });
     }
   };
 }]);
