@@ -1,29 +1,37 @@
 #!/bin/bash
-
-if test $# -ne 1; then
-  echo "Usage: build.sh <pem path>"
-  exit 1
-fi
+# Can read pem from file or stdin
 
 PEM=$1
+TMPFILE="RESTED.pem"
+SHRED=false
+
+if test $# -ne 1; then
+  while read i; do
+    echo $(printf "\n$i") >> $TMPFILE
+  done
+  SHRED=true
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 FILES="data main.js manifest.json"
 
+echo
 echo Packaging for Chrome
 
 rm -fv manifest.json
 ln -vs google-chrome/manifest.json
-echo "$(dirname "$0")" $0
-$DIR/mkcrx.sh $DIR $PEM
+$DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}"
 
 echo Done
 
+echo
 echo Packaging for Opera
 
 cp -v RESTED.crx RESTED.nex
 
 echo Done
 
+echo
 echo Packaging for Firefox
 
 rm -fv manifest.json
@@ -33,4 +41,10 @@ zip -qr RESTED.xpi $FILES
 echo Done
 
 ls -hl RESTED.*
+
+if [ $SHRED == true ]; then
+  echo Shredding temp file
+  shred -u $TMPFILE
+  echo Shredded $TMPFILE
+fi
 
