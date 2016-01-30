@@ -119,9 +119,13 @@ input.edit-collection-name {
   margin-bottom: 2px;
 }
 
+collections {
+  /* Prevent flicker when minimizing on webkit */
+  clear: both;
+}
+
 .minimized {
   float: left;
-  clear: both;
   opacity: 0;
   width: 0px;
 
