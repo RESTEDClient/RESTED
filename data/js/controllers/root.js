@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
-function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', 'BrowserSync', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, BrowserSync, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
@@ -46,6 +46,17 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.collections.get().then(function(data) {
     $rootScope.collections = $filter('orderBy')(data, 'order');
+
+    // Get from sync service and overwrte DB if sync enabled
+    console.log('collections from IDB', $rootScope.collections);
+    BrowserSync.get('collections', function(syncData) {
+      $rootScope.$apply(function() {
+        $rootScope.collections = $filter('orderBy')(syncData.collections || [], 'order');
+        console.log('collections from BS', $rootScope.collections);
+
+        // TODO Set indexedDB storage content
+      });
+    });
   }, errorHandler);
 
   // Data is saved in db like so:

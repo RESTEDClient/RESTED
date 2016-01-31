@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
-function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
+.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal', 'BrowserSync',
+function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal, BrowserSync) {
 
   try {
     // Depends on IDB_SUPPORTED being resolved during bootstrapping
@@ -13,6 +13,8 @@ function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME,
                         'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
       indexedDB.deleteDatabase('RESTED');
       location.reload();
+
+      BrowserSync.clear();
     }
   }
 
@@ -23,6 +25,8 @@ function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME,
                         'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
       indexedDB.deleteDatabase('RESTED');
       location.reload();
+
+      BrowserSync.clear();
     }
   };
 

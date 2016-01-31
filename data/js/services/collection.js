@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('Collection', ['DEFAULT_SELECTED_COLLECTION', '$rootScope', '$filter', 'DB', 'Modal',
-function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
+.factory('Collection', ['DEFAULT_SELECTED_COLLECTION', '$rootScope', '$filter', 'DB', 'Modal', 'BrowserSync',
+function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal, BrowserSync) {
   var errorHandler = function(event) {
     Modal.throwError('An error occured when reading/writing to indexedDB: ', event);
   };
@@ -31,13 +31,20 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
       DB.collections.add({ name: name.trim(), requests: requests }).then(function() {
         $rootScope.collections.push({ name: name, requests: requests });
         Modal.remove();
+
+        // Place into BrowserSync if enabled
+        BrowserSync.set('collections', $rootScope.collections);
       }, errorHandler);
+
     },
     deleteCollection: function(collection) {
       DB.collections.delete(collection).then(function() {
         $rootScope.collections = $rootScope.collections.filter(function(item) {
           return item !== collection;
         });
+
+        // Place into BrowserSync if enabled
+        BrowserSync.set('collections', $rootScope.collections);
       }, errorHandler);
     },
     updateCollectionName: function(collection, newName) {
@@ -61,12 +68,17 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
         // Add new collection with updated name (primary key)
         collection.name = newName;
         DB.collections.set(collection).then(null, errorHandler);
+
+        // TODO BrowserSync
       }, errorHandler);
     },
     saveAllCollections: function() {
       $rootScope.collections.forEach(function(collection) {
         DB.collections.set(collection).then(null, errorHandler);
       });
+
+      // Place into BrowserSync if enabled
+      BrowserSync.set('collections', $rootScope.collections);
     },
     addRequestToCollection: function(request, collectionIndex) {
       if (!collectionIndex && collectionIndex !== 0) {
@@ -88,12 +100,18 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
 
           DB.collections.add($rootScope.collections[0]).then(Modal.remove, errorHandler);
 
+          // Place into BrowserSync if enabled
+          BrowserSync.set('collections', $rootScope.collections);
+
         // If there is no dupe in selected collection, add
         } else if ($rootScope.collections[collectionIndex].requests.indexOf(request) === -1) {
           request.id = undefined;
           $rootScope.collections[collectionIndex].requests.push(request);
 
           DB.collections.set($rootScope.collections[collectionIndex]).then(Modal.remove, errorHandler);
+
+          // Place into BrowserSync if enabled
+          BrowserSync.set('collections', $rootScope.collections);
 
         // If there is a duplicate request, query user for action
         } else {
@@ -104,6 +122,9 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
               text: 'Overwrite',
               click: function() {
                 DB.collections.set($rootScope.collections[collectionIndex]).then(Modal.remove, errorHandler);
+
+                // Place into BrowserSync if enabled
+                BrowserSync.set('collections', $rootScope.collections);
               }
             }, {
               text: 'New',
@@ -121,6 +142,9 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
 
                     $rootScope.collections[collectionIndex] = unalteredCollections;
                     DB.collections.set(unalteredCollections).then(Modal.remove, errorHandler);
+
+                    // Place into BrowserSync if enabled
+                    BrowserSync.set('collections', $rootScope.collections);
                   } else {
                     Modal.throwError('Sorry, something went wrong! Unaltered collections: ', unalteredCollections);
                   }
@@ -143,6 +167,8 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
           click: function() {
             collection.requests.splice(index, 1);
             DB.collections.set(collection).then(Modal.remove, errorHandler);
+
+            // TODO BrowserSync
           }
         }]
       });
@@ -159,6 +185,9 @@ function(DEFAULT_SELECTED_COLLECTION, $rootScope, $filter, DB, Modal) {
             }
             $rootScope.collections[0].requests = [];
             DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
+
+            BrowserSync.set('collections', $rootScope.collections);
+
             callback();
           }
         }]

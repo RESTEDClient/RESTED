@@ -160,6 +160,15 @@ pre {
   padding: 0;
 }
 
+/*
+ * Interpret p tags inside checkboxes as descriptive
+ * text like the one used in the options modal
+ */
+.checkbox label p {
+  margin-left: 20px;
+  font-style: italic;
+}
+
 /* He is really cool, though */
 img.really-cool-fox {
   width: 100%;
