@@ -1,159 +1,101 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal', 'BrowserSync',
-function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal, BrowserSync) {
-
-  try {
-    // Depends on IDB_SUPPORTED being resolved during bootstrapping
-    var localDB = window.IDB_SUPPORTED ? window.indexedDB.open(DB_NAME, DB_VERSION) : {};
-  } catch(e) {
-    console.error(e);
-    if (confirm('A critical error occured when loading indexedDB.\n\n' +
-                        'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
-      indexedDB.deleteDatabase('RESTED');
-      location.reload();
-
-      BrowserSync.clear();
-    }
-  }
-
-  localDB.onerror = function(event) {
-    Modal.throwError('ERROR: Could not open connection to indexedDB. Collections or URL variables will not work. ', event);
-
-    if (confirm('A critical error occured when loading indexedDB.\n\n' +
-                        'Would you like to remove all saved data (Collections and settings) in order to fix this issue?')) {
-      indexedDB.deleteDatabase('RESTED');
-      location.reload();
-
-      BrowserSync.clear();
-    }
-  };
-
-  // Initialize DB
-  localDB.onupgradeneeded = function(event) {
-    console.info('DB upgrade needed, running initialize');
-
-    var db = event.target.result;
-    var storeNames = db.objectStoreNames;
-    if (!storeNames.contains(DB_OBJECT_STORE_NAME)) {
-      db.createObjectStore(DB_OBJECT_STORE_NAME, { keyPath: 'name' });
-    }
-    if (!storeNames.contains(DB_URL_VARIABLES_STORE_NAME)) {
-      db.createObjectStore(DB_URL_VARIABLES_STORE_NAME, { keyPath: 'name' });
-    }
-    if (!storeNames.contains(DB_OPTIONS_STORE_NAME)) {
-      db.createObjectStore(DB_OPTIONS_STORE_NAME, { keyPath: 'name' });
-    }
-
-    console.info('Upgrade completed. DB is now:', storeNames);
-  };
-
-  var queuedTransactions = [];
-  var onDBReady = function(fn) {
-    if(localDB.readyState === 'done') {
-      fn();
-    } else {
-      // We need to queue transactions against the
-      // database so transactions can run parallel
-      // and not overwrite each other.
-      queuedTransactions.push(fn);
-      localDB.onsuccess = function runQueuedOperations() {
-        queuedTransactions.forEach(function(transaction) {
-          transaction();
-        });
-      };
-    }
-  };
+.factory('DB', ['DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q',
+function(DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q) {
 
   var message = function(success, message, object) {
     return { success: success, message: message, object: object };
   };
 
+  var checkError = function(onSuccess, onError) {
+    var lastError = chrome.runtime.lastError;
+    if (lastError) {
+      // Unset to not trigger next time
+      chrome.runtime.lastError = undefined;
+
+      onError(lastError);
+    } else {
+      onSuccess();
+    }
+  };
+
   var createStore = function(storeName) {
     return {
-      get: function() {
+      get() {
         var deferred = $q.defer();
 
-        onDBReady(function() {
+        chrome.storage.local.get(storeName, items => {
 
-          // Fetch objectStore
-          var objectStore = localDB.result.transaction(storeName).objectStore(storeName);
+          checkError(function onSuccess() {
+            deferred.resolve(items[storeName] || []);
+          }, function onError(event) {
+            deferred.reject(message(false, 'An error occured when fetching from storage.local! storeName=' + storeName, event));
+          });
 
-          // Open cursor for iteration
-          var result = [];
-          var cursorObject = objectStore.openCursor();
-          cursorObject.onsuccess = function(event) {
+        });
 
-            var cursor = event.target.result;
-            if (cursor) {
-              result.push(cursor.value);
-              cursor.continue();
+        return deferred.promise;
+      },
+      add(item) {
+        var deferred = $q.defer();
+
+        this.get().then(items => {
+          chrome.storage.local.set({ [storeName]: items.concat(item) }, function() {
+
+            checkError(function onSuccess() {
+              deferred.resolve(message(true, 'Successfully added an entry to the database', item));
+            }, function onError(event) {
+              deferred.reject(message(false, 'An error occured when adding to storage.local! storeName=' + storeName, event));
+            });
+
+          });
+        });
+
+        return deferred.promise;
+      },
+      set(item) {
+        var deferred = $q.defer();
+
+        this.get().then(items => {
+          var added = items.some((it, ind) => {
+            if (it.name === item.name) {
+              items[ind] = item;
+              return true;
             }
-            else {
-              deferred.resolve(result);
-            }
-          };
+          });
 
-          cursorObject.onerror = function(event) {
-            deferred.reject(message(false, 'An error occured when fetching from database!', event));
-          };
+          // If no item was found to replace, append instead
+          if (!added) {
+            items.push(item);
+          }
+
+          chrome.storage.local.set({ [storeName]: items }, () => {
+
+            checkError(function onSuccess() {
+              deferred.resolve(message(true, 'Successfully updated an entry', item));
+            }, function onError(event) {
+              deferred.reject(message(false, 'An error occured when updating and entry in storage.local! storeName=' + storeName, event));
+            });
+
+          });
         });
 
         return deferred.promise;
       },
-      add: function(item) {
+      delete(item) {
         var deferred = $q.defer();
 
-        onDBReady(function() {
-          var transaction = localDB.result.transaction([storeName], 'readwrite');
+        this.get().then(items => {
+          chrome.storage.local.set({ [storeName]: items.filter(i => i.name !== item.name ) }, () => {
 
-          transaction.onerror = function(event) {
-            deferred.reject(message(false, 'An error occured when adding to database!', event));
-          };
+            checkError(function onSuccess() {
+              deferred.resolve(message(true, 'Successfully deleted an entry from the database', item));
+            }, function onError(event) {
+              deferred.reject(message(false, 'An error occured when deleting an entry in storage.local! storeName=' + storeName, event));
+            });
 
-          transaction.oncomplete = function() {
-            deferred.resolve(message(true, 'Successfully added an entry to the database', item));
-          };
-
-          var objectStore = transaction.objectStore(storeName);
-          objectStore.add(item);
-        });
-
-        return deferred.promise;
-      },
-      set: function(item) {
-        var deferred = $q.defer();
-
-        onDBReady(function() {
-          var objectStore = localDB.result.transaction([storeName], 'readwrite').objectStore(storeName);
-          var requestUpdate = objectStore.put(item);
-
-          requestUpdate.onerror = function(event) {
-            deferred.reject(message(false, 'An error occured when updating an entry in the database!', event));
-          };
-
-          requestUpdate.onsuccess = function() {
-            deferred.resolve(message(true, 'Successfully updated an entry', item));
-          };
-        });
-
-        return deferred.promise;
-      },
-      delete: function(item) {
-        var deferred = $q.defer();
-
-        onDBReady(function() {
-          var objectStore = localDB.result.transaction([storeName], 'readwrite').objectStore(storeName);
-          var requestDelete = objectStore.delete(item.name);
-
-          requestDelete.onerror = function(event) {
-            deferred.reject(message(false, 'An error occured when deleting an entry in the database!', event));
-          };
-
-          requestDelete.onsuccess = function() {
-            deferred.resolve(message(true, 'Successfully deleted an entry from the database', item));
-          };
+          });
         });
 
         return deferred.promise;

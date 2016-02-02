@@ -49,14 +49,14 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
 
     // Get from sync service and overwrte DB if sync enabled
     console.log('collections from IDB', $rootScope.collections);
-    BrowserSync.get('collections', function(syncData) {
+    /*BrowserSync.get('collections', function(syncData) {
       $rootScope.$apply(function() {
         $rootScope.collections = $filter('orderBy')(syncData.collections || [], 'order');
         console.log('collections from BS', $rootScope.collections);
 
         // TODO Set indexedDB storage content
       });
-    });
+    });*/
   }, errorHandler);
 
   // Data is saved in db like so:
@@ -74,6 +74,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   DB.urlVariables.get().then(function(data) {
     // Defensive programming ftw
     $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
+    console.log('urls from IDB', $rootScope.urlVariables);
   }, errorHandler);
 
   // Data is saved in db like so:
