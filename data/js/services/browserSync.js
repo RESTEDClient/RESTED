@@ -19,7 +19,10 @@ function($rootScope, Modal) {
       Modal.throwError('An error occured when reading/writing the browser sync storage\n', chrome.runtime.lastError)
       return;
     }
-    var args = Array.prototype.slice.call(arguments, 1);
+
+    if (arguments.length <= 1) return;
+
+    var args = [].slice.call(arguments, 1);
     callback(...args);
   }
   return {
@@ -39,6 +42,8 @@ function($rootScope, Modal) {
       } else if ($rootScope.options.sync !== true) {
         return null;
       }
+
+      console.log('set', name, data);
 
       // TODO Add failure callback?
       // TODO Check for support of chrome.storage.sync (Opera does not supp)

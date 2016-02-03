@@ -48,15 +48,15 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
     $rootScope.collections = $filter('orderBy')(data, 'order');
 
     // Get from sync service and overwrte DB if sync enabled
-    console.log('collections from IDB', $rootScope.collections);
-    /*BrowserSync.get('collections', function(syncData) {
+    BrowserSync.get('collections', function(syncData) {
+      console.log('syncData coll', syncData);
       $rootScope.$apply(function() {
         $rootScope.collections = $filter('orderBy')(syncData.collections || [], 'order');
-        console.log('collections from BS', $rootScope.collections);
 
-        // TODO Set indexedDB storage content
+        // Set data in local store with data from sync
+        DB.collections.set(syncData);
       });
-    });*/
+    });
   }, errorHandler);
 
   // Data is saved in db like so:
@@ -74,7 +74,17 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   DB.urlVariables.get().then(function(data) {
     // Defensive programming ftw
     $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
-    console.log('urls from IDB', $rootScope.urlVariables);
+
+    // Get from sync service and overwrte DB if sync enabled
+    BrowserSync.get('urlVariables', function(syncData) {
+      $rootScope.$apply(function() {
+        $rootScope.urlVariables = syncData && syncData[0] && syncData[0].variables ? data[0].variables : [];
+        $rootScope.url = $filter('orderBy')(syncData.collections || [], 'order');
+
+        // Set data in local store with data from sync
+        DB.collections.set(syncData);
+      });
+    });
   }, errorHandler);
 
   // Data is saved in db like so:
@@ -88,6 +98,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.options.get().then(function(data) {
     $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
+    console.log('options from IDB', $rootScope.options);
   }, errorHandler);
 
 
