@@ -40,7 +40,7 @@ describe('Service: Export', function () {
     expect(typeof Export.toPostman).toBe('function');
   });
 
-  it('should convert HAR to correct format when invoked', function () {
+  it('should export to HAR with correct format when invoked', function () {
     var HAR = {
       "log": {
         "entries": [
@@ -63,7 +63,7 @@ describe('Service: Export', function () {
     expect(Export.toHAR(dataset)).toEqual(HAR);
   });
 
-  it('should convert to HAR using raw postData', function () {
+  it('should export to HAR using raw postData', function () {
     var HAR = {
       "log": {
         "entries": [
@@ -91,7 +91,7 @@ describe('Service: Export', function () {
     expect(Export.toHAR(dataset)).toEqual(HAR);
   });
 
-  it('should convert to HAR using formData', function() {
+  it('should export to HAR using formData', function() {
     var HAR = {
       "log": {
         "entries": [
@@ -134,21 +134,7 @@ describe('Service: Export', function () {
     expect(Export.toHAR(dataset)).toEqual(HAR);
   });
 
-  it('should convert Postman json to correct format when invoked', function () {
-    var postmanJson = {
-      "name": "Test collection",
-      "requests": [
-        {
-          "headers": "Content-Type: angular/awesomeness\n",
-          "url": "www.vg.no",
-          "method": "GET"
-        }
-      ],
-    };
-    expect(Export.toPostman(dataset)).toEqual(postmanJson);
-  });
-
-  it('should convert Postman json and include postData', function () {
+  it('should export to Postman json when invoked', function () {
     var postmanJson = {
       "name": "Test collection",
       "requests": [
@@ -156,6 +142,25 @@ describe('Service: Export', function () {
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
           "method": "GET",
+          "dataMode": "raw",
+          "data": [],
+          "rawModeData": [],
+        }
+      ],
+    };
+    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
+  });
+
+  it('should export to Postman json using raw postData', function () {
+    var postmanJson = {
+      "name": "Test collection",
+      "requests": [
+        {
+          "headers": "Content-Type: angular/awesomeness\n",
+          "url": "www.vg.no",
+          "method": "GET",
+          "rawModeData": [],
+          "dataMode": "params",
           "data": [
             {
               "key": "username",
@@ -173,8 +178,32 @@ describe('Service: Export', function () {
         }
       ],
     };
+    dataset[0].formData = [{
+      name: 'username',
+      value: 'admin'
+    }, {
+      name: 'password',
+      value: 'awesome'
+    }];
+    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
+  });
+
+  it('should export to Postman json using formData', function () {
+    var postmanJson = {
+      "name": "Test collection",
+      "requests": [
+        {
+          "headers": "Content-Type: angular/awesomeness\n",
+          "url": "www.vg.no",
+          "method": "GET",
+          "dataMode": "raw",
+          "rawModeData": 'username=admin&password=awesome',
+          "data": [],
+        }
+      ],
+    };
     dataset[0].data = 'username=admin&password=awesome',
-    expect(Export.toPostman(dataset)).toEqual(postmanJson);
+    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
   });
 
 });

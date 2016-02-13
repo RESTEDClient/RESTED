@@ -41,45 +41,66 @@ function(RequestUtils) {
     };
   }
 
+  function addPostmanDataAttributes(postData) {
+    if (!postData) {
+      return [];
+    }
+
+    return postData.map(function(data) {
+      return {
+        key: data.name,
+        value: data.value,
+        type: 'text',
+        enabled: true,
+      };
+    });
+  }
+
   return {
     /**
-     * The postman import complies with the format
+     * The postman export complies with the format
      * the Chrome extension postman uses for its
      * "download collection" feature. This is to
      * provide an easy migration path for users
      * and help teams cooperate across extensions.
      */
-    toPostman: function(dataset) {
-      if (!json) {
+    toPostman: function(dataset, collectionName) {
+      if (!dataset) {
         return {};
       }
 
-      var entries = json.requests;
-      var result  = [];
+      var postmanJson = {
+        'name': collectionName,
+        'requests': [],
+      };
 
-      entries.forEach(function(request) {
-        request.headers = stringHeadersToObject(request.headers);
-
-        if (Array.isArray(request.data)) {
-          request.data = RequestUtils.formDataToFormString(request.data.map(function(data) {
-            return { name: data.key, value: data.value};
-          }));
+      dataset.forEach(function(request) {
+        if (request.formData) {
+          postmanJson.requests.push({
+            'method': request.method,
+            'url': request.url,
+            'headers': RequestUtils.headersToHeaderString(request.headers),
+            'dataMode': 'params',
+            'data': addPostmanDataAttributes(request.formData),
+            'rawModeData': [],
+          });
+        } else {
+          postmanJson.requests.push({
+            'method': request.method,
+            'url': request.url,
+            'headers': RequestUtils.headersToHeaderString(request.headers),
+            'data': [],
+            'dataMode': 'raw',
+            'rawModeData': request.data || [],
+          });
         }
-
-        // Trim away fluff
-        result.push({
-          'method': request.method,
-          'url': request.url,
-          'headers': request.headers,
-          'data': request.data
-        });
       });
 
-      return result;
+      return postmanJson;
     },
 
     /**
-     * The HAR import complies with the HAR 1.2
+     * The HAR export complies with the HAR 1.2
      * spec that can be found here:
      * http://www.softwareishard.com/blog/har-12-spec
      *
