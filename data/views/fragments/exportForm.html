@@ -1,0 +1,68 @@
+<div class="col-xs-12">
+  <p>
+    Here you can export data to other sources.
+    Two formats are currently supported, HTTP Archive
+    (HAR) and Postman json.
+  </p>
+  <p>
+    HAR is a format that can be exported directly
+    from your favourite browser's network tools.
+    This means you can do a request you would like
+    to recreate or alter at a later date, and import
+    it to your collected requests. See
+    <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor#CopySave_All_As_HAR" target="_blank">
+    this link</a> for details.
+  </p>
+  <p>
+    An option to import data from Postman (Chrome extension)
+    is also provided. In order to fetch a collection from
+    postman, click the three dots next to a postman collection,
+    click <code>download</code>, and copy the file's contents into
+    the field below.
+  </p>
+  <div class="form-group">
+    <label>
+      Collection to export
+    </label>
+    <select class="form-control"
+      data-ng-model="$parent.collectionToExport"
+      data-ng-options="idx as c.name for (idx, c) in $root.collections">
+    </select>
+  </div>
+  <section>
+    <div class="col-xs-12 text-center import-type-buttons">
+      <div class="btn-group btn-group-sm row">
+        <button class="btn btn-default"
+                data-ng-class="{active: $parent.importMethod === 'HAR'}"
+                data-ng-click="$parent.importMethod = 'HAR'">
+          HAR
+        </button>
+        <button class="btn btn-default"
+                data-ng-class="{active: $parent.importMethod === 'Postman'}"
+                data-ng-click="$parent.importMethod = 'Postman'">
+          Postman
+        </button>
+      </div>
+      <h4 data-ng-bind="$parent.exportFeedback"
+          class="text-danger">
+      </h4>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <textarea class="form-control import-textarea"
+                  data-ng-model="$parent.exportText"
+                  rows="20">
+        </textarea>
+      </div>
+    </div>
+    <div class="row" data-ng-if="$parent.exportText">
+      <div class="col-xs-12">
+        <a href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
+           target="_blank">
+          Download
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
