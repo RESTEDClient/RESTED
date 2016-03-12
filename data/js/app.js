@@ -1,7 +1,12 @@
 'use strict';
 
 // Register app
-angular.module('RestedApp', ['dndLists']);
+var app = angular.module('RestedApp', ['dndLists']);
+
+// Support data-urls
+app.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|local|data):/);
+}]);
 
 // Prevent double-bootstrap by storing
 // bootstrap status.

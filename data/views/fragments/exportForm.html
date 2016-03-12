@@ -57,8 +57,8 @@
     </div>
     <div class="row" data-ng-if="$parent.exportText">
       <div class="col-xs-12">
-        <a href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
-           target="_blank">
+        <a data-ng-href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
+           download="export.txt">
           Download
         </button>
       </div>
