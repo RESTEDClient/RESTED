@@ -7,28 +7,15 @@
   <p>
     HAR is a format that can be exported directly
     from your favourite browser's network tools.
-    This means you can do a request you would like
-    to recreate or alter at a later date, and import
-    it to your collected requests. See
-    <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor#CopySave_All_As_HAR" target="_blank">
-    this link</a> for details.
+    <a href="http://www.softwareishard.com/blog/har-adopters/">Click here</a>
+    to learn more.
   </p>
   <p>
-    An option to import data from Postman (Chrome extension)
-    is also provided. In order to fetch a collection from
-    postman, click the three dots next to a postman collection,
-    click <code>download</code>, and copy the file's contents into
-    the field below.
+    Postman is a popular Google Chrome extension that is a
+    REST client, just like RESTED.
+    By using this export, you can cooperate with colleagues
+    that use Postman, dispite them working with different tools.
   </p>
-  <div class="form-group">
-    <label>
-      Collection to export
-    </label>
-    <select class="form-control"
-      data-ng-model="$parent.collectionToExport"
-      data-ng-options="idx as c.name for (idx, c) in $root.collections">
-    </select>
-  </div>
   <section>
     <div class="col-xs-12 text-center import-type-buttons">
       <div class="btn-group btn-group-sm row">
@@ -47,6 +34,15 @@
           class="text-danger">
       </h4>
     </div>
+    <div class="form-group">
+      <label class="text-left">
+        Collection to export
+      </label>
+      <select class="form-control"
+        data-ng-model="$parent.collectionToExport"
+        data-ng-options="idx as c.name for (idx, c) in $root.collections">
+      </select>
+    </div>
     <div class="row">
       <div class="col-xs-12">
         <textarea class="form-control import-textarea"
@@ -57,10 +53,14 @@
     </div>
     <div class="row" data-ng-if="$parent.exportText">
       <div class="col-xs-12">
-        <a data-ng-href="data:application/octet-stream;base64,{{$parent.base64EncodedExportText}}"
-           download="export.txt">
+        <a data-ng-href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
+           target="_blank"
+           download="RESTED_export_{{$root.collections[collectionToExport].name}}.txt">
           Download
         </a>
+        <i>
+          - Right click, Save Link as
+        </i>
       </div>
     </div>
   </section>
