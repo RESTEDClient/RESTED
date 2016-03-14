@@ -48,13 +48,14 @@ function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Base64, Highlig
     }
 
     try {
-      var requests = $scope.$root.collections[$scope.collectionToExport].requests;
-      var result = Export['to' + $scope.importMethod](requests);
+      var collection = $scope.$root.collections[$scope.collectionToExport];
+      var requests = collection.requests;
+      var result = Export['to' + $scope.importMethod](requests, collection);
       $scope.exportText = JSON.stringify(result, ' ', 2);
       $scope.base64EncodedExportText = Base64.encode($scope.exportText);
     } catch(e) {
       console.error(e);
-      return $scope.exportFeedback = 'Error while parsing. Is your text formatted correctly?';
+      return $scope.exportFeedback = 'Error while exporting: ' + e;
     }
   };
 

@@ -6,6 +6,7 @@ describe('Service: Export', function () {
   beforeEach(angular.mock.module('RestedApp'));
 
   var dataset;
+  var collection;
 
   // instantiate service
   var Export;
@@ -13,6 +14,7 @@ describe('Service: Export', function () {
     Export = _Export_;
     dataset = [
       {
+        id: 'requestId',
         url: 'www.vg.no',
         method: 'GET',
         postData: {},
@@ -24,6 +26,10 @@ describe('Service: Export', function () {
         ]
       }
     ];
+    collection = {
+      id: "collectionId",
+      name: "Test collection",
+    };
   }));
 
   it('should load the service', function () {
@@ -43,6 +49,9 @@ describe('Service: Export', function () {
   it('should export to HAR with correct format when invoked', function () {
     var HAR = {
       "log": {
+        "version": "1.2",
+        "creator": "RESTED REST Client",
+        "Comment": "An exported collection from RESTED",
         "entries": [
           {
             "request": {
@@ -66,6 +75,9 @@ describe('Service: Export', function () {
   it('should export to HAR using raw postData', function () {
     var HAR = {
       "log": {
+        "version": "1.2",
+        "creator": "RESTED REST Client",
+        "Comment": "An exported collection from RESTED",
         "entries": [
           {
             "request": {
@@ -94,6 +106,9 @@ describe('Service: Export', function () {
   it('should export to HAR using formData', function() {
     var HAR = {
       "log": {
+        "version": "1.2",
+        "creator": "RESTED REST Client",
+        "Comment": "An exported collection from RESTED",
         "entries": [
           {
             "request": {
@@ -136,9 +151,12 @@ describe('Service: Export', function () {
 
   it('should export to Postman json when invoked', function () {
     var postmanJson = {
+      "id": "collectionId",
       "name": "Test collection",
       "requests": [
         {
+          "id": "requestId",
+          "collectionId": "collectionId",
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
           "method": "GET",
@@ -148,14 +166,17 @@ describe('Service: Export', function () {
         }
       ],
     };
-    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
+    expect(Export.toPostman(dataset, collection)).toEqual(postmanJson);
   });
 
   it('should export to Postman json using raw postData', function () {
     var postmanJson = {
+      "id": "collectionId",
       "name": "Test collection",
       "requests": [
         {
+          "id": "requestId",
+          "collectionId": "collectionId",
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
           "method": "GET",
@@ -185,14 +206,17 @@ describe('Service: Export', function () {
       name: 'password',
       value: 'awesome'
     }];
-    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
+    expect(Export.toPostman(dataset, collection)).toEqual(postmanJson);
   });
 
   it('should export to Postman json using formData', function () {
     var postmanJson = {
+      "id": "collectionId",
       "name": "Test collection",
       "requests": [
         {
+          "id": "requestId",
+          "collectionId": "collectionId",
           "headers": "Content-Type: angular/awesomeness\n",
           "url": "www.vg.no",
           "method": "GET",
@@ -203,7 +227,7 @@ describe('Service: Export', function () {
       ],
     };
     dataset[0].data = 'username=admin&password=awesome',
-    expect(Export.toPostman(dataset, 'Test collection')).toEqual(postmanJson);
+    expect(Export.toPostman(dataset, collection)).toEqual(postmanJson);
   });
 
 });

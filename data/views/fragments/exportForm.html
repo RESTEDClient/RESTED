@@ -57,10 +57,10 @@
     </div>
     <div class="row" data-ng-if="$parent.exportText">
       <div class="col-xs-12">
-        <a data-ng-href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
+        <a data-ng-href="data:application/octet-stream;base64,{{$parent.base64EncodedExportText}}"
            download="export.txt">
           Download
-        </button>
+        </a>
       </div>
     </div>
   </section>

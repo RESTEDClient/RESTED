@@ -63,20 +63,27 @@ function(RequestUtils) {
      * "download collection" feature. This is to
      * provide an easy migration path for users
      * and help teams cooperate across extensions.
+     *
+     * Postman adds some extra fluff that we need
+     * to pad the exported data with. We pick it
+     * from the selected collection.
      */
-    toPostman: function(dataset, collectionName) {
+    toPostman: function(dataset, collection) {
       if (!dataset) {
         return {};
       }
 
       var postmanJson = {
-        'name': collectionName,
+        'id': collection.id,
+        'name': collection.name,
         'requests': [],
       };
 
       dataset.forEach(function(request) {
         if (request.formData) {
           postmanJson.requests.push({
+            'id': request.id,
+            'collectionId': collection.id,
             'method': request.method,
             'url': request.url,
             'headers': RequestUtils.headersToHeaderString(request.headers),
@@ -86,6 +93,8 @@ function(RequestUtils) {
           });
         } else {
           postmanJson.requests.push({
+            'id': request.id,
+            'collectionId': collection.id,
             'method': request.method,
             'url': request.url,
             'headers': RequestUtils.headersToHeaderString(request.headers),
@@ -100,7 +109,7 @@ function(RequestUtils) {
     },
 
     /**
-     * The HAR export complies with the HAR 1.2
+     * The HAR export should comply with the HAR 1.2
      * spec that can be found here:
      * http://www.softwareishard.com/blog/har-12-spec
      *
@@ -115,6 +124,9 @@ function(RequestUtils) {
 
       var har = {
         'log': {
+          'version': '1.2',
+          'creator': 'RESTED REST Client',
+          'Comment': 'An exported collection from RESTED',
           'entries': []
         }
       };
