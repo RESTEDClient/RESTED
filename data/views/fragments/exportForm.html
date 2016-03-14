@@ -1,0 +1,70 @@
+<div class="col-xs-12">
+  <p>
+    Here you can export data to other sources.
+    Two formats are currently supported, HTTP Archive
+    (HAR) and Postman json.
+  </p>
+  <p>
+    HAR is a format that can be exported directly
+    from your favourite browser's network tools.
+    <a href="http://www.softwareishard.com/blog/har-adopters/" target="_blank">
+      Click here
+    </a>
+    to learn more.
+  </p>
+  <p>
+    Postman is a popular Google Chrome extension that is a
+    REST client, just like RESTED.
+    By using this export, you can cooperate with colleagues
+    that use Postman, dispite them working with different tools.
+  </p>
+  <section>
+    <div class="col-xs-12 text-center import-type-buttons">
+      <div class="btn-group btn-group-sm row">
+        <button class="btn btn-default"
+                data-ng-class="{active: $parent.importMethod === 'HAR'}"
+                data-ng-click="$parent.importMethod = 'HAR'">
+          HAR
+        </button>
+        <button class="btn btn-default"
+                data-ng-class="{active: $parent.importMethod === 'Postman'}"
+                data-ng-click="$parent.importMethod = 'Postman'">
+          Postman
+        </button>
+      </div>
+      <h4 data-ng-bind="$parent.exportFeedback"
+          class="text-danger">
+      </h4>
+    </div>
+    <div class="form-group">
+      <label class="text-left">
+        Collection to export
+      </label>
+      <select class="form-control"
+        data-ng-model="$parent.collectionToExport"
+        data-ng-options="idx as c.name for (idx, c) in $root.collections">
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <textarea class="form-control import-textarea"
+                  data-ng-model="$parent.exportText"
+                  rows="20">
+        </textarea>
+      </div>
+    </div>
+    <div class="row" data-ng-if="$parent.exportText">
+      <div class="col-xs-12">
+        <a data-ng-href="data:text/plain;base64,{{$parent.base64EncodedExportText}}"
+           target="_blank"
+           download="RESTED_export_{{$root.collections[collectionToExport].name}}.txt">
+          Download
+        </a>
+        <i>
+          - Right click, Save Link as
+        </i>
+      </div>
+    </div>
+  </section>
+</div>
+

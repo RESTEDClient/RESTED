@@ -24,7 +24,7 @@ that they will be merged - requests will be reviewed).
 
 ## How to contribute
 This project was from the very beginning intended to be easy to work with.
-It is basically just an angular 1.4 app inside of Firefox, so if you know angular, you're in luck!
+It is basically just an angular 1.5 app inside of Firefox, so if you know angular, you're in luck!
 
 For a short read on how the app works, go to [this page](https://github.com/esphen/RESTED/wiki).
 

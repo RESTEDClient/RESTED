@@ -99,10 +99,30 @@ function(PLACEHOLDER_URLS) {
     return result.replace(/%20/g, '+');
   };
 
+  /**
+   * Take an array of objects and transform it into
+   * a string of headers, suitable for being exported
+   * to postman json.
+   */
+  var headersToHeaderString = function(headers) {
+    if (!headers) {
+      return '';
+    }
+
+    var result = headers.filter(function(item) {
+      return item && item.name;
+    }).reduce(function(prev, item, i) {
+      return (prev ? prev + '\n' : '') + item.name + ': ' + (item.value ? item.value : '');
+    }, '');
+
+    return result + '\n';
+  };
+
   return {
     reMapHeaders: reMapHeaders,
     randomURL: randomURL,
-    formDataToFormString: formDataToFormString
+    formDataToFormString: formDataToFormString,
+    headersToHeaderString: headersToHeaderString
   };
 }]);
 
