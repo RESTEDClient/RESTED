@@ -149,6 +149,61 @@ describe('Service: Export', function () {
     expect(Export.toHAR(dataset)).toEqual(HAR);
   });
 
+  it('should export to HAR using formData and ignore empty lines', function() {
+    var HAR = {
+      "log": {
+        "version": "1.2",
+        "creator": "RESTED REST Client",
+        "Comment": "An exported collection from RESTED",
+        "entries": [
+          {
+            "request": {
+              "method": "GET",
+              "url": "www.vg.no",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "angular/awesomeness"
+                }
+              ],
+              "postData": {
+                "mimeType": "application/x-www-form-urlencoded",
+                "params": [
+                  {
+                    "name": "username",
+                    "value": "admin"
+                  },
+                  {
+                    "name": "password",
+                    "value": "awesome"
+                  }
+                ],
+                "text": "username=admin&password=awesome"
+              }
+            }
+          }
+        ]
+      }
+    };
+    dataset[0].formData = [{
+      name: '',
+      value: ''
+    }, {
+      name: 'username',
+      value: 'admin'
+    }, {
+      name: '',
+      value: ''
+    }, {
+      name: 'password',
+      value: 'awesome'
+    }, {
+      name: '',
+      value: ''
+    }];
+    expect(Export.toHAR(dataset)).toEqual(HAR);
+  });
+
   it('should export to Postman json when invoked', function () {
     var postmanJson = {
       "id": "collectionId",
@@ -169,7 +224,7 @@ describe('Service: Export', function () {
     expect(Export.toPostman(dataset, collection)).toEqual(postmanJson);
   });
 
-  it('should export to Postman json using raw postData', function () {
+  it('should export to Postman json using formData', function () {
     var postmanJson = {
       "id": "collectionId",
       "name": "Test collection",
@@ -181,7 +236,7 @@ describe('Service: Export', function () {
           "url": "www.vg.no",
           "method": "GET",
           "rawModeData": [],
-          "dataMode": "params",
+          "dataMode": "urlencoded",
           "data": [
             {
               "key": "username",
@@ -209,7 +264,7 @@ describe('Service: Export', function () {
     expect(Export.toPostman(dataset, collection)).toEqual(postmanJson);
   });
 
-  it('should export to Postman json using formData', function () {
+  it('should export to Postman json using raw postData', function () {
     var postmanJson = {
       "id": "collectionId",
       "name": "Test collection",

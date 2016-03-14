@@ -30,13 +30,27 @@ function(RequestUtils) {
     var urlEncoded = '';
     if (entry.formData) {
       urlEncoded = entry.formData.reduce(function(prev, data) {
+
+        // Prevent empty headers printing equal signs
+        if (!data.name) {
+          return prev
+        }
+
         return (prev ? prev + '&' : '') + data.name + '=' + data.value;
       }, '');
     }
 
+    // Strip away empty lines like above
+    var params = [];
+    if (Array.isArray(entry.formData)) {
+      params = entry.formData.filter(function(item) {
+        return item.name;
+      });
+    }
+
     return  {
       'mimeType': urlEncoded ? 'application/x-www-form-urlencoded' : '',
-      'params': entry.formData || [],
+      'params': params,
       'text': urlEncoded ? urlEncoded : entry.data,
     };
   }
@@ -64,9 +78,8 @@ function(RequestUtils) {
      * provide an easy migration path for users
      * and help teams cooperate across extensions.
      *
-     * Postman adds some extra fluff that we need
-     * to pad the exported data with. We pick it
-     * from the selected collection.
+     * Postman requires some extra ids that we can
+     * simply use RESTED ids for.
      */
     toPostman: function(dataset, collection) {
       if (!dataset) {
@@ -87,7 +100,7 @@ function(RequestUtils) {
             'method': request.method,
             'url': request.url,
             'headers': RequestUtils.headersToHeaderString(request.headers),
-            'dataMode': 'params',
+            'dataMode': 'urlencoded',
             'data': addPostmanDataAttributes(request.formData),
             'rawModeData': [],
           });
@@ -132,9 +145,6 @@ function(RequestUtils) {
       };
 
       dataset.forEach(function(entry) {
-
-        // var entries = har.log.entries;
-        // Trim away fluff
         har.log.entries.push({
           'request': {
             'method': entry.method,
