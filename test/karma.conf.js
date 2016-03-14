@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'data/ext/jquery.min.js',
       'data/ext/angular.min.js',
       'data/ext/angular-drag-and-drop-lists.js',
       'node_modules/angular-mocks/angular-mocks.js',
@@ -38,7 +39,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['mocha'],
 
 
     // web server port
