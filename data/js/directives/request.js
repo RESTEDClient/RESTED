@@ -37,7 +37,13 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
 
           // Format json pretty-like
           if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
-            scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
+            try {
+              scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
+            }
+            catch(err) {
+              // Client lied about content, fall back to plain text
+              scope.response.formattedResponse = response.responseText;
+            }
           } else {
             scope.response.formattedResponse = response.responseText;
           }
