@@ -50,8 +50,12 @@ function(RequestUtils) {
   return {
     run: function(request, parameters, fn) {
       var requestCopy = angular.copy(request);
-      var url = prependHttp(requestCopy.url);
-      url = mapParameters(url, parameters);
+
+      // Map URL parameters first to allow protocol in parameter
+      var url = mapParameters(requestCopy.url, parameters);
+
+      // Prepend http if not provided
+      url = prependHttp(url);
 
       requestCopy.url = url;
       var req = createXMLHttpRequest(requestCopy);
