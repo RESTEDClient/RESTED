@@ -91,7 +91,7 @@ collections>div>.panel>.panel-body {
   margin-bottom: 0;
 }
 
-collections li {
+history li, collections li {
   list-style: none;
 }
 

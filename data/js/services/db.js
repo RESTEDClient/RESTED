@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
-function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
+.factory('DB', ['DB_VERSION', 'DB_NAME', 'DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_HISTORY_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'Modal',
+function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_HISTORY_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, Modal) {
   var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                           .getService(Components.interfaces.nsIPromptService);
 
@@ -42,6 +42,9 @@ function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME,
     }
     if (!storeNames.contains(DB_OPTIONS_STORE_NAME)) {
       db.createObjectStore(DB_OPTIONS_STORE_NAME, { keyPath: 'name' });
+    }
+    if (!storeNames.contains(DB_HISTORY_STORE_NAME)) {
+      db.createObjectStore(DB_HISTORY_STORE_NAME, { keyPath: 'name' });
     }
 
     console.info('Upgrade completed. DB is now:', storeNames);
@@ -163,5 +166,6 @@ function(DB_VERSION, DB_NAME, DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME,
     collections: createStore(DB_OBJECT_STORE_NAME),
     urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME),
     options: createStore(DB_OPTIONS_STORE_NAME),
+    history: createStore(DB_HISTORY_STORE_NAME),
   };
 }]);

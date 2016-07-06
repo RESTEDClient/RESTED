@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Collection', 'Base64', 'Modal', 'Highlight', '$timeout',
-function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Modal, Highlight, $timeout) {
+.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'History', 'Collection', 'Base64', 'Modal', 'Highlight', '$timeout',
+function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, History, Collection, Base64, Modal, Highlight, $timeout) {
 
   return {
     restrict: 'E',
@@ -85,6 +85,8 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
         request.headers = headers;
 
         Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true), processReturnData);
+
+        History.pushHistory(request);
 
         // Delay showing spinner for fast connections
         spinnerTimeout = $timeout(function() {
