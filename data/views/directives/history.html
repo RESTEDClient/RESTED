@@ -1,45 +1,40 @@
-<section class="panel panel-default">
-  <div class="panel-heading">
-    History
-
-    <div class="pull-right hoverhand">
-      <slidey-button data-config="clearHistoryConfig"
-                     data-click-event="clearHistory()">
-      </slidey-button>
-    </div>
+<div class="panel-heading">
+  <div class="pull-right hoverhand">
+    <slidey-button data-config="clearHistoryConfig"
+                   data-click-event="clearHistory()">
+    </slidey-button>
   </div>
-  <div class="panel-body">
-    <ul class="panel-body collection-body"
-        data-ng-hide="history.length === 0">
-      <li data-ng-repeat="request in history">
+</div>
+<div class="panel-body">
+  <ul class="panel-body collection-body"
+      data-ng-hide="history.length === 0">
+    <li data-ng-repeat="request in history">
 
-        <div class="list-group">
-          <a href="#"
-             class="list-group-item"
-             data-ng-class="{active: request == selectedRequest}"
-             data-ng-click="selectRequest(request)">
-            <h4 class="list-group-item-heading">
-              {{request.method}}
-              <div class="pull-right"
-                   id="removeRequest">
-                <slidey-button data-config="removeRequestConfig"
-                               data-click-event="removeFromHistory($index)">
-                </slidey-button>
-              </div>
-            </h4>
+      <div class="list-group">
+        <a href="#"
+           class="list-group-item"
+           data-ng-class="{active: request == selectedRequest}"
+           data-ng-click="selectRequest(request)">
+          <h4 class="list-group-item-heading">
+            {{request.method}}
+            <div class="pull-right"
+                 id="removeRequest">
+              <slidey-button data-config="removeRequestConfig"
+                             data-click-event="removeFromHistory($index)">
+              </slidey-button>
+            </div>
+          </h4>
 
-            <p class="list-group-item-text">
-              {{request.url}}
-            </p>
-          </a>
-        </div>
-      </li>
-    </ul>
-    <div data-ng-show="history.length === 0">
-      <h5>
+          <p class="list-group-item-text">
+            {{request.url}}
+          </p>
+        </a>
+      </div>
+    </li>
+  </ul>
+  <div data-ng-show="!history || history.length === 0">
+    <h5>
         You have no recorded history. Send some requests and start making your legacy!
-      </h5>
-    </div>
+    </h5>
   </div>
-</section>
-
+</div>

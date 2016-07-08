@@ -1,0 +1,37 @@
+<section class="panel panel-default left-panel animate hidden-xs"
+         data-ng-show="$root.IDB_SUPPORTED"
+         data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}">
+  <nav class="panel-heading">
+    <ul class="nav nav-pills">
+        <li data-ng-click="setLeftPanel('collections')"
+            data-ng-class="{'active': !activeTab || activeTab === 'collections'}">
+          Collections
+        </li>
+        <li data-ng-click="setLeftPanel('history')"
+            data-ng-class="{'active': activeTab === 'history'}">
+          History
+        </li>
+    </ul>
+  </nav>
+
+  <collections data-ng-show="!activeTab || activeTab === 'collections'"
+               data-selected-request="request"
+               data-collections="collections">
+  </collections>
+
+  <history data-ng-show="activeTab === 'history'"
+           data-selected-request="request"
+           data-history="history">
+  </history>
+
+</section>
+<section class="panel panel-default" data-ng-if="!$root.IDB_SUPPORTED">
+  <div class="panel-body">
+    Your browser does not support indexedDB :( - or you are in private mode, you mischievous you.
+    Don't worry, I don't judge, but you will not be able to save requests to collections without indexedDB.
+    Since collections would normally be here, here is a picure of a fiery fox instead!
+    <a href="http://www.boltgraphics.com/the-fox-unleashed/" target="_blank">
+      <img class="really-cool-fox" src="img/firefox.png" title="Credit for the image goes to Martijn Rijven and Mozilla Corp."/>
+    </a>
+  </div>
+</section>
