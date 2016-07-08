@@ -30,44 +30,51 @@ function(DEFAULT_HISTORY_SIZE, $rootScope, $filter, DB, Modal) {
           : DEFAULT_HISTORY_SIZE;
         $rootScope.history = $rootScope.history.slice(0, historySize);
 
-        DB.history.set({name: 'history', requests: $rootScope.history})
-          .then(Modal.remove, errorHandler);
+        if ($rootScope.IDB_SUPPORTED) {
+          DB.history.set({name: 'history', requests: $rootScope.history})
+            .then(Modal.remove, errorHandler);
+        }
 
       } catch (e) {
         console.error(e);
         Modal.throwError('error in history.pushHistory: ', e.toString());
       }
     },
-    // removeRequestFromHistory: function(collection, index, collectionIndex) {
-    //   Modal.set({
-    //     title: 'Confirm deletion',
-    //     body: 'Please confirm you wish to remove this request from your saved collection',
-    //     actions: [{
-    //       text: 'Confirm',
-    //       click: function() {
-    //         collection.requests.splice(index, 1);
-    //         DB.collections.set(collection).then(Modal.remove, errorHandler);
-    //       }
-    //     }]
-    //   });
-    // },
-    // clearCollection: function(callback) {
-    //   Modal.set({
-    //     title: 'Confirm deletion',
-    //     body: 'Please confirm that you wish to delete your entire collection. This is not reversible',
-    //     actions: [{
-    //       text: 'Confirm',
-    //       click: function() {
-    //         if (!$rootScope.collections || !$rootScope.collections[0]) {
-    //           return callback();
-    //         }
-    //         $rootScope.collections[0].requests = [];
-    //         DB.collections.set($rootScope.collections[0]).then(Modal.remove, errorHandler);
-    //         callback();
-    //       }
-    //     }]
-    //   });
-    // }
+
+    removeRequestFromHistory: function(index) {
+
+      // History isn't as important as collections, so no prompt here
+      $rootScope.history.splice(index, 1);
+
+      if ($rootScope.IDB_SUPPORTED) {
+        DB.history.set({name: 'history', requests: $rootScope.history})
+          .then(Modal.remove, errorHandler);
+      }
+    },
+
+    clearHistory: function(callback) {
+      Modal.set({
+        title: 'Confirm deletion',
+        body: 'Please confirm that you wish to clear your entire history.',
+        actions: [{
+          text: 'Confirm',
+          click: function() {
+            if (!$rootScope.history) {
+              return callback();
+            }
+
+            $rootScope.history = [];
+
+            if ($rootScope.IDB_SUPPORTED) {
+              DB.collections.set({name: 'history', requests: []})
+                .then(Modal.remove, errorHandler);
+            }
+
+            callback();
+          }
+        }]
+      });
+    }
   };
 }]);
 

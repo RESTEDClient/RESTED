@@ -1,51 +1,45 @@
-<div>
-  <section class="panel panel-default" data-ng-show="$root.IDB_SUPPORTED">
-    <div class="panel-heading">
-      History
-    </div>
-    <div class="panel-body">
-        <ul class="panel-body collection-body"
-            data-ng-style="::{'display': collection.minimized ? 'none' : 'inherit'}">
-          <li data-ng-repeat="request in history">
+<section class="panel panel-default">
+  <div class="panel-heading">
+    History
 
-            <div class="list-group">
-              <a href="#"
-                 class="list-group-item"
-                 data-ng-class="{active: request == selectedRequest}"
-                 data-ng-click="selectRequest(request)">
-                <h4 class="list-group-item-heading">
-                  {{request.method}}
-                  <div class="pull-right"
-                       id="removeRequest">
-                    <slidey-button data-config="removeRequestConfig"
-                                   data-click-event="removeFromCollection(collection, $index, $parent.$index)">
-                    </slidey-button>
-                  </div>
-                </h4>
+    <div class="pull-right hoverhand">
+      <slidey-button data-config="clearHistoryConfig"
+                     data-click-event="clearHistory()">
+      </slidey-button>
+    </div>
+  </div>
+  <div class="panel-body">
+    <ul class="panel-body collection-body"
+        data-ng-hide="history.length === 0">
+      <li data-ng-repeat="request in history">
 
-                <p class="list-group-item-text">
-                  {{request.url}}
-                </p>
-              </a>
-            </div>
-          </li>
-        </ul>
-      <div data-ng-show="collections.length === 0 || (collections.length === 1 &amp;&amp; collections[0].requests.length === 0)">
-        <h5>
-          No collected requests. Add by pressing "plus" in the top right of the request panel.
-        </h5>
-      </div>
+        <div class="list-group">
+          <a href="#"
+             class="list-group-item"
+             data-ng-class="{active: request == selectedRequest}"
+             data-ng-click="selectRequest(request)">
+            <h4 class="list-group-item-heading">
+              {{request.method}}
+              <div class="pull-right"
+                   id="removeRequest">
+                <slidey-button data-config="removeRequestConfig"
+                               data-click-event="removeFromHistory($index)">
+                </slidey-button>
+              </div>
+            </h4>
+
+            <p class="list-group-item-text">
+              {{request.url}}
+            </p>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <div data-ng-show="history.length === 0">
+      <h5>
+        You have no recorded history. Send some requests and start making your legacy!
+      </h5>
     </div>
-  </section>
-  <section class="panel panel-default" data-ng-if="!$root.IDB_SUPPORTED">
-    <div class="panel-body">
-      Your browser does not support indexedDB :( - or you are in private mode, you mischievous you.
-      Don't worry, I don't judge, but you will not be able to save requests to collections without indexedDB.
-      Since collections would normally be here, here is a picure of a fiery fox instead!
-      <a href="http://www.boltgraphics.com/the-fox-unleashed/" target="_blank">
-        <img class="really-cool-fox" src="img/firefox.png" title="Credit for the image goes to Martijn Rijven and Mozilla Corp."/>
-      </a>
-    </div>
-  </section>
-</div>
+  </div>
+</section>
 
