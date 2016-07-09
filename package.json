@@ -6,8 +6,11 @@
   "description": "A REST client for the rest of us",
   "author": "Espen Henriksen",
   "license": "MIT",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "main": "./main.js",
+  "permissions": {
+    "multiprocess": true
+  },
   "scripts": {
     "test": "node_modules/karma/bin/karma start test/karma.conf.js",
     "dev": "node_modules/karma/bin/karma start --no-single-run test/karma.conf.js"

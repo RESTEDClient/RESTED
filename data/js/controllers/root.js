@@ -78,6 +78,36 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
     $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
   }, errorHandler);
 
+  // Data is saved in the db like so:
+  //  [
+  //   {
+  //     name: 'history',
+  //     requests: [
+  //       {
+  //         id: 'some-UUID',
+  //         url: 'www.vg.no',
+  //         method: 'POST',
+  //         data: '',
+  //         useFormData: true,
+  //         formData: [
+  //           {
+  //             name: 'BodyOfPOST...',
+  //             value: '...SentViaFormData'
+  //           }
+  //         ],
+  //         headers: [
+  //          {
+  //            name: 'Content-Type',
+  //            value: 'angular/awesomeness'
+  //          }
+  //         ]
+  //       }
+  //     ]
+  //   }
+  // ]
+  DB.history.get().then(function(data) {
+    $rootScope.history = data && data[0] && data[0].requests ? data[0].requests : [];
+  }, errorHandler);
 
   // Called when new urlVariables are added
   $rootScope.newVariable = function() {

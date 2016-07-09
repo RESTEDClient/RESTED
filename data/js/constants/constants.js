@@ -9,7 +9,7 @@ var module = angular.module('RestedApp');
 // there will be an onupgradeneeded event called
 // which we can use to convert users on older
 // paradigms to the current one.
-module.constant('DB_VERSION', 4);
+module.constant('DB_VERSION', 5);
 
 // The name of our entire indexedDB instance.
 module.constant('DB_NAME', 'RESTED');
@@ -23,6 +23,10 @@ module.constant('DB_OBJECT_STORE_NAME', 'collections');
 module.constant('DB_URL_VARIABLES_STORE_NAME', 'urlVariables');
 
 // The name of the "table" in indexedDB we use for
+// storing request history
+module.constant('DB_HISTORY_STORE_NAME', 'history');
+
+// The name of the "table" in indexedDB we use for
 // storing application options
 module.constant('DB_OPTIONS_STORE_NAME', 'options');
 
@@ -32,6 +36,11 @@ module.constant('DB_OPTIONS_STORE_NAME', 'options');
 // different collection is not specified by the
 // user.
 module.constant('DEFAULT_SELECTED_COLLECTION', '0');
+
+// The default max length of the history list.
+// The list will be truncated to only allow this
+// size. Is overridable as an option.
+module.constant('DEFAULT_HISTORY_SIZE', 10);
 
 // This is the request used to initialize the
 // request panel. This can be either on

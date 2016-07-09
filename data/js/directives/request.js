@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'Collection', 'Base64', 'Modal', 'Highlight', '$timeout',
-function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Modal, Highlight, $timeout) {
+.directive('request', ['SPINNER_SHOW_DELAY', 'DB', 'Request', 'RequestUtils', 'History', 'Collection', 'Base64', 'Modal', 'Highlight', '$timeout',
+function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, History, Collection, Base64, Modal, Highlight, $timeout) {
 
   return {
     restrict: 'E',
@@ -38,7 +38,10 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
           // Format json pretty-like
           if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
             try {
-              scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
+              // We need to use a library here, because
+              // JSON.stringify(JSON.parse(data)) makes numbers overflow and
+              // show the wrong number when given extremely large numbers
+              scope.response.formattedResponse = js_beautify(response.responseText);
             }
             catch(err) {
               // Client lied about content, fall back to plain text
@@ -85,6 +88,8 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, Collection, Base64, Moda
         request.headers = headers;
 
         Request.run(request, RequestUtils.reMapHeaders(scope.$root.urlVariables, true), processReturnData);
+
+        History.pushHistory(request);
 
         // Delay showing spinner for fast connections
         spinnerTimeout = $timeout(function() {
