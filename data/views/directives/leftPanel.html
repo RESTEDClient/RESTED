@@ -4,22 +4,22 @@
     <nav class="panel-heading">
       <ul class="nav nav-pills">
           <li data-ng-click="setLeftPanel('collections')"
-              data-ng-class="{'active': !activeTab || activeTab === 'collections'}">
+              data-ng-class="{'active': !$root.options.activeTab || $root.options.activeTab === 'collections'}">
             Collections
           </li>
           <li data-ng-click="setLeftPanel('history')"
-              data-ng-class="{'active': activeTab === 'history'}">
+              data-ng-class="{'active': $root.options.activeTab === 'history'}">
             History
           </li>
       </ul>
     </nav>
 
-    <collections data-ng-show="!activeTab || activeTab === 'collections'"
+    <collections data-ng-show="!$root.options.activeTab || $root.options.activeTab === 'collections'"
                  data-selected-request="request"
                  data-collections="collections">
     </collections>
 
-    <history data-ng-show="activeTab === 'history'"
+    <history data-ng-show="$root.options.activeTab === 'history'"
              data-selected-request="request"
              data-history="history">
     </history>
