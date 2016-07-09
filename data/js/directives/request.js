@@ -38,7 +38,10 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, History, Collection, Bas
           // Format json pretty-like
           if (response.getResponseHeader('Content-Type') && response.getResponseHeader('Content-Type').toLowerCase().indexOf('json') > -1) {
             try {
-              scope.response.formattedResponse = JSON.stringify(JSON.parse(response.responseText), null, 2);
+              // We need to use a library here, because
+              // JSON.stringify(JSON.parse(data)) makes numbers overflow and
+              // show the wrong number when given extremely large numbers
+              scope.response.formattedResponse = js_beautify(response.responseText);
             }
             catch(err) {
               // Client lied about content, fall back to plain text
