@@ -35,7 +35,7 @@ What features are on the to-do list:
 In order to work on this project, you're going to need a few things:
  - [Firefox](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
  - [jpm](https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_%28jpm%29), the build system for Firefox extensions
- - [Extension Auto-Installer](https://palant.de/2012/01/13/extension-auto-installer). Not neccecary, but highly reccomended
+ - [Extension Auto-Installer](https://palant.de/2012/01/13/extension-auto-installer). Not necessary, but highly reccomended
 
 Once these formalities are in order, you can start developing.
 
