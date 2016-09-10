@@ -9,11 +9,10 @@
     </h1>
   </div>
 
-  <collections class="animate hidden-xs"
-               data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}"
-               data-selected-request="request"
-               data-collections="collections">
-  </collections>
+  <left-panel class="animate"
+              data-ng-class="{'minimized': options.collectionsMinimized, 'col-xs-4': !options.collectionsMinimized}">
+  </left-panel>
+
   <request class="animate"
            data-ng-class="{'col-xs-12': options.collectionsMinimized, 'col-xs-12 col-sm-8': !options.collectionsMinimized}"
            data-request="request">

@@ -44,6 +44,20 @@
       </tr>
       <tr>
         <td>
+          <div class="form-group">
+            <label>
+              Max history size
+            </label>
+            <input class="form-control"
+              type="number"
+              data-ng-model="$root.options.historySize"
+              data-ng-change="$root.setOption('historySize', $root.options.historySize)"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <div class="checkbox">
             <label>
               <input type="checkbox"

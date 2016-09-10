@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('OptionsCtl', ['HIGHLIGHT_STYLES', 'THEMES', '$scope', '$rootScope', '$timeout', 'Highlight', 'Import', 'Modal', 'Collection', 'UrlVariables',
-function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Highlight, Import, Modal, Collection, UrlVariables) {
+.controller('OptionsCtl', ['HIGHLIGHT_STYLES', 'THEMES', '$scope', '$rootScope', '$timeout', 'Base64', 'Highlight', 'Import', 'Export', 'Modal', 'Collection', 'UrlVariables',
+function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Base64, Highlight, Import, Export, Modal, Collection, UrlVariables) {
 
   $scope.activeTab = 'templateVariablesForm';
   $scope.importMethod = 'HAR';
@@ -40,6 +40,25 @@ function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Highlight, Impo
     });
   };
 
+  var doExport = function() {
+    var requests;
+
+    if ($scope.collectionToExport == null) {
+      return;
+    }
+
+    try {
+      var collection = $scope.$root.collections[$scope.collectionToExport];
+      var requests = collection.requests;
+      var result = Export['to' + $scope.importMethod](requests, collection);
+      $scope.exportText = JSON.stringify(result, ' ', 2);
+      $scope.base64EncodedExportText = Base64.encode($scope.exportText);
+    } catch(e) {
+      console.error(e);
+      return $scope.exportFeedback = 'Error while exporting: ' + e;
+    }
+  };
+
   var actions = {
     templateVariablesForm: [{
       text: 'Save',
@@ -51,6 +70,10 @@ function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Highlight, Impo
     importForm: [{
       text: 'Import',
       click: doImport
+    }],
+    exportForm: [{
+      text: 'Export',
+      click: doExport
     }]
   };
 

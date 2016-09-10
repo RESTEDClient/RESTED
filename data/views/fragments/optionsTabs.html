@@ -19,6 +19,13 @@
         Import data
       </a>
     </li>
+    <li class="hidden-xs"
+        data-ng-class="{active: activeTab === 'exportForm'}">
+      <a href="#"
+         data-ng-click="setTab('exportForm')">
+        Export data
+      </a>
+    </li>
   </ul>
   <br />
   <div data-ng-include="'views/fragments/' + activeTab + '.html'"></div>

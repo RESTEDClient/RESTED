@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.factory('DB', ['DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', '$q', 'BrowserSync',
-function(DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, $q, BrowserSync) {
+.factory('DB', ['DB_OBJECT_STORE_NAME', 'DB_URL_VARIABLES_STORE_NAME', 'DB_OPTIONS_STORE_NAME', 'DB_HISTORY_STORE_NAME', '$q', 'BrowserSync',
+function(DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAME, DB_HISTORY_STORE_NAME, $q, BrowserSync) {
 
   var message = function(success, message, object) {
     return { success: success, message: message, object: object };
@@ -144,5 +144,6 @@ function(DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAM
     collections: createStore(DB_OBJECT_STORE_NAME),
     urlVariables: createStore(DB_URL_VARIABLES_STORE_NAME),
     options: createStore(DB_OPTIONS_STORE_NAME),
+    history: createStore(DB_HISTORY_STORE_NAME),
   };
 }]);
