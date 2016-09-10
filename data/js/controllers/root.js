@@ -10,7 +10,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   $rootScope.urlVariables = [];
   $rootScope.options = {};
 
-  EasterEgg();
+  EasterEgg.print();
 
   // Set IndexedDBSupport for views
   $rootScope.IDB_SUPPORTED = window.IDB_SUPPORTED;
