@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', 'BrowserSync', '$filter',
-function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, BrowserSync, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', 'BrowserSync', 'EasterEgg', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, BrowserSync, EasterEgg, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
   $rootScope.collections = [];
   $rootScope.urlVariables = [];
   $rootScope.options = {};
+
+  EasterEgg();
 
   // Set IndexedDBSupport for views
   $rootScope.IDB_SUPPORTED = window.IDB_SUPPORTED;
