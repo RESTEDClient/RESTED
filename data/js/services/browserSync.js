@@ -25,21 +25,32 @@ function($rootScope, Modal) {
     var args = [].slice.call(arguments, 1);
     callback(...args);
   }
+
+  /**
+   * Assert sync is supported and not disabled
+   */
+  function assertInvariants() {
+    return chrome.storage.sync && $rootScope.options.sync === true;
+  }
+
   return {
     /**
      * Pass null as name to get all data
      */
     get: function(name, callback) {
-      // TODO Check for support of chrome.storage.sync (Opera does not supp)
+      // Abort if sync is not supported or disabled
+      if (!assertInvariants()) return null;
+
       // TODO check options to see if it is enabled
       chrome.storage.sync.get(name, handleErrorsAndCallCallback.bind(this, callback));
     },
     sizeOf: function() {},
     set: function(name, data, callback) {
+      // Abort if sync is not supported or disabled
+      if (!assertInvariants()) return null;
+
       if (!name) {
         console.log('No name was passed to BrowserSync.set');
-        return null;
-      } else if ($rootScope.options.sync !== true) {
         return null;
       }
 
@@ -55,6 +66,9 @@ function($rootScope, Modal) {
       chrome.storage.sync.set(keyValue, handleErrorsAndCallCallback.bind(this, callback));
     },
     clear: function(callback) {
+      // Abort if sync is not supported or disabled
+      if (!assertInvariants()) return null;
+
       Modal.set({
         title: 'Clear synced storage?',
         body: 'Are you sure you would like to clear the browser\'s synced ' +
