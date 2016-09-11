@@ -12,9 +12,6 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
 
   EasterEgg.print();
 
-  // Set IndexedDBSupport for views
-  $rootScope.IDB_SUPPORTED = window.IDB_SUPPORTED;
-
   var errorHandler = Modal.errorHandler;
   // Data is saved in the db like so:
   //  [
@@ -75,12 +72,17 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.urlVariables.get().then(function(data) {
     // Defensive programming ftw
-    $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
+    $rootScope.urlVariables = data && data[0] && data[0].variables
+      ? data[0].variables
+      : [];
 
     // Get from sync service and overwrte DB if sync enabled
     BrowserSync.get('urlVariables', function(syncData) {
       $rootScope.$apply(function() {
-        $rootScope.urlVariables = syncData && syncData[0] && syncData[0].variables ? data[0].variables : [];
+        console.log('syncData urlVariables', syncData, urlVariables);
+        $rootScope.urlVariables = syncData && syncData[0] && syncData[0].variables
+          ? data[0].variables
+          : [];
         $rootScope.url = $filter('orderBy')(syncData.collections || [], 'order');
 
         // Set data in local store with data from sync
@@ -99,8 +101,9 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   //   }
   // ]
   DB.options.get().then(function(data) {
-    $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
-    console.log('options from IDB', $rootScope.options);
+    $rootScope.options = data && data[0] && data[0].options
+      ? data[0].options
+      : {};
   }, errorHandler);
 
   // Data is saved in the db like so:
