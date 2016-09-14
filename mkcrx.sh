@@ -5,6 +5,11 @@
 
 FILES="data main.js manifest.json"
 
+hash xxd 2>/dev/null || {
+  echo "The utility xxd is required to run $(basename $0)."
+  exit 1
+}
+
 if test $# -ne 2; then
   echo "Usage: crxmake.sh <extension dir> <pem path>"
   exit 1

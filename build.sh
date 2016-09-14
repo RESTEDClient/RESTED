@@ -6,6 +6,7 @@ TMPFILE="RESTED.pem"
 SHRED=false
 
 if test $# -ne 1; then
+  echo Awaiting input of key
   while read i; do
     echo $(printf "\n$i") >> $TMPFILE
   done
@@ -20,7 +21,7 @@ echo Packaging for Chrome
 
 rm -fv manifest.json
 ln -vs google-chrome/manifest.json
-$DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}"
+$DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}" || exit 1
 
 echo Done
 
