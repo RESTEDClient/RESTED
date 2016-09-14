@@ -49,7 +49,7 @@ function($rootScope, $sce) {
     },
     throwError: throwError,
     errorHandler: function(event) {
-      throwError('An error occured when reading/writing to indexedDB: ', event);
+      throwError('An error occured when reading/writing to chrome.storage: ', event);
     }
   };
 }]);

@@ -30,12 +30,12 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collectio
 
     // Get from sync service and overwrte DB if sync enabled
     BrowserSync.get('options', function(syncData) {
-      if (!syncData || !syncData[0] || !syncData[0].options) return;
+      if (!syncData.options || !syncData.options[0] || !syncData.options[0].options) return;
 
       $rootScope.$apply(function() {
         // Set data in local store with data from sync
-        $rootScope.options = syncData[0].options;
-        DB.collections.set(syncData);
+        $rootScope.options = syncData.options[0].options;
+        DB.options.set({ name: 'options', options: $rootScope.options });
       });
     });
   }, Modal.errorHandler);
@@ -84,7 +84,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collectio
         $rootScope.collections = $filter('orderBy')(collections, 'order');
 
         // Set data in local store with data from sync
-        DB.collections.set(syncData);
+        DB.collections.replace($rootScope.collections);
       });
     });
   }, Modal.errorHandler);
@@ -111,13 +111,13 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collectio
 
     // Get from sync service and overwrte DB if sync enabled
     BrowserSync.get('urlVariables', function(syncData) {
+      if (!syncData.urlVariables || !syncData.urlVariables[0] || !syncData.urlVariables[0].variables) return;
+
       $rootScope.$apply(function() {
-        $rootScope.urlVariables = syncData && syncData[0] && syncData[0].variables
-          ? data[0].variables
-          : [];
+        $rootScope.urlVariables = syncData.urlVariables[0].variables
 
         // Set data in local store with data from sync
-        DB.collections.set(syncData);
+        DB.urlVariables.set({ name: 'urlVariables', variables: $rootScope.urlVariables });
       });
     });
   }, Modal.errorHandler);
@@ -153,6 +153,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collectio
   // ]
   DB.history.get().then(function(data) {
     $rootScope.history = data && data[0] && data[0].requests ? data[0].requests : [];
+    // History intentionally not synced.. Convince me otherwise if you dare
   }, Modal.errorHandler);
 
   // Called when new urlVariables are added
