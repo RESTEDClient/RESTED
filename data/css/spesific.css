@@ -11,6 +11,12 @@ body {
 .header {
   margin-top: 20px;
   margin-bottom: 30px;
+
+  /*
+   * Workaround for minimized collections moving the request panel
+   * far down on the page
+   */
+  float: right;
 }
 
 .header .logo {
@@ -199,9 +205,3 @@ pre {
   font-style: italic;
 }
 
-/* He is really cool, though */
-img.really-cool-fox {
-  width: 100%;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}

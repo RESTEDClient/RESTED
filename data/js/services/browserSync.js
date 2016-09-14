@@ -11,9 +11,7 @@
 angular.module('RestedApp')
 .factory('BrowserSync', ['$rootScope', 'Modal',
 function($rootScope, Modal) {
-  /**
-   * Spread operator requires CH 46, OP 33
-   */
+
   function handleErrorsAndCallCallback(callback) {
     if (chrome.runtime.lastError) {
       Modal.throwError('An error occured when reading/writing the browser sync storage\n', chrome.runtime.lastError)
@@ -23,7 +21,7 @@ function($rootScope, Modal) {
     if (arguments.length <= 1) return;
 
     var args = [].slice.call(arguments, 1);
-    callback(...args);
+    callback.apply(this, args);
   }
 
   /**
@@ -34,18 +32,22 @@ function($rootScope, Modal) {
   }
 
   return {
-    /**
-     * Pass null as name to get all data
-     */
+    /** Pass null as name to get all data */
     get: function(name, callback) {
+
       // Abort if sync is not supported or disabled
       if (!assertInvariants()) return null;
 
-      // TODO check options to see if it is enabled
+      if (!name) {
+        chrome.storage.sync.get(handleErrorsAndCallCallback.bind(this, callback));
+        return;
+      }
+
       chrome.storage.sync.get(name, handleErrorsAndCallCallback.bind(this, callback));
     },
     sizeOf: function() {},
     set: function(name, data, callback) {
+
       // Abort if sync is not supported or disabled
       if (!assertInvariants()) return null;
 
@@ -54,18 +56,12 @@ function($rootScope, Modal) {
         return null;
       }
 
-      console.log('set', name, data);
-
-      // TODO Add failure callback?
-      // TODO Check for support of chrome.storage.sync (Opera does not supp)
-      // TODO check options to see if it is enabled
-      // TODO options panel: When enabled, have question "Add to sync or replace"
-      // TODO check for chrome.runtime.lastError
       var keyValue = {};
       keyValue[name] = data;
       chrome.storage.sync.set(keyValue, handleErrorsAndCallCallback.bind(this, callback));
     },
     clear: function(callback) {
+
       // Abort if sync is not supported or disabled
       if (!assertInvariants()) return null;
 
@@ -76,7 +72,7 @@ function($rootScope, Modal) {
         actions: [{
           text: 'Clear sync',
           click: function action() {
-            chrome.storage.clear(handleErrorsAndCallCallback.bind(this, callback));
+            chrome.storage.sync.clear(handleErrorsAndCallCallback.bind(this, callback));
           }
         }]
       });

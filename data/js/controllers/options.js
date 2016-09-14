@@ -91,5 +91,10 @@ function(HIGHLIGHT_STYLES, THEMES, $scope, $rootScope, $timeout, Base64, Highlig
       return item !== param;
     });
   };
+
+  $scope.syncIsSupported = function() {
+    return !!chrome.storage.sync;
+  };
+
 }]);
 

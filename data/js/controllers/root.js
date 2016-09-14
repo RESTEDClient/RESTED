@@ -145,6 +145,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
     });
   };
 
+  // Handle application options changing
   $rootScope.setOption = function(option, val) {
     $rootScope.$broadcast(option + '-change', val);
 
@@ -161,8 +162,75 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
       });
     }
 
+    // If we are changing the sync settings, we need to update the sync store
+    if (option === 'sync') {
+
+      // You shouldn't be here! Get out!
+      if (!chrome.storage.sync) {
+        $rootScope.options.sync = false;
+        return;
+      }
+
+      // Sync turned on, query user for what to do next
+      if (val === true) {
+        function onUpdate() {
+          $rootScope.$apply(function() {
+            if (chrome.runtime.lastError) {
+              Modal.throwError('An error occured when reading/writing the browser sync storage\n', chrome.runtime.lastError)
+              return;
+            }
+
+            Modal.remove();
+          });
+        }
+
+        Modal.set({
+          title: 'Activating browser sync',
+          body: 'Activating this feature will start syncing all your local data across the internet to the other devices where you have turned this feature on. ' +
+          'If you want to keep your local data, then RESTED will have to overwrite the remote sync server data. Otherwise, overwrite the local data with the remote ' +
+          'server\'s sync data.',
+          actions: [{
+            text: 'Overwrite local',
+            click: function() {
+              chrome.storage.sync.get(function(data) {
+                console.log('Copying data into local storage', data);
+
+                // Clear the local storage so we don't get weird inconsistensies
+                // when remote stores are empty
+                chrome.storage.local.clear(function() {
+                  chrome.storage.local.set(data, onUpdate);
+
+                  // Completely clean state by reloading
+                  location.reload();
+                });
+              });
+            }
+          }, {
+            text: 'Overwrite remote',
+            click: function() {
+              chrome.storage.local.get(function(data) {
+                console.log('Copying data into sync storage', data);
+                chrome.storage.sync.set(data, onUpdate);
+              });
+            }
+          }],
+          cancelClick: function() {
+            // User refused. Turn off sync
+            $rootScope.options.sync = false;
+            DB.options.set({name: 'options', options: $rootScope.options})
+              .then(null, errorHandler);
+          }
+        });
+      }
+
+      // We do not clear the sync store on incoming false value, as a user might
+      // want to disable the sync on one of his/her machines without losing all
+      // of the data. Clearing the sync store has to be a manual user action.
+    }
+
     $rootScope.options[option] = val;
-    DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
+    DB.options.set({name: 'options', options: $rootScope.options})
+      .then(null, errorHandler);
   };
 }]);
 
