@@ -69,7 +69,7 @@ function(DB_OBJECT_STORE_NAME, DB_URL_VARIABLES_STORE_NAME, DB_OPTIONS_STORE_NAM
 
           checkError(function onSuccess() {
             deferred.resolve(message(true, 'Successfully replaced a collection', items));
-              BrowserSync.set(storeName, items);
+            BrowserSync.set(storeName, items);
           }, function onError(event) {
             deferred.reject(message(false, 'An error occured when replacing a collection in storage.local! storeName=' + storeName, event));
           });
