@@ -12,6 +12,12 @@
         Options
       </a>
     </li>
+    <li data-ng-class="{active: activeTab === 'syncForm'}">
+      <a href="#"
+        data-ng-click="setTab('syncForm')">
+        Sync
+      </a>
+    </li>
     <li class="hidden-xs"
         data-ng-class="{active: activeTab === 'importForm'}">
       <a href="#"

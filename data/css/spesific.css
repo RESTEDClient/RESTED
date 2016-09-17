@@ -11,6 +11,12 @@ body {
 .header {
   margin-top: 20px;
   margin-bottom: 30px;
+
+  /*
+   * Workaround for minimized collections moving the request panel
+   * far down on the page
+   */
+  float: right;
 }
 
 .header .logo {
@@ -149,6 +155,11 @@ input.edit-collection-name {
   margin-bottom: 2px;
 }
 
+collections {
+  /* Prevent flicker when minimizing on webkit */
+  clear: both;
+}
+
 .minimized {
   float: left;
   opacity: 0;
@@ -185,9 +196,12 @@ pre {
   padding: 0;
 }
 
-/* He is really cool, though */
-img.really-cool-fox {
-  width: 100%;
-  margin-top: 15px;
-  margin-bottom: 20px;
+/*
+ * Interpret p tags inside checkboxes as descriptive
+ * text like the one used in the options modal
+ */
+.checkbox label p {
+  margin-left: 20px;
+  font-style: italic;
 }
+

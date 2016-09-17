@@ -41,8 +41,19 @@
   opacity: 0.9;
 }
 
+/*
+ * For some reason, the ng-* styles are not generated on webkit.
+ * Workaround: place them here.
+ */
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+
 .panel-toolbar {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background-color: #F5F5F5;
 }
+
+.red {
+  color: #ed3737;
+}
+

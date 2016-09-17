@@ -2,3 +2,6 @@
 install.rdf
 node_modules
 bootstrap.js
+dist/
+RESTED.*
+manifest.json

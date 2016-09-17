@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('RestedApp')
-.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', '$timeout', 'DB', 'Highlight', 'Collection', 'Modal', '$filter',
-function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB, Highlight, Collection, Modal, $filter) {
+.controller('RootCtl', ['DEFAULT_REQUEST', 'DEFAULT_SELECTED_COLLECTION', '$rootScope', 'DB', 'Collection', 'Modal', 'BrowserSync', 'Options', 'EasterEgg', '$filter',
+function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, DB, Collection, Modal, BrowserSync, Options, EasterEgg, $filter) {
 
   $rootScope.request = angular.copy(DEFAULT_REQUEST);
   $rootScope.selectedCollectionIndex = DEFAULT_SELECTED_COLLECTION;
@@ -10,10 +10,38 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   $rootScope.urlVariables = [];
   $rootScope.options = {};
 
-  // Set IndexedDBSupport for views
-  $rootScope.IDB_SUPPORTED = window.IDB_SUPPORTED;
+  EasterEgg.print();
 
-  var errorHandler = Modal.errorHandler;
+  // Fetch options
+  //
+  // Data is saved in db like so:
+  //  [
+  //   {
+  //     name: 'options',
+  //     options: {
+  //       key: 'value'
+  //     }
+  //   }
+  // ]
+  DB.options.get().then(function(data) {
+    $rootScope.options = data && data[0] && data[0].options
+      ? data[0].options
+      : {};
+
+    // Get from sync service and overwrte DB if sync enabled
+    BrowserSync.get('options', function(syncData) {
+      if (!syncData.options || !syncData.options[0] || !syncData.options[0].options) return;
+
+      $rootScope.$apply(function() {
+        // Set data in local store with data from sync
+        $rootScope.options = syncData.options[0].options;
+        DB.options.set({ name: 'options', options: $rootScope.options });
+      });
+    });
+  }, Modal.errorHandler);
+
+  // Fetch collections
+  //
   // Data is saved in the db like so:
   //  [
   //   {
@@ -46,8 +74,23 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.collections.get().then(function(data) {
     $rootScope.collections = $filter('orderBy')(data, 'order');
-  }, errorHandler);
 
+    // Get from sync service and overwrte DB if sync enabled
+    BrowserSync.get('collections', function(syncData) {
+      if (!syncData.collections || !syncData.collections[0]) return;
+
+      $rootScope.$apply(function() {
+        var collections = syncData.collections;
+        $rootScope.collections = $filter('orderBy')(collections, 'order');
+
+        // Set data in local store with data from sync
+        DB.collections.replace($rootScope.collections);
+      });
+    });
+  }, Modal.errorHandler);
+
+  // Fetch urlVariables
+  //
   // Data is saved in db like so:
   //  [
   //   {
@@ -62,22 +105,25 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.urlVariables.get().then(function(data) {
     // Defensive programming ftw
-    $rootScope.urlVariables = data && data[0] && data[0].variables ? data[0].variables : [];
-  }, errorHandler);
+    $rootScope.urlVariables = data && data[0] && data[0].variables
+      ? data[0].variables
+      : [];
 
-  // Data is saved in db like so:
-  //  [
-  //   {
-  //     name: 'options',
-  //     options: {
-  //       key: 'value'
-  //     }
-  //   }
-  // ]
-  DB.options.get().then(function(data) {
-    $rootScope.options = data && data[0] && data[0].options ? data[0].options : {};
-  }, errorHandler);
+    // Get from sync service and overwrte DB if sync enabled
+    BrowserSync.get('urlVariables', function(syncData) {
+      if (!syncData.urlVariables || !syncData.urlVariables[0] || !syncData.urlVariables[0].variables) return;
 
+      $rootScope.$apply(function() {
+        $rootScope.urlVariables = syncData.urlVariables[0].variables
+
+        // Set data in local store with data from sync
+        DB.urlVariables.set({ name: 'urlVariables', variables: $rootScope.urlVariables });
+      });
+    });
+  }, Modal.errorHandler);
+
+  // Fetch history
+  //
   // Data is saved in the db like so:
   //  [
   //   {
@@ -107,7 +153,8 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
   // ]
   DB.history.get().then(function(data) {
     $rootScope.history = data && data[0] && data[0].requests ? data[0].requests : [];
-  }, errorHandler);
+    // History intentionally not synced.. Convince me otherwise if you dare
+  }, Modal.errorHandler);
 
   // Called when new urlVariables are added
   $rootScope.newVariable = function() {
@@ -117,24 +164,7 @@ function(DEFAULT_REQUEST, DEFAULT_SELECTED_COLLECTION, $rootScope, $timeout, DB,
     });
   };
 
-  $rootScope.setOption = function(option, val) {
-    $rootScope.$broadcast(option + '-change', val);
-
-    // If we are changing style or turning styling on
-    if (option === 'highlightStyle' || (option === 'disableHighlighting' && val === false)) {
-      // For performance reasons, we close the response when changing style.
-      // This is because if we change styles mid-flight, it can cause the
-      // browser to become really undesponsive.
-
-      // Wait for request directive to remove response
-      $timeout(function() {
-        // Redraw highlight styles
-        Highlight.highlightAll();
-      });
-    }
-
-    $rootScope.options[option] = val;
-    DB.options.set({name: 'options', options: $rootScope.options}).then(null, errorHandler);
-  };
+  // Add option change handler to rootScope
+  $rootScope.setOption = Options.handleOptions;
 }]);
 

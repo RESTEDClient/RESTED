@@ -64,7 +64,10 @@
                 data-ng-model="$root.options.disableHighlighting"
                 data-ng-change="$root.setOption('disableHighlighting', $root.options.disableHighlighting)"
               />
-              Disable highlight styles (for performance)
+              Disable highlight styles
+              <p>
+                If you struggle with performance on large responses, disabling hightlight styles may help
+              </p>
             </label>
           </div>
           <div class="checkbox">
@@ -74,6 +77,9 @@
                 data-ng-change="$root.setOption('wrap', $root.options.wrap)"
               />
               Wrap response
+              <p>
+                Wrap the lines of the response automatically when it overflows the box. Enabling this will ensure you don't need to scroll left/right
+              </p>
             </label>
           </div>
         </td>

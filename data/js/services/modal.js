@@ -26,6 +26,7 @@ function($rootScope, $sce) {
    *   title: 'The title of the modal',
    *   body: 'The body of the modal',
    *   includeURL: 'An optional template to include inside the modal',
+   *   cancelClick: function onModalCloseByClickingCancel() {},
    *   actions: [{ // An optional action button
    *     text: 'The action button text',
    *     click: function action() {}
@@ -48,7 +49,7 @@ function($rootScope, $sce) {
     },
     throwError: throwError,
     errorHandler: function(event) {
-      throwError('An error occured when reading/writing to indexedDB: ', event);
+      throwError('An error occured when reading/writing to chrome.storage: ', event);
     }
   };
 }]);

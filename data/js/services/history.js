@@ -30,10 +30,8 @@ function(DEFAULT_HISTORY_SIZE, $rootScope, $filter, DB, Modal) {
           : DEFAULT_HISTORY_SIZE;
         $rootScope.history = $rootScope.history.slice(0, historySize);
 
-        if ($rootScope.IDB_SUPPORTED) {
-          DB.history.set({name: 'history', requests: $rootScope.history})
-            .then(Modal.remove, errorHandler);
-        }
+        DB.history.set({name: 'history', requests: $rootScope.history})
+          .then(Modal.remove, errorHandler);
 
       } catch (e) {
         console.error(e);
@@ -46,10 +44,8 @@ function(DEFAULT_HISTORY_SIZE, $rootScope, $filter, DB, Modal) {
       // History isn't as important as collections, so no prompt here
       $rootScope.history.splice(index, 1);
 
-      if ($rootScope.IDB_SUPPORTED) {
-        DB.history.set({name: 'history', requests: $rootScope.history})
-          .then(Modal.remove, errorHandler);
-      }
+      DB.history.set({name: 'history', requests: $rootScope.history})
+        .then(Modal.remove, errorHandler);
     },
 
     clearHistory: function(callback) {
@@ -65,10 +61,8 @@ function(DEFAULT_HISTORY_SIZE, $rootScope, $filter, DB, Modal) {
 
             $rootScope.history = [];
 
-            if ($rootScope.IDB_SUPPORTED) {
-              DB.collections.set({name: 'history', requests: []})
-                .then(Modal.remove, errorHandler);
-            }
+            DB.collections.set({name: 'history', requests: []})
+              .then(Modal.remove, errorHandler);
 
             callback();
           }
