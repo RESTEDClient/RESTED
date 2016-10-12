@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RESTED Client</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <link rel="stylesheet" data-ng-if="$root.options.theme === 'retro'" data-ng-href="ext/bootstrap.min.css">
+  <link rel="stylesheet" data-ng-if="$root.options.theme !== 'retro'" data-ng-href="ext/bootswatch/{{$root.options.theme || 'yeti'}}.min.css">
+  <link rel="stylesheet" type="text/css" href="ext/font-awesome-4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/spesific.css">
+  <link rel="stylesheet" data-ng-if="$root.options.disableHighlighting !== true" data-ng-href="ext/highlight.js/styles/{{$root.options.highlightStyle || 'default'}}.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="img/favicon/favicon-128x128.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <!-- React is bootstrapped into this div -->
+  <div id="app"></div>
+
+  <script src="rested.js"></script>
+</body>
+</html>

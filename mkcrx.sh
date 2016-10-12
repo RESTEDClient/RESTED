@@ -3,7 +3,7 @@
 # Purpose: Pack a Chromium extension directory into crx format
 # Taken from https://developer.chrome.com/extensions/crx#scripts
 
-FILES="data main.js manifest.json"
+FILES="dist main.js manifest.json"
 
 hash xxd 2>/dev/null || {
   echo "The utility xxd is required to run $(basename $0)."

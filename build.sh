@@ -14,7 +14,7 @@ if test $# -ne 1; then
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-FILES="data main.js manifest.json"
+FILES="dist main.js manifest.json"
 
 echo
 echo Packaging for Chrome

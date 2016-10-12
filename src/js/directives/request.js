@@ -68,6 +68,7 @@ function(SPINNER_SHOW_DELAY, DB, Request, RequestUtils, History, Collection, Bas
         if (!request.url) {
           // This is supposed to mutate both request panel and temp request
           scope.request.url = request.url = RequestUtils.randomURL();
+        // TODO Update URL
         } else if (request.url === 'chrome://rested/content/rested.html') {
           return Modal.set({
             title: 'But... Why?',

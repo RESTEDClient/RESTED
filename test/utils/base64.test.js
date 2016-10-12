@@ -1,18 +1,9 @@
-'use strict';
+import * as Base64 from 'utils/base64';
 
-describe('Service: Base64', function () {
-
-  // load the controller's module
-  beforeEach(angular.mock.module('RestedApp'));
-
-  // instantiate service
-  var Base64;
-  beforeEach(inject(function (_Base64_) {
-    Base64 = _Base64_;
-  }));
+describe('base64', () => {
 
   it('should load the service', function () {
-    expect(!!Base64).toBe(true);
+    expect(Base64).toBeDefined();
   });
 
   it('should have an encode function', function () {
@@ -25,4 +16,6 @@ describe('Service: Base64', function () {
     expect(Base64.encode('RESTEDapp')).toBe('UkVTVEVEYXBw');
     expect(Base64.encode('What is the average air speed velocity of an African swallow')).toBe('V2hhdCBpcyB0aGUgYXZlcmFnZSBhaXIgc3BlZWQgdmVsb2NpdHkgb2YgYW4gQWZyaWNhbiBzd2FsbG93');
   });
+
 });
+

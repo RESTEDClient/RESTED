@@ -5,20 +5,20 @@
   "homepage_url": "https://github.com/esphen/RESTED",
   "manifest_version": 2,
   "icons": {
-    "16": "data/img/favicon/favicon-16x16.png",
-    "32": "data/img/favicon/favicon-32x32.png",
-    "64": "data/img/favicon/favicon-64x64.png",
-    "96": "data/img/favicon/favicon-96x96.png",
-    "128": "data/img/favicon/favicon-128x128.png"
+    "16": "dist/img/favicon/favicon-16x16.png",
+    "32": "dist/img/favicon/favicon-32x32.png",
+    "64": "dist/img/favicon/favicon-64x64.png",
+    "96": "dist/img/favicon/favicon-96x96.png",
+    "128": "dist/img/favicon/favicon-128x128.png"
   },
   "browser_action": {
     "default_title": "RESTED",
     "default_icon": {
-      "16": "data/img/favicon/favicon-16x16.png",
-      "32": "data/img/favicon/favicon-32x32.png",
-      "64": "data/img/favicon/favicon-64x64.png",
-      "96": "data/img/favicon/favicon-96x96.png",
-      "128": "data/img/favicon/favicon-128x128.png"
+      "16": "dist/img/favicon/favicon-16x16.png",
+      "32": "dist/img/favicon/favicon-32x32.png",
+      "64": "dist/img/favicon/favicon-64x64.png",
+      "96": "dist/img/favicon/favicon-96x96.png",
+      "128": "dist/img/favicon/favicon-128x128.png"
     }
   },
   "background": {

@@ -1,16 +1,10 @@
-'use strict';
+import * as Import from 'utils/import';
 
-describe('Service: Import', function () {
-
-  // load the controller's module
-  beforeEach(angular.mock.module('RestedApp'));
+describe('Service: Import', () => {
 
   var expectedResult;
 
-  // instantiate service
-  var Import;
-  beforeEach(inject(function (_Import_) {
-    Import = _Import_;
+  beforeEach(() => {
     expectedResult = [
       {
         url: 'www.vg.no',
@@ -24,23 +18,23 @@ describe('Service: Import', function () {
         ]
       }
     ];
-  }));
+  });
 
-  it('should load the service', function () {
+  it('should load the service', () => {
     expect(!!Import).toBe(true);
   });
 
-  it('should have a HAR import method', function () {
+  it('should have a HAR import method', () => {
     expect(Import.fromHAR).toBeDefined();
     expect(typeof Import.fromHAR).toBe('function');
   });
 
-  it('should have a Postman import method', function () {
+  it('should have a Postman import method', () => {
     expect(Import.fromPostman).toBeDefined();
     expect(typeof Import.fromPostman).toBe('function');
   });
 
-  it('should convert HAR to correct format when invoked', function () {
+  it('should convert HAR to correct format when invoked', () => {
     var HAR = {
       "log": {
         "entries": [
@@ -62,7 +56,7 @@ describe('Service: Import', function () {
     expect(Import.fromHAR(HAR)).toEqual(expectedResult);
   });
 
-  it('should convert HAR and include postData', function () {
+  it('should convert HAR and include postData', () => {
     var HAR = {
       "log": {
         "entries": [
@@ -99,7 +93,7 @@ describe('Service: Import', function () {
     expect(Import.fromHAR(HAR)).toEqual(expectedResult);
   });
 
-  it('should convert Postman json to correct format when invoked', function () {
+  it('should convert Postman json to correct format when invoked', () => {
     var postmanJson = {
       "name": "Test collection",
       "requests": [
@@ -113,7 +107,7 @@ describe('Service: Import', function () {
     expect(Import.fromPostman(postmanJson)).toEqual(expectedResult);
   });
 
-  it('should convert Postman json and include postData', function () {
+  it('should convert Postman json and include postData', () => {
     var postmanJson = {
       "name": "Test collection",
       "requests": [

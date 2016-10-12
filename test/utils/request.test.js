@@ -1,32 +1,24 @@
-'use strict';
+import * as Request from 'utils/request';
+import RunRequest from 'utils/request';
 
-describe('Service: Request', function () {
+describe('Request', () => {
 
-  // load the controller's module
-  beforeEach(angular.mock.module('RestedApp'));
-
-  // instantiate service
-  var Request;
-  beforeEach(inject(function (_Request_) {
-    Request = _Request_;
-  }));
-
-  it('should load the service', function () {
-    expect(!!Request).toBe(true);
+  it('should load the service', () => {
+    expect(Request).toBeDefined();
   });
 
-  it('should have a run method', function () {
-    expect(Request.run).toBeDefined();
-    expect(typeof Request.run).toBe('function');
+  it('should have a run method as default export', () => {
+    expect(RunRequest).toBeDefined();
+    expect(RunRequest).toBeInstanceOf(Function);
   });
 
   /* prependHttp tests */
-  it('should have a prependHttp method', function () {
+  it('should have a prependHttp method', () => {
     expect(Request._prependHttp).toBeDefined();
     expect(typeof Request._prependHttp).toBe('function');
   });
 
-  it('should prepend http when appropriate', function () {
+  it('should prepend http when appropriate', () => {
     var goodUrl = 'http://vg.no';
     expect(Request._prependHttp(goodUrl)).toEqual(goodUrl);
 
@@ -38,12 +30,12 @@ describe('Service: Request', function () {
   });
 
   /* mapParameters tests */
-  it('should have a mapParameters method', function () {
+  it('should have a mapParameters method', () => {
     expect(Request._mapParameters).toBeDefined();
-    expect(typeof Request._mapParameters).toBe('function');
+    expect(Request._mapParameters).toBeInstanceOf(Function);
   });
 
-  it('should have a map parameters to a url template', function () {
+  it('should have a map parameters to a url template', () => {
     var plainUrl = 'http://www.reddit.com/r/aww?questonmark=equals-sign&ampersand=';
     expect(Request._mapParameters(plainUrl)).toEqual(plainUrl);
 
@@ -57,12 +49,12 @@ describe('Service: Request', function () {
   });
 
   /* createXMLHttpRequest tests */
-  it('should have a createXMLHttpRequest method', function () {
+  it('should have a createXMLHttpRequest method', () => {
     expect(Request._createXMLHttpRequest).toBeDefined();
     expect(typeof Request._createXMLHttpRequest).toBe('function');
   });
 
-  it('should generate an XMLHttpRequest when passed a request object', function () {
+  it('should generate an XMLHttpRequest when passed a request object', () => {
     var request = {
       "method":"GET",
       "headers":[{"name":"test","value":"blah"}],
@@ -75,7 +67,7 @@ describe('Service: Request', function () {
   // withCredentials means that setCookie headers in the response will send the set cookie
   // in subequent requests to that domain. This is useful for RESTful services behind
   // logins.
-  it('should generate an XMLHttpRequest with "withCredentials" set', function () {
+  it('should generate an XMLHttpRequest with "withCredentials" set', () => {
     var request = {
       "method":"GET",
       "headers":[{"name":"test","value":"blah"}],

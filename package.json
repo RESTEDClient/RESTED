@@ -12,15 +12,34 @@
     "multiprocess": true
   },
   "scripts": {
-    "test": "node_modules/karma/bin/karma start test/karma.conf.js",
-    "dev": "node_modules/karma/bin/karma start --no-single-run test/karma.conf.js"
+    "test": "jest --config test/jest.conf.js",
+    "test:watch": "jest --watch --config test/jest.conf.js",
+    "test:snapshot": "jest -u --config test/jest.conf.js",
+    "start": "NODE_ENV=dev rollup -w --config dev/rollup/rollup.config.js",
+    "build": "NODE_ENV=production rollup --config dev/rollup/rollup.config.js"
+  },
+  "dependencies": {
+    "aphrodite": "^0.6.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
-    "karma": "0.13.22",
-    "jasmine-core": "2.4.1",
-    "karma-jasmine": "0.3.7",
-    "angular-mocks": "1.5.0",
-    "karma-mocha-reporter": "1.1.6",
-    "karma-firefox-launcher": "0.1.7"
+    "babel-jest": "^16.0.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.7.1",
+    "eslint-plugin-react": "^6.4.1",
+    "jest": "^16.0.1",
+    "react-test-renderer": "^15.3.2",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-watch": "^2.5.0"
   }
 }

@@ -1,17 +1,11 @@
-'use strict';
+import * as Export from 'utils/export';
 
-describe('Service: Export', function () {
-
-  // load the controller's module
-  beforeEach(angular.mock.module('RestedApp'));
+describe('export', () => {
 
   var dataset;
   var collection;
 
-  // instantiate service
-  var Export;
-  beforeEach(inject(function (_Export_) {
-    Export = _Export_;
+  beforeEach(() => {
     dataset = [
       {
         id: 'requestId',
@@ -30,10 +24,10 @@ describe('Service: Export', function () {
       id: "collectionId",
       name: "Test collection",
     };
-  }));
+  });
 
   it('should load the service', function () {
-    expect(!!Export).toBe(true);
+    expect(Export).toBeDefined();
   });
 
   it('should have a HAR export method', function () {
@@ -286,3 +280,4 @@ describe('Service: Export', function () {
   });
 
 });
+
