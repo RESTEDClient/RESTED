@@ -8,7 +8,7 @@ describe('Service: RequestUtils', () => {
 
   var array = [
     {
-      headerName: 'headerName',
+      name: 'headerName',
       value: 'value'
     }
   ];
@@ -23,11 +23,11 @@ describe('Service: RequestUtils', () => {
   });
 
   it('should reMap from object to array', () => {
-    expect(RequestUtils.reMapHeaders(object, false)).toBe(array);
+    expect(RequestUtils.reMapHeaders(object, false)).toEqual(array);
   });
 
   it('should reMap from array to object', () => {
-    expect(RequestUtils.reMapHeaders(array, true)).toBe(object);
+    expect(RequestUtils.reMapHeaders(array, true)).toEqual(object);
   });
 
   /* formDataToFormString tests */
