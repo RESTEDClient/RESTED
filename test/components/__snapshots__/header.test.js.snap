@@ -2,6 +2,7 @@ exports[`test Header renders correctly 1`] = `
 <header>
   <h1>
     <img
+      alt="RESTED logo"
       className="logo"
       height="40"
       src="img/rested-logo.png" />
