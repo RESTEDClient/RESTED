@@ -11,7 +11,7 @@ const initialState = {
   loading: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case EXECUTE_REQUEST:
       return Object.assign({}, state, {
@@ -39,5 +39,5 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-};
+}
 

@@ -6,6 +6,7 @@ export default function Header() {
       <h1>
         <img
           className="logo"
+          alt="RESTED logo"
           height="40"
           src="img/rested-logo.png"
         />
