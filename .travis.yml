@@ -1,6 +1,9 @@
 language: node_js
 addons:
     firefox: "latest-beta"
+cache:
+  directories:
+  - $HOME/.yarn-cache
 before_install:
   - npm install -g yarn
 install:
