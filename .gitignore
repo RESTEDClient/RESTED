@@ -6,3 +6,4 @@ RESTED.*
 manifest.json
 npm-debug.log
 target
+dist/rested.js

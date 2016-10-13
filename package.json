@@ -39,6 +39,7 @@
     "eslint-plugin-react": "^6.3.0",
     "jest": "^16.0.1",
     "react-test-renderer": "^15.3.2",
+    "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-eslint": "^3.0.0",

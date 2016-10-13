@@ -2,8 +2,6 @@ import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-
-// Remove if not used
 import replace from 'rollup-plugin-replace';
 
 export default {
@@ -31,6 +29,10 @@ export default {
     replace({
       exclude: 'node_modules/**',
       ENV: JSON.stringify(process.env.NODE_ENV || 'dev'),
+    }),
+    replace({
+      /* Fix "process is not defined" */
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev'),
     }),
   ],
 };

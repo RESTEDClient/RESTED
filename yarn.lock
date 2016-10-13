@@ -2775,6 +2775,12 @@ rimraf@^2.2.8, rimraf@^2.4.3, rimraf@^2.4.4:
   dependencies:
     glob "^7.0.5"
 
+rollup:
+  version "0.36.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.36.3.tgz#c89ac479828924ff8f69c1d44541cb4ea2fc11fc"
+  dependencies:
+    source-map-support "^0.4.0"
+
 rollup-plugin-babel@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-2.6.1.tgz#470b03486337045d7e8a3e43fc5fc00e8db82c26"
@@ -2889,7 +2895,7 @@ sntp@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-source-map-support@^0.4.2:
+source-map-support@^0.4.0, source-map-support@^0.4.2:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.3.tgz#693c8383d4389a4569486987c219744dfc601685"
   dependencies:
