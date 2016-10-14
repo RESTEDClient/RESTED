@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Request from 'components/Request';
+import Collections from 'components/Collections';
 
-test('Request renders correctly', () => {
+test('Collections renders correctly', () => {
   const tree = renderer.create(
-    <Request />
+    <Collections />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

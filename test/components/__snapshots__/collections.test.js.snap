@@ -1,0 +1,7 @@
+exports[`test Collections renders correctly 1`] = `
+<div>
+  <h2>
+    Collections
+  </h2>
+</div>
+`;

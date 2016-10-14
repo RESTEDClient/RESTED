@@ -1,5 +1,7 @@
 exports[`test Request renders correctly 1`] = `
-<h1>
-  Facebook
-</h1>
+<div>
+  <h2>
+    Request
+  </h2>
+</div>
 `;
