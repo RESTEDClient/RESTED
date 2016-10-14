@@ -13,17 +13,21 @@
   },
   "scripts": {
     "test": "jest --config test/jest.conf.js",
-    "test:watch": "jest --watch --config test/jest.conf.js",
+    "test:watch": "jest --watchman --watchAll --config test/jest.conf.js",
     "test:snapshot": "jest -u --config test/jest.conf.js",
-    "eslint": "eslint src",
-    "start": "NODE_ENV=development rollup -w --config dev/rollup/rollup.config.js",
+    "eslint": "eslint -f unix src",
+    "eslint:fix": "eslint --fix src",
+    "start": "npm run dev",
+    "dev": "NODE_ENV=development rollup --watch --config dev/rollup/rollup.config.js",
     "build": "NODE_ENV=production rollup --config dev/rollup/rollup.config.js"
   },
   "dependencies": {
-    "aphrodite": "^0.6.0",
+    "classnames": "^2.2.5",
     "object-assign": "^4.1.0",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
+    "react-highlight": "^0.9.0",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0"
   },
