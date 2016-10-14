@@ -29,12 +29,21 @@ export default {
     }),
     replace({
       exclude: 'node_modules/**',
-      ENV: JSON.stringify(process.env.NODE_ENV || 'dev'),
+      ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     replace({
       /* Fix "process is not defined" */
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev'),
+      include: [
+        'node_modules/react/**',
+        'node_modules/react-redux/**',
+        'node_modules/redux/**',
+        'node_modules/fbjs/**',
+      ],
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+    replace({
       /* Fix "module is not defined" */
+      include: 'node_modules/symbol-observable/es/index.js',
       '= module': ';',
     }),
   ],

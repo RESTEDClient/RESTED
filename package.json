@@ -16,7 +16,7 @@
     "test:watch": "jest --watch --config test/jest.conf.js",
     "test:snapshot": "jest -u --config test/jest.conf.js",
     "eslint": "eslint src",
-    "start": "NODE_ENV=dev rollup -w --config dev/rollup/rollup.config.js",
+    "start": "NODE_ENV=development rollup -w --config dev/rollup/rollup.config.js",
     "build": "NODE_ENV=production rollup --config dev/rollup/rollup.config.js"
   },
   "dependencies": {
