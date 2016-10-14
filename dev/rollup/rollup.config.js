@@ -8,7 +8,9 @@ export default {
   entry: 'src/js/index.js',
   dest: 'dist/rested.js',
   format: 'iife',
-  sourceMap: 'inline',
+  /* NOTE: Inline source maps are super slow in Firefox. */
+  sourceMap: true,
+  sourceMapFile: 'dist/rested.map.js',
   banner: '/* RESTED source code can be found at https://github.com/esphen/RESTED :) */',
   plugins: [
     resolve({
