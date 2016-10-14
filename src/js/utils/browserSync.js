@@ -26,7 +26,8 @@ function handleErrorsAndCallCallback(dispatch, callback, ...args) {
  * Assert sync is supported and not disabled
  */
 function assertInvariants() {
-  return chrome.storage.sync; // TODO! Connect with redux for options && $rootScope.options.sync === true;
+  // TODO! Connect with redux for options && $rootScope.options.sync === true;
+  return chrome.storage.sync;
 }
 
 //
@@ -37,39 +38,31 @@ function assertInvariants() {
 
 /** Pass null as name to get all data */
 export function get(dispatch, name, callback) {
-
   // Abort if sync is not supported or disabled
-  if (!assertInvariants()) return null;
+  if (!assertInvariants()) return;
 
   if (!name) {
     chrome.storage.sync.get(handleErrorsAndCallCallback.bind(this, dispatch, callback));
-    return;
+  } else {
+    chrome.storage.sync.get(name, handleErrorsAndCallCallback.bind(this, dispatch, callback));
   }
+}
 
-  chrome.storage.sync.get(name, handleErrorsAndCallCallback.bind(this, dispatch, callback));
-};
-
-export function sizeOf() {};
+export function sizeOf() {}
 
 export function set(dispatch, name, data, callback) {
-
   // Abort if sync is not supported or disabled
-  if (!assertInvariants()) return null;
+  if (!assertInvariants()) return;
+  if (!name) return;
 
-  if (!name) {
-    console.log('No name was passed to BrowserSync.set');
-    return null;
-  }
-
-  var keyValue = {};
+  const keyValue = {};
   keyValue[name] = data;
   chrome.storage.sync.set(keyValue, handleErrorsAndCallCallback.bind(this, dispatch, callback));
-};
+}
 
 export function clear(dispatch, callback) {
-
   // Abort if sync is not supported or disabled
-  if (!assertInvariants()) return null;
+  if (!assertInvariants()) return;
 
   dispatch(setModalData({
     title: 'Clear synced storage?',
@@ -79,8 +72,8 @@ export function clear(dispatch, callback) {
       text: 'Clear sync',
       click: function action() {
         chrome.storage.sync.clear(handleErrorsAndCallCallback.bind(this, dispatch, callback));
-      }
-    }]
+      },
+    }],
   }));
-};
+}
 

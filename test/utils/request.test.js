@@ -14,30 +14,30 @@ describe('Request', () => {
 
   /* prependHttp tests */
   it('should have a prependHttp method', () => {
-    expect(Request._prependHttp).toBeDefined();
-    expect(typeof Request._prependHttp).toBe('function');
+    expect(Request.prependHttp).toBeDefined();
+    expect(typeof Request.prependHttp).toBe('function');
   });
 
   it('should prepend http when appropriate', () => {
     var goodUrl = 'http://vg.no';
-    expect(Request._prependHttp(goodUrl)).toEqual(goodUrl);
+    expect(Request.prependHttp(goodUrl)).toEqual(goodUrl);
 
     var badUrl = 'vg.no';
-    expect(Request._prependHttp(badUrl)).toEqual('http://' + badUrl);
+    expect(Request.prependHttp(badUrl)).toEqual('http://' + badUrl);
 
     var httpsUrl = 'https://vg.no';
-    expect(Request._prependHttp(httpsUrl)).toEqual(httpsUrl);
+    expect(Request.prependHttp(httpsUrl)).toEqual(httpsUrl);
   });
 
   /* mapParameters tests */
   it('should have a mapParameters method', () => {
-    expect(Request._mapParameters).toBeDefined();
-    expect(Request._mapParameters).toBeInstanceOf(Function);
+    expect(Request.mapParameters).toBeDefined();
+    expect(Request.mapParameters).toBeInstanceOf(Function);
   });
 
   it('should have a map parameters to a url template', () => {
     var plainUrl = 'http://www.reddit.com/r/aww?questonmark=equals-sign&ampersand=';
-    expect(Request._mapParameters(plainUrl)).toEqual(plainUrl);
+    expect(Request.mapParameters(plainUrl)).toEqual(plainUrl);
 
     var params = {
       key: 'value',
@@ -45,13 +45,13 @@ describe('Request', () => {
     };
     var templateUrl = 'http://someapi.com?API_KEY={{key}}&{{STATIC_KEY}}=why';
     var result      = 'http://someapi.com?API_KEY=value&EuR_ek44!\\=why';
-    expect(Request._mapParameters(templateUrl, params)).toEqual(result);
+    expect(Request.mapParameters(templateUrl, params)).toEqual(result);
   });
 
   /* createXMLHttpRequest tests */
   it('should have a createXMLHttpRequest method', () => {
-    expect(Request._createXMLHttpRequest).toBeDefined();
-    expect(typeof Request._createXMLHttpRequest).toBe('function');
+    expect(Request.createXMLHttpRequest).toBeDefined();
+    expect(typeof Request.createXMLHttpRequest).toBe('function');
   });
 
   it('should generate an XMLHttpRequest when passed a request object', () => {
@@ -61,7 +61,7 @@ describe('Request', () => {
       "cache":false,
       "url":"http://www.aperturescience.com"
     };
-    expect(Request._createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
+    expect(Request.createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
   });
 
   // withCredentials means that setCookie headers in the response will send the set cookie
@@ -74,7 +74,7 @@ describe('Request', () => {
       "cache":false,
       "url":"http://www.aperturescience.com"
     };
-    expect(Request._createXMLHttpRequest(request).withCredentials).toEqual(true);
+    expect(Request.createXMLHttpRequest(request).withCredentials).toEqual(true);
   });
 });
 

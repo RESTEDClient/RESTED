@@ -62,13 +62,13 @@ export const DEFAULT_REQUEST = {
   method: 'GET',
   headers: [{
     name: '',
-    value: ''
+    value: '',
   }],
   formData: [{
     name: '',
-    value: ''
+    value: '',
   }],
-  cache: false
+  cache: false,
 };
 
 /**
@@ -104,7 +104,7 @@ export const THEMES = [
   'slate',
   'spacelab',
   'superhero',
-  'united'
+  'united',
 ];
 
 /**
@@ -115,7 +115,7 @@ export const THEMES = [
 export const HIGHLIGHT_STYLES = [
   { title: 'Default', style: 'default' },
   { title: 'Dark', style: 'dark' },
-  { title: 'Grayscale', style: 'grayscale'},
+  { title: 'Grayscale', style: 'grayscale' },
   { title: 'FAR', style: 'far' },
   { title: 'IDEA', style: 'idea' },
   { title: 'Sunburst', style: 'sunburst' },
@@ -124,7 +124,7 @@ export const HIGHLIGHT_STYLES = [
   { title: 'Ascetic', style: 'ascetic' },
   { title: 'Magula', style: 'magula' },
   { title: 'GitHub', style: 'github' },
-  { title: 'Github Gist', style: 'github-gist'},
+  { title: 'Github Gist', style: 'github-gist' },
   { title: 'Google Code', style: 'googlecode' },
   { title: 'Brown Paper', style: 'brown_paper' },
   { title: 'School Book', style: 'school_book' },
@@ -167,7 +167,7 @@ export const HIGHLIGHT_STYLES = [
   { title: 'Kimbie - Light', style: 'kimbie.light' },
   { title: 'Hybrid', style: 'hybrid' },
   { title: 'Darkula', style: 'darkula' },
-  { title: 'Hopscotch', style: 'hopscotch'},
+  { title: 'Hopscotch', style: 'hopscotch' },
 ];
 
 /**

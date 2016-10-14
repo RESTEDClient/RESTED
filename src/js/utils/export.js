@@ -1,22 +1,4 @@
-import * as RequestUtils from 'utils/requestUtils';
-
-function stringHeadersToObject(string) {
-  var result = [];
-
-  string.split('\n').forEach(function(line) {
-    if (!line) {
-      return;
-    }
-
-    var header = line.split(': ');
-    result.push({
-      name: header[0],
-      value: header[1]
-    });
-  });
-
-  return result;
-}
+import * as RequestUtils from './requestUtils';
 
 function getPostData(entry) {
   if (!entry.data && !entry.formData) {
@@ -24,31 +6,28 @@ function getPostData(entry) {
   }
 
   // If is form data key values, format as urlencoded data
-  var urlEncoded = '';
+  let urlEncoded = '';
   if (entry.formData) {
-    urlEncoded = entry.formData.reduce(function(prev, data) {
-
+    urlEncoded = entry.formData.reduce((prev, data) => {
       // Prevent empty headers printing equal signs
       if (!data.name) {
-        return prev
+        return prev;
       }
 
-      return (prev ? prev + '&' : '') + data.name + '=' + data.value;
+      return `${(prev ? `${prev}&` : '') + data.name}=${data.value}`;
     }, '');
   }
 
   // Strip away empty lines like above
-  var params = [];
+  let params = [];
   if (Array.isArray(entry.formData)) {
-    params = entry.formData.filter(function(item) {
-      return item.name;
-    });
+    params = entry.formData.filter(item => item.name);
   }
 
-  return  {
-    'mimeType': urlEncoded ? 'application/x-www-form-urlencoded' : '',
-    'params': params,
-    'text': urlEncoded ? urlEncoded : entry.data,
+  return {
+    mimeType: urlEncoded ? 'application/x-www-form-urlencoded' : '',
+    params,
+    text: urlEncoded || entry.data,
   };
 }
 
@@ -57,14 +36,12 @@ function addPostmanDataAttributes(postData) {
     return [];
   }
 
-  return postData.map(function(data) {
-    return {
-      key: data.name,
-      value: data.value,
-      type: 'text',
-      enabled: true,
-    };
-  });
+  return postData.map(data => ({
+    key: data.name,
+    value: data.value,
+    type: 'text',
+    enabled: true,
+  }));
 }
 
 /**
@@ -82,40 +59,40 @@ export function toPostman(dataset, collection) {
     return {};
   }
 
-  var postmanJson = {
-    'id': collection.id,
-    'name': collection.name,
-    'requests': [],
+  const postmanJson = {
+    id: collection.id,
+    name: collection.name,
+    requests: [],
   };
 
-  dataset.forEach(function(request) {
+  dataset.forEach(request => {
     if (request.formData) {
       postmanJson.requests.push({
-        'id': request.id,
-        'collectionId': collection.id,
-        'method': request.method,
-        'url': request.url,
-        'headers': RequestUtils.headersToHeaderString(request.headers),
-        'dataMode': 'urlencoded',
-        'data': addPostmanDataAttributes(request.formData),
-        'rawModeData': [],
+        id: request.id,
+        collectionId: collection.id,
+        method: request.method,
+        url: request.url,
+        headers: RequestUtils.headersToHeaderString(request.headers),
+        dataMode: 'urlencoded',
+        data: addPostmanDataAttributes(request.formData),
+        rawModeData: [],
       });
     } else {
       postmanJson.requests.push({
-        'id': request.id,
-        'collectionId': collection.id,
-        'method': request.method,
-        'url': request.url,
-        'headers': RequestUtils.headersToHeaderString(request.headers),
-        'data': [],
-        'dataMode': 'raw',
-        'rawModeData': request.data || [],
+        id: request.id,
+        collectionId: collection.id,
+        method: request.method,
+        url: request.url,
+        headers: RequestUtils.headersToHeaderString(request.headers),
+        data: [],
+        dataMode: 'raw',
+        rawModeData: request.data || [],
       });
     }
   });
 
   return postmanJson;
-};
+}
 
 /**
  * The HAR export should comply with the HAR 1.2
@@ -131,26 +108,26 @@ export function toHAR(dataset) {
     return {};
   }
 
-  var har = {
-    'log': {
-      'version': '1.2',
-      'creator': 'RESTED REST Client',
-      'Comment': 'An exported collection from RESTED',
-      'entries': []
-    }
+  const har = {
+    log: {
+      version: '1.2',
+      creator: 'RESTED REST Client',
+      Comment: 'An exported collection from RESTED',
+      entries: [],
+    },
   };
 
-  dataset.forEach(function(entry) {
+  dataset.forEach(entry => {
     har.log.entries.push({
-      'request': {
-        'method': entry.method,
-        'url': entry.url,
-        'headers': entry.headers,
-        'postData': getPostData(entry)
-      }
+      request: {
+        method: entry.method,
+        url: entry.url,
+        headers: entry.headers,
+        postData: getPostData(entry),
+      },
     });
   });
 
   return har;
-};
+}
 

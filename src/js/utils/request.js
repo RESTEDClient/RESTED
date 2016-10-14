@@ -1,14 +1,16 @@
-import * as RequestUtils from 'utils/requestUtils';
+import * as RequestUtils from './requestUtils';
 
 /**
 * Prepend http:// if missing from url
 * Make sure to allow https
 */
-function prependHttp (url) {
-  if(!(/^https?:\/\//.test(url))) {
-    url = 'http://' + url;
+export function prependHttp(url) {
+  let result = url;
+  if (!(/^https?:\/\//.test(url))) {
+    result = `http://${url}`;
   }
-  return url;
+
+  return result;
 }
 
 /**
@@ -20,21 +22,21 @@ function prependHttp (url) {
 * if key is missing, and removes any double slashes
 * left behind.
 */
-function mapParameters (url, params) {
-  return url.replace(/\{\{(\w+)\}\}/g, function(match, capture) {
-    var param = params ? params[capture] : null;
-    return param ? param : '';
+export function mapParameters(url, params) {
+  return url.replace(/\{\{(\w+)\}\}/g, (match, capture) => {
+    const param = params ? params[capture] : null;
+    return param || '';
   }).replace(/([^:]\/)\/+/g, '$1');
-};
+}
 
-function createXMLHttpRequest(req) {
-  var request = new XMLHttpRequest();
+export function createXMLHttpRequest(req) {
+  const request = new XMLHttpRequest();
   request.open(req.method, req.url);
   request.withCredentials = true;
 
-  if(Array.isArray(req.headers)) {
-    req.headers.forEach(function(header) {
-      if(header.name) {
+  if (Array.isArray(req.headers)) {
+    req.headers.forEach(header => {
+      if (header.name) {
         request.setRequestHeader(header.name, header.value);
       }
     });
@@ -44,16 +46,18 @@ function createXMLHttpRequest(req) {
 }
 
 export default function run(request, parameters, fn) {
-  var requestCopy = angular.copy(request);
+  const preparedRequest = request;
 
   // Map URL parameters first to allow protocol in parameter
-  var url = mapParameters(requestCopy.url, parameters);
+  let url = mapParameters(preparedRequest.url, parameters);
 
   // Prepend http if not provided
   url = prependHttp(url);
 
-  requestCopy.url = url;
-  var req = createXMLHttpRequest(requestCopy);
+  preparedRequest.url = url;
+
+  // TODO Bring into the 21st century
+  const req = createXMLHttpRequest(preparedRequest);
   req.onloadend = fn.bind(req);
 
   if (request.useFormData) {
@@ -61,10 +65,5 @@ export default function run(request, parameters, fn) {
   } else {
     req.send(request.data);
   }
-};
-
-/* For unit tests only */
-export const _prependHttp = prependHttp;
-export const _mapParameters = mapParameters;
-export const _createXMLHttpRequest = createXMLHttpRequest;
+}
 

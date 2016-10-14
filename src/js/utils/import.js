@@ -1,17 +1,17 @@
-import * as RequestUtils from 'utils/requestUtils';
+import { formDataToFormString } from './requestUtils';
 
 function stringHeadersToObject(string) {
-  var result = [];
+  const result = [];
 
-  string.split('\n').forEach(function(line) {
+  string.split('\n').forEach(line => {
     if (!line) {
       return;
     }
 
-    var header = line.split(': ');
+    const header = line.split(': ');
     result.push({
       name: header[0],
-      value: header[1]
+      value: header[1],
     });
   });
 
@@ -30,29 +30,30 @@ export function fromPostman(json) {
     return {};
   }
 
-  var entries = json.requests;
-  var result  = [];
+  const entries = json.requests;
 
-  entries.forEach(function(request) {
-    request.headers = stringHeadersToObject(request.headers);
+  return entries.map(request => {
+    const result = request;
+    result.headers = stringHeadersToObject(result.headers);
 
-    if (Array.isArray(request.data)) {
-      request.data = RequestUtils.formDataToFormString(request.data.map(function(data) {
-        return { name: data.key, value: data.value};
-      }));
+    if (Array.isArray(result.data)) {
+      result.data = formDataToFormString(
+        result.data.map(data => ({
+          name: data.key,
+          value: data.value,
+        }))
+      );
     }
 
     // Trim away fluff
-    result.push({
-      'method': request.method,
-      'url': request.url,
-      'headers': request.headers,
-      'data': request.data
-    });
+    return {
+      method: result.method,
+      url: result.url,
+      headers: result.headers,
+      data: result.data,
+    };
   });
-
-  return result;
-};
+}
 
 /**
  * The HAR import complies with the HAR 1.2
@@ -68,20 +69,19 @@ export function fromHAR(har) {
     return {};
   }
 
-  var entries = har.log.entries;
-  var result  = [];
+  const entries = har.log.entries;
+  const result = [];
 
-  entries.forEach(function(entry) {
-
+  entries.forEach(entry => {
     // Trim away fluff
     result.push({
-      'method': entry.request.method,
-      'url': entry.request.url,
-      'headers': entry.request.headers,
-      'data': entry.request.postData ? entry.request.postData.text : undefined
+      method: entry.request.method,
+      url: entry.request.url,
+      headers: entry.request.headers,
+      data: entry.request.postData ? entry.request.postData.text : undefined,
     });
   });
 
   return result;
-};
+}
 

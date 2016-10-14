@@ -22,6 +22,7 @@ export default {
     eslint({
       exclude: [
         'src/styles/**',
+        'node_modules/**',
       ]
     }),
     babel({

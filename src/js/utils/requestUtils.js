@@ -1,4 +1,4 @@
-import { PLACEHOLDER_URLS } from 'constants/constants';
+import { PLACEHOLDER_URLS } from '../constants/constants';
 
 /**
  * According to MDN, this makes us more adherent
@@ -6,10 +6,10 @@ import { PLACEHOLDER_URLS } from 'constants/constants';
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
  */
-function fixedEncodeURIComponent (str) {
-  return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-    return '%' + c.charCodeAt(0).toString(16);
-  });
+function fixedEncodeURIComponent(str) {
+  return encodeURIComponent(str).replace(/[!'()*]/g, c => (
+    `%${c.charCodeAt(0).toString(16)}`
+  ));
 }
 
 /**
@@ -38,43 +38,40 @@ function fixedEncodeURIComponent (str) {
  */
 export function reMapHeaders(headers, asObject) {
   // TODO - we no longer use asObject = false
-  if(!headers && !asObject) {
+  if (!headers && !asObject) {
     return [];
-  } else if(!headers && asObject) {
+  } else if (!headers && asObject) {
     return {};
   }
 
-  if(asObject) {
-    var headersAsObject = {};
-    headers.filter(function(header) {
-      return header && header.name;
-    }).forEach(function(header) {
-      headersAsObject[header.name] = header.value;
-    });
+  if (asObject) {
+    const headersAsObject = {};
+    headers
+      .filter(header => header && header.name)
+      .forEach(header => {
+        headersAsObject[header.name] = header.value;
+      });
 
     return headersAsObject;
-  } else {
-    var headersAsArray = Object.keys(headers).map(function(key) {
-      return {
-        name: key,
-        value: headers[key]
-      }
-    });
-
-    return headersAsArray;
   }
-};
+
+  return Object.keys(headers).map(key => ({
+    name: key,
+    value: headers[key],
+  }));
+}
 
 /**
 * Generate random placeholder URL and cache it so we don't fetch every digest.
 */
-var placeholder;
+let placeholder;
 export function randomURL() {
   if (!placeholder) {
     placeholder = PLACEHOLDER_URLS[Math.floor(Math.random() * PLACEHOLDER_URLS.length)];
   }
+
   return placeholder;
-};
+}
 
 
 /**
@@ -87,14 +84,14 @@ export function formDataToFormString(formData) {
     return '';
   }
 
-  var result = formData.filter(function(item) {
-    return item && item.name;
-  }).reduce(function(prev, item, i) {
-    return prev + (i !== 0 ? '&' : '') + fixedEncodeURIComponent(item.name) + '=' + (item.value ? fixedEncodeURIComponent(item.value) : '');
-  }, '');
+  const result = formData
+    .filter(item => item && item.name)
+    .reduce((prev, item, i) => (
+      `${prev}${i !== 0 ? '&' : ''}${fixedEncodeURIComponent(item.name)}=${item.value ? fixedEncodeURIComponent(item.value) : ''}`
+    ), '');
 
   return result.replace(/%20/g, '+');
-};
+}
 
 /**
  * Take an array of objects and transform it into
@@ -106,12 +103,12 @@ export function headersToHeaderString(headers) {
     return '';
   }
 
-  var result = headers.filter(function(item) {
-    return item && item.name;
-  }).reduce(function(prev, item, i) {
-    return (prev ? prev + '\n' : '') + item.name + ': ' + (item.value ? item.value : '');
-  }, '');
+  const result = headers
+    .filter(item => item && item.name)
+    .reduce((prev, { name, value }) => (
+      `${prev ? `${prev}\n` : ''}${name}: ${value || ''}`
+    ), '');
 
-  return result + '\n';
-};
+  return `${result}\n`;
+}
 
