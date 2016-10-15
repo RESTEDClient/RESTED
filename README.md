@@ -30,7 +30,18 @@ In order to work on this project, you're going to need a few things:
  - [yarn](https://yarnpkg.com/en/docs/install)
  - [Firefox >= 47](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
 
-Once these formalities are in order, you can start developing.
+Now to set up your development environment. First, check out the repository from
+git and open a terminal in it. Then you need to symlink in the correct manifest
+file to the root directory of the project.
+
+    # For Firefox
+    ln -s firefox/manifest.json
+
+    # For Chrome and Opera
+    ln -s google-chrome/manifest.json
+
+Once these formalities are in order, you can start the development server which
+will compile the code into something that can be loaded in the browser.
 
     nvm use
     yarn
