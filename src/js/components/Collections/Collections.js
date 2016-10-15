@@ -1,12 +1,13 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 
-export default function Header() {
+export default function Collections() {
   return (
-    <div>
+    <Col xsHidden sm={4}>
       <h2>
         Collections
       </h2>
-    </div>
+    </Col>
   );
 }
 

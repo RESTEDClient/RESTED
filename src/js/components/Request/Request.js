@@ -1,12 +1,13 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 
-export default function Header() {
+export default function Request() {
   return (
-    <div>
+    <Col xs={12} sm={8}>
       <h2>
         Request
       </h2>
-    </div>
+    </Col>
   );
 }
 
