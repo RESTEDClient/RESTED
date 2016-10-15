@@ -18,7 +18,19 @@ export default {
       main: true,
       browser: true,
     }),
-    commonjs(),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        // left-hand side can be an absolute path, a path
+        // relative to the current directory, or the name
+        // of a module in node_modules
+        'node_modules/react/react.js': [
+          'PropTypes',
+          'createElement',
+          'cloneElement'
+        ]
+      }
+    }),
     eslint({
       exclude: [
         'src/styles/**',
@@ -36,12 +48,6 @@ export default {
     }),
     replace({
       /* Fix "process is not defined" */
-      include: [
-        'node_modules/react/**',
-        'node_modules/react-redux/**',
-        'node_modules/redux/**',
-        'node_modules/fbjs/**',
-      ],
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     replace({

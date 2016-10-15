@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import * as actions from 'redux/modal/actions';
 
 describe('actions', () => {
@@ -24,11 +25,11 @@ describe('actions', () => {
 
   it('should create an action to show a "thrown error" modal', () => {
     const errorData = {
-      "success": false,
-      "message": "An error occured when adding to database!",
-      "object": {
-        "isTrusted": true
-      }
+      success: false,
+      message: 'An error occured when adding to database!',
+      object: {
+        isTrusted: true,
+      },
     };
 
     const expectedAction = {

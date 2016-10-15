@@ -15,8 +15,8 @@
     "test": "jest --config test/jest.conf.js",
     "test:watch": "jest --watchman --watchAll --config test/jest.conf.js",
     "test:snapshot": "jest -u --config test/jest.conf.js",
-    "eslint": "eslint -f unix src",
-    "eslint:fix": "eslint --fix src",
+    "eslint": "eslint src test",
+    "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
     "dev": "NODE_ENV=development rollup --watch --config dev/rollup/rollup.config.js",
     "build": "NODE_ENV=production rollup --config dev/rollup/rollup.config.js"

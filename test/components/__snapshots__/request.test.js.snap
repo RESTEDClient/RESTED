@@ -1,5 +1,6 @@
 exports[`test Request renders correctly 1`] = `
-<div>
+<div
+  className="col-sm-6 col-xs-12">
   <h2>
     Request
   </h2>

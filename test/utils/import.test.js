@@ -1,8 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import * as Import from 'utils/import';
 
 describe('Service: Import', () => {
-
-  var expectedResult;
+  let expectedResult;
 
   beforeEach(() => {
     expectedResult = [
@@ -13,10 +13,10 @@ describe('Service: Import', () => {
         headers: [
           {
             name: 'Content-Type',
-            value: 'angular/awesomeness'
-          }
-        ]
-      }
+            value: 'angular/awesomeness',
+          },
+        ],
+      },
     ];
   });
 
@@ -35,105 +35,104 @@ describe('Service: Import', () => {
   });
 
   it('should convert HAR to correct format when invoked', () => {
-    var HAR = {
-      "log": {
-        "entries": [
+    const HAR = {
+      log: {
+        entries: [
           {
-            "request": {
-              "method": "GET",
-              "url": "www.vg.no",
-              "headers": [
+            request: {
+              method: 'GET',
+              url: 'www.vg.no',
+              headers: [
                 {
-                  "name": "Content-Type",
-                  "value": "angular/awesomeness"
-                }
-              ]
-            }
-          }
-        ]
-      }
+                  name: 'Content-Type',
+                  value: 'angular/awesomeness',
+                },
+              ],
+            },
+          },
+        ],
+      },
     };
     expect(Import.fromHAR(HAR)).toEqual(expectedResult);
   });
 
   it('should convert HAR and include postData', () => {
-    var HAR = {
-      "log": {
-        "entries": [
+    const HAR = {
+      log: {
+        entries: [
           {
-            "request": {
-              "method": "GET",
-              "url": "www.vg.no",
-              "headers": [
+            request: {
+              method: 'GET',
+              url: 'www.vg.no',
+              headers: [
                 {
-                  "name": "Content-Type",
-                  "value": "angular/awesomeness"
-                }
+                  name: 'Content-Type',
+                  value: 'angular/awesomeness',
+                },
               ],
-              "postData": {
-                "mimeType": "application/x-www-form-urlencoded",
-                "params": [
+              postData: {
+                mimeType: 'application/x-www-form-urlencoded',
+                params: [
                   {
-                    "name": "a",
-                    "value": "b"
+                    name: 'a',
+                    value: 'b',
                   },
                   {
-                    "name": "c",
-                    "value": "d"
-                  }
+                    name: 'c',
+                    value: 'd',
+                  },
                 ],
-                "text": "username=admin&password=awesome"
-              }
-            }
-          }
-        ]
-      }
+                text: 'username=admin&password=awesome',
+              },
+            },
+          },
+        ],
+      },
     };
-    expectedResult[0].data = 'username=admin&password=awesome',
+    expectedResult[0].data = 'username=admin&password=awesome';
     expect(Import.fromHAR(HAR)).toEqual(expectedResult);
   });
 
   it('should convert Postman json to correct format when invoked', () => {
-    var postmanJson = {
-      "name": "Test collection",
-      "requests": [
+    const postmanJson = {
+      name: 'Test collection',
+      requests: [
         {
-          "headers": "Content-Type: angular/awesomeness\n",
-          "url": "www.vg.no",
-          "method": "GET"
-        }
+          headers: 'Content-Type: angular/awesomeness\n',
+          url: 'www.vg.no',
+          method: 'GET',
+        },
       ],
     };
     expect(Import.fromPostman(postmanJson)).toEqual(expectedResult);
   });
 
   it('should convert Postman json and include postData', () => {
-    var postmanJson = {
-      "name": "Test collection",
-      "requests": [
+    const postmanJson = {
+      name: 'Test collection',
+      requests: [
         {
-          "headers": "Content-Type: angular/awesomeness\n",
-          "url": "www.vg.no",
-          "method": "GET",
-          "data": [
+          headers: 'Content-Type: angular/awesomeness\n',
+          url: 'www.vg.no',
+          method: 'GET',
+          data: [
             {
-              "key": "username",
-              "value": "admin",
-              "type": "text",
-              "enabled": true
+              key: 'username',
+              value: 'admin',
+              type: 'text',
+              enabled: true,
             },
             {
-              "key": "password",
-              "value": "awesome",
-              "type": "text",
-              "enabled": true
-            }
-          ]
-        }
+              key: 'password',
+              value: 'awesome',
+              type: 'text',
+              enabled: true,
+            },
+          ],
+        },
       ],
     };
-    expectedResult[0].data = 'username=admin&password=awesome',
+    expectedResult[0].data = 'username=admin&password=awesome';
     expect(Import.fromPostman(postmanJson)).toEqual(expectedResult);
   });
-
 });

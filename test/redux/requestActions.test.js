@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import * as actions from 'redux/request/actions';
 
 describe('actions', () => {
@@ -6,16 +7,16 @@ describe('actions', () => {
 
   beforeEach(() => {
     request = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com",
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
     response = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com",
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
   });
 

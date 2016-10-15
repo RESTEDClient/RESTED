@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import reducer from 'redux/request/reducer';
 import * as actions from 'redux/request/actions';
 
@@ -7,16 +8,16 @@ describe('reducer', () => {
 
   beforeEach(() => {
     request = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com",
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
     request = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com",
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
   });
 
@@ -46,7 +47,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: actions.RECEIVE_RESPONSE,
-        response
+        response,
       })
     ).toEqual({
       request: null,
@@ -59,7 +60,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: actions.UPDATE_REQUEST,
-        request
+        request,
       })
     ).toEqual({
       request,

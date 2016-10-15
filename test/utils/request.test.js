@@ -1,8 +1,7 @@
-import * as Request from 'utils/request';
-import RunRequest from 'utils/request';
+/* eslint-disable import/no-unresolved */
+import RunRequest, * as Request from 'utils/request';
 
 describe('Request', () => {
-
   it('should load the service', () => {
     expect(Request).toBeDefined();
   });
@@ -19,13 +18,13 @@ describe('Request', () => {
   });
 
   it('should prepend http when appropriate', () => {
-    var goodUrl = 'http://vg.no';
+    const goodUrl = 'http://vg.no';
     expect(Request.prependHttp(goodUrl)).toEqual(goodUrl);
 
-    var badUrl = 'vg.no';
-    expect(Request.prependHttp(badUrl)).toEqual('http://' + badUrl);
+    const badUrl = 'vg.no';
+    expect(Request.prependHttp(badUrl)).toEqual(`http://${badUrl}`);
 
-    var httpsUrl = 'https://vg.no';
+    const httpsUrl = 'https://vg.no';
     expect(Request.prependHttp(httpsUrl)).toEqual(httpsUrl);
   });
 
@@ -36,15 +35,15 @@ describe('Request', () => {
   });
 
   it('should have a map parameters to a url template', () => {
-    var plainUrl = 'http://www.reddit.com/r/aww?questonmark=equals-sign&ampersand=';
+    const plainUrl = 'http://www.reddit.com/r/aww?questonmark=equals-sign&ampersand=';
     expect(Request.mapParameters(plainUrl)).toEqual(plainUrl);
 
-    var params = {
+    const params = {
       key: 'value',
-      'STATIC_KEY': 'EuR_ek44!\\'
+      STATIC_KEY: 'EuR_ek44!\\',
     };
-    var templateUrl = 'http://someapi.com?API_KEY={{key}}&{{STATIC_KEY}}=why';
-    var result      = 'http://someapi.com?API_KEY=value&EuR_ek44!\\=why';
+    const templateUrl = 'http://someapi.com?API_KEY={{key}}&{{STATIC_KEY}}=why';
+    const result = 'http://someapi.com?API_KEY=value&EuR_ek44!\\=why';
     expect(Request.mapParameters(templateUrl, params)).toEqual(result);
   });
 
@@ -55,24 +54,24 @@ describe('Request', () => {
   });
 
   it('should generate an XMLHttpRequest when passed a request object', () => {
-    var request = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com"
+    const request = {
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
-    expect(Request.createXMLHttpRequest(request)).toEqual(jasmine.any(XMLHttpRequest));
+    expect(Request.createXMLHttpRequest(request)).toBeInstanceOf(XMLHttpRequest);
   });
 
   // withCredentials means that setCookie headers in the response will send the set cookie
   // in subequent requests to that domain. This is useful for RESTful services behind
   // logins.
   it('should generate an XMLHttpRequest with "withCredentials" set', () => {
-    var request = {
-      "method":"GET",
-      "headers":[{"name":"test","value":"blah"}],
-      "cache":false,
-      "url":"http://www.aperturescience.com"
+    const request = {
+      method: 'GET',
+      headers: [{ name: 'test', value: 'blah' }],
+      cache: false,
+      url: 'http://www.aperturescience.com',
     };
     expect(Request.createXMLHttpRequest(request).withCredentials).toEqual(true);
   });

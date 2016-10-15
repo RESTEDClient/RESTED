@@ -1,8 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import reducer from 'redux/modal/reducer';
 import * as actions from 'redux/modal/actions';
 
 describe('reducer', () => {
-
   const dirtyState = {
     title: 'Something something title',
     body: '<h1>Foo bar boo boo fooo foo</h1>',
@@ -52,22 +52,22 @@ describe('reducer', () => {
 
   it('should handle THROW_ERROR', () => {
     const errorData = {
-      "success": false,
-      "message": "An error occured when adding to database!",
-      "object": {
-        "isTrusted": true
-      }
+      success: false,
+      message: 'An error occured when adding to database!',
+      object: {
+        isTrusted: true,
+      },
     };
 
     expect(
       reducer(undefined, {
         type: actions.THROW_ERROR,
-        data: errorData
+        data: errorData,
       })
     ).toEqual({
       title: 'Error!',
       body: 'Sorry, something went wrong.. If there is anything useful in a gray box below (or the web console), please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.',
-      errorData: errorData,
+      errorData,
       visible: true,
     });
   });

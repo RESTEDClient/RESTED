@@ -1,16 +1,16 @@
+/* eslint-disable import/no-unresolved */
 import * as RequestUtils from 'utils/requestUtils';
 
 describe('Service: RequestUtils', () => {
-
-  var object = {
-    headerName: 'value'
+  const object = {
+    headerName: 'value',
   };
 
-  var array = [
+  const array = [
     {
       name: 'headerName',
-      value: 'value'
-    }
+      value: 'value',
+    },
   ];
 
   it('should load the service', () => {
@@ -43,20 +43,20 @@ describe('Service: RequestUtils', () => {
     expect(RequestUtils.formDataToFormString([{ name: 'Content-Type', value: 'test123' }])).toBe('Content-Type=test123');
     expect(RequestUtils.formDataToFormString([{ name: 'Some-Test', value: 'test123' }])).toBe('Some-Test=test123');
 
-    var complexRequest = [{
+    const complexRequest = [{
       name: 'logfile',
-      value: 'blabla'
+      value: 'blabla',
     }, {
       name: 'configfile',
-      value: 'more blabla'
+      value: 'more blabla',
     }, {
       name: 'usercomment',
-      value: 'hello'
+      value: 'hello',
     }, {
       name: 'useremail',
-      value: ''
+      value: '',
     }];
-    var complexResult = 'logfile=blabla&configfile=more+blabla&usercomment=hello&useremail=';
+    const complexResult = 'logfile=blabla&configfile=more+blabla&usercomment=hello&useremail=';
     expect(RequestUtils.formDataToFormString(complexRequest)).toBe(complexResult);
   });
 
@@ -67,7 +67,7 @@ describe('Service: RequestUtils', () => {
   });
 
   it('should not prefix & when passed empty objects', () => {
-    expect(RequestUtils.formDataToFormString([{}, {}, {}, { name: '$o114$o114Bi11z', value: '{€$@¡¡@"' } ])).toBe('%24o114%24o114Bi11z=%7B%E2%82%AC%24%40%C2%A1%C2%A1%40%22');
+    expect(RequestUtils.formDataToFormString([{}, {}, {}, { name: '$o114$o114Bi11z', value: '{€$@¡¡@"' }])).toBe('%24o114%24o114Bi11z=%7B%E2%82%AC%24%40%C2%A1%C2%A1%40%22');
   });
 });
 
