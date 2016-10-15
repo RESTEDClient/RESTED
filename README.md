@@ -4,7 +4,7 @@ A REST client for the rest of us.
 
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
-[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
+[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=react-rewrite)](https://travis-ci.org/esphen/RESTED)
 
 **RESTED** is a new take on rest clients for browsers.
 It is designed to be easy to use to let you work as effective as possible.
@@ -26,7 +26,7 @@ For a short read on how the app works, go to [this page](https://github.com/esph
 
 In order to work on this project, you're going to need a few things:
  - [nvm](https://github.com/creationix/nvm)
-   - Alternately npm 6.x)
+   - Alternately node 6.x and npm 3.x
  - [yarn](https://yarnpkg.com/en/docs/install)
  - [Firefox >= 47](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
 
@@ -43,7 +43,7 @@ file to the root directory of the project.
 Once these formalities are in order, you can start the development server which
 will compile the code into something that can be loaded in the browser.
 
-    nvm use
+    nvm install
     yarn
     npm start
 
