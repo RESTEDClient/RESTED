@@ -12,7 +12,8 @@ exports[`test should render correctly 1`] = `
     </div>
     <div
       className="panel-body">
-      <form>
+      <form
+        onSubmit={[Function]}>
         <div
           className="form-group">
           <div
