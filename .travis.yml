@@ -1,6 +1,4 @@
 language: node_js
-addons:
-    firefox: "latest-beta"
 cache:
   directories:
   - $HOME/.yarn-cache
@@ -8,10 +6,7 @@ before_install:
   - npm install -g yarn
 install:
   - yarn --pure-lockfile
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 script:
   - npm run eslint
-  - npm run test
+  - npm test
 
