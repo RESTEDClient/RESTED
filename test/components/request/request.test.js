@@ -7,14 +7,12 @@ import renderer from 'react-test-renderer';
 /* eslint-disable import/no-unresolved */
 import { Request } from 'components/Request';
 
-jest.mock('react-dom');
-
 const makeStore = (initial = {}) => createStore(
   combineReducers({ form }),
   { form: initial }
 );
 
-test('Request renders correctly', () => {
+it('should render correctly', () => {
   const onSubmitFail = jest.fn();
   const store = makeStore({
     testForm: {},
@@ -34,3 +32,4 @@ test('Request renders correctly', () => {
   expect(tree).toMatchSnapshot();
   expect(onSubmitFail).not.toHaveBeenCalled();
 });
+

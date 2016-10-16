@@ -1,0 +1,17 @@
+exports[`test Collapsable renders correctly 1`] = `
+<div
+  id="test">
+  <div>
+    <h3>
+      Test
+    </h3>
+    <i
+      className="fa fa-angle-right" />
+  </div>
+  <h3
+    aria-expanded={null}
+    className="collapse">
+    test
+  </h3>
+</div>
+`;

@@ -1,0 +1,35 @@
+exports[`BasicAuthField should match the previous snapshot when invalid 1`] = `
+<div
+  id="basicAuth">
+  <div>
+    <h3>
+      Basic auth
+    </h3>
+    <i
+      className="fa fa-angle-right" />
+  </div>
+  <div
+    aria-expanded={null}
+    className="collapse form-group has-error">
+    BasicAuth
+  </div>
+</div>
+`;
+
+exports[`BasicAuthField should match the previous snapshot when valid 1`] = `
+<div
+  id="basicAuth">
+  <div>
+    <h3>
+      Basic auth
+    </h3>
+    <i
+      className="fa fa-angle-right" />
+  </div>
+  <div
+    aria-expanded={null}
+    className="collapse form-group">
+    BasicAuth
+  </div>
+</div>
+`;

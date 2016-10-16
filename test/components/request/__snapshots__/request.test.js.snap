@@ -1,4 +1,4 @@
-exports[`test Request renders correctly 1`] = `
+exports[`test should render correctly 1`] = `
 <div
   className="col-sm-8 col-xs-12">
   <div
@@ -36,6 +36,70 @@ exports[`test Request renders correctly 1`] = `
               onFocus={[Function]}
               type="text"
               value="" />
+          </div>
+        </div>
+        <div
+          className="form-group">
+          <div
+            className="col-sm-2">
+            <label
+              className="control-label"
+              htmlFor="method">
+              Method
+            </label>
+          </div>
+          <div
+            className="col-sm-8">
+            <input
+              className="form-control"
+              id="method"
+              name="method"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              type="text"
+              value="" />
+          </div>
+          <div
+            className="col-sm-2">
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              type="submit">
+              Send request
+            </button>
+          </div>
+        </div>
+        <div
+          id="headers">
+          <div>
+            <h3>
+              Headers
+            </h3>
+            <i
+              className="fa fa-angle-right" />
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse form-group">
+            Headers
+          </div>
+        </div>
+        <div
+          id="basicAuth">
+          <div>
+            <h3>
+              Basic auth
+            </h3>
+            <i
+              className="fa fa-angle-right" />
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse form-group">
+            BasicAuth
           </div>
         </div>
       </form>
