@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import reducer from 'redux/modal/reducer';
-import * as actions from 'redux/modal/actions';
+import reducer from 'store/modal/reducer';
+import * as actions from 'store/modal/actions';
 
 describe('reducer', () => {
   const dirtyState = {

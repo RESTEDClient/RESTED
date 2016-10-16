@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
-import * as Actions from '../../redux/collapsable/actions';
+import * as Actions from '../../store/collapsable/actions';
 
 export function Collapsable({ id, title, open, children, toggleCollapse }) {
   return (

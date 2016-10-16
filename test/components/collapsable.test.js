@@ -39,7 +39,8 @@ it('should call the toggleCollapse function when activated', () => {
 
   toggleCollapse.mockClear();
   wrapper = mount(
-    <Collapsable open
+    <Collapsable
+      open
       id="test2"
       title="Test"
       toggleCollapse={toggleCollapse}

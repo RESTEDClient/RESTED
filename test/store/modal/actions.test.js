@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import * as actions from 'redux/modal/actions';
+import * as actions from 'store/modal/actions';
 
 describe('actions', () => {
   it('should create an action to set modal data', () => {

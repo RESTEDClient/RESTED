@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import * as actions from 'redux/request/actions';
+import * as actions from 'store/request/actions';
 
 describe('actions', () => {
   let request;

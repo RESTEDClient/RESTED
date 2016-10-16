@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import reducer from 'redux/collapsable/reducer';
-import * as actions from 'redux/collapsable/actions';
+import reducer from 'store/collapsable/reducer';
+import * as actions from 'store/collapsable/actions';
 
 describe('reducer', () => {
   const dirtyState = {

@@ -5,7 +5,7 @@ import { Provider, connect } from 'react-redux';
 
 /* eslint-disable import/no-unresolved */
 import { BasicAuthField } from 'components/Request/BasicAuthField';
-import collapsable from '../../../src/js/redux/collapsable/reducer';
+import collapsable from 'store/collapsable/reducer';
 
 const makeStore = (initial = {}) => createStore(
   combineReducers({ collapsable }),

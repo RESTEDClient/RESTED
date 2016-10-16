@@ -5,7 +5,7 @@ import { Grid } from 'react-bootstrap';
 import { createStore } from 'redux';
 
 import App from './components/App';
-import rootReducer from './redux';
+import rootReducer from './store';
 
 const store = createStore(rootReducer);
 

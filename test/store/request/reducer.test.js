@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import reducer from 'redux/request/reducer';
-import * as actions from 'redux/request/actions';
+import reducer from 'store/request/reducer';
+import * as actions from 'store/request/actions';
 
 describe('reducer', () => {
   let request;

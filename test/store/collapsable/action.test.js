@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import * as actions from 'redux/collapsable/actions';
+import * as actions from 'store/collapsable/actions';
 
 describe('actions', () => {
   it('should create an action to set modal as expanded', () => {
