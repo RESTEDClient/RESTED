@@ -1,0 +1,45 @@
+exports[`test Request renders correctly 1`] = `
+<div
+  className="col-sm-8 col-xs-12">
+  <div
+    className="panel panel-default"
+    id={undefined}>
+    <div
+      className="panel-heading">
+      <span>
+        Request
+      </span>
+    </div>
+    <div
+      className="panel-body">
+      <form>
+        <div
+          className="form-group">
+          <div
+            className="col-sm-2">
+            <label
+              className="control-label"
+              htmlFor="url">
+              URL
+            </label>
+          </div>
+          <div
+            className="col-sm-10">
+            <input
+              className="form-control"
+              id="url"
+              name="url"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              type="text"
+              value="" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

@@ -21,14 +21,13 @@ export default {
     commonjs({
       include: 'node_modules/**',
       namedExports: {
-        // left-hand side can be an absolute path, a path
-        // relative to the current directory, or the name
-        // of a module in node_modules
+        /* Fix 'cloneElement' is not exported by node_modules/react/react.js */
         'node_modules/react/react.js': [
+          'Component',
           'PropTypes',
           'createElement',
           'cloneElement'
-        ]
+       ]
       }
     }),
     eslint({
@@ -40,11 +39,12 @@ export default {
     babel({
       babelrc: false,
       presets: ['es2015-rollup', 'react'],
+      plugins: [
+        'transform-object-assign',
+        'transform-es2015-destructuring',
+        'transform-object-rest-spread'
+      ],
       exclude: 'node_modules/**',
-    }),
-    replace({
-      exclude: 'node_modules/**',
-      ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     replace({
       /* Fix "process is not defined" */
