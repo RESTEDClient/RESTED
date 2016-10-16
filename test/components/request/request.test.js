@@ -1,7 +1,7 @@
 import React from 'react';
-import { combineReducers, createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { reduxForm, reducer as form  } from 'redux-form';
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { reduxForm, reducer as form } from 'redux-form';
 import renderer from 'react-test-renderer';
 
 /* eslint-disable import/no-unresolved */
@@ -17,12 +17,12 @@ const makeStore = (initial = {}) => createStore(
 test('Request renders correctly', () => {
   const onSubmitFail = jest.fn();
   const store = makeStore({
-    testForm: {}
-  })
+    testForm: {},
+  });
 
   const Decorated = reduxForm({
     form: 'testForm',
-    onSubmitFail
+    onSubmitFail,
   })(Request);
 
   const tree = renderer.create(

@@ -32,7 +32,7 @@ Request.propTypes = {
 };
 
 const formOptions = {
-  form: 'request' // a unique name for this form
+  form: 'requestForm',
 };
 
 export { Request };
