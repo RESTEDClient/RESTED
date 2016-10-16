@@ -73,33 +73,47 @@ exports[`test should render correctly 1`] = `
           </div>
         </div>
         <div
-          id="headers">
-          <div>
+          className="row">
+          <button
+            className="btn btn-link"
+            disabled={false}
+            onClick={[Function]}
+            type="button">
             <h3>
               Headers
+              <i
+                className="fa fa-angle-right" />
             </h3>
-            <i
-              className="fa fa-angle-right" />
-          </div>
+          </button>
           <div
             aria-expanded={null}
-            className="collapse form-group">
-            Headers
+            className="collapse col-xs-12">
+            <div
+              className="form-group">
+              Headers
+            </div>
           </div>
         </div>
         <div
-          id="basicAuth">
-          <div>
+          className="row">
+          <button
+            className="btn btn-link"
+            disabled={false}
+            onClick={[Function]}
+            type="button">
             <h3>
               Basic auth
+              <i
+                className="fa fa-angle-right" />
             </h3>
-            <i
-              className="fa fa-angle-right" />
-          </div>
+          </button>
           <div
             aria-expanded={null}
-            className="collapse form-group">
-            BasicAuth
+            className="collapse col-xs-12">
+            <div
+              className="form-group">
+              BasicAuth
+            </div>
           </div>
         </div>
       </form>

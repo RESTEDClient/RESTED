@@ -1,29 +1,35 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { Collapse } from 'react-bootstrap';
+import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
 import * as Actions from '../../redux/collapsable/actions';
 
-export function Collapsable(props) {
+export function Collapsable({ id, title, open, children, toggleCollapse }) {
   return (
-    <div id={props.id}>
-      <div>
-        <h3>
-          {props.title}
-        </h3>
-        <i
-          className={classNames('fa fa-angle-right', {
-            'fa-rotate-90': props.open,
-          })}
-        />
-      </div>
-      <Collapse
-        in={props.open}
+    <Row>
+      <Button
+        bsStyle="link"
+        onClick={e => {
+          e.preventDefault();
+          toggleCollapse(id, !!open);
+        }}
       >
-        {props.children}
+        <h3>
+          {title}
+          <i
+            className={classNames('fa fa-angle-right', {
+              'fa-rotate-90': open,
+            })}
+          />
+        </h3>
+      </Button>
+      <Collapse in={open}>
+        <Col xs={12}>
+          {children}
+        </Col>
       </Collapse>
-    </div>
+    </Row>
   );
 }
 
@@ -31,14 +37,22 @@ Collapsable.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
+  toggleCollapse: PropTypes.func.isRequired,
   open: PropTypes.bool,
 };
 
-function mapStateToProps({ collapsable }, { id }) {
-  const open = collapsable && collapsable[id] && collapsable[id].expanded;
+const mapStateToProps = ({ collapsable }, { id }) => ({
+  open: collapsable && collapsable[id] && collapsable[id].expanded,
+});
 
-  return { open };
-}
+const mapDispatchToProps = dispatch => ({
+  toggleCollapse(id, open) {
+    const action = open
+      ? Actions.collapse(id)
+      : Actions.expand(id);
+    dispatch(action);
+  },
+});
 
-export default connect(mapStateToProps, Actions)(Collapsable);
+export default connect(mapStateToProps, mapDispatchToProps)(Collapsable);
 
