@@ -1,3 +1,5 @@
+import { change } from 'redux-form';
+
 export const EXECUTE_REQUEST = 'request/EXECUTE_REQUEST';
 export function executeRequest() {
   return { type: EXECUTE_REQUEST };
@@ -18,26 +20,34 @@ export function clearRequest() {
   return { type: CLEAR_RESPONSE };
 }
 
-export function sendRequest(values) {
+export function sendRequest({ url, method }) {
   return (dispatch, getState) => {
     dispatch(executeRequest());
-    const fallbackUrl = getState().request.placeholderUrl;
-    const {
-      url = fallbackUrl,
-      method,
-    } = values;
 
-    fetch(url, {
+    const fallbackUrl = getState().request.placeholderUrl;
+    if (!url) {
+      dispatch(change('requestForm', 'url', fallbackUrl));
+    }
+
+    return fetch(url || fallbackUrl, {
       method,
     }).then(response => {
-      // TODO Read headers
-      response.text().then(body => {
-        // TODO separate out RECEIVE_RESPONSE_BODY and RECEIVE_RESPONSE_HEADERS?
+      const headers = [];
+      for (const header of response.headers) {
+        headers.push({
+          name: header[0],
+          value: header[1],
+        });
+      }
+
+      return response.text().then(body => {
         dispatch(receiveResponse({
+          url,
+          method,
           body,
+          headers,
         }));
       });
-      // dispatch(receiveResponse(response));
     }).catch(() => {
       // TODO Handle network errors, permission errors..
     });
