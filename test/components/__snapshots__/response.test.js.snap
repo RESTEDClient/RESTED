@@ -1,0 +1,25 @@
+exports[`response component renders a result when given one 1`] = `
+<div
+  className="panel panel-default"
+  id={undefined}>
+  <div
+    className="panel-heading">
+    <h3>
+      GET
+       - 
+      <a
+        href="http://www.phdcomics.com/comics/arc…">
+        http://www.phdcomics.com/comics/arc…
+      </a>
+    </h3>
+  </div>
+  <div
+    className="panel-body">
+    <span>
+      headers
+    </span>
+  </div>
+</div>
+`;
+
+exports[`response component renders nothing given no props 1`] = `null`;

@@ -1,8 +1,5 @@
 exports[`test Collections renders correctly 1`] = `
-<div
-  className="col-sm-4 hidden-xs">
-  <h2>
-    Collections
-  </h2>
-</div>
+<h2>
+  Collections
+</h2>
 `;

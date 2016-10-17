@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, propTypes } from 'redux-form';
-import { Col, Panel } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 
 import URLField from './URLField';
 import MethodField from './MethodField';
@@ -21,29 +21,27 @@ function Titlebar() {
 
 function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (
-    <Col xs={12} sm={8}>
-      <Panel header={<Titlebar />}>
-        <form onSubmit={handleSubmit(sendRequest)}>
-          <Field
-            name="url"
-            component={URLField}
-            placeholderUrl={placeholderUrl}
-          />
-          <Field
-            name="method"
-            component={MethodField}
-          />
-          <Field
-            name="headers"
-            component={HeadersField}
-          />
-          <Field
-            name="basicAuth"
-            component={BasicAuthField}
-          />
-        </form>
-      </Panel>
-    </Col>
+    <Panel header={<Titlebar />}>
+      <form onSubmit={handleSubmit(sendRequest)}>
+        <Field
+          name="url"
+          component={URLField}
+          placeholderUrl={placeholderUrl}
+        />
+        <Field
+          name="method"
+          component={MethodField}
+        />
+        <Field
+          name="headers"
+          component={HeadersField}
+        />
+        <Field
+          name="basicAuth"
+          component={BasicAuthField}
+        />
+      </form>
+    </Panel>
   );
 }
 

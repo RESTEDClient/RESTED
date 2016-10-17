@@ -42,7 +42,7 @@ export function sendRequest({ url, method }) {
 
       return response.text().then(body => {
         dispatch(receiveResponse({
-          url,
+          url: url || fallbackUrl,
           method,
           body,
           headers,

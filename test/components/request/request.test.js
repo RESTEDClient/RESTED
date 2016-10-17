@@ -4,18 +4,16 @@ import { Provider } from 'react-redux';
 import { reduxForm, reducer as form } from 'redux-form';
 import renderer from 'react-test-renderer';
 
+import makeStore from '../../makeStore';
 /* eslint-disable import/no-unresolved */
 import { Request } from 'components/Request';
-
-const makeStore = (initial = {}) => createStore(
-  combineReducers({ form, request: () => ({}) }),
-  { form: initial, request: initial }
-);
 
 it('should render correctly', () => {
   const onSubmitFail = jest.fn();
   const store = makeStore({
-    testForm: {},
+    form: {
+      testForm: {},
+    },
   });
 
   const Decorated = reduxForm({

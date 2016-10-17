@@ -1,159 +1,156 @@
 exports[`test should render correctly 1`] = `
 <div
-  className="col-sm-8 col-xs-12">
+  className="panel panel-default"
+  id={undefined}>
   <div
-    className="panel panel-default"
-    id={undefined}>
-    <div
-      className="panel-heading">
-      <span>
-        Request
-      </span>
-    </div>
-    <div
-      className="panel-body">
-      <form
-        onSubmit={[Function]}>
+    className="panel-heading">
+    <span>
+      Request
+    </span>
+  </div>
+  <div
+    className="panel-body">
+    <form
+      onSubmit={[Function]}>
+      <div
+        className="form-group">
         <div
-          className="form-group">
-          <div
-            className="col-sm-2">
-            <label
-              className="control-label"
-              htmlFor="url">
-              URL
-            </label>
-          </div>
-          <div
-            className="col-sm-10">
-            <input
-              className="form-control"
-              id="url"
-              name="url"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder={undefined}
-              type="text"
-              value="" />
-          </div>
+          className="col-sm-2">
+          <label
+            className="control-label"
+            htmlFor="url">
+            URL
+          </label>
         </div>
         <div
-          className="form-group">
-          <div
-            className="col-sm-2">
-            <label
-              className="control-label"
-              htmlFor="method">
-              Method
-            </label>
-          </div>
-          <div
-            className="col-sm-8">
-            <select
-              className="form-control"
-              id="method"
-              name="method"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder="Method"
-              type={undefined}
+          className="col-sm-10">
+          <input
+            className="form-control"
+            id="url"
+            name="url"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder={undefined}
+            type="text"
+            value="" />
+        </div>
+      </div>
+      <div
+        className="form-group">
+        <div
+          className="col-sm-2">
+          <label
+            className="control-label"
+            htmlFor="method">
+            Method
+          </label>
+        </div>
+        <div
+          className="col-sm-8">
+          <select
+            className="form-control"
+            id="method"
+            name="method"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Method"
+            type={undefined}
+            value="GET">
+            <option
               value="GET">
-              <option
-                value="GET">
-                GET
-              </option>
-              <option
-                value="POST">
-                POST
-              </option>
-              <option
-                value="PUT">
-                PUT
-              </option>
-              <option
-                value="DELETE">
-                DELETE
-              </option>
-              <option
-                value="PATCH">
-                PATCH
-              </option>
-              <option
-                value="HEAD">
-                HEAD
-              </option>
-              <option
-                value="JSONP">
-                JSONP
-              </option>
-              <option
-                value="CUSTOM">
-                CUSTOM
-              </option>
-            </select>
-          </div>
-          <div
-            className="col-sm-2">
-            <button
-              className="btn btn-primary"
-              disabled={false}
-              type="submit">
-              Send request
-            </button>
-          </div>
+              GET
+            </option>
+            <option
+              value="POST">
+              POST
+            </option>
+            <option
+              value="PUT">
+              PUT
+            </option>
+            <option
+              value="DELETE">
+              DELETE
+            </option>
+            <option
+              value="PATCH">
+              PATCH
+            </option>
+            <option
+              value="HEAD">
+              HEAD
+            </option>
+            <option
+              value="JSONP">
+              JSONP
+            </option>
+            <option
+              value="CUSTOM">
+              CUSTOM
+            </option>
+          </select>
         </div>
         <div
-          className="row">
+          className="col-sm-2">
           <button
-            className="btn btn-link"
+            className="btn btn-primary"
             disabled={false}
-            onClick={[Function]}
-            type="button">
-            <h3>
-              Headers
-              <i
-                className="fa fa-angle-right" />
-            </h3>
+            type="submit">
+            Send request
           </button>
-          <div
-            aria-expanded={null}
-            className="collapse col-xs-12">
-            <div
-              className="form-group">
-              Headers
-            </div>
-          </div>
         </div>
+      </div>
+      <div
+        className="row">
+        <button
+          className="btn btn-link"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          <h3>
+            Headers
+            <i
+              className="fa fa-angle-right" />
+          </h3>
+        </button>
         <div
-          className="row">
-          <button
-            className="btn btn-link"
-            disabled={false}
-            onClick={[Function]}
-            type="button">
-            <h3>
-              Basic auth
-              <i
-                className="fa fa-angle-right" />
-            </h3>
-          </button>
+          aria-expanded={null}
+          className="collapse col-xs-12">
           <div
-            aria-expanded={null}
-            className="collapse col-xs-12">
-            <div
-              className="form-group">
-              BasicAuth
-            </div>
+            className="form-group">
+            Headers
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div
+        className="row">
+        <button
+          className="btn btn-link"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          <h3>
+            Basic auth
+            <i
+              className="fa fa-angle-right" />
+          </h3>
+        </button>
+        <div
+          aria-expanded={null}
+          className="collapse col-xs-12">
+          <div
+            className="form-group">
+            BasicAuth
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 `;
