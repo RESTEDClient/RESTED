@@ -9,6 +9,7 @@ import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 
 import * as Actions from '../../store/request/actions';
+import { DEFAULT_REQUEST_METHOD } from '../../constants/constants';
 
 function Titlebar() {
   return (
@@ -53,15 +54,17 @@ const formOptions = {
   form: 'requestForm',
 };
 
-const mapDispatchToProps = dispatch => ({
-  sendRequest(values) { dispatch(Actions.sendRequest(values)); },
+const mapStateToProps = () => ({
+  initialValues: {
+    method: DEFAULT_REQUEST_METHOD,
+  },
 });
 
 export { Request };
 
 /* eslint-disable no-func-assign */
-Request = reduxForm(formOptions, mapDispatchToProps)(Request);
-Request = connect(null, mapDispatchToProps)(Request);
+Request = reduxForm(formOptions)(Request);
+Request = connect(mapStateToProps, Actions)(Request);
 /* eslint-enable no-func-assign */
 export default Request;
 

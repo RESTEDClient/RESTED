@@ -37,7 +37,7 @@ export function sendRequest(values) {
           body,
         }));
       });
-      //dispatch(receiveResponse(response));
+      // dispatch(receiveResponse(response));
     }).catch(() => {
       // TODO Handle network errors, permission errors..
     });

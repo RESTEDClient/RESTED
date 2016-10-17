@@ -7,6 +7,8 @@ import {
   Button,
 } from 'react-bootstrap';
 
+import { REQUEST_METHODS } from '../../constants/constants';
+
 function MethodField({ input, meta }) {
   return (
     <FormGroup
@@ -21,9 +23,16 @@ function MethodField({ input, meta }) {
 
       <Col sm={8}>
         <FormControl
-          type="text"
+          componentClass="select"
+          placeholder="Method"
           {...input}
-        />
+        >
+          {REQUEST_METHODS.map(({ method }) => (
+            <option key={method} value={method}>
+              {method}
+            </option>
+          ))}
+        </FormControl>
       </Col>
       <Col sm={2}>
         <Button

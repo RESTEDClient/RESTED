@@ -72,6 +72,35 @@ export const DEFAULT_REQUEST = {
 };
 
 /**
+ * Holds the different types of requests
+ * that this client supports alongside some
+ * metadata about these request types.
+ */
+export const REQUEST_METHODS = [{
+  method: 'GET',
+}, {
+  method: 'POST',
+  hasBody: true,
+}, {
+  method: 'PUT',
+  hasBody: true,
+}, {
+  method: 'DELETE',
+}, {
+  method: 'PATCH',
+  hasBody: true,
+}, {
+  method: 'HEAD',
+}, {
+  method: 'JSONP',
+}, {
+  method: 'CUSTOM',
+  hasBody: true,
+}];
+
+export const DEFAULT_REQUEST_METHOD = 'GET';
+
+/**
  * The milliseconds we delay showing spinners
  * after a request has been sent.
  */
