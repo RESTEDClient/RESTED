@@ -14,6 +14,7 @@ exports[`URLField should match the previous snapshot 1`] = `
     <input
       className="form-control"
       id="url"
+      placeholder="https://example.com"
       type="text" />
   </div>
 </div>
@@ -35,6 +36,7 @@ exports[`URLField should match the previous snapshot with invalid field state 1`
     <input
       className="form-control"
       id="url"
+      placeholder="https://example.com"
       type="text" />
   </div>
 </div>

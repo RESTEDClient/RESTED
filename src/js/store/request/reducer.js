@@ -1,3 +1,4 @@
+import { randomURL } from '../../utils/requestUtils';
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
@@ -6,6 +7,9 @@ import {
 } from './actions';
 
 const initialState = {
+  placeholderUrl: process.env.NODE_ENV !== 'test'
+    ? randomURL()
+    : 'https://example.com',
   request: null,
   response: null,
   loading: false,

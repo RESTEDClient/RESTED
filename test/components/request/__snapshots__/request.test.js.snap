@@ -35,6 +35,7 @@ exports[`test should render correctly 1`] = `
               onDragStart={[Function]}
               onDrop={[Function]}
               onFocus={[Function]}
+              placeholder={undefined}
               type="text"
               value="" />
           </div>
@@ -51,7 +52,7 @@ exports[`test should render correctly 1`] = `
           </div>
           <div
             className="col-sm-8">
-            <input
+            <select
               className="form-control"
               id="method"
               name="method"
@@ -60,8 +61,42 @@ exports[`test should render correctly 1`] = `
               onDragStart={[Function]}
               onDrop={[Function]}
               onFocus={[Function]}
-              type="text"
-              value="" />
+              placeholder="Method"
+              type={undefined}
+              value="GET">
+              <option
+                value="GET">
+                GET
+              </option>
+              <option
+                value="POST">
+                POST
+              </option>
+              <option
+                value="PUT">
+                PUT
+              </option>
+              <option
+                value="DELETE">
+                DELETE
+              </option>
+              <option
+                value="PATCH">
+                PATCH
+              </option>
+              <option
+                value="HEAD">
+                HEAD
+              </option>
+              <option
+                value="JSONP">
+                JSONP
+              </option>
+              <option
+                value="CUSTOM">
+                CUSTOM
+              </option>
+            </select>
           </div>
           <div
             className="col-sm-2">

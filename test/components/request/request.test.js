@@ -8,8 +8,8 @@ import renderer from 'react-test-renderer';
 import { Request } from 'components/Request';
 
 const makeStore = (initial = {}) => createStore(
-  combineReducers({ form }),
-  { form: initial }
+  combineReducers({ form, request: () => ({}) }),
+  { form: initial, request: initial }
 );
 
 it('should render correctly', () => {

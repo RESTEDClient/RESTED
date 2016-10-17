@@ -25,6 +25,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {})
     ).toEqual({
+      placeholderUrl: 'https://example.com',
       request: null,
       response: null,
       loading: false,
@@ -37,6 +38,7 @@ describe('reducer', () => {
         type: actions.EXECUTE_REQUEST,
       })
     ).toEqual({
+      placeholderUrl: 'https://example.com',
       request: null,
       response: null,
       loading: true,
@@ -50,6 +52,7 @@ describe('reducer', () => {
         response,
       })
     ).toEqual({
+      placeholderUrl: 'https://example.com',
       request: null,
       response,
       loading: false,
@@ -63,6 +66,7 @@ describe('reducer', () => {
         request,
       })
     ).toEqual({
+      placeholderUrl: 'https://example.com',
       request,
       response: null,
       loading: false,
@@ -75,6 +79,7 @@ describe('reducer', () => {
         type: actions.CLEAR_RESPONSE,
       })
     ).toEqual({
+      placeholderUrl: 'https://example.com',
       request: null,
       response: null,
       loading: false,

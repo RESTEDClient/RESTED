@@ -10,6 +10,7 @@ describe('URLField', () => {
 
   beforeEach(() => {
     initialProps = {
+      placeholderUrl: 'https://example.com',
       input: {},
       meta: {
         valid: true,
@@ -46,6 +47,14 @@ describe('URLField', () => {
     );
 
     expect(tree.find('.form-group').hasClass('has-error')).toBe(true);
+  });
+
+  it('should render a placeholder into the field', () => {
+    const tree = mount(
+      <URLField {...initialProps} />
+    );
+
+    expect(tree.find('input').prop('placeholder')).toBe('https://example.com');
   });
 });
 

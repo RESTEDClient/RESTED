@@ -19,11 +19,11 @@ export function clearRequest() {
 }
 
 export function sendRequest(values) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(executeRequest());
-
+    const fallbackUrl = getState().request.placeholderUrl;
     const {
-      url,
+      url = fallbackUrl,
       method,
     } = values;
 

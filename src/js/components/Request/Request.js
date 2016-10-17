@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, propTypes } from 'redux-form';
 import { Col, Panel } from 'react-bootstrap';
@@ -19,7 +19,7 @@ function Titlebar() {
   );
 }
 
-function Request({ handleSubmit, sendRequest }) {
+function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (
     <Col xs={12} sm={8}>
       <Panel header={<Titlebar />}>
@@ -27,6 +27,7 @@ function Request({ handleSubmit, sendRequest }) {
           <Field
             name="url"
             component={URLField}
+            placeholderUrl={placeholderUrl}
           />
           <Field
             name="method"
@@ -47,6 +48,7 @@ function Request({ handleSubmit, sendRequest }) {
 }
 
 Request.propTypes = {
+  placeholderUrl: PropTypes.string,
   ...propTypes,
 };
 
@@ -54,7 +56,8 @@ const formOptions = {
   form: 'requestForm',
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = ({ request: { placeholderUrl } }) => ({
+  placeholderUrl,
   initialValues: {
     method: DEFAULT_REQUEST_METHOD,
   },
