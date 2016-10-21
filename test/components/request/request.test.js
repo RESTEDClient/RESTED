@@ -1,12 +1,12 @@
 import React from 'react';
-import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { reduxForm, reducer as form } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import renderer from 'react-test-renderer';
 
-import makeStore from '../../makeStore';
 /* eslint-disable import/no-unresolved */
 import { Request } from 'components/Request';
+
+import makeStore from '../../makeStore';
 
 it('should render correctly', () => {
   const onSubmitFail = jest.fn();

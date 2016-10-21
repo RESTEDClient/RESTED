@@ -4,9 +4,9 @@ import { mount } from 'enzyme';
 
 /* eslint-disable import/no-unresolved */
 import MethodField from 'components/Request/MethodField';
-import { REQUEST_METHODS } from 'constants/constants';
+import { REQUEST_METHODS } from 'constants/constants';
 
-fdescribe('MethodField', () => {
+describe('MethodField', () => {
   let initialProps;
 
   beforeEach(() => {
@@ -62,14 +62,14 @@ fdescribe('MethodField', () => {
     // Assert all options are part of the REQUEST_METHODS set
     options.forEach(option => {
       const optionVal = option.prop('value');
-      expect(REQUEST_METHODS.some(m => m.method === optionVal)).toBe(true);
+      expect(REQUEST_METHODS.some(m => m === optionVal)).toBe(true);
     });
 
     // Assert all REQUEST_METHODS are part of the rendered output
     REQUEST_METHODS.forEach(m => {
       expect(options.someWhere(option => {
         const optionVal = option.prop('value');
-        return m.method === optionVal;
+        return m === optionVal;
       })).toBe(true);
     });
   });

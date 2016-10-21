@@ -5,10 +5,26 @@ import { mount } from 'enzyme';
 
 /* eslint-disable import/no-unresolved */
 import { Response } from 'components/Response';
+import makeStore from '../makeStore';
 
 jest.mock('react-highlight');
 
 describe('response component', () => {
+  const response = {
+    url: 'http://example.com',
+    method: 'GET',
+    status: 200,
+    statusText: 'OK',
+    body: 'Some long body',
+    headers: [{
+      name: 'Content-Type',
+      value: 'application/awesome',
+    }],
+  };
+
+  const store = makeStore({
+    request: { response },
+  });
 
   it('renders nothing given no props', () => {
     const tree = renderer.create(
@@ -19,28 +35,33 @@ describe('response component', () => {
   });
 
   it('renders a result when given one', () => {
-    const response = {
-      url: 'http://www.phdcomics.com/comics/arc…',
-      method: 'GET',
-      body: 'Some long body'
-    };
-
     const tree = renderer.create(
-      <Response response={response}/>
+      <Provider store={store}>
+        <Response response={response} />
+      </Provider>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  it('displays the URL and method in the titlebar', () => {
-    const response = {
-      url: 'http://example.com',
-      method: 'GET',
-      body: 'Some long body'
-    };
-
+  it('displays the status and statusText', () => {
     const tree = mount(
-      <Response response={response}/>
+      <Provider store={store}>
+        <Response response={response} />
+      </Provider>
+    );
+
+    const strong = tree.find('.panel-body strong');
+    const small = tree.find('.panel-body small');
+    expect(strong.prop('children')).toEqual(200);
+    expect(small.prop('children')).toEqual('OK');
+  });
+
+  it('displays the URL and method in the titlebar', () => {
+    const tree = mount(
+      <Provider store={store}>
+        <Response response={response} />
+      </Provider>
     );
 
     const expectedLink = (
@@ -53,3 +74,4 @@ describe('response component', () => {
     expect(heading.contains(expectedLink)).toEqual(true);
   });
 });
+

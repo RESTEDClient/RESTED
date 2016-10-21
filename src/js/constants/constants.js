@@ -73,30 +73,18 @@ export const DEFAULT_REQUEST = {
 
 /**
  * Holds the different types of requests
- * that this client supports alongside some
- * metadata about these request types.
+ * that this client supports
  */
-export const REQUEST_METHODS = [{
-  method: 'GET',
-}, {
-  method: 'POST',
-  hasBody: true,
-}, {
-  method: 'PUT',
-  hasBody: true,
-}, {
-  method: 'DELETE',
-}, {
-  method: 'PATCH',
-  hasBody: true,
-}, {
-  method: 'HEAD',
-}, {
-  method: 'JSONP',
-}, {
-  method: 'CUSTOM',
-  hasBody: true,
-}];
+export const REQUEST_METHODS = [
+  'GET',
+  'POST',
+  'PUT',
+  'DELETE',
+  'PATCH',
+  'HEAD',
+  'JSONP',
+  'CUSTOM',
+];
 
 export const DEFAULT_REQUEST_METHOD = 'GET';
 

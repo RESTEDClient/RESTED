@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Panel } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
+import Headers from './Headers';
 import * as Actions from '../../store/request/actions';
+import responsePropTypes, { responseShape } from '../../propTypes/response';
 
 function Titlebar({ method, url }) {
   return (
@@ -14,16 +16,8 @@ function Titlebar({ method, url }) {
 }
 
 Titlebar.propTypes = {
-  method: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};
-
-function Headers({ headers }) {
-  return <span>headers</span>;
-}
-
-Headers.headers = {
-  headers: PropTypes.array.isRequired,
+  method: responseShape.method,
+  url: responseShape.url,
 };
 
 export function Response({ response }) {
@@ -32,6 +26,8 @@ export function Response({ response }) {
   const { method, url, headers, body } = response;
   return (
     <Panel header={<Titlebar method={method} url={url} />}>
+      <strong>{response.status}</strong>
+      <small>{response.statusText}</small>
       <Headers headers={headers} />
       <Highlight>
         {body}
@@ -41,7 +37,7 @@ export function Response({ response }) {
 }
 
 Response.propTypes = {
-  response: PropTypes.object,
+  response: responsePropTypes,
 };
 
 const mapStateToProps = ({ request: { response } }) => ({

@@ -27,7 +27,7 @@ function MethodField({ input, meta }) {
           placeholder="Method"
           {...input}
         >
-          {REQUEST_METHODS.map(({ method }) => (
+          {REQUEST_METHODS.map(method => (
             <option key={method} value={method}>
               {method}
             </option>

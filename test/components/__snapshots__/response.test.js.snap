@@ -8,16 +8,36 @@ exports[`response component renders a result when given one 1`] = `
       GET
        - 
       <a
-        href="http://www.phdcomics.com/comics/arc…">
-        http://www.phdcomics.com/comics/arc…
+        href="http://example.com">
+        http://example.com
       </a>
     </h3>
   </div>
   <div
     className="panel-body">
-    <span>
-      headers
-    </span>
+    <strong>
+      200
+    </strong>
+    <small>
+      OK
+    </small>
+    <div
+      className="row">
+      <button
+        className="btn btn-link"
+        disabled={false}
+        onClick={[Function]}
+        type="button">
+        <h3>
+          Headers
+          <i
+            className="fa fa-angle-right" />
+        </h3>
+      </button>
+      <div
+        aria-expanded={null}
+        className="collapse col-xs-12" />
+    </div>
   </div>
 </div>
 `;

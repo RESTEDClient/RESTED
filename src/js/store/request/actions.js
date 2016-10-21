@@ -44,7 +44,9 @@ export function sendRequest({ url, method }) {
 
       return response.text().then(body => {
         dispatch(receiveResponse({
-          url: url || fallbackUrl,
+          url: response.url,
+          status: response.status,
+          statusText: response.statusText,
           method,
           body,
           headers,
