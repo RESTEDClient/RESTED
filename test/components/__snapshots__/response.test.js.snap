@@ -5,8 +5,7 @@ exports[`response component renders a result when given one 1`] = `
   <div
     className="panel-heading">
     <h3>
-      GET
-       - 
+      Response - 
       <a
         href="http://example.com">
         http://example.com
@@ -15,12 +14,12 @@ exports[`response component renders a result when given one 1`] = `
   </div>
   <div
     className="panel-body">
-    <strong>
+    <h3>
       200
-    </strong>
-    <small>
-      OK
-    </small>
+      <small>
+        OK
+      </small>
+    </h3>
     <div
       className="row">
       <button
@@ -28,11 +27,11 @@ exports[`response component renders a result when given one 1`] = `
         disabled={false}
         onClick={[Function]}
         type="button">
-        <h3>
+        <h4>
           Headers
           <i
             className="fa fa-angle-right" />
-        </h3>
+        </h4>
       </button>
       <div
         aria-expanded={null}

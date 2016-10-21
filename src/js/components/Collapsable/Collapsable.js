@@ -15,14 +15,14 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
           toggleCollapse(id, !!open);
         }}
       >
-        <h3>
+        <h4>
           {title}
           <i
             className={classNames('fa fa-angle-right', {
               'fa-rotate-90': open,
             })}
           />
-        </h3>
+        </h4>
       </Button>
       <Collapse in={open}>
         <Col xs={12}>

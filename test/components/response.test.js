@@ -51,9 +51,10 @@ describe('response component', () => {
       </Provider>
     );
 
-    const strong = tree.find('.panel-body strong');
-    const small = tree.find('.panel-body small');
-    expect(strong.prop('children')).toEqual(200);
+    const h3 = tree.find('.panel-body h3');
+    expect(h3.prop('children')[0]).toEqual(200);
+
+    const small = h3.find('small');
     expect(small.prop('children')).toEqual('OK');
   });
 

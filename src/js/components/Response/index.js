@@ -7,16 +7,15 @@ import Headers from './Headers';
 import * as Actions from '../../store/request/actions';
 import responsePropTypes, { responseShape } from '../../propTypes/response';
 
-function Titlebar({ method, url }) {
+function Titlebar({ url }) {
   return (
     <h3>
-      {method} - <a href={url}>{url}</a>
+      Response - <a href={url}>{url}</a>
     </h3>
   );
 }
 
 Titlebar.propTypes = {
-  method: responseShape.method,
   url: responseShape.url,
 };
 
@@ -26,8 +25,10 @@ export function Response({ response }) {
   const { method, url, headers, body } = response;
   return (
     <Panel header={<Titlebar method={method} url={url} />}>
-      <strong>{response.status}</strong>
-      <small>{response.statusText}</small>
+      <h3>
+        {response.status}
+        <small>{response.statusText}</small>
+      </h3>
       <Headers headers={headers} />
       <Highlight>
         {body}

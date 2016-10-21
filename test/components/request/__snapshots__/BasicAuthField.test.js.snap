@@ -6,11 +6,11 @@ exports[`BasicAuthField should match the previous snapshot when invalid 1`] = `
     disabled={false}
     onClick={[Function]}
     type="button">
-    <h3>
+    <h4>
       Basic auth
       <i
         className="fa fa-angle-right" />
-    </h3>
+    </h4>
   </button>
   <div
     aria-expanded={null}
@@ -31,11 +31,11 @@ exports[`BasicAuthField should match the previous snapshot when valid 1`] = `
     disabled={false}
     onClick={[Function]}
     type="button">
-    <h3>
+    <h4>
       Basic auth
       <i
         className="fa fa-angle-right" />
-    </h3>
+    </h4>
   </button>
   <div
     aria-expanded={null}
