@@ -6,7 +6,9 @@ exports[`test Header renders correctly 1`] = `
       className="logo"
       height="40"
       src="img/rested-logo.png" />
-    RESTED
+    <span>
+      RESTED
+    </span>
   </h1>
 </header>
 `;

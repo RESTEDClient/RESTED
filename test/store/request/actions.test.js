@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import * as actions from 'store/request/actions';
+import * as types from 'store/request/types';
 
 describe('actions', () => {
   let request;
@@ -22,7 +23,7 @@ describe('actions', () => {
 
   it('should create an action to execute a request', () => {
     const expectedAction = {
-      type: actions.EXECUTE_REQUEST,
+      type: types.EXECUTE_REQUEST,
     };
 
     expect(actions.executeRequest()).toEqual(expectedAction);
@@ -30,7 +31,7 @@ describe('actions', () => {
 
   it('should create an action to receive a response', () => {
     const expectedAction = {
-      type: actions.RECEIVE_RESPONSE,
+      type: types.RECEIVE_RESPONSE,
       response,
     };
 
@@ -39,7 +40,7 @@ describe('actions', () => {
 
   it('should create an action to update the request', () => {
     const expectedAction = {
-      type: actions.UPDATE_REQUEST,
+      type: types.UPDATE_REQUEST,
       request,
     };
 
@@ -48,7 +49,7 @@ describe('actions', () => {
 
   it('should create an action to clear the request', () => {
     const expectedAction = {
-      type: actions.CLEAR_RESPONSE,
+      type: types.CLEAR_RESPONSE,
     };
 
     expect(actions.clearRequest()).toEqual(expectedAction);

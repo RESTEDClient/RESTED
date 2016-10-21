@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import reducer from 'store/request/reducer';
-import * as actions from 'store/request/actions';
+import * as types from 'store/request/types';
 
 describe('reducer', () => {
   let request;
@@ -35,7 +35,7 @@ describe('reducer', () => {
   it('should handle EXECUTE_REQUEST', () => {
     expect(
       reducer(undefined, {
-        type: actions.EXECUTE_REQUEST,
+        type: types.EXECUTE_REQUEST,
       })
     ).toEqual({
       placeholderUrl: 'https://example.com',
@@ -48,7 +48,7 @@ describe('reducer', () => {
   it('should handle RECEIVE_RESPONSE', () => {
     expect(
       reducer(undefined, {
-        type: actions.RECEIVE_RESPONSE,
+        type: types.RECEIVE_RESPONSE,
         response,
       })
     ).toEqual({
@@ -62,7 +62,7 @@ describe('reducer', () => {
   it('should handle UPDATE_REQUEST', () => {
     expect(
       reducer(undefined, {
-        type: actions.UPDATE_REQUEST,
+        type: types.UPDATE_REQUEST,
         request,
       })
     ).toEqual({
@@ -76,7 +76,7 @@ describe('reducer', () => {
   it('should handle CLEAR_RESPONSE', () => {
     expect(
       reducer(undefined, {
-        type: actions.CLEAR_RESPONSE,
+        type: types.CLEAR_RESPONSE,
       })
     ).toEqual({
       placeholderUrl: 'https://example.com',

@@ -4,7 +4,7 @@ import {
   RECEIVE_RESPONSE,
   UPDATE_REQUEST,
   CLEAR_RESPONSE,
-} from './actions';
+} from './types';
 
 const initialState = {
   placeholderUrl: process.env.NODE_ENV !== 'test'

@@ -10,7 +10,7 @@ export default function Header() {
           height="40"
           src="img/rested-logo.png"
         />
-        RESTED
+        <span>RESTED</span>
       </h1>
     </header>
   );

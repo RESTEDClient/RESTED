@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 /* eslint-disable import/no-unresolved */
 import Header from 'components/Header';
@@ -12,3 +13,18 @@ test('Header renders correctly', () => {
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('Header contains the RESTED logo', () => {
+  const tree = mount(
+    <Header />
+  );
+  expect(tree.find('img').prop('alt')).toBe('RESTED logo');
+});
+
+test('Header contains the RESTED name', () => {
+  const tree = mount(
+    <Header />
+  );
+  expect(tree.find('h1 span').prop('children')).toBe('RESTED');
+});
+
