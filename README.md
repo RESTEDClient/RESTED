@@ -52,10 +52,6 @@ developer mode. Then manually load the extension as a "Temporary Add-on" or
 an "Unpackaged extension". In Firefox, this panel is hidden in
 `about:debugging#addons`.
 
-To run the tests, run the following command.
-
-    npm run test:watch
-
 If you need to empty and reset the database, enter
 `chrome.storage.local.clear()` into your developer console. That should clear
 the entire database and force a clean install on refresh.
@@ -63,4 +59,22 @@ the entire database and force a clean install on refresh.
 **Please develop on the react-rewrite branch.**
 This is where all the magic happens. Eventually it will be merged into the
 _next_ branch, but until it is stable, this is the place to be.
+
+### Tests
+
+To run the tests, run one of the following commands.
+
+    npm run test
+    npm run test:watch
+
+If you get snapshot mismatches, inspect the changes, and if they look OK, run
+this command:
+
+    npm run test:snapshot
+
+You can use Chrome's debugger if you need to inspect any part of a test. Simply
+place a `debugger;` statement where you want the debugger to start and run the
+following command. Then open the provided URL in Chrome.
+
+    npm run test:watch
 
