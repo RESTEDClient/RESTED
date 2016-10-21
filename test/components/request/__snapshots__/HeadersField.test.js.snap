@@ -1,0 +1,184 @@
+exports[`HeadersField should match the previous snapshot 1`] = `
+<div
+  className="row">
+  <button
+    className="btn btn-link"
+    disabled={false}
+    onClick={[Function]}
+    type="button">
+    <h4>
+      Headers
+      <i
+        className="fa fa-angle-right" />
+    </h4>
+  </button>
+  <div
+    aria-expanded={null}
+    className="collapse col-xs-12">
+    <div
+      className="form-group">
+      <div
+        className="col-xs-4">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Name"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-5">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].value"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Value"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-1">
+        <button
+          className="btn btn-default"
+          disabled={false}
+          id="removeHeaderButton0"
+          onClick={[Function]}
+          type="button">
+          <i
+            className="fa fa-trash"
+            role="presentation" />
+          <span
+            className="sr-only">
+            Remove header
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="form-group">
+      <div
+        className="col-xs-4">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Name"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-5">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].value"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Value"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-1">
+        <button
+          className="btn btn-default"
+          disabled={false}
+          id="removeHeaderButton1"
+          onClick={[Function]}
+          type="button">
+          <i
+            className="fa fa-trash"
+            role="presentation" />
+          <span
+            className="sr-only">
+            Remove header
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="form-group">
+      <div
+        className="col-xs-4">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Name"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-5">
+        <input
+          className="form-control"
+          id="header.[object Object]"
+          name="[object Object].value"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Value"
+          type="text"
+          value="" />
+      </div>
+      <div
+        className="col-xs-1">
+        <button
+          className="btn btn-default"
+          disabled={false}
+          id="removeHeaderButton2"
+          onClick={[Function]}
+          type="button">
+          <i
+            className="fa fa-trash"
+            role="presentation" />
+          <span
+            className="sr-only">
+            Remove header
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="col-xs-12">
+      <button
+        className="btn btn-default"
+        disabled={false}
+        id="addHeaderButton"
+        onClick={[Function]}
+        type="button">
+        <i
+          className="fa fa-plus"
+          role="presentation" />
+        Add header
+      </button>
+    </div>
+  </div>
+</div>
+`;

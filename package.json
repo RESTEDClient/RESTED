@@ -12,9 +12,9 @@
     "multiprocess": true
   },
   "scripts": {
-    "test": "jest --config test/jest.conf.js",
+    "test": "jest --coverage --config test/jest.conf.js",
     "test:watch": "jest --watchman --watchAll --config test/jest.conf.js",
-    "test:snapshot": "jest -u --config test/jest.conf.js",
+    "test:snapshot": "jest --update-snapshot --config test/jest.conf.js",
     "test:debugger": "node --debug-brk --inspect ./node_modules/.bin/jest -i --config test/jest.conf.js",
     "eslint": "eslint src test",
     "eslint:fix": "eslint --fix src test",

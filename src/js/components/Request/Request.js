@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, propTypes } from 'redux-form';
+import { reduxForm, Field, FieldArray, propTypes } from 'redux-form';
 import { Panel } from 'react-bootstrap';
 
 import URLField from './URLField';
@@ -9,7 +9,7 @@ import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 
 import * as Actions from '../../store/request/actions';
-import { DEFAULT_REQUEST_METHOD } from '../../constants/constants';
+import { DEFAULT_REQUEST } from '../../constants/constants';
 
 function Titlebar() {
   return (
@@ -32,7 +32,7 @@ function Request({ placeholderUrl, handleSubmit, sendRequest }) {
           name="method"
           component={MethodField}
         />
-        <Field
+        <FieldArray
           name="headers"
           component={HeadersField}
         />
@@ -56,9 +56,7 @@ const formOptions = {
 
 const mapStateToProps = ({ request: { placeholderUrl } }) => ({
   placeholderUrl,
-  initialValues: {
-    method: DEFAULT_REQUEST_METHOD,
-  },
+  initialValues: DEFAULT_REQUEST,
 });
 
 export { Request };

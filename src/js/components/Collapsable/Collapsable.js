@@ -36,7 +36,7 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
 Collapsable.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   toggleCollapse: PropTypes.func.isRequired,
   open: PropTypes.bool,
 };

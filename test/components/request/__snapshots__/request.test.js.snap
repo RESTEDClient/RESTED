@@ -124,7 +124,67 @@ exports[`test should render correctly 1`] = `
           className="collapse col-xs-12">
           <div
             className="form-group">
-            Headers
+            <div
+              className="col-xs-4">
+              <input
+                className="form-control"
+                id="header.headers[0]"
+                name="headers[0].name"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Name"
+                type="text"
+                value="" />
+            </div>
+            <div
+              className="col-xs-5">
+              <input
+                className="form-control"
+                id="header.headers[0]"
+                name="headers[0].value"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Value"
+                type="text"
+                value="" />
+            </div>
+            <div
+              className="col-xs-1">
+              <button
+                className="btn btn-default"
+                disabled={false}
+                id="removeHeaderButton0"
+                onClick={[Function]}
+                type="button">
+                <i
+                  className="fa fa-trash"
+                  role="presentation" />
+                <span
+                  className="sr-only">
+                  Remove header
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            className="col-xs-12">
+            <button
+              className="btn btn-default"
+              disabled={false}
+              id="addHeaderButton"
+              onClick={[Function]}
+              type="button">
+              <i
+                className="fa fa-plus"
+                role="presentation" />
+              Add header
+            </button>
           </div>
         </div>
       </div>
