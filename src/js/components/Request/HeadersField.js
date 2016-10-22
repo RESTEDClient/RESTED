@@ -37,14 +37,14 @@ function HeadersField({ meta, fields }) {
           controlId={`header.${field}`}
           validationState={meta.invalid ? 'error' : null}
         >
-          <Col xs={4}>
+          <Col xs={5}>
             <Field
               name={`${field}.name`}
               component={renderField}
               placeholder="Name"
             />
           </Col>
-          <Col xs={5}>
+          <Col xs={6}>
             <Field
               name={`${field}.value`}
               component={renderField}

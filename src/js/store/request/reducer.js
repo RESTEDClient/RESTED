@@ -4,6 +4,7 @@ import {
   RECEIVE_RESPONSE,
   UPDATE_REQUEST,
   CLEAR_RESPONSE,
+  USE_FORM_DATA,
 } from './types';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   request: null,
   response: null,
   loading: false,
+  useFormData: true,
 };
 
 export default function (state = initialState, action) {
@@ -38,6 +40,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         response: null,
         loading: false,
+      });
+
+    case USE_FORM_DATA:
+      return Object.assign({}, state, {
+        useFormData: action.useFormData,
       });
 
     default:

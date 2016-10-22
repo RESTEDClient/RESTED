@@ -54,5 +54,21 @@ describe('actions', () => {
 
     expect(actions.clearRequest()).toEqual(expectedAction);
   });
+
+  it('should create an action to set useFormData', () => {
+    let expectedAction = {
+      type: types.USE_FORM_DATA,
+      useFormData: true,
+    };
+
+    expect(actions.setUseFormData(true)).toEqual(expectedAction);
+
+    expectedAction = {
+      type: types.USE_FORM_DATA,
+      useFormData: false,
+    };
+
+    expect(actions.setUseFormData(false)).toEqual(expectedAction);
+  });
 });
 

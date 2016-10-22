@@ -4,6 +4,7 @@ import {
   RECEIVE_RESPONSE,
   UPDATE_REQUEST,
   CLEAR_RESPONSE,
+  USE_FORM_DATA,
 } from './types';
 
 export function executeRequest() {
@@ -22,6 +23,10 @@ export function clearRequest() {
   return { type: CLEAR_RESPONSE };
 }
 
+export function setUseFormData(useFormData) {
+  return { type: USE_FORM_DATA, useFormData };
+}
+
 export function sendRequest({ url, method }) {
   return (dispatch, getState) => {
     dispatch(executeRequest());
@@ -31,6 +36,7 @@ export function sendRequest({ url, method }) {
       dispatch(change('requestForm', 'url', fallbackUrl));
     }
 
+    // TODO Add data, headers and basic auth
     return fetch(url || fallbackUrl, {
       method,
     }).then(response => {

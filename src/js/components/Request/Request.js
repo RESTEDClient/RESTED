@@ -7,15 +7,16 @@ import URLField from './URLField';
 import MethodField from './MethodField';
 import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
+import BodyField from './BodyField';
 
 import * as Actions from '../../store/request/actions';
 import { DEFAULT_REQUEST } from '../../constants/constants';
 
 function Titlebar() {
   return (
-    <span>
+    <h2>
       Request
-    </span>
+    </h2>
   );
 }
 
@@ -40,6 +41,7 @@ function Request({ placeholderUrl, handleSubmit, sendRequest }) {
           names={['basicAuth.username', 'basicAuth.password']}
           component={BasicAuthField}
         />
+        <BodyField />
       </form>
     </Panel>
   );
@@ -54,7 +56,8 @@ const formOptions = {
   form: 'requestForm',
 };
 
-const mapStateToProps = ({ request: { placeholderUrl } }) => ({
+const mapStateToProps = ({ request: { useFormData, placeholderUrl } }) => ({
+  useFormData,
   placeholderUrl,
   initialValues: DEFAULT_REQUEST,
 });

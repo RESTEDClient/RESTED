@@ -12,7 +12,8 @@ it('should render correctly', () => {
   const onSubmitFail = jest.fn();
   const store = makeStore({
     form: {
-      testForm: {},
+      testForm: {
+      },
     },
   });
 

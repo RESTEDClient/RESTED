@@ -29,6 +29,7 @@ describe('reducer', () => {
       request: null,
       response: null,
       loading: false,
+      useFormData: true,
     });
   });
 
@@ -42,6 +43,7 @@ describe('reducer', () => {
       request: null,
       response: null,
       loading: true,
+      useFormData: true,
     });
   });
 
@@ -56,6 +58,7 @@ describe('reducer', () => {
       request: null,
       response,
       loading: false,
+      useFormData: true,
     });
   });
 
@@ -70,6 +73,7 @@ describe('reducer', () => {
       request,
       response: null,
       loading: false,
+      useFormData: true,
     });
   });
 
@@ -83,6 +87,35 @@ describe('reducer', () => {
       request: null,
       response: null,
       loading: false,
+      useFormData: true,
+    });
+  });
+
+  it('should handle USE_FORM_DATA', () => {
+    expect(
+      reducer(undefined, {
+        type: types.USE_FORM_DATA,
+        useFormData: true,
+      })
+    ).toEqual({
+      placeholderUrl: 'https://example.com',
+      request: null,
+      response: null,
+      loading: false,
+      useFormData: true,
+    });
+
+    expect(
+      reducer(undefined, {
+        type: types.USE_FORM_DATA,
+        useFormData: false,
+      })
+    ).toEqual({
+      placeholderUrl: 'https://example.com',
+      request: null,
+      response: null,
+      loading: false,
+      useFormData: false,
     });
   });
 });
