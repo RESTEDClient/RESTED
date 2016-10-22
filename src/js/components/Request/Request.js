@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, FieldArray, propTypes } from 'redux-form';
+import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
 import { Panel } from 'react-bootstrap';
 
 import URLField from './URLField';
@@ -36,8 +36,8 @@ function Request({ placeholderUrl, handleSubmit, sendRequest }) {
           name="headers"
           component={HeadersField}
         />
-        <Field
-          name="basicAuth"
+        <Fields
+          names={['basicAuth.username', 'basicAuth.password']}
           component={BasicAuthField}
         />
       </form>

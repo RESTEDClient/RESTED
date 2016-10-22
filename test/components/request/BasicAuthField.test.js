@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { combineReducers, createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 
@@ -17,13 +18,18 @@ describe('BasicAuthField', () => {
     collapsable: {},
   });
 
-  it('should match the previous snapshot when valid', () => {
+  it('should match the previous snapshot', () => {
+    const input = {};
+
     // Mock props
     BasicAuthField.defaultProps = {
-      input: {},
-      meta: {
-        invalid: false,
-        valid: true,
+      basicAuth: {
+        username: {
+          input,
+        },
+        password: {
+          input,
+        },
       },
     };
 
@@ -38,25 +44,38 @@ describe('BasicAuthField', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should match the previous snapshot when invalid', () => {
+  it('should render the fields', () => {
     // Mock props
     BasicAuthField.defaultProps = {
-      input: {},
-      meta: {
-        invalid: true,
-        valid: false,
+      basicAuth: {
+        username: {
+          input: {
+            value: 'someUsername',
+            onChange() {},
+          },
+        },
+        password: {
+          input: {
+            value: 'somePassword',
+            onChange() {},
+          },
+        },
       },
     };
 
     const Decorated = connect()(BasicAuthField);
 
-    const tree = renderer.create(
+    const tree = mount(
       <Provider store={store}>
         <Decorated />
       </Provider>
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    const inputs = tree.find('input');
+
+    expect(inputs.length).toBe(2);
+    expect(inputs.first().prop('value')).toBe('someUsername');
+    expect(inputs.last().prop('value')).toBe('somePassword');
   });
 });
 

@@ -208,7 +208,40 @@ exports[`test should render correctly 1`] = `
           className="collapse col-xs-12">
           <div
             className="form-group">
-            BasicAuth
+            <div
+              className="col-xs-5">
+              <input
+                className="form-control"
+                id="method"
+                name="basicAuth.username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Username"
+                type="text"
+                value="" />
+            </div>
+            <div
+              className="col-xs-5">
+              <input
+                className="form-control"
+                id="method"
+                name="basicAuth.password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                type="text"
+                value="" />
+            </div>
+            <div
+              className="col-xs-2">
+              Show password?
+            </div>
           </div>
         </div>
       </div>

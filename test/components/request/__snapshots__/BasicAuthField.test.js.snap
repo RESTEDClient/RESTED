@@ -1,30 +1,4 @@
-exports[`BasicAuthField should match the previous snapshot when invalid 1`] = `
-<div
-  className="row">
-  <button
-    className="btn btn-link"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    <h4>
-      Basic auth
-      <i
-        className="fa fa-angle-right"
-        role="presentation" />
-    </h4>
-  </button>
-  <div
-    aria-expanded={null}
-    className="collapse col-xs-12">
-    <div
-      className="form-group has-error">
-      BasicAuth
-    </div>
-  </div>
-</div>
-`;
-
-exports[`BasicAuthField should match the previous snapshot when valid 1`] = `
+exports[`BasicAuthField should match the previous snapshot 1`] = `
 <div
   className="row">
   <button
@@ -44,7 +18,26 @@ exports[`BasicAuthField should match the previous snapshot when valid 1`] = `
     className="collapse col-xs-12">
     <div
       className="form-group">
-      BasicAuth
+      <div
+        className="col-xs-5">
+        <input
+          className="form-control"
+          id="method"
+          placeholder="Username"
+          type="text" />
+      </div>
+      <div
+        className="col-xs-5">
+        <input
+          className="form-control"
+          id="method"
+          placeholder="Password"
+          type="text" />
+      </div>
+      <div
+        className="col-xs-2">
+        Show password?
+      </div>
     </div>
   </div>
 </div>
