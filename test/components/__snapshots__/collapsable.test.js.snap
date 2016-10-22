@@ -9,7 +9,8 @@ exports[`test should render correctly 1`] = `
     <h4>
       Test
       <i
-        className="fa fa-angle-right" />
+        className="fa fa-angle-right"
+        role="presentation" />
     </h4>
   </button>
   <div

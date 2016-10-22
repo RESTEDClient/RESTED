@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Panel } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
+import Loading from './Loading';
 import Headers from './Headers';
 import * as Actions from '../../store/request/actions';
 import responsePropTypes, { responseShape } from '../../propTypes/response';
@@ -19,7 +20,15 @@ Titlebar.propTypes = {
   url: responseShape.url,
 };
 
-export function Response({ response }) {
+export function Response({ response, loading }) {
+  if (loading) {
+    return (
+      <Panel>
+        <Loading />
+      </Panel>
+    );
+  }
+
   if (!response) return null;
 
   const { method, url, headers, body } = response;
@@ -38,11 +47,13 @@ export function Response({ response }) {
 }
 
 Response.propTypes = {
+  loading: PropTypes.bool.isRequired,
   response: responsePropTypes,
 };
 
-const mapStateToProps = ({ request: { response } }) => ({
+const mapStateToProps = ({ request: { loading, response } }) => ({
   response,
+  loading,
 });
 
 export default connect(mapStateToProps, Actions)(Response);

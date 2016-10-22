@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
+import Fonticon from '../Fonticon';
 import * as Actions from '../../store/collapsable/actions';
 
 export function Collapsable({ id, title, open, children, toggleCollapse }) {
@@ -17,8 +18,9 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
       >
         <h4>
           {title}
-          <i
-            className={classNames('fa fa-angle-right', {
+          <Fonticon
+            icon="angle-right"
+            className={classNames({
               'fa-rotate-90': open,
             })}
           />

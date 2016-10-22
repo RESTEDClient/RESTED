@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 
 /* eslint-disable import/no-unresolved */
 import { Response } from 'components/Response';
-import makeStore from '../makeStore';
+import makeStore from '../../makeStore';
 
 jest.mock('react-highlight');
 
@@ -28,16 +28,26 @@ describe('response component', () => {
 
   it('renders nothing given no props', () => {
     const tree = renderer.create(
-      <Response />
+      <Response loading={false} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a loading gif when requets is in flight', () => {
+    const tree = mount(
+      <Provider store={store}>
+        <Response response={response} loading />
+      </Provider>
+    );
+
+    expect(!tree.find('Loading').isEmpty()).toBe(true);
+  });
+
   it('renders a result when given one', () => {
     const tree = renderer.create(
       <Provider store={store}>
-        <Response response={response} />
+        <Response response={response} loading={false} />
       </Provider>
     ).toJSON();
 
@@ -47,7 +57,7 @@ describe('response component', () => {
   it('displays the status and statusText', () => {
     const tree = mount(
       <Provider store={store}>
-        <Response response={response} />
+        <Response response={response} loading={false} />
       </Provider>
     );
 
@@ -61,7 +71,7 @@ describe('response component', () => {
   it('displays the URL and method in the titlebar', () => {
     const tree = mount(
       <Provider store={store}>
-        <Response response={response} />
+        <Response response={response} loading={false} />
       </Provider>
     );
 

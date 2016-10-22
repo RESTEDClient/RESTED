@@ -9,7 +9,8 @@ exports[`HeadersField should match the previous snapshot 1`] = `
     <h4>
       Headers
       <i
-        className="fa fa-angle-right" />
+        className="fa fa-angle-right"
+        role="presentation" />
     </h4>
   </button>
   <div

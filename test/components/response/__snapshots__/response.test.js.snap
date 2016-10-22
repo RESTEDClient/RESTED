@@ -30,7 +30,8 @@ exports[`response component renders a result when given one 1`] = `
         <h4>
           Headers
           <i
-            className="fa fa-angle-right" />
+            className="fa fa-angle-right"
+            role="presentation" />
         </h4>
       </button>
       <div

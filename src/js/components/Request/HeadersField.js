@@ -7,6 +7,7 @@ import {
   Col,
 } from 'react-bootstrap';
 
+import Fonticon from '../Fonticon';
 import Collapsable from '../Collapsable';
 
 function renderField({ input, placeholder }) {
@@ -55,10 +56,7 @@ function HeadersField({ meta, fields }) {
               id={`removeHeaderButton${key}`}
               onClick={() => fields.remove(key)}
             >
-              <i
-                className="fa fa-trash"
-                role="presentation"
-              />
+              <Fonticon icon="trash" />
               <span className="sr-only">
                 Remove header
               </span>
@@ -72,10 +70,7 @@ function HeadersField({ meta, fields }) {
           id="addHeaderButton"
           onClick={() => fields.push({})}
         >
-          <i
-            className="fa fa-plus"
-            role="presentation"
-          />
+          <Fonticon icon="plus" />
           Add header
         </Button>
       </Col>
