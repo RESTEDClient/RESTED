@@ -1,4 +1,4 @@
-import { change, getFormValues } from 'redux-form';
+import { change } from 'redux-form';
 
 import base64Encode from '../../utils/base64';
 import { reMapHeaders } from '../../utils/requestUtils';
@@ -36,7 +36,7 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
 
     const fallbackUrl = getState().request.placeholderUrl;
     if (!url) {
-      dispatch(change('requestForm', 'url', fallbackUrl));
+      dispatch(change('request', 'url', fallbackUrl));
     }
 
     const requestHeaders = new Headers(reMapHeaders(headers, true));
@@ -48,20 +48,20 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
       );
     }
 
-    let body = undefined;
+    let body;
     if (formData && formData.filter(f => f.name).length > 0) {
       body = new FormData();
 
       formData.forEach(f => { body.append(f.name, f.value); });
     }
 
-    // TODO Add data, headers and basic auth
     return fetch(url || fallbackUrl, {
       method,
-      //body,
+      body,
       headers: requestHeaders,
       credentials: 'include', // Include cookies
     }).then(response => {
+      // TODO Move out to a separate function to it can be tested
       const responseHeaders = [];
       for (const header of response.headers) {
         responseHeaders.push({
