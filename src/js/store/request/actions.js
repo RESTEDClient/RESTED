@@ -1,4 +1,7 @@
-import { change } from 'redux-form';
+import { change, getFormValues } from 'redux-form';
+
+import base64Encode from '../../utils/base64';
+import { reMapHeaders } from '../../utils/requestUtils';
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
@@ -27,7 +30,7 @@ export function setUseFormData(useFormData) {
   return { type: USE_FORM_DATA, useFormData };
 }
 
-export function sendRequest({ url, method }) {
+export function sendRequest({ url, method, headers, formData, basicAuth }) {
   return (dispatch, getState) => {
     dispatch(executeRequest());
 
@@ -36,26 +39,45 @@ export function sendRequest({ url, method }) {
       dispatch(change('requestForm', 'url', fallbackUrl));
     }
 
+    const requestHeaders = new Headers(reMapHeaders(headers, true));
+
+    if (basicAuth && basicAuth.username) {
+      requestHeaders.append(
+        'Authorization',
+        `Basic ${base64Encode(`${basicAuth.username}:${basicAuth.password}`)}`
+      );
+    }
+
+    let body = undefined;
+    if (formData && formData.filter(f => f.name).length > 0) {
+      body = new FormData();
+
+      formData.forEach(f => { body.append(f.name, f.value); });
+    }
+
     // TODO Add data, headers and basic auth
     return fetch(url || fallbackUrl, {
       method,
+      //body,
+      headers: requestHeaders,
+      credentials: 'include', // Include cookies
     }).then(response => {
-      const headers = [];
+      const responseHeaders = [];
       for (const header of response.headers) {
-        headers.push({
+        responseHeaders.push({
           name: header[0],
           value: header[1],
         });
       }
 
-      return response.text().then(body => {
+      return response.text().then(responseBody => {
         dispatch(receiveResponse({
           url: response.url,
           status: response.status,
           statusText: response.statusText,
+          body: responseBody,
+          headers: responseHeaders,
           method,
-          body,
-          headers,
         }));
       });
     }).catch(() => {

@@ -21,6 +21,7 @@ Titlebar.propTypes = {
 };
 
 export function Response({ response, loading }) {
+  console.log('response', response);
   if (loading) {
     return (
       <Panel>

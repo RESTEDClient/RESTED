@@ -53,7 +53,7 @@ Request.propTypes = {
 };
 
 const formOptions = {
-  form: 'requestForm',
+  form: 'request',
 };
 
 const mapStateToProps = ({ request: { useFormData, placeholderUrl } }) => ({
