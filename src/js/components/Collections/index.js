@@ -1,6 +1,8 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
+import CollectionList from './CollectionList';
+
 function Titlebar() {
   return (
     <span>

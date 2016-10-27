@@ -22,6 +22,7 @@ module.exports = {
         loader: "style!css",
       },
       {
+        exclude: /node_modules/,
         test: /\.js/,
         loader: 'babel-loader'
       }
