@@ -1,0 +1,135 @@
+/* eslint-disable import/no-unresolved */
+import reducer from 'store/collections/reducer';
+import * as types from 'store/collections/types';
+
+describe('reducer', () => {
+  let collections;
+  let request;
+
+  beforeEach(() => {
+    collections = [{
+      name: 'Collection',
+      id: 'some-collection-UUID',
+      minimized: true,
+      requests: [],
+    }, {
+      name: 'Collection 2',
+      id: 'some-collection-UUID2',
+      minimized: true,
+      requests: [],
+    }];
+
+    request = {
+      id: 'some-request-UUID',
+      url: 'www.vg.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    };
+  });
+
+  it('should return the initial state', () => {
+    expect(
+      reducer(undefined, {})
+    ).toEqual({
+      collections: []
+    });
+  });
+
+  it('should handle ADD_REQUEST', () => {
+    const initialState = {
+      collections,
+    };
+
+    expect(
+      reducer(initialState, {
+        type: types.ADD_REQUEST,
+        request: request,
+        collectionId: 'some-collection-UUID2',
+      })
+    ).toEqual({
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [request],
+      }]
+    });
+  });
+
+  it('should handle REORDER_REQUEST', () => {
+    const otherRequest = {
+      id: 'some-other-request-UUID',
+      url: 'www.vg.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    };
+
+    const initialState = {
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [otherRequest, request],
+      }],
+    };
+
+    expect(
+      reducer(initialState, {
+        type: types.REORDER_REQUEST,
+        collectionId: 'some-collection-UUID2',
+        requestId: 'some-request-UUID',
+        order: 0,
+      })
+    ).toEqual({
+      collections: [
+        {
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [request, otherRequest],
+      }],
+    });
+  });
+});
+

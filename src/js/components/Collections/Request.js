@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import { Panel } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
+import * as Actions from '../../store/collections/actions';
 import * as Type from './dropTypes';
 
 /**
@@ -126,5 +128,6 @@ export default flow(
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   })),
+  connect(null, Actions)
 )(Request);
 
