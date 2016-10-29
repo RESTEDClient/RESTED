@@ -2,6 +2,7 @@ import { randomURL } from '../../utils/requestUtils';
 import {
   ADD_REQUEST,
   REORDER_REQUEST,
+  REORDER_COLLECTION,
 } from './types';
 
 const initialState = {
@@ -103,6 +104,17 @@ export default function (state = initialState, action) {
           return collection;
         }),
       });
+
+    case REORDER_COLLECTION: {
+      const collection = state.collections.splice(action.oldIndex, 1)[0];
+      return Object.assign({}, state, {
+        collections: [
+          ...state.collections.slice(0, action.newIndex),
+          collection,
+          ...state.collections.slice(action.newIndex),
+        ],
+      });
+    }
 
     case REORDER_REQUEST: {
       const request = state

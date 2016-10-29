@@ -199,5 +199,41 @@ describe('reducer', () => {
       }],
     });
   });
+
+  it('should handle REORDER_COLLECTION', () => {
+    const initialState = {
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    };
+
+    expect(
+      reducer(initialState, {
+        type: types.REORDER_COLLECTION,
+        oldIndex: 0,
+        newIndex: 1,
+      })
+    ).toEqual({
+      collections: [{
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }],
+    });
+  });
 });
 

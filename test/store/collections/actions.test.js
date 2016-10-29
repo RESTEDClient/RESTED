@@ -45,5 +45,17 @@ describe('actions', () => {
     expect(actions.reorderRequest(source, target)).toEqual(expectedAction);
   });
 
+  it('should create an action to reorder a colleciton', () => {
+    const oldIndex = 0;
+    const newIndex = 1;
+    const expectedAction = {
+      type: types.REORDER_COLLECTION,
+      oldIndex,
+      newIndex,
+    };
+
+    expect(actions.reorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
+  });
+
 });
 
