@@ -31,63 +31,51 @@ const requestSource = {
     return true;
   },
 
-  beginDrag({ id, index }) {
-    return { id, index };
+  beginDrag({ index, collectionIndex }) {
+    return { index, collectionIndex };
   },
 };
 
 const requestTarget = {
   hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
+    const dragCollectionIndex = monitor.getItem().collectionIndex;
     const hoverIndex = props.index;
-    console.log('dragIndex, hoverIndex', dragIndex, hoverIndex);
+    const hoverCollectionIndex = props.collectionIndex;
 
-    // Don't replace items with themselves
-    if (dragIndex === hoverIndex) {
+    // Abort further processing if dragged item is hovering over itself
+    if (dragIndex === hoverIndex
+    && dragCollectionIndex === hoverCollectionIndex) {
       return;
     }
 
-    // Determine rectangle on screen
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+    // Update redux orders
+    props.reorderRequest({
+      // Source
+      collectionIndex: dragCollectionIndex,
+      requestIndex: dragIndex
+    }, {
+      // Target
+      collectionIndex: hoverCollectionIndex,
+      requestIndex: hoverIndex
+    });
 
-    // Get vertical middle
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-    // Determine mouse position
-    const clientOffset = monitor.getClientOffset();
-
-    // Get pixels to the top
-    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-    // Only perform the move when the mouse has crossed half of the items height
-    // When dragging downwards, only move when the cursor is below 50%
-    // When dragging upwards, only move when the cursor is above 50%
-
-    // Dragging downwards
-    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-      return;
-    }
-
-    // Dragging upwards
-    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      return;
-    }
-
-    // Time to actually perform the action
-    console.log("Invoking moveCard", dragIndex, hoverIndex);
-    props.moveCard(dragIndex, hoverIndex);
-
-    // Note: we're mutating the monitor item here!
+    // Note: we're mutating the monitor item here.
     // Generally it's better to avoid mutations,
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
     monitor.getItem().index = hoverIndex;
+    monitor.getItem().collectionIndex = hoverCollectionIndex;
   }
 };
 
 class Request extends React.Component {
   render() {
-    const { connectDragSource, connectDropTarget, name } = this.props;
+    const {
+      connectDragSource,
+      connectDropTarget,
+      url,
+    } = this.props;
 
     return connectDragSource(connectDropTarget(
       <li data-ng-repeat="request in collection.requests | uuidAssign:'array' track by request.id"
@@ -101,7 +89,7 @@ class Request extends React.Component {
             data-ng-class="{active: request == selectedRequest}"
             data-ng-click="selectRequest(request)">
             <h4 class="list-group-item-heading">
-              {name}
+              {url}
               <div class="pull-right"
                 id="removeRequest">
                 <slidey-button data-config="removeRequestConfig"

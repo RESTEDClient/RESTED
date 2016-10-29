@@ -74,10 +74,10 @@ describe('reducer', () => {
     });
   });
 
-  it('should handle REORDER_REQUEST', () => {
+  it('should handle REORDER_REQUEST within a collection', () => {
     const otherRequest = {
       id: 'some-other-request-UUID',
-      url: 'www.vg.no',
+      url: 'www.reddit.com',
       method: 'POST',
       data: '',
       useFormData: true,
@@ -112,9 +112,14 @@ describe('reducer', () => {
     expect(
       reducer(initialState, {
         type: types.REORDER_REQUEST,
-        collectionId: 'some-collection-UUID2',
-        requestId: 'some-request-UUID',
-        order: 0,
+        source: {
+          collectionIndex: 1,
+          requestIndex: 1,
+        },
+        target: {
+          collectionIndex: 1,
+          requestIndex: 0,
+        },
       })
     ).toEqual({
       collections: [
@@ -128,6 +133,69 @@ describe('reducer', () => {
         id: 'some-collection-UUID2',
         minimized: true,
         requests: [request, otherRequest],
+      }],
+    });
+  });
+
+  it('should handle REORDER_REQUEST between two collections', () => {
+    const otherRequest = {
+      id: 'some-other-request-UUID',
+      url: 'www.reddit.com',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    };
+
+    const initialState = {
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [otherRequest],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [request, otherRequest, request],
+      }],
+    };
+
+    expect(
+      reducer(initialState, {
+        type: types.REORDER_REQUEST,
+        source: {
+          collectionIndex: 1,
+          requestIndex: 0,
+        },
+        target: {
+          collectionIndex: 0,
+          requestIndex: 1,
+        },
+      })
+    ).toEqual({
+      collections: [
+        {
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [otherRequest, request],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [otherRequest, request],
       }],
     });
   });

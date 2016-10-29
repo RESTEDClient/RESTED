@@ -27,15 +27,22 @@ describe('actions', () => {
     expect(actions.addRequest(request, 'test-collection')).toEqual(expectedAction);
   });
 
-  it('should create an action to reorder a request within a collection', () => {
+  it('should create an action to reorder a request', () => {
+    const source = {
+      collectionIndex: 1,
+      requestIndex: 1,
+    };
+    const target = {
+      collectionIndex: 0,
+      requestIndex: 0,
+    };
     const expectedAction = {
       type: types.REORDER_REQUEST,
-      collectionId: 'collection_id',
-      requestId: 'request_id',
-      order: 3,
+      source,
+      target,
     };
 
-    expect(actions.reorderRequest('request_id', 'collection_id', 3)).toEqual(expectedAction);
+    expect(actions.reorderRequest(source, target)).toEqual(expectedAction);
   });
 
 });

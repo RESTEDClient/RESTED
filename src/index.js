@@ -10,7 +10,7 @@ import rootReducer from './store';
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 );
 
 ReactDOM.render(

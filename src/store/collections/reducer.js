@@ -5,7 +5,90 @@ import {
 } from './types';
 
 const initialState = {
-  collections: [],
+  // TODO Replace mock data with collections: []
+  collections: [{
+    name: 'Collection',
+    id: 'some-collection-UUID',
+    minimized: true,
+    requests: [{
+      id: 'some-request-UUID1',
+      url: 'www.foo.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    }],
+  }, {
+    name: 'Collection 2',
+    id: 'some-collection-UUID2',
+    minimized: true,
+    requests: [{
+      id: 'some-request-UUID2',
+      url: 'www.foo.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    }, {
+      id: 'some-request-UUID3',
+      url: 'www.bar.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    }, {
+      id: 'some-request-UUID4',
+      url: 'www.baz.no',
+      method: 'POST',
+      data: '',
+      useFormData: true,
+      formData: [
+        {
+          name: 'BodyOfPOST...',
+          value: '...SentViaFormData'
+        }
+      ],
+      headers: [
+       {
+         name: 'Content-Type',
+         value: 'angular/awesomeness'
+       }
+      ]
+    }],
+  }]
 };
 
 export default function (state = initialState, action) {
@@ -21,28 +104,26 @@ export default function (state = initialState, action) {
         }),
       });
 
-    case REORDER_REQUEST:
+    case REORDER_REQUEST: {
+      const request = state
+        .collections[action.source.collectionIndex]
+        .requests
+        .splice(action.source.requestIndex, 1)[0];
+
       return Object.assign({}, state, {
-        collections: state.collections.map(collection => {
-          if (collection.id === action.collectionId) {
-            const requestIndex = collection.requests.findIndex(request => (
-              request.id === action.requestId
-            ));
-
-            // Splice the request out..
-            const requests = [
-              ...collection.requests.slice(0, requestIndex),
-              ...collection.requests.slice(requestIndex + 1)
-            ];
-            // .. and then back in at the correct index
-            requests.splice(action.order, 0, collection.requests[requestIndex]);
-
-            return Object.assign({}, collection, { requests });
-          }
-
-          return collection;
-        })
+        collections: state.collections.map((collection, index) => (
+          index === action.target.collectionIndex
+            ? Object.assign({}, collection, {
+              requests: [
+                ...collection.requests.slice(0, action.target.requestIndex),
+                request,
+                ...collection.requests.slice(action.target.requestIndex),
+              ],
+            })
+            :  collection
+        ))
       });
+    }
 
     default:
       return state;
