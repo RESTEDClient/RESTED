@@ -1,4 +1,4 @@
-'use strict';
+
 
 /**
  * This service handles the changing of options
@@ -7,11 +7,8 @@
  */
 angular.module('RestedApp')
 .factory('Options', ['$rootScope', '$timeout', 'Modal', 'Highlight', 'DB',
-function($rootScope, $timeout, Modal, Highlight, DB) {
-
-
+function ($rootScope, $timeout, Modal, Highlight, DB) {
   function handleSyncOption(val) {
-
     // You shouldn't be here! Get out!
     if (!chrome.storage.sync) {
       $rootScope.options.sync = false;
@@ -24,9 +21,9 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
     // Sync turned on, query user for what to do next
     if (val === true) {
       function onUpdate() {
-        $rootScope.$apply(function() {
+        $rootScope.$apply(() => {
           if (chrome.runtime.lastError) {
-            Modal.throwError('An error occured when reading/writing the browser sync storage\n', chrome.runtime.lastError)
+            Modal.throwError('An error occured when reading/writing the browser sync storage\n', chrome.runtime.lastError);
             return;
           }
 
@@ -41,20 +38,18 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
         'server\'s sync data.',
         actions: [{
           text: 'Overwrite local',
-          click: function() {
-
+          click() {
             // Persist sync options to state
             $rootScope.options.sync = true;
-            DB.options.set({name: 'options', options: $rootScope.options})
-              .then(function() {
-
+            DB.options.set({ name: 'options', options: $rootScope.options })
+              .then(() => {
                 // Overwrite local storage
-                chrome.storage.sync.get(function(data) {
+                chrome.storage.sync.get(data => {
                   console.log('Copying data into local storage', data);
 
                   // Clear the local storage so we don't get weird inconsistensies
                   // when remote stores are empty
-                  chrome.storage.local.clear(function() {
+                  chrome.storage.local.clear(() => {
                     chrome.storage.local.set(data, onUpdate);
 
                     // Completely clean state by reloading
@@ -62,23 +57,21 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
                   });
                 });
               }, Modal.errorHandler);
-          }
+          },
         }, {
           text: 'Overwrite remote',
-          click: function() {
-
+          click() {
             // Persist sync options to state
             $rootScope.options.sync = true;
-            DB.options.set({name: 'options', options: $rootScope.options})
-              .then(function() {
-
+            DB.options.set({ name: 'options', options: $rootScope.options })
+              .then(() => {
                 // Overwrite remote storage
-                chrome.storage.local.get(function(data) {
+                chrome.storage.local.get(data => {
                   console.log('Copying data into sync storage', data);
                   chrome.storage.sync.set(data, onUpdate);
                 });
               }, Modal.errorHandler);
-          }
+          },
         }],
       });
     }
@@ -89,8 +82,8 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
   }
 
   return {
-    handleOptions: function(option, val) {
-      $rootScope.$broadcast(option + '-change', val);
+    handleOptions(option, val) {
+      $rootScope.$broadcast(`${option}-change`, val);
 
       // If we are changing style or turning styling on
       if (option === 'highlightStyle' || (option === 'disableHighlighting' && val === false)) {
@@ -99,7 +92,7 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
         // browser to become really undesponsive.
 
         // Wait for request directive to remove response
-        $timeout(function() {
+        $timeout(() => {
           // Redraw highlight styles
           Highlight.highlightAll();
         });
@@ -114,7 +107,7 @@ function($rootScope, $timeout, Modal, Highlight, DB) {
       }
 
       $rootScope.options[option] = val;
-      DB.options.set({name: 'options', options: $rootScope.options})
+      DB.options.set({ name: 'options', options: $rootScope.options })
         .then(null, Modal.errorHandler);
     },
   };

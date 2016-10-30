@@ -1,4 +1,5 @@
 // Ensure we do not include redux dev tools in production
+/* eslint-disable global-require */
 if (process.env.NODE_ENV === 'production') {
   module.exports = require('./Root.prod');
 } else {

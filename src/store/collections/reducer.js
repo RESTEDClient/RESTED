@@ -1,4 +1,3 @@
-import { randomURL } from '../../utils/requestUtils';
 import {
   ADD_REQUEST,
   REORDER_REQUEST,
@@ -20,15 +19,15 @@ const initialState = {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     }],
   }, {
     name: 'Collection 2',
@@ -43,15 +42,15 @@ const initialState = {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     }, {
       id: 'some-request-UUID3',
       url: 'www.bar.no',
@@ -61,15 +60,15 @@ const initialState = {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     }, {
       id: 'some-request-UUID4',
       url: 'www.baz.no',
@@ -79,24 +78,24 @@ const initialState = {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     }],
-  }]
+  }],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_REQUEST:
       return Object.assign({}, state, {
-        collections: state.collections.map((collection) => {
+        collections: state.collections.map(collection => {
           if (collection.id === action.collectionId) {
             collection.requests.push(action.request);
           }
@@ -117,10 +116,12 @@ export default function (state = initialState, action) {
     }
 
     case REORDER_REQUEST: {
-      const request = state
+      const request = Object.assign({}, state)
         .collections[action.source.collectionIndex]
         .requests
         .splice(action.source.requestIndex, 1)[0];
+
+      if (!request) return state;
 
       return Object.assign({}, state, {
         collections: state.collections.map((collection, index) => (
@@ -132,8 +133,8 @@ export default function (state = initialState, action) {
                 ...collection.requests.slice(action.target.requestIndex),
               ],
             })
-            :  collection
-        ))
+            : collection
+        )),
       });
     }
 

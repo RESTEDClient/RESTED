@@ -56,6 +56,5 @@ describe('actions', () => {
 
     expect(actions.reorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
   });
-
 });
 

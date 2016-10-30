@@ -8,6 +8,12 @@ import Collections from '../Collections';
 import Request from '../Request';
 import Response from '../Response';
 
+/*
+ * This must be a React.Component because DragDropContext
+ * attaches a ref to the component, which as we know will
+ * not work with a stateless functional component.
+ */
+/* eslint-disable react/prefer-stateless-function */
 class App extends React.Component {
   render() {
     return (

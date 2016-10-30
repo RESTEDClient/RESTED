@@ -28,15 +28,15 @@ describe('reducer', () => {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     };
   });
 
@@ -44,7 +44,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {})
     ).toEqual({
-      collections: []
+      collections: [],
     });
   });
 
@@ -56,7 +56,7 @@ describe('reducer', () => {
     expect(
       reducer(initialState, {
         type: types.ADD_REQUEST,
-        request: request,
+        request,
         collectionId: 'some-collection-UUID2',
       })
     ).toEqual({
@@ -70,7 +70,7 @@ describe('reducer', () => {
         id: 'some-collection-UUID2',
         minimized: true,
         requests: [request],
-      }]
+      }],
     });
   });
 
@@ -84,15 +84,15 @@ describe('reducer', () => {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     };
 
     const initialState = {
@@ -124,16 +124,16 @@ describe('reducer', () => {
     ).toEqual({
       collections: [
         {
-        name: 'Collection',
-        id: 'some-collection-UUID',
-        minimized: true,
-        requests: [],
-      }, {
-        name: 'Collection 2',
-        id: 'some-collection-UUID2',
-        minimized: true,
-        requests: [request, otherRequest],
-      }],
+          name: 'Collection',
+          id: 'some-collection-UUID',
+          minimized: true,
+          requests: [],
+        }, {
+          name: 'Collection 2',
+          id: 'some-collection-UUID2',
+          minimized: true,
+          requests: [request, otherRequest],
+        }],
     });
   });
 
@@ -147,15 +147,15 @@ describe('reducer', () => {
       formData: [
         {
           name: 'BodyOfPOST...',
-          value: '...SentViaFormData'
-        }
+          value: '...SentViaFormData',
+        },
       ],
       headers: [
-       {
-         name: 'Content-Type',
-         value: 'angular/awesomeness'
-       }
-      ]
+        {
+          name: 'Content-Type',
+          value: 'angular/awesomeness',
+        },
+      ],
     };
 
     const initialState = {
@@ -187,16 +187,16 @@ describe('reducer', () => {
     ).toEqual({
       collections: [
         {
-        name: 'Collection',
-        id: 'some-collection-UUID',
-        minimized: true,
-        requests: [otherRequest, request],
-      }, {
-        name: 'Collection 2',
-        id: 'some-collection-UUID2',
-        minimized: true,
-        requests: [otherRequest, request],
-      }],
+          name: 'Collection',
+          id: 'some-collection-UUID',
+          minimized: true,
+          requests: [otherRequest, request],
+        }, {
+          name: 'Collection 2',
+          id: 'some-collection-UUID2',
+          minimized: true,
+          requests: [otherRequest, request],
+        }],
     });
   });
 
