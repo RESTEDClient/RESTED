@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import { Panel } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
@@ -128,5 +129,6 @@ export default flow(
    *
    * It may be an issue with a redux optimization gone wrong, idk.
    */
+  connect()
 )(Collection);
 
