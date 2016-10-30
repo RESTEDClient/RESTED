@@ -10,6 +10,7 @@ import Request from './Request';
 import styles from './styles';
 import * as Type from './dropTypes';
 
+import * as Actions from '../../store/collections/actions';
 import requestPropType from '../../propTypes/request';
 
 /**
@@ -113,22 +114,13 @@ Collection.propTypes = {
 
 
 export default flow(
-  DropTarget(Type.Collection, collectionTarget, connect => ({
-    connectDropTarget: connect.dropTarget(),
+  DropTarget(Type.Collection, collectionTarget, connector => ({
+    connectDropTarget: connector.dropTarget(),
   })),
-  DragSource(Type.Collection, collectionSource, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
+  DragSource(Type.Collection, collectionSource, (connector, monitor) => ({
+    connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  /*
-   * There is a weird bug where if we connect(null, Actions) here,
-   * dragging between collection produces artifact requests in the
-   * old collection, even though the redux store is updated. So
-   * instead we pass reorderCollection as a prop, working around
-   * the issue.
-   *
-   * It may be an issue with a redux optimization gone wrong, idk.
-   */
-  connect()
+  connect(null, Actions)
 )(Collection);
 

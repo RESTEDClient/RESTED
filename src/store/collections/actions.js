@@ -4,8 +4,8 @@ import {
   REORDER_COLLECTION,
 } from './types';
 
-export function addRequest(request, collectionId) {
-  return { type: ADD_REQUEST, request, collectionId };
+export function addRequest(request, collectionIndex) {
+  return { type: ADD_REQUEST, request, collectionIndex };
 }
 
 export function reorderRequest(source, target) {

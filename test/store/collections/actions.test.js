@@ -20,11 +20,11 @@ describe('actions', () => {
   it('should create an action to add a request', () => {
     const expectedAction = {
       type: types.ADD_REQUEST,
-      collectionId: 'test-collection',
+      collectionIndex: 2,
       request,
     };
 
-    expect(actions.addRequest(request, 'test-collection')).toEqual(expectedAction);
+    expect(actions.addRequest(request, 2)).toEqual(expectedAction);
   });
 
   it('should create an action to reorder a request', () => {

@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 /* eslint-disable import/no-unresolved */
 import reducer from 'store/collections/reducer';
 import * as types from 'store/collections/types';
@@ -42,23 +44,23 @@ describe('reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {})
+      reducer(undefined, {}).toJSON()
     ).toEqual({
       collections: [],
     });
   });
 
   it('should handle ADD_REQUEST', () => {
-    const initialState = {
+    const initialState = Immutable.fromJS({
       collections,
-    };
+    });
 
     expect(
       reducer(initialState, {
         type: types.ADD_REQUEST,
         request,
-        collectionId: 'some-collection-UUID2',
-      })
+        collectionIndex: 1,
+      }).toJSON()
     ).toEqual({
       collections: [{
         name: 'Collection',
@@ -95,7 +97,7 @@ describe('reducer', () => {
       ],
     };
 
-    const initialState = {
+    const initialState = Immutable.fromJS({
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -107,7 +109,7 @@ describe('reducer', () => {
         minimized: true,
         requests: [otherRequest, request],
       }],
-    };
+    });
 
     expect(
       reducer(initialState, {
@@ -120,7 +122,7 @@ describe('reducer', () => {
           collectionIndex: 1,
           requestIndex: 0,
         },
-      })
+      }).toJSON()
     ).toEqual({
       collections: [
         {
@@ -158,7 +160,7 @@ describe('reducer', () => {
       ],
     };
 
-    const initialState = {
+    const initialState = Immutable.fromJS({
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -170,7 +172,7 @@ describe('reducer', () => {
         minimized: true,
         requests: [request, otherRequest, request],
       }],
-    };
+    });
 
     expect(
       reducer(initialState, {
@@ -183,7 +185,7 @@ describe('reducer', () => {
           collectionIndex: 0,
           requestIndex: 1,
         },
-      })
+      }).toJSON()
     ).toEqual({
       collections: [
         {
@@ -201,7 +203,7 @@ describe('reducer', () => {
   });
 
   it('should handle REORDER_COLLECTION', () => {
-    const initialState = {
+    const initialState = Immutable.fromJS({
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -213,14 +215,14 @@ describe('reducer', () => {
         minimized: true,
         requests: [],
       }],
-    };
+    });
 
     expect(
       reducer(initialState, {
         type: types.REORDER_COLLECTION,
         oldIndex: 0,
         newIndex: 1,
-      })
+      }).toJSON()
     ).toEqual({
       collections: [{
         name: 'Collection 2',

@@ -1,10 +1,11 @@
+import Immutable from 'immutable';
 import {
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
 } from './types';
 
-const initialState = {
+const initialState = Immutable.fromJS({
   // TODO Replace mock data with collections: []
   collections: [{
     name: 'Collection',
@@ -89,53 +90,59 @@ const initialState = {
       ],
     }],
   }],
-};
+});
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_REQUEST:
-      return Object.assign({}, state, {
-        collections: state.collections.map(collection => {
-          if (collection.id === action.collectionId) {
-            collection.requests.push(action.request);
-          }
-
-          return collection;
-        }),
-      });
+      return state
+        .updateIn([
+          'collections',
+          action.collectionIndex,
+          'requests',
+        ], requests => (
+          requests.unshift(action.request)
+        ));
 
     case REORDER_COLLECTION: {
-      const collection = state.collections.splice(action.oldIndex, 1)[0];
-      return Object.assign({}, state, {
-        collections: [
-          ...state.collections.slice(0, action.newIndex),
-          collection,
-          ...state.collections.slice(action.newIndex),
-        ],
-      });
+      const collection = state.getIn([
+        'collections',
+        action.oldIndex,
+      ]);
+
+      return state
+        .deleteIn([
+          'collections',
+          action.oldIndex,
+        ])
+        .update('collections', collections => (
+          collections.insert(action.newIndex, collection)
+        ));
     }
 
     case REORDER_REQUEST: {
-      const request = Object.assign({}, state)
-        .collections[action.source.collectionIndex]
-        .requests
-        .splice(action.source.requestIndex, 1)[0];
+      const request = state
+        .getIn([
+          'collections',
+          action.source.collectionIndex,
+          'requests',
+          action.source.requestIndex,
+        ]);
 
-      if (!request) return state;
-
-      return Object.assign({}, state, {
-        collections: state.collections.map((collection, index) => (
-          index === action.target.collectionIndex
-            ? Object.assign({}, collection, {
-              requests: [
-                ...collection.requests.slice(0, action.target.requestIndex),
-                request,
-                ...collection.requests.slice(action.target.requestIndex),
-              ],
-            })
-            : collection
-        )),
-      });
+      return state
+        .deleteIn([
+          'collections',
+          action.source.collectionIndex,
+          'requests',
+          action.source.requestIndex,
+        ])
+        .updateIn([
+          'collections',
+          action.target.collectionIndex,
+          'requests',
+        ], requests => (
+          requests.insert(action.target.requestIndex, request)
+        ));
     }
 
     default:

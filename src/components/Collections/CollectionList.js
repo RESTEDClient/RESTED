@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import Collection from './Collection';
 
-import * as Actions from '../../store/collections/actions';
 import collectionPropType from '../../propTypes/collection';
 
 function CollectionList(props) {
@@ -13,7 +12,6 @@ function CollectionList(props) {
         <Collection
           key={collection.id}
           collectionIndex={index}
-          reorderCollection={props.reorderCollection}
           {...collection}
         />
       ))}
@@ -30,13 +28,12 @@ function CollectionList(props) {
 }
 
 CollectionList.propTypes = {
-  reorderCollection: PropTypes.func.isRequired,
   collections: PropTypes.arrayOf(collectionPropType).isRequired,
 };
 
 const mapStateToProps = ({ collections }) => ({
-  collections: collections.collections,
+  collections: collections.get('collections').toJS(),
 });
 
-export default connect(mapStateToProps, Actions)(CollectionList);
+export default connect(mapStateToProps)(CollectionList);
 
