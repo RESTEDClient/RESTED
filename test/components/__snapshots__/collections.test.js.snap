@@ -1,5 +1,158 @@
-exports[`test Collections renders correctly 1`] = `
-<h2>
-  Collections
-</h2>
+exports[`Collection component should match the previous snapshot 1`] = `
+<div>
+  <div
+    className="panel panel-default"
+    id={undefined}>
+    <div
+      className="panel-heading">
+      <h1
+        className="panel-title">
+        TODO
+      </h1>
+    </div>
+    <div
+      className="panel-body">
+      <li
+        className="">
+        <div
+          className="list-group">
+          <a
+            className=""
+            href="#">
+            <h4
+              className="list-group-item-heading">
+              www.foo.no
+            </h4>
+            <p
+              className="list-group-item-text">
+              request.url
+            </p>
+          </a>
+        </div>
+      </li>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collections component should match the previous snapshot 1`] = `
+<div
+  className="panel panel-default"
+  id={undefined}>
+  <div
+    className="panel-heading">
+    <span>
+      Add new collection
+    </span>
+  </div>
+  <div
+    className="panel-body">
+    <span>
+      <div>
+        <div
+          className="panel panel-default"
+          id={undefined}>
+          <div
+            className="panel-heading">
+            <h1
+              className="panel-title">
+              TODO
+            </h1>
+          </div>
+          <div
+            className="panel-body">
+            <li
+              className="">
+              <div
+                className="list-group">
+                <a
+                  className=""
+                  href="#">
+                  <h4
+                    className="list-group-item-heading">
+                    www.foo.no
+                  </h4>
+                  <p
+                    className="list-group-item-text">
+                    request.url
+                  </p>
+                </a>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="panel panel-default"
+          id={undefined}>
+          <div
+            className="panel-heading">
+            <h1
+              className="panel-title">
+              TODO
+            </h1>
+          </div>
+          <div
+            className="panel-body">
+            <li
+              className="">
+              <div
+                className="list-group">
+                <a
+                  className=""
+                  href="#">
+                  <h4
+                    className="list-group-item-heading">
+                    www.foo.no
+                  </h4>
+                  <p
+                    className="list-group-item-text">
+                    request.url
+                  </p>
+                </a>
+              </div>
+            </li>
+            <li
+              className="">
+              <div
+                className="list-group">
+                <a
+                  className=""
+                  href="#">
+                  <h4
+                    className="list-group-item-heading">
+                    www.bar.no
+                  </h4>
+                  <p
+                    className="list-group-item-text">
+                    request.url
+                  </p>
+                </a>
+              </div>
+            </li>
+            <li
+              className="">
+              <div
+                className="list-group">
+                <a
+                  className=""
+                  href="#">
+                  <h4
+                    className="list-group-item-heading">
+                    www.baz.no
+                  </h4>
+                  <p
+                    className="list-group-item-text">
+                    request.url
+                  </p>
+                </a>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
 `;
