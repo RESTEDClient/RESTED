@@ -1,25 +1,14 @@
 import React from 'react';
+import { findDOMNode, unmountComponentAtNode } from 'react-dom';
 import { connect } from 'react-redux';
-import { findDOMNode } from 'react-dom';
 import { Panel } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
+import { css } from 'aphrodite';
 import flow from 'lodash.flow';
 
 import * as Actions from '../../store/collections/actions';
 import * as Type from './dropTypes';
-
-/**
- * Specifies which props to inject into your component.
- */
-function collect(connect, monitor) {
-  return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
-    connectDragSource: connect.dragSource(),
-    // You can ask the monitor about the current drag state:
-    isDragging: monitor.isDragging(),
-  };
-}
+import styles from './styles';
 
 /**
  * Specifies the drag source contract.
@@ -60,12 +49,15 @@ const requestTarget = {
       requestIndex: hoverIndex
     });
 
+    console.log('monitor', monitor);
+
     // Note: we're mutating the monitor item here.
     // Generally it's better to avoid mutations,
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
     monitor.getItem().index = hoverIndex;
     monitor.getItem().collectionIndex = hoverCollectionIndex;
+    console.log('monitor', monitor);
   }
 };
 
@@ -74,18 +66,24 @@ class Request extends React.Component {
     const {
       connectDragSource,
       connectDropTarget,
+      isDragging,
       url,
     } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <li data-ng-repeat="request in collection.requests | uuidAssign:'array' track by request.id"
+      <li
+        className={css(
+          isDragging && styles.dragPlaceholder,
+        )}
         data-dnd-type="'request'"
         data-dnd-draggable="request"
         data-dnd-moved="handleMoved(collection, $index)">
 
         <div class="list-group">
           <a href="#"
-            class="list-group-item"
+            className={css(
+              isDragging && styles.dragPlaceholder,
+            )}
             data-ng-class="{active: request == selectedRequest}"
             data-ng-click="selectRequest(request)">
             <h4 class="list-group-item-heading">

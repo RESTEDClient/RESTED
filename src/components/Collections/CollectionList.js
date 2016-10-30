@@ -9,15 +9,12 @@ function CollectionList(props) {
   return (
     <span>
       {props.collections.map((collection, index) => (
-        <Panel
+        console.log(collection.requests) ||
+        <Collection
           key={collection.id}
-          header={<h1>TODO</h1>}
-        >
-          <Collection
-            collectionIndex={index}
-            {...collection}
-          />
-        </Panel>
+          collectionIndex={index}
+          {...collection}
+        />
       ))}
     </span>
   );

@@ -23,6 +23,7 @@
     "build": "NODE_ENV=production webpack --progress --config dev/webpack/webpack.prod.config.js"
   },
   "dependencies": {
+    "aphrodite": "^1.0.0",
     "classnames": "^2.2.5",
     "lodash.flow": "^3.5.0",
     "object-assign": "^4.1.0",
