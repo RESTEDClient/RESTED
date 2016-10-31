@@ -34,7 +34,11 @@ const collectionTarget = {
     }
 
     // Determine rectangle on screen
+    // Ignore eslint no-use-find-dom-node here, as this seems to be the
+    // recommended way of doing things in the docs
+    /* eslint-disable react/no-find-dom-node */
     const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+    /* eslint-enable react/no-find-dom-node */
 
     // Get vertical middle
     const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;

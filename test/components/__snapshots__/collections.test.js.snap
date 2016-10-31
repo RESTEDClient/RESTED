@@ -14,11 +14,10 @@ exports[`Collection component should match the previous snapshot 1`] = `
       className="panel-body">
       <li
         className="">
-        <div
+        <ul
           className="list-group">
-          <a
-            className=""
-            href="#">
+          <li
+            className="list-group-item">
             <h4
               className="list-group-item-heading">
               www.foo.no
@@ -27,8 +26,8 @@ exports[`Collection component should match the previous snapshot 1`] = `
               className="list-group-item-text">
               request.url
             </p>
-          </a>
-        </div>
+          </li>
+        </ul>
       </li>
     </div>
   </div>
@@ -63,11 +62,10 @@ exports[`Collections component should match the previous snapshot 1`] = `
             className="panel-body">
             <li
               className="">
-              <div
+              <ul
                 className="list-group">
-                <a
-                  className=""
-                  href="#">
+                <li
+                  className="list-group-item">
                   <h4
                     className="list-group-item-heading">
                     www.foo.no
@@ -76,8 +74,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item-text">
                     request.url
                   </p>
-                </a>
-              </div>
+                </li>
+              </ul>
             </li>
           </div>
         </div>
@@ -97,11 +95,10 @@ exports[`Collections component should match the previous snapshot 1`] = `
             className="panel-body">
             <li
               className="">
-              <div
+              <ul
                 className="list-group">
-                <a
-                  className=""
-                  href="#">
+                <li
+                  className="list-group-item">
                   <h4
                     className="list-group-item-heading">
                     www.foo.no
@@ -110,16 +107,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item-text">
                     request.url
                   </p>
-                </a>
-              </div>
+                </li>
+              </ul>
             </li>
             <li
               className="">
-              <div
+              <ul
                 className="list-group">
-                <a
-                  className=""
-                  href="#">
+                <li
+                  className="list-group-item">
                   <h4
                     className="list-group-item-heading">
                     www.bar.no
@@ -128,16 +124,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item-text">
                     request.url
                   </p>
-                </a>
-              </div>
+                </li>
+              </ul>
             </li>
             <li
               className="">
-              <div
+              <ul
                 className="list-group">
-                <a
-                  className=""
-                  href="#">
+                <li
+                  className="list-group-item">
                   <h4
                     className="list-group-item-heading">
                     www.baz.no
@@ -146,8 +141,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item-text">
                     request.url
                   </p>
-                </a>
-              </div>
+                </li>
+              </ul>
             </li>
           </div>
         </div>

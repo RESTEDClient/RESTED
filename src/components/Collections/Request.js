@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { css } from 'aphrodite';
 import flow from 'lodash.flow';
 
@@ -73,22 +74,16 @@ function Request(props) {
         isDragging && styles.dragPlaceholder,
       )}
     >
-      <div className="list-group">
-        <a
-          href="#"
+      <ListGroup>
+        <ListGroupItem
+          header={<h4>{url}</h4>}
           className={css(
             isDragging && styles.dragPlaceholder,
           )}
         >
-          <h4 className="list-group-item-heading">
-            {url}
-          </h4>
-
-          <p className="list-group-item-text">
-            request.url
-          </p>
-        </a>
-      </div>
+          request.url
+        </ListGroupItem>
+      </ListGroup>
     </li>
   ));
 }
