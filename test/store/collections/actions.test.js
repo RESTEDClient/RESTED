@@ -1,12 +1,9 @@
-import { change } from 'redux-form';
-
 /* eslint-disable import/no-unresolved */
 import * as actions from 'store/collections/actions';
 import * as types from 'store/collections/types';
 
 describe('actions', () => {
   let request;
-  let response;
 
   beforeEach(() => {
     request = {

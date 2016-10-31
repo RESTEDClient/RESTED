@@ -10,7 +10,7 @@ import Collections from 'components/Collections';
 import Collection from 'components/Collections/Collection';
 
 import makeStore from '../makeStore';
-import mockCollections from '../mock/collections.mock.js';
+import mockCollections from '../mock/collections.mock';
 
 jest.mock('react-dom');
 
@@ -19,6 +19,7 @@ jest.mock('react-dom');
  */
 function wrapInTestContext(DecoratedComponent, store = makeStore()) {
   return DragDropContext(TestBackend)(
+    /* eslint-disable react/prefer-stateless-function */
     class TestContextContainer extends React.Component {
       render() {
         return (
@@ -28,6 +29,7 @@ function wrapInTestContext(DecoratedComponent, store = makeStore()) {
         );
       }
     }
+    /* eslint-enable react/prefer-stateless-function */
   );
 }
 
@@ -64,10 +66,6 @@ describe('Collections component', () => {
 });
 
 describe('Collection component', () => {
-  const store = makeStore({
-    collections: mockCollections,
-  });
-
   it('should match the previous snapshot', () => {
     const BoxedComponent = wrapInTestContext(Collection);
     const requests = mockCollections
@@ -83,7 +81,8 @@ describe('Collection component', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  xit('should change the styles of dragged elements', () => {
+  xit('should change the styles of dragged elements');
+    /*
     const BoxedComponent = wrapInTestContext(Collection);
     const requests = mockCollections
       .getIn(['collections', 1, 'requests'])
@@ -100,7 +99,6 @@ describe('Collection component', () => {
     const backend = tree.instance().getManager().getBackend();
 
     // Test that the background color is white
-    console.log('tree.find("Panel").debug()', tree.find('Panel').debug());
     expect(tree.find('Panel').props.style.opacity).toEqual(1);
 
     // Find the drag source ID and use it to simulate the dragging operation
@@ -108,11 +106,12 @@ describe('Collection component', () => {
     backend.simulateBeginDrag([box.getHandlerId()]);
 
     // Verify that the element changed its color
-    div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
+    const div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
     expect(div.props.style.opacity).toEqual(0.4);
 
     // See other backend.simulate* methods for more!
   });
+  */
 
   xit('should have draggable requests');
 });
