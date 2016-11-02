@@ -19,8 +19,8 @@
     "eslint": "eslint src test",
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
-    "dev": "NODE_ENV=development webpack -d --progress --colors --watch --config dev/webpack/webpack.dev.config.js",
-    "build": "NODE_ENV=production webpack --progress --config dev/webpack/webpack.prod.config.js"
+    "dev": "NODE_ENV=development webpack --progress --colors --watch --config dev/webpack/webpack.config.js",
+    "build": "NODE_ENV=production webpack --progress --config dev/webpack/webpack.config.js"
   },
   "dependencies": {
     "aphrodite": "^1.0.0",
@@ -63,6 +63,6 @@
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.1",
-    "webpack": "^1.13.2"
+    "webpack": "2.1.0-beta.25"
   }
 }
