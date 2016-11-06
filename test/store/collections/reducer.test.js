@@ -46,12 +46,47 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {}).toJSON()
     ).toEqual({
+      isFetching: false,
       collections: [],
+    });
+  });
+
+  it('should handle FETCH_COLLECTIONS', () => {
+    const initialState = Immutable.fromJS({
+      collections: [],
+      isFetching: false,
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.FETCH_COLLECTIONS,
+      }).toJSON()
+    ).toEqual({
+      isFetching: true,
+      collections: [],
+    });
+  });
+
+  it('should handle RECEIVE_COLLECTIONS', () => {
+    const initialState = Immutable.fromJS({
+      collections: [],
+      isFetching: true,
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.RECEIVE_COLLECTIONS,
+        collections,
+      }).toJSON()
+    ).toEqual({
+      isFetching: false,
+      collections,
     });
   });
 
   it('should handle ADD_REQUEST', () => {
     const initialState = Immutable.fromJS({
+      isFetching: false,
       collections,
     });
 
@@ -62,6 +97,7 @@ describe('reducer', () => {
         collectionIndex: 1,
       }).toJSON()
     ).toEqual({
+      isFetching: false,
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -98,6 +134,7 @@ describe('reducer', () => {
     };
 
     const initialState = Immutable.fromJS({
+      isFetching: false,
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -124,6 +161,7 @@ describe('reducer', () => {
         },
       }).toJSON()
     ).toEqual({
+      isFetching: false,
       collections: [
         {
           name: 'Collection',
@@ -161,6 +199,7 @@ describe('reducer', () => {
     };
 
     const initialState = Immutable.fromJS({
+      isFetching: false,
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -187,6 +226,7 @@ describe('reducer', () => {
         },
       }).toJSON()
     ).toEqual({
+      isFetching: false,
       collections: [
         {
           name: 'Collection',
@@ -204,6 +244,7 @@ describe('reducer', () => {
 
   it('should handle REORDER_COLLECTION', () => {
     const initialState = Immutable.fromJS({
+      isFetching: false,
       collections: [{
         name: 'Collection',
         id: 'some-collection-UUID',
@@ -219,11 +260,13 @@ describe('reducer', () => {
 
     expect(
       reducer(initialState, {
+        isFetching: false,
         type: types.REORDER_COLLECTION,
         oldIndex: 0,
         newIndex: 1,
       }).toJSON()
     ).toEqual({
+      isFetching: false,
       collections: [{
         name: 'Collection 2',
         id: 'some-collection-UUID2',

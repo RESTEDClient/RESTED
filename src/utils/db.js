@@ -32,7 +32,7 @@ function createStore(storeName) {
           checkError(() => {
             resolve(items[storeName] || []);
           }, event => {
-            reject(msg(false, `An error occured when fetching from storage.local!storeName=${storeName}`, event));
+            reject(msg(false, `An error occured when fetching from storage.local! storeName=${storeName}`, event));
           });
         });
       });

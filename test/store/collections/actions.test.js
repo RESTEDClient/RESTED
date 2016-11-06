@@ -14,6 +14,26 @@ describe('actions', () => {
     };
   });
 
+  it('should create an action to fetch collections', () => {
+    const expectedAction = {
+      type: types.FETCH_COLLECTIONS,
+    };
+
+    expect(actions.startFetch()).toEqual(expectedAction);
+  });
+
+  it('should create an action to receive collections', () => {
+    const collections = [{
+      requests: [request],
+    }];
+    const expectedAction = {
+      type: types.RECEIVE_COLLECTIONS,
+      collections,
+    };
+
+    expect(actions.receiveCollections(collections)).toEqual(expectedAction);
+  });
+
   it('should create an action to add a request', () => {
     const expectedAction = {
       type: types.ADD_REQUEST,

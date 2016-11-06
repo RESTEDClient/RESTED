@@ -12,7 +12,6 @@ function Titlebar() {
 }
 
 export default function Collections() {
-  // TODO Check lengths
   return (
     <Panel header={<Titlebar />}>
       <CollectionList />

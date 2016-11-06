@@ -1,5 +1,7 @@
 import Immutable from 'immutable';
 import {
+  FETCH_COLLECTIONS,
+  RECEIVE_COLLECTIONS,
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
@@ -7,10 +9,21 @@ import {
 
 export const initialState = Immutable.fromJS({
   collections: [],
+  isFetching: false,
 });
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case FETCH_COLLECTIONS: {
+      return state.set('isFetching', true);
+    }
+
+    case RECEIVE_COLLECTIONS: {
+      return state
+        .set('isFetching', false)
+        .set('collections', action.collections);
+    }
+
     case ADD_REQUEST:
       return state
         .updateIn([
