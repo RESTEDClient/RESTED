@@ -3,6 +3,7 @@ import { collections as collectionDB } from '../../utils/db';
 import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,
+  ADD_COLLECTION,
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
@@ -27,6 +28,18 @@ export function fetchCollections() {
         receiveCollections(Immutable.fromJS(collections))
       ));
       // TODO .catch and show error modal
+  };
+}
+
+export function doAddCollection() {
+  return { type: ADD_COLLECTION };
+}
+
+// TODO Test
+export function addCollection() {
+  return dispatch => {
+    // collectionDB.set(dispatch, getState().collections.toJS());
+    dispatch(doAddCollection());
   };
 }
 

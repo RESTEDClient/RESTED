@@ -84,6 +84,27 @@ describe('reducer', () => {
     });
   });
 
+  it('should handle ADD_COLLECTION', () => {
+    const initialState = Immutable.fromJS({
+      isFetching: false,
+      collections: [],
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.ADD_COLLECTION,
+      }).toJSON()
+    ).toEqual({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'test-id',
+        minimized: false,
+        requests: [],
+      }],
+    });
+  });
+
   it('should handle ADD_REQUEST', () => {
     const initialState = Immutable.fromJS({
       isFetching: false,

@@ -1,7 +1,10 @@
 import Immutable from 'immutable';
+
+import newCollection from '../../utils/newCollection';
 import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,
+  ADD_COLLECTION,
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
@@ -23,6 +26,14 @@ export default function (state = initialState, action) {
         .set('isFetching', false)
         .set('collections', action.collections);
     }
+
+    case ADD_COLLECTION:
+      return state
+        .update('collections',
+          collections => collections.push(
+            newCollection(collections)
+          )
+        );
 
     case ADD_REQUEST:
       return state

@@ -79,6 +79,7 @@ const collectionTarget = {
 class Collection extends React.Component {
   render() {
     const {
+      name,
       requests,
       collectionIndex,
       connectDragSource,
@@ -89,7 +90,7 @@ class Collection extends React.Component {
     return connectDragSource(connectDropTarget(
       <div>
         <Panel
-          header={<h1>TODO</h1>}
+          header={<h1>{name}</h1>}
           className={css(
             isDragging && styles.dragPlaceholder,
           )}
@@ -109,6 +110,7 @@ class Collection extends React.Component {
 }
 
 Collection.propTypes = {
+  name: PropTypes.string.isRequired,
   requests: PropTypes.arrayOf(requestPropType).isRequired,
   collectionIndex: PropTypes.number.isRequired,
   connectDragSource: PropTypes.func.isRequired,

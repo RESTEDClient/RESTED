@@ -34,6 +34,14 @@ describe('actions', () => {
     expect(actions.receiveCollections(collections)).toEqual(expectedAction);
   });
 
+  it('should create an action to add a collection', () => {
+    const expectedAction = {
+      type: types.ADD_COLLECTION,
+    };
+
+    expect(actions.doAddCollection()).toEqual(expectedAction);
+  });
+
   it('should create an action to add a request', () => {
     const expectedAction = {
       type: types.ADD_REQUEST,
