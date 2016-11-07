@@ -31,7 +31,7 @@ export default function (state = initialState, action) {
       return state
         .update('collections',
           collections => collections.push(
-            newCollection(collections)
+            newCollection(collections.toJS())
           )
         );
 

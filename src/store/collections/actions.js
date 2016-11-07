@@ -37,9 +37,12 @@ export function doAddCollection() {
 
 // TODO Test
 export function addCollection() {
-  return dispatch => {
-    // collectionDB.set(dispatch, getState().collections.toJS());
+  return (dispatch, getState) => {
     dispatch(doAddCollection());
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
   };
 }
 

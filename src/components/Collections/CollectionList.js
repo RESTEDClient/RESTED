@@ -12,16 +12,18 @@ class CollectionList extends React.Component {
   }
 
   render() {
+    const { collections, isFetching } = this.props;
+
     return (
       <span>
-        {this.props.collections.map((collection, index) => (
+        {collections.map((collection, index) => (
           <Collection
             key={collection.id}
             collectionIndex={index}
             {...collection}
           />
         ))}
-        {!this.props.collections.length && (
+        {!isFetching && !collections.length && (
           <div>
             <h5>
               No collected requests.
@@ -36,11 +38,13 @@ class CollectionList extends React.Component {
 
 CollectionList.propTypes = {
   collections: PropTypes.arrayOf(collectionPropType).isRequired,
+  isFetching: PropTypes.bool.isRequired,
   fetchCollections: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ collections }) => ({
   collections: collections.get('collections').toJS(),
+  isFetching: collections.get('isFetching'),
 });
 
 export default connect(mapStateToProps, Actions)(CollectionList);
