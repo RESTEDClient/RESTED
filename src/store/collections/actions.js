@@ -4,6 +4,7 @@ import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,
   ADD_COLLECTION,
+  DELETE_COLLECTION,
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
@@ -39,6 +40,21 @@ export function doAddCollection() {
 export function addCollection() {
   return (dispatch, getState) => {
     dispatch(doAddCollection());
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
+  };
+}
+
+export function doDeleteCollection(collectionId) {
+  return { type: DELETE_COLLECTION, collectionId };
+}
+
+// TODO Test
+export function deleteCollection(collectionId) {
+  return (dispatch, getState) => {
+    dispatch(doDeleteCollection(collectionId));
     collectionDB.replace(
       dispatch,
       getState().collections.get('collections').toJS()

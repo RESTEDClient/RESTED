@@ -5,6 +5,7 @@ import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,
   ADD_COLLECTION,
+  DELETE_COLLECTION,
   ADD_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
@@ -29,11 +30,19 @@ export default function (state = initialState, action) {
 
     case ADD_COLLECTION:
       return state
-        .update('collections',
-          collections => collections.push(
+        .update('collections', collections => (
+          collections.push(
             newCollection(collections.toJS())
           )
-        );
+        ));
+
+    case DELETE_COLLECTION:
+      return state
+        .update('collections', collections => (
+          collections.filter(collection => (
+            collection.get('id') !== action.collectionId
+          ))
+        ));
 
     case ADD_REQUEST:
       return state

@@ -24,7 +24,7 @@ it('should render correctly', () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Decorated />
+      <Decorated sendRequest={() => {}} />
     </Provider>
   ).toJSON();
 

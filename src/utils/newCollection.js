@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import UUID from 'uuid-js';
 
  // Checks whether the collection name is taken
@@ -28,10 +29,10 @@ export default function newCollection(collections) {
     i += 1;
   } while (!isUnique(name, collections));
 
-  return {
+  return Immutable.fromJS({
     name,
     id: createId(),
     minimized: false,
     requests: [],
-  };
+  });
 }

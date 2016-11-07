@@ -5,8 +5,13 @@ exports[`Collection component should match the previous snapshot 1`] = `
     id={undefined}>
     <div
       className="panel-heading">
-      <h1
-        className="panel-title" />
+      <span>
+        <h3 />
+        <button
+          onClick={[Function]}>
+          Delete
+        </button>
+      </span>
     </div>
     <div
       className="panel-body">
@@ -55,10 +60,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
           id={undefined}>
           <div
             className="panel-heading">
-            <h1
-              className="panel-title">
-              Collection
-            </h1>
+            <span>
+              <h3>
+                Collection
+              </h3>
+              <button
+                onClick={[Function]}>
+                Delete
+              </button>
+            </span>
           </div>
           <div
             className="panel-body">
@@ -88,10 +98,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
           id={undefined}>
           <div
             className="panel-heading">
-            <h1
-              className="panel-title">
-              Collection 2
-            </h1>
+            <span>
+              <h3>
+                Collection 2
+              </h3>
+              <button
+                onClick={[Function]}>
+                Delete
+              </button>
+            </span>
           </div>
           <div
             className="panel-body">

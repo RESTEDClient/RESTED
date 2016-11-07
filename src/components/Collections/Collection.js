@@ -76,21 +76,46 @@ const collectionTarget = {
   },
 };
 
+function PanelHeader({ name, collectionId, deleteCollection }) {
+  return (
+    <span>
+      <h3>{name}</h3>
+      <button onClick={() => deleteCollection(collectionId)}>
+        Delete
+      </button>
+    </span>
+  );
+}
+
+PanelHeader.propTypes = {
+  name: PropTypes.string.isRequired,
+  collectionId: PropTypes.string.isRequired,
+  deleteCollection: PropTypes.func.isRequired,
+};
+
 class Collection extends React.Component {
   render() {
     const {
+      id,
       name,
       requests,
       collectionIndex,
       connectDragSource,
       connectDropTarget,
       isDragging,
+      deleteCollection,
     } = this.props;
 
     return connectDragSource(connectDropTarget(
       <div>
         <Panel
-          header={<h1>{name}</h1>}
+          header={
+            <PanelHeader
+              collectionId={id}
+              name={name}
+              deleteCollection={deleteCollection}
+            />
+          }
           className={css(
             isDragging && styles.dragPlaceholder,
           )}
@@ -111,6 +136,8 @@ class Collection extends React.Component {
 
 Collection.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  deleteCollection: PropTypes.func.isRequired,
   requests: PropTypes.arrayOf(requestPropType).isRequired,
   collectionIndex: PropTypes.number.isRequired,
   connectDragSource: PropTypes.func.isRequired,

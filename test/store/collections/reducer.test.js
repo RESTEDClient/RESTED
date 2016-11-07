@@ -105,6 +105,28 @@ describe('reducer', () => {
     });
   });
 
+  it('should handle DELETE_COLLECTION', () => {
+    const initialState = Immutable.fromJS({
+      isFetching: false,
+      collections: collections,
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.DELETE_COLLECTION,
+        collectionId: 'some-collection-UUID'
+      }).toJSON()
+    ).toEqual({
+      isFetching: false,
+      collections: [{
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+  });
+
   it('should handle ADD_REQUEST', () => {
     const initialState = Immutable.fromJS({
       isFetching: false,

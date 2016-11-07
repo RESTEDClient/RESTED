@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
 import { Panel } from 'react-bootstrap';
+import flow from 'lodash.flow';
 
 import URLField from './URLField';
 import MethodField from './MethodField';
@@ -14,9 +15,11 @@ import { DEFAULT_REQUEST } from '../../constants/constants';
 
 function Titlebar() {
   return (
-    <h2>
-      Request
-    </h2>
+    <span>
+      <h2>
+        Request
+      </h2>
+    </span>
   );
 }
 
@@ -64,10 +67,8 @@ const mapStateToProps = ({ request: { useFormData, placeholderUrl } }) => ({
 
 export { Request };
 
-// TODO this
-/* eslint-disable no-func-assign */
-Request = reduxForm(formOptions)(Request);
-Request = connect(mapStateToProps, Actions)(Request);
-/* eslint-enable no-func-assign */
-export default Request;
+export default flow(
+  reduxForm(formOptions),
+  connect(mapStateToProps, Actions)
+)(Request);
 
