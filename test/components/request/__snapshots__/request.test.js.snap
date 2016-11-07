@@ -8,6 +8,10 @@ exports[`test should render correctly 1`] = `
       <h2>
         Request
       </h2>
+      <button
+        onClick={[Function]}>
+        +
+      </button>
     </span>
   </div>
   <div

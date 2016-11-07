@@ -7,6 +7,7 @@ import Header from '../Header';
 import Collections from '../Collections';
 import Request from '../Request';
 import Response from '../Response';
+import Modal from '../Modal';
 
 /*
  * This must be a React.Component because DragDropContext
@@ -34,6 +35,7 @@ class App extends React.Component {
             </Row>
           </main>
         </section>
+        <Modal />
       </div>
     );
   }

@@ -17,6 +17,8 @@ describe('reducer', () => {
       body: null,
       errorData: null,
       visible: false,
+      cancelClick: null,
+      actions: [],
     });
   });
 
@@ -27,6 +29,8 @@ describe('reducer', () => {
         data: {
           title: 'foo foo bar bar',
           body: 'yes no oui non',
+          cancelClick: null,
+          actions: [],
         },
       })
     ).toEqual({
@@ -34,6 +38,8 @@ describe('reducer', () => {
       body: 'yes no oui non',
       errorData: null,
       visible: true,
+      cancelClick: null,
+      actions: [],
     });
   });
 
@@ -47,6 +53,8 @@ describe('reducer', () => {
       body: null,
       errorData: null,
       visible: false,
+      cancelClick: null,
+      actions: [],
     });
   });
 
@@ -69,6 +77,8 @@ describe('reducer', () => {
       body: 'Sorry, something went wrong.. If there is anything useful in a gray box below (or the web console), please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.',
       errorData,
       visible: true,
+      cancelClick: null,
+      actions: [],
     });
   });
 });

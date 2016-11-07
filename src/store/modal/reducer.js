@@ -9,6 +9,8 @@ const initialState = {
   body: null,
   errorData: null,
   visible: false,
+  cancelClick: null,
+  actions: [],
 };
 
 export default function (state = initialState, action) {
@@ -19,6 +21,8 @@ export default function (state = initialState, action) {
         body: action.data.body,
         errorData: null,
         visible: true,
+        cancelClick: action.data.cancelClick,
+        actions: action.data.actions,
       });
 
     case REMOVE_MODAL:

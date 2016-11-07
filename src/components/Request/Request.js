@@ -4,24 +4,16 @@ import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
 import { Panel } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
+import Titlebar from './Titlebar';
 import URLField from './URLField';
 import MethodField from './MethodField';
 import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 import BodyField from './BodyField';
 
-import * as Actions from '../../store/request/actions';
+import * as requestActions from '../../store/request/actions';
 import { DEFAULT_REQUEST } from '../../constants/constants';
 
-function Titlebar() {
-  return (
-    <span>
-      <h2>
-        Request
-      </h2>
-    </span>
-  );
-}
 
 function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (
@@ -69,6 +61,6 @@ export { Request };
 
 export default flow(
   reduxForm(formOptions),
-  connect(mapStateToProps, Actions)
+  connect(mapStateToProps, requestActions)
 )(Request);
 
