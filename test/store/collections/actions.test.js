@@ -58,7 +58,7 @@ describe('actions', () => {
       request,
     };
 
-    expect(actions.addRequest(request, 2)).toEqual(expectedAction);
+    expect(actions.doAddRequest(request, 2)).toEqual(expectedAction);
   });
 
   it('should create an action to reorder a request', () => {

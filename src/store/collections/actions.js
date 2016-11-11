@@ -62,8 +62,20 @@ export function deleteCollection(collectionId) {
   };
 }
 
-export function addRequest(request, collectionIndex) {
+export function doAddRequest(request, collectionIndex) {
   return { type: ADD_REQUEST, request, collectionIndex };
+}
+
+// TODO Test
+export function addRequest(request, collectionIndex) {
+  return (dispatch, getState) => {
+    dispatch(doAddRequest(request, collectionIndex));
+
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
+  };
 }
 
 export function reorderRequest(source, target) {
