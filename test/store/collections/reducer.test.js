@@ -108,13 +108,13 @@ describe('reducer', () => {
   it('should handle DELETE_COLLECTION', () => {
     const initialState = Immutable.fromJS({
       isFetching: false,
-      collections: collections,
+      collections,
     });
 
     expect(
       reducer(initialState, {
         type: types.DELETE_COLLECTION,
-        collectionId: 'some-collection-UUID'
+        collectionId: 'some-collection-UUID',
       }).toJSON()
     ).toEqual({
       isFetching: false,

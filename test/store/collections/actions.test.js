@@ -45,7 +45,7 @@ describe('actions', () => {
   it('should create an action to delete a collection', () => {
     const expectedAction = {
       type: types.DELETE_COLLECTION,
-      collectionId: 'foo'
+      collectionId: 'foo',
     };
 
     expect(actions.doDeleteCollection('foo')).toEqual(expectedAction);

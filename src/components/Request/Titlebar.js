@@ -26,7 +26,7 @@ function Titlebar({ request, addRequest, collections }) {
           if (collections.size === 1) {
             addRequest(addableRequest, 0);
           } else {
-            console.error('Was not 1 length');
+            // TODO Handle other lengths
           }
           // if (requestExists)
           // setModalData({
