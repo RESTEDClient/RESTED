@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import { css } from 'aphrodite';
 import flow from 'lodash.flow';
 
+import { StyledRequest } from './styledComponents';
 import * as Actions from '../../store/collections/actions';
 import * as Type from './dropTypes';
-import styles from './styles';
 
 /**
  * Specifies the drag source contract.
@@ -69,22 +68,17 @@ function Request(props) {
   } = props;
 
   return connectDragSource(connectDropTarget(
-    <li
-      className={css(
-        isDragging && styles.dragPlaceholder,
-      )}
-    >
-      <ListGroup>
-        <ListGroupItem
-          header={<h4>{url}</h4>}
-          className={css(
-            isDragging && styles.dragPlaceholder,
-          )}
-        >
-          request.url
-        </ListGroupItem>
-      </ListGroup>
-    </li>
+    <div> {/* Need a wrapper div for React DnD support */}
+      <StyledRequest isDragging={isDragging}>
+        <ListGroup>
+          <ListGroupItem
+            header={<h4>{url}</h4>}
+          >
+            request.url
+          </ListGroupItem>
+        </ListGroup>
+      </StyledRequest>
+    </div>
   ));
 }
 

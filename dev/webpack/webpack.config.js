@@ -61,8 +61,14 @@ module.exports = {
         test: /\.js/,
         loader: 'babel-loader',
         query: {
-          babelrc: true,
           cacheDirectory: !isProd,
+          // babelrc: false,
+          // presets: [['es2015', { modules: false }], 'react'],
+          // plugins: [
+          //   'transform-object-assign',
+          //   'transform-es2015-destructuring',
+          //   'transform-object-rest-spread'
+          // ]
         }
       }
     ]

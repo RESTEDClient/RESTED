@@ -23,7 +23,6 @@
     "build": "NODE_ENV=production webpack --progress --config dev/webpack/webpack.config.js"
   },
   "dependencies": {
-    "aphrodite": "^1.0.0",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "lodash.flow": "^3.5.0",
@@ -39,6 +38,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.1.0",
     "redux-thunk": "^2.1.0",
+    "styled-components": "^1.0.10",
     "uuid-js": "^0.7.5"
   },
   "devDependencies": {

@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
-import { Panel } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
-import { css } from 'aphrodite';
 import flow from 'lodash.flow';
 
 import Request from './Request';
-import styles from './styles';
+import { StyledPanel } from './styledComponents';
 import * as Type from './dropTypes';
 
 import * as Actions from '../../store/collections/actions';
@@ -107,8 +105,8 @@ class Collection extends React.Component {
     } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <div>
-        <Panel
+      <div> {/* Need a wrapper div for React DnD support */}
+        <StyledPanel
           header={
             <PanelHeader
               collectionId={id}
@@ -116,19 +114,17 @@ class Collection extends React.Component {
               deleteCollection={deleteCollection}
             />
           }
-          className={css(
-            isDragging && styles.dragPlaceholder,
-          )}
+          isDragging={isDragging}
         >
           {requests.map((request, index) => (
             <Request
-              key={request.id}
+              key={request.id || index}
               index={index}
               collectionIndex={collectionIndex}
               {...request}
             />
           ))}
-        </Panel>
+        </StyledPanel>
       </div>
     ));
   }

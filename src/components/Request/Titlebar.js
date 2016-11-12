@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
+import UUID from 'uuid-js';
 
 import requestPropType from '../../propTypes/request';
 import collectionShape from '../../propTypes/collection';
@@ -16,9 +17,14 @@ function Titlebar({ request, addRequest, collections }) {
       </h2>
       <button
         onClick={() => {
-          console.log('request', request);
+          // TODO Validate form data before adding
+
+          const addableRequest = Object.assign({}, request, {
+            id: UUID.create().toString(),
+          });
+
           if (collections.size === 1) {
-            addRequest(request, 0);
+            addRequest(addableRequest, 0);
           } else {
             console.error('Was not 1 length');
           }
