@@ -1,22 +1,20 @@
 exports[`Collection component should match the previous snapshot 1`] = `
 <div>
+   
   <div
-    className="panel panel-default"
-    id={undefined}>
-    <div
-      className="panel-heading">
-      <span>
-        <h3 />
-        <button
-          onClick={[Function]}>
-          Delete
-        </button>
-      </span>
-    </div>
-    <div
-      className="panel-body">
-      <li
-        className="">
+    className="dLMdGK">
+    <span>
+      <h3 />
+      <button
+        onClick={[Function]}>
+        Delete
+      </button>
+      <hr />
+    </span>
+    <div>
+       
+      <div
+        className="DFkvH">
         <ul
           className="list-group">
           <li
@@ -31,7 +29,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
             </p>
           </li>
         </ul>
-      </li>
+      </div>
     </div>
   </div>
 </div>
@@ -55,25 +53,23 @@ exports[`Collections component should match the previous snapshot 1`] = `
     className="panel-body">
     <span>
       <div>
+         
         <div
-          className="panel panel-default"
-          id={undefined}>
-          <div
-            className="panel-heading">
-            <span>
-              <h3>
-                Collection
-              </h3>
-              <button
-                onClick={[Function]}>
-                Delete
-              </button>
-            </span>
-          </div>
-          <div
-            className="panel-body">
-            <li
-              className="">
+          className="dLMdGK">
+          <span>
+            <h3>
+              Collection
+            </h3>
+            <button
+              onClick={[Function]}>
+              Delete
+            </button>
+            <hr />
+          </span>
+          <div>
+             
+            <div
+              className="DFkvH">
               <ul
                 className="list-group">
                 <li
@@ -88,30 +84,28 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   </p>
                 </li>
               </ul>
-            </li>
+            </div>
           </div>
         </div>
       </div>
       <div>
+         
         <div
-          className="panel panel-default"
-          id={undefined}>
-          <div
-            className="panel-heading">
-            <span>
-              <h3>
-                Collection 2
-              </h3>
-              <button
-                onClick={[Function]}>
-                Delete
-              </button>
-            </span>
-          </div>
-          <div
-            className="panel-body">
-            <li
-              className="">
+          className="dLMdGK">
+          <span>
+            <h3>
+              Collection 2
+            </h3>
+            <button
+              onClick={[Function]}>
+              Delete
+            </button>
+            <hr />
+          </span>
+          <div>
+             
+            <div
+              className="DFkvH">
               <ul
                 className="list-group">
                 <li
@@ -126,9 +120,12 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   </p>
                 </li>
               </ul>
-            </li>
-            <li
-              className="">
+            </div>
+          </div>
+          <div>
+             
+            <div
+              className="DFkvH">
               <ul
                 className="list-group">
                 <li
@@ -143,9 +140,12 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   </p>
                 </li>
               </ul>
-            </li>
-            <li
-              className="">
+            </div>
+          </div>
+          <div>
+             
+            <div
+              className="DFkvH">
               <ul
                 className="list-group">
                 <li
@@ -160,7 +160,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   </p>
                 </li>
               </ul>
-            </li>
+            </div>
           </div>
         </div>
       </div>
