@@ -5,7 +5,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
 import Request from './Request';
-import { StyledPanel } from './styledComponents';
+import { StyledCollection } from './styledComponents';
 import * as Type from './dropTypes';
 
 import * as Actions from '../../store/collections/actions';
@@ -81,6 +81,7 @@ function PanelHeader({ name, collectionId, deleteCollection }) {
       <button onClick={() => deleteCollection(collectionId)}>
         Delete
       </button>
+      <hr/>
     </span>
   );
 }
@@ -106,16 +107,12 @@ class Collection extends React.Component {
 
     return connectDragSource(connectDropTarget(
       <div> {/* Need a wrapper div for React DnD support */}
-        <StyledPanel
-          header={
-            <PanelHeader
-              collectionId={id}
-              name={name}
-              deleteCollection={deleteCollection}
-            />
-          }
-          isDragging={isDragging}
-        >
+        <StyledCollection isDragging={isDragging}>
+          <PanelHeader
+            collectionId={id}
+            name={name}
+            deleteCollection={deleteCollection}
+          />
           {requests.map((request, index) => (
             <Request
               key={request.id || index}
@@ -124,7 +121,7 @@ class Collection extends React.Component {
               {...request}
             />
           ))}
-        </StyledPanel>
+        </StyledCollection>
       </div>
     ));
   }

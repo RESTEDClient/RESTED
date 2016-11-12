@@ -78,11 +78,35 @@ export function addRequest(request, collectionIndex) {
   };
 }
 
-export function reorderRequest(source, target) {
+export function doReorderRequest(source, target) {
   return { type: REORDER_REQUEST, source, target };
 }
 
-export function reorderCollection(oldIndex, newIndex) {
+// TODO Test
+export function reorderRequest(source, target) {
+  return (dispatch, getState) => {
+    dispatch(doReorderRequest(source, target));
+
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
+  };
+}
+
+export function doReorderCollection(oldIndex, newIndex) {
   return { type: REORDER_COLLECTION, oldIndex, newIndex };
+}
+
+// TODO Test
+export function reorderCollection(oldIndex, newIndex) {
+  return (dispatch, getState) => {
+    dispatch(doReorderCollection(oldIndex, newIndex));
+
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
+  };
 }
 

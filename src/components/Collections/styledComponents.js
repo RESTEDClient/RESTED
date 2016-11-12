@@ -6,7 +6,7 @@ const hoverStyle = css`
   color: gray;
 `;
 
-export const StyledPanel = styled.default(Panel)`
+export const StyledCollection = styled.default.div`
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -15,6 +15,17 @@ export const StyledPanel = styled.default(Panel)`
 
   .panel-default {
     background-color: red;
+  }
+
+  .panel-heading li {
+    width: 48%;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 5px;
+  }
+  .panel-heading li.active {
+    border-bottom: 3px solid #c8c4c4;
+    font-weight: bold;
   }
 `;
 

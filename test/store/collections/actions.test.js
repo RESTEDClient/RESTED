@@ -76,10 +76,10 @@ describe('actions', () => {
       target,
     };
 
-    expect(actions.reorderRequest(source, target)).toEqual(expectedAction);
+    expect(actions.doReorderRequest(source, target)).toEqual(expectedAction);
   });
 
-  it('should create an action to reorder a colleciton', () => {
+  it('should create an action to reorder a collection', () => {
     const oldIndex = 0;
     const newIndex = 1;
     const expectedAction = {
@@ -88,7 +88,7 @@ describe('actions', () => {
       newIndex,
     };
 
-    expect(actions.reorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
+    expect(actions.doReorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
   });
 });
 
