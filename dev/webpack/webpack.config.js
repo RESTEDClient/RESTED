@@ -44,6 +44,14 @@ module.exports = {
         },
       })
       : doNothing,
+    isProd
+      ? new webpack.optimize.LimitChunkCountPlugin({
+        // This breaks when set to 1. Probably because we use System.import
+        // in index.js, which requires a separate file to do its runtime
+        // import.. Or something
+        maxChunks: 2,
+      })
+      : doNothing,
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': `"${nodeEnv}"`,
     }),
