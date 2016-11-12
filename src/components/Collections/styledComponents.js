@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components';
-import { Panel } from 'react-bootstrap';
 
 const hoverStyle = css`
   background-color: gray;
   color: gray;
 `;
 
-export const StyledCollection = styled.default.div`
+export const StyledCollection = styled.div`
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -29,7 +28,7 @@ export const StyledCollection = styled.default.div`
   }
 `;
 
-export const StyledRequest = styled.default.div`
+export const StyledRequest = styled.div`
   ul, li {
     ${props => props.isDragging && hoverStyle}
   }

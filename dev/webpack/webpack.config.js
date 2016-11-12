@@ -62,13 +62,13 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           cacheDirectory: !isProd,
-          // babelrc: false,
-          // presets: [['es2015', { modules: false }], 'react'],
-          // plugins: [
-          //   'transform-object-assign',
-          //   'transform-es2015-destructuring',
-          //   'transform-object-rest-spread'
-          // ]
+          babelrc: false,
+          presets: [['es2015', { modules: false }], 'react'],
+          plugins: [
+            'transform-object-assign',
+            'transform-es2015-destructuring',
+            'transform-object-rest-spread'
+          ]
         }
       }
     ]

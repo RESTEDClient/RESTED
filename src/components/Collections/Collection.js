@@ -81,7 +81,7 @@ function PanelHeader({ name, collectionId, deleteCollection }) {
       <button onClick={() => deleteCollection(collectionId)}>
         Delete
       </button>
-      <hr/>
+      <hr />
     </span>
   );
 }
@@ -109,8 +109,8 @@ class Collection extends React.Component {
       <div> {/* Need a wrapper div for React DnD support */}
         <StyledCollection isDragging={isDragging}>
           <PanelHeader
-            collectionId={id}
             name={name}
+            collectionId={id}
             deleteCollection={deleteCollection}
           />
           {requests.map((request, index) => (
