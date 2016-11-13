@@ -6,6 +6,7 @@ import {
   ADD_COLLECTION,
   DELETE_COLLECTION,
   ADD_REQUEST,
+  DELETE_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
 } from './types';
@@ -55,6 +56,22 @@ export function doDeleteCollection(collectionId) {
 export function deleteCollection(collectionId) {
   return (dispatch, getState) => {
     dispatch(doDeleteCollection(collectionId));
+    collectionDB.replace(
+      dispatch,
+      getState().collections.get('collections').toJS()
+    );
+  };
+}
+
+export function doDeleteRequest(requestId, collectionIndex) {
+  return { type: DELETE_REQUEST, requestId, collectionIndex };
+}
+
+// TODO Test
+export function deleteRequest(request, collectionIndex) {
+  return (dispatch, getState) => {
+    dispatch(doDeleteRequest(request, collectionIndex));
+
     collectionDB.replace(
       dispatch,
       getState().collections.get('collections').toJS()

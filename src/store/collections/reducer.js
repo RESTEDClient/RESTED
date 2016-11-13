@@ -7,6 +7,7 @@ import {
   ADD_COLLECTION,
   DELETE_COLLECTION,
   ADD_REQUEST,
+  DELETE_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
 } from './types';
@@ -52,6 +53,18 @@ export default function (state = initialState, action) {
           'requests',
         ], requests => (
           requests.unshift(action.request)
+        ));
+
+    case DELETE_REQUEST:
+      return state
+        .updateIn([
+          'collections',
+          action.collectionIndex,
+          'requests',
+        ], requests => (
+          requests.filter(request => (
+            request.get('id') !== action.requestId
+          ))
         ));
 
     case REORDER_COLLECTION: {

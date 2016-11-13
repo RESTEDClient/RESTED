@@ -61,6 +61,16 @@ describe('actions', () => {
     expect(actions.doAddRequest(request, 2)).toEqual(expectedAction);
   });
 
+  it('should create an action to delete a request', () => {
+    const expectedAction = {
+      type: types.DELETE_REQUEST,
+      collectionIndex: 2,
+      requestId: 1,
+    };
+
+    expect(actions.doDeleteRequest(1, 2)).toEqual(expectedAction);
+  });
+
   it('should create an action to reorder a request', () => {
     const source = {
       collectionIndex: 1,

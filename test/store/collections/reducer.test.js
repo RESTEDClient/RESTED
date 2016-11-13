@@ -7,6 +7,7 @@ import * as types from 'store/collections/types';
 describe('reducer', () => {
   let collections;
   let request;
+  let request2;
 
   beforeEach(() => {
     collections = [{
@@ -37,6 +38,20 @@ describe('reducer', () => {
         {
           name: 'Content-Type',
           value: 'angular/awesomeness',
+        },
+      ],
+    };
+    request2 = {
+      id: 'some-request-UUID2',
+      url: 'www.reddit.com',
+      method: 'GET',
+      data: '',
+      useFormData: true,
+      formData: [],
+      headers: [
+        {
+          name: 'Content-Type',
+          value: 'react/awesomeness',
         },
       ],
     };
@@ -151,6 +166,44 @@ describe('reducer', () => {
         id: 'some-collection-UUID2',
         minimized: true,
         requests: [request],
+      }],
+    });
+  });
+
+  it('should handle DELETE_REQUEST', () => {
+    const initialState = Immutable.fromJS({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [request, request2],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.DELETE_REQUEST,
+        requestId: 'some-request-UUID',
+        collectionIndex: 0,
+      }).toJSON()
+    ).toEqual({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [request2],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
       }],
     });
   });
