@@ -7,6 +7,7 @@ before_install:
 install:
   - yarn --pure-lockfile
 script:
-  - npm run eslint
+  - npm run lint:js
+  - npm run lint:css
   - npm test
 

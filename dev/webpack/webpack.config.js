@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -26,6 +27,9 @@ module.exports = {
           failOnError: isProd,
         }
       }
+    }),
+    new StyleLintPlugin({
+      files: ['src/components/**/*.js'],
     }),
     // Performance optimizations
     isProd
