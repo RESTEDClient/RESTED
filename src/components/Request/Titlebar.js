@@ -6,6 +6,7 @@ import UUID from 'uuid-js';
 
 import requestPropType from '../../propTypes/request';
 import collectionShape from '../../propTypes/collection';
+import { getCollections } from '../../store/collections/selectors';
 import * as collectionsActions from '../../store/collections/actions';
 import * as modalActions from '../../store/modal/actions';
 
@@ -53,7 +54,7 @@ Titlebar.propTypes = {
 
 const mapStateToProps = state => ({
   request: getFormValues('request')(state),
-  collections: state.collections.get('collections'),
+  collections: getCollections(state),
 });
 
 export default connect(mapStateToProps, {

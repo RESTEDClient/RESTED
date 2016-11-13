@@ -23,6 +23,7 @@ it('should call the toggleCollapse function when activated', () => {
 
   let wrapper = mount(
     <Collapsable
+      open={false}
       id="test"
       title="Test"
       toggleCollapse={toggleCollapse}

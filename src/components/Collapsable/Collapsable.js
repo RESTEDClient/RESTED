@@ -5,6 +5,7 @@ import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
 import Fonticon from '../Fonticon';
 import * as Actions from '../../store/collapsable/actions';
+import { isOpen } from '../../store/collapsable/selectors';
 
 export function Collapsable({ id, title, open, children, toggleCollapse }) {
   return (
@@ -13,7 +14,7 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
         bsStyle="link"
         onClick={e => {
           e.preventDefault();
-          toggleCollapse(id, !!open);
+          toggleCollapse(id, open);
         }}
       >
         <h4>
@@ -43,18 +44,9 @@ Collapsable.propTypes = {
   open: PropTypes.bool,
 };
 
-const mapStateToProps = ({ collapsable }, { id }) => ({
-  open: collapsable && collapsable[id] && collapsable[id].expanded,
+const mapStateToProps = (state, props) => ({
+  open: isOpen(state, props),
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleCollapse(id, open) {
-    const action = open
-      ? Actions.collapse(id)
-      : Actions.expand(id);
-    dispatch(action);
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Collapsable);
+export default connect(mapStateToProps, Actions)(Collapsable);
 

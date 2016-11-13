@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Collection from './Collection';
 
 import collectionPropType from '../../propTypes/collection';
+import { getCollections, collectionsAreFetching } from '../../store/collections/selectors';
 import * as Actions from '../../store/collections/actions';
 
 class CollectionList extends React.Component {
@@ -42,9 +43,9 @@ CollectionList.propTypes = {
   fetchCollections: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ collections }) => ({
-  collections: collections.get('collections').toJS(),
-  isFetching: collections.get('isFetching'),
+const mapStateToProps = state => ({
+  collections: getCollections(state).toJS(),
+  isFetching: collectionsAreFetching(state),
 });
 
 export default connect(mapStateToProps, Actions)(CollectionList);

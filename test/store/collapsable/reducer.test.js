@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import reducer from 'store/collapsable/reducer';
-import * as actions from 'store/collapsable/actions';
+import * as types from 'store/collapsable/types';
 
 describe('reducer', () => {
   const dirtyState = {
@@ -20,7 +20,7 @@ describe('reducer', () => {
   it('should handle SET_EXPANDED', () => {
     expect(
       reducer(undefined, {
-        type: actions.SET_EXPANDED,
+        type: types.SET_EXPANDED,
         id: 'foo',
       })
     ).toEqual({
@@ -31,7 +31,7 @@ describe('reducer', () => {
 
     expect(
       reducer(undefined, {
-        type: actions.SET_EXPANDED,
+        type: types.SET_EXPANDED,
         id: 'headers',
       })
     ).toEqual({
@@ -44,7 +44,7 @@ describe('reducer', () => {
   it('should handle SET_COLLAPSED', () => {
     expect(
       reducer(dirtyState, {
-        type: actions.SET_COLLAPSED,
+        type: types.SET_COLLAPSED,
         id: 'foo',
       })
     ).toEqual({
@@ -58,7 +58,7 @@ describe('reducer', () => {
 
     expect(
       reducer(dirtyState, {
-        type: actions.SET_COLLAPSED,
+        type: types.SET_COLLAPSED,
         id: 'headers',
       })
     ).toEqual({

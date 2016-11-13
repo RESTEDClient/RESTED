@@ -1,7 +1,7 @@
 import {
   SET_EXPANDED,
   SET_COLLAPSED,
-} from './actions';
+} from './types';
 
 const initialState = {};
 
