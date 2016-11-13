@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import { collections as collectionDB } from '../../utils/db';
+import { getCollections } from './selectors';
 import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,
@@ -43,7 +44,7 @@ export function addCollection() {
     dispatch(doAddCollection());
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }
@@ -58,7 +59,7 @@ export function deleteCollection(collectionId) {
     dispatch(doDeleteCollection(collectionId));
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }
@@ -68,13 +69,13 @@ export function doDeleteRequest(requestId, collectionIndex) {
 }
 
 // TODO Test
-export function deleteRequest(request, collectionIndex) {
+export function deleteRequest(requestId, collectionIndex) {
   return (dispatch, getState) => {
-    dispatch(doDeleteRequest(request, collectionIndex));
+    dispatch(doDeleteRequest(requestId, collectionIndex));
 
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }
@@ -90,7 +91,7 @@ export function addRequest(request, collectionIndex) {
 
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }
@@ -106,7 +107,7 @@ export function reorderRequest(source, target) {
 
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }
@@ -122,7 +123,7 @@ export function reorderCollection(oldIndex, newIndex) {
 
     collectionDB.replace(
       dispatch,
-      getState().collections.get('collections').toJS()
+      getCollections(getState()).toJS()
     );
   };
 }

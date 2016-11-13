@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
@@ -59,12 +59,29 @@ const requestTarget = {
   },
 };
 
+function RequestHeader({ method, deleteRequest, collectionIndex, id }) {
+  return (
+    <span>
+      <h4>{method}</h4>
+      <button onClick={() => deleteRequest(id, collectionIndex)}>
+        Delete
+      </button>
+    </span>
+  );
+}
+
+RequestHeader.propTypes = {
+  method: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  collectionIndex: PropTypes.number.isRequired,
+  deleteRequest: PropTypes.func.isRequired,
+};
+
 function Request(props) {
   const {
     connectDragSource,
     connectDropTarget,
     isDragging,
-    method,
     url,
   } = props;
 
@@ -73,7 +90,7 @@ function Request(props) {
       <StyledRequest isDragging={isDragging}>
         <ListGroup>
           <ListGroupItem
-            header={<h4>{method}</h4>}
+            header={<RequestHeader {...props} />}
           >
             {url}
           </ListGroupItem>
