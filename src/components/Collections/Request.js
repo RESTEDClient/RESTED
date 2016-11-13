@@ -64,6 +64,7 @@ function Request(props) {
     connectDragSource,
     connectDropTarget,
     isDragging,
+    method,
     url,
   } = props;
 
@@ -72,9 +73,9 @@ function Request(props) {
       <StyledRequest isDragging={isDragging}>
         <ListGroup>
           <ListGroupItem
-            header={<h4>{url}</h4>}
+            header={<h4>{method}</h4>}
           >
-            request.url
+            {url}
           </ListGroupItem>
         </ListGroup>
       </StyledRequest>
