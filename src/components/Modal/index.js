@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
+import md5 from 'md5';
 
 import modalPropTypes from '../../propTypes/modal';
 import * as Actions from '../../store/modal/actions';
@@ -21,6 +22,7 @@ function ModalComponent({ modal, removeModal }) {
       <Modal.Footer>
         {modal.actions && modal.actions.map(action => (
           <Button
+            key={md5(action)}
             data-dismiss="modal"
             onClick={action.click}
           >
@@ -43,7 +45,12 @@ function ModalComponent({ modal, removeModal }) {
 }
 
 ModalComponent.propTypes = {
-  modal: modalPropTypes.isRequired,
+  modal: PropTypes.oneOfType([
+    modalPropTypes.isRequired, // Visible state
+    PropTypes.shape({          // Hidden state
+      visible: PropTypes.oneOf([false]).isRequired, // eslint-disable-line react/no-unused-prop-types
+    }).isRequired,
+  ]).isRequired,
   removeModal: PropTypes.func.isRequired,
 };
 
