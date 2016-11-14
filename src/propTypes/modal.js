@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 
-const { string, bool, shape, arrayOf, func } = PropTypes;
+const { string, node, bool, shape, arrayOf, func } = PropTypes;
 
 export const modalShape = {
   title: string.isRequired,
-  body: string.isRequired,
+  body: node.isRequired,
   errorData: string,
   visible: bool.isRequired,
   cancelClick: func,

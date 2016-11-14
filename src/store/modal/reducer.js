@@ -2,7 +2,7 @@ import {
   SET_MODAL_DATA,
   REMOVE_MODAL,
   THROW_ERROR,
-} from './actions';
+} from './types';
 
 const initialState = {
   title: null,

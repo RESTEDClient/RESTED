@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import * as actions from 'store/modal/actions';
+import * as types from 'store/modal/types';
 
 describe('actions', () => {
   it('should create an action to set modal data', () => {
@@ -8,7 +9,7 @@ describe('actions', () => {
       body: 'yes no oui non',
     };
     const expectedAction = {
-      type: actions.SET_MODAL_DATA,
+      type: types.SET_MODAL_DATA,
       data,
     };
 
@@ -17,7 +18,7 @@ describe('actions', () => {
 
   it('should create an action to remove the modal', () => {
     const expectedAction = {
-      type: actions.REMOVE_MODAL,
+      type: types.REMOVE_MODAL,
     };
 
     expect(actions.removeModal()).toEqual(expectedAction);
@@ -33,7 +34,7 @@ describe('actions', () => {
     };
 
     const expectedAction = {
-      type: actions.THROW_ERROR,
+      type: types.THROW_ERROR,
       data: errorData,
     };
 

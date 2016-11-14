@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
@@ -6,11 +7,23 @@ import UUID from 'uuid-js';
 
 import requestPropType from '../../propTypes/request';
 import collectionShape from '../../propTypes/collection';
+import { showChooseCollectionModal } from '../../utils/modal';
 import { getCollections } from '../../store/collections/selectors';
 import * as collectionsActions from '../../store/collections/actions';
 import * as modalActions from '../../store/modal/actions';
 
-function Titlebar({ request, addRequest, collections }) {
+function handleSubmit(props, collectionIndex = 0) {
+  const addableRequest = Object.assign({}, props.request, {
+    id: UUID.create().toString(),
+  });
+
+  props.addRequest(Immutable.fromJS(addableRequest), collectionIndex);
+  props.removeModal();
+}
+
+function Titlebar(props) {
+  const { collections, removeModal } = props;
+
   return (
     <span>
       <h2>
@@ -20,24 +33,18 @@ function Titlebar({ request, addRequest, collections }) {
         onClick={() => {
           // TODO Validate form data before adding
 
-          const addableRequest = Object.assign({}, request, {
-            id: UUID.create().toString(),
-          });
-
-          if (collections.size === 1) {
-            addRequest(addableRequest, 0);
+          if (collections.size === 0) {
+            props.addCollection();
+            handleSubmit(props);
+          } else if (collections.size === 1) {
+            handleSubmit(props);
           } else {
-            // TODO Handle other lengths
+            showChooseCollectionModal(props)
+              .then(index => handleSubmit(props, index))
+              .catch(removeModal);
           }
           // if (requestExists)
-          // setModalData({
-          //   title: action.data.title,
-          //   body: action.data.body,
-          //   errorData: null,
-          //   visible: true,
-          //   cancelClick: action.data.cancelClick,
-          //   actions: action.data.actions,
-          // });
+          // Modal (do you want to replace?)
         }}
       >
         +
@@ -47,9 +54,13 @@ function Titlebar({ request, addRequest, collections }) {
 }
 
 Titlebar.propTypes = {
-  request: requestPropType,
   collections: ImmutablePropTypes.listOf(collectionShape),
+  addCollection: PropTypes.func.isRequired,
+  removeModal: PropTypes.func.isRequired,
+  /* eslint-disable react/no-unused-prop-types */
+  request: requestPropType,
   addRequest: PropTypes.func.isRequired,
+  setModalData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

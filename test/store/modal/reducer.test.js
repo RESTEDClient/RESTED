@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import reducer from 'store/modal/reducer';
-import * as actions from 'store/modal/actions';
+import * as types from 'store/modal/types';
 
 describe('reducer', () => {
   const dirtyState = {
@@ -25,7 +25,7 @@ describe('reducer', () => {
   it('should handle SET_MODAL_DATA', () => {
     expect(
       reducer(undefined, {
-        type: actions.SET_MODAL_DATA,
+        type: types.SET_MODAL_DATA,
         data: {
           title: 'foo foo bar bar',
           body: 'yes no oui non',
@@ -46,7 +46,7 @@ describe('reducer', () => {
   it('should handle REMOVE_MODAL', () => {
     expect(
       reducer(dirtyState, {
-        type: actions.REMOVE_MODAL,
+        type: types.REMOVE_MODAL,
       })
     ).toEqual({
       title: null,
@@ -69,7 +69,7 @@ describe('reducer', () => {
 
     expect(
       reducer(undefined, {
-        type: actions.THROW_ERROR,
+        type: types.THROW_ERROR,
         data: errorData,
       })
     ).toEqual({
