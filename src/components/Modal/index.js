@@ -48,7 +48,8 @@ ModalComponent.propTypes = {
   modal: PropTypes.oneOfType([
     modalPropTypes.isRequired, // Visible state
     PropTypes.shape({          // Hidden state
-      visible: PropTypes.oneOf([false]).isRequired, // eslint-disable-line react/no-unused-prop-types
+      // eslint-disable-next-line react/no-unused-prop-types
+      visible: PropTypes.oneOf([false]).isRequired,
     }).isRequired,
   ]).isRequired,
   removeModal: PropTypes.func.isRequired,
