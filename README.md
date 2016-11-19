@@ -23,13 +23,11 @@ welcome.
 ![Image of RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-app.png)
 
 ## How to contribute
-For a short read on how the app works, go to [this page](https://github.com/esphen/RESTED/wiki).
-
 In order to work on this project, you're going to need a few things:
  - [nvm](https://github.com/creationix/nvm)
    - Alternately node 6.x and npm 3.x
  - [yarn](https://yarnpkg.com/en/docs/install)
- - [Firefox >= 47](http://funny-pictures-blog.com/wp-content/uploads/funny-pictures/Hurr-durr.jpg) (duh)
+ - A browser with WebExtension support
 
 Now to set up your development environment. First, check out the repository from
 git and open a terminal in it. Then you need to symlink in the correct manifest
