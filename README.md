@@ -5,6 +5,7 @@ A REST client for the rest of us.
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
 [![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=react-rewrite)](https://travis-ci.org/esphen/RESTED)
+[![Join the chat at https://gitter.im/RESTEDclient](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RESTEDclient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **RESTED** is a new take on rest clients for browsers.
 It is designed to be easy to use to let you work as effective as possible.
