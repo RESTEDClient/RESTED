@@ -5,7 +5,7 @@ function URLField({ input, meta, placeholderUrl }) {
   return (
     <FormGroup
       controlId="url"
-      validationState={meta.invalid ? 'error' : undefined}
+      validationState={meta.touched && meta.invalid ? 'error' : null}
     >
       <Col sm={2}>
         <ControlLabel>

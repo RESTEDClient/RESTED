@@ -12,6 +12,7 @@ import BasicAuthField from './BasicAuthField';
 import BodyField from './BodyField';
 
 import * as requestActions from '../../store/request/actions';
+import requestValidation from '../../utils/requestValidation';
 import { DEFAULT_REQUEST } from '../../constants/constants';
 
 
@@ -49,6 +50,7 @@ Request.propTypes = {
 
 const formOptions = {
   form: 'request',
+  validate: requestValidation,
 };
 
 const mapStateToProps = ({ request: { useFormData, placeholderUrl } }) => ({

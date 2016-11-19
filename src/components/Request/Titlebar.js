@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
+import { getFormValues, isInvalid, isPristine, touch } from 'redux-form';
 import UUID from 'uuid-js';
 
 import requestPropType from '../../propTypes/request';
@@ -22,7 +22,7 @@ function handleSubmit(props, collectionIndex = 0) {
 }
 
 function Titlebar(props) {
-  const { collections, removeModal } = props;
+  const { collections, removeModal, formPristine, formInvalid } = props;
 
   return (
     <span>
@@ -31,7 +31,11 @@ function Titlebar(props) {
       </h2>
       <button
         onClick={() => {
-          // TODO Validate form data before adding
+          if (formPristine || formInvalid) {
+            // Set URL as touched to give feedback to user
+            props.touch('request', 'url');
+            return;
+          }
 
           if (collections.size === 0) {
             props.addCollection();
@@ -40,8 +44,10 @@ function Titlebar(props) {
             handleSubmit(props);
           } else {
             showChooseCollectionModal(props)
-              .then(index => handleSubmit(props, index))
-              .catch(removeModal);
+              .then(
+                index => handleSubmit(props, index),
+                removeModal
+              );
           }
           // if (requestExists)
           // Modal (do you want to replace?)
@@ -57,6 +63,9 @@ Titlebar.propTypes = {
   collections: ImmutablePropTypes.listOf(collectionShape),
   addCollection: PropTypes.func.isRequired,
   removeModal: PropTypes.func.isRequired,
+  formPristine: PropTypes.bool.isRequired,
+  formInvalid: PropTypes.bool.isRequired,
+  touch: PropTypes.func.isRequired,
   /* eslint-disable react/no-unused-prop-types */
   request: requestPropType,
   addRequest: PropTypes.func.isRequired,
@@ -65,11 +74,14 @@ Titlebar.propTypes = {
 
 const mapStateToProps = state => ({
   request: getFormValues('request')(state),
+  formPristine: isPristine('request')(state),
+  formInvalid: isInvalid('request')(state),
   collections: getCollections(state),
 });
 
 export default connect(mapStateToProps, {
   ...collectionsActions,
   ...modalActions,
+  touch,
 })(Titlebar);
 
