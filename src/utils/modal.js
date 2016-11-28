@@ -1,7 +1,23 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-/* eslint-disable import/prefer-default-export */
+import ModalBody from '../components/OptionsModal';
+
+export function showOptionsModal({ setModalData }) {
+  return new Promise((resolve, reject) => {
+    setModalData({
+      title: 'Options',
+      body: <ModalBody />,
+      visible: true,
+      cancelClick: reject,
+      actions: [{
+        text: 'Save',
+        click: resolve,
+      }],
+    });
+  });
+}
+
 export function showChooseCollectionModal({ collections, setModalData }) {
   return new Promise((resolve, reject) => {
     let selectedIndex = 0;

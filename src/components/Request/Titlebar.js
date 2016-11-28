@@ -7,7 +7,7 @@ import UUID from 'uuid-js';
 
 import requestPropType from '../../propTypes/request';
 import collectionShape from '../../propTypes/collection';
-import { showChooseCollectionModal } from '../../utils/modal';
+import { showChooseCollectionModal, showOptionsModal } from '../../utils/modal';
 import { getCollections } from '../../store/collections/selectors';
 import * as collectionsActions from '../../store/collections/actions';
 import * as modalActions from '../../store/modal/actions';
@@ -55,18 +55,21 @@ function Titlebar(props) {
       >
         +
       </button>
+      <button onClick={() => showOptionsModal(props)}>
+        Options
+      </button>
     </span>
   );
 }
 
 Titlebar.propTypes = {
   collections: ImmutablePropTypes.listOf(collectionShape),
-  addCollection: PropTypes.func.isRequired,
   removeModal: PropTypes.func.isRequired,
   formPristine: PropTypes.bool.isRequired,
   formInvalid: PropTypes.bool.isRequired,
-  touch: PropTypes.func.isRequired,
   /* eslint-disable react/no-unused-prop-types */
+  touch: PropTypes.func.isRequired,
+  addCollection: PropTypes.func.isRequired,
   request: requestPropType,
   addRequest: PropTypes.func.isRequired,
   setModalData: PropTypes.func.isRequired,
