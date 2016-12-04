@@ -29,6 +29,7 @@ describe('URLField', () => {
 
   it('should match the previous snapshot with invalid field state', () => {
     initialProps.meta.valid = false;
+    initialProps.meta.touched = true;
     initialProps.meta.invalid = true;
 
     const tree = renderer.create(
