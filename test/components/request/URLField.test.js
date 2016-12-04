@@ -40,6 +40,7 @@ describe('URLField', () => {
 
   it('renders an error when the field is invalid', () => {
     initialProps.meta.valid = false;
+    initialProps.meta.touched = true;
     initialProps.meta.invalid = true;
 
     const tree = mount(

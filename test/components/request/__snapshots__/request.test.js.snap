@@ -12,6 +12,10 @@ exports[`test should render correctly 1`] = `
         onClick={[Function]}>
         +
       </button>
+      <button
+        onClick={[Function]}>
+        Options
+      </button>
     </span>
   </div>
   <div
