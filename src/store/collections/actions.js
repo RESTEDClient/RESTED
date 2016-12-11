@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { collections as collectionDB } from '../../utils/db';
+import localforage from 'localforage';
 import { getCollections } from './selectors';
 import {
   FETCH_COLLECTIONS,
@@ -25,12 +25,11 @@ export function fetchCollections() {
   return dispatch => {
     dispatch(startFetch());
 
-    return collectionDB
-      .get()
+    return localforage
+      .getItem('collections')
       .then(collections => dispatch(
         receiveCollections(Immutable.fromJS(collections))
       ));
-      // TODO .catch and show error modal
   };
 }
 
@@ -42,10 +41,9 @@ export function doAddCollection() {
 export function addCollection() {
   return (dispatch, getState) => {
     dispatch(doAddCollection());
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 
@@ -57,10 +55,9 @@ export function doDeleteCollection(collectionId) {
 export function deleteCollection(collectionId) {
   return (dispatch, getState) => {
     dispatch(doDeleteCollection(collectionId));
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 
@@ -73,10 +70,8 @@ export function deleteRequest(requestId, collectionIndex) {
   return (dispatch, getState) => {
     dispatch(doDeleteRequest(requestId, collectionIndex));
 
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 
@@ -89,10 +84,8 @@ export function addRequest(request, collectionIndex) {
   return (dispatch, getState) => {
     dispatch(doAddRequest(request, collectionIndex));
 
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 
@@ -105,10 +98,8 @@ export function reorderRequest(source, target) {
   return (dispatch, getState) => {
     dispatch(doReorderRequest(source, target));
 
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 
@@ -121,10 +112,8 @@ export function reorderCollection(oldIndex, newIndex) {
   return (dispatch, getState) => {
     dispatch(doReorderCollection(oldIndex, newIndex));
 
-    collectionDB.replace(
-      dispatch,
-      getCollections(getState()).toJS()
-    );
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
   };
 }
 

@@ -25,6 +25,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
+    "localforage": "^1.4.3",
+    "localforage-webextensionstorage-driver": "^1.0.1",
     "lodash.flow": "^3.5.0",
     "md5": "^2.2.1",
     "object-assign": "^4.1.0",
