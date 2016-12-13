@@ -32,7 +32,7 @@ module.exports = {
      */
     "import/no-named-as-default": 0,
     "import/extensions": [2, 'never'],
-    "new-cap": ["error", { "capIsNewExceptions": ["DragSource", "DropTarget", "DragDropContext"] }],
+    "new-cap": ["error", { "capIsNewExceptions": ["List", "DragSource", "DropTarget", "DragDropContext"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
   }
 };

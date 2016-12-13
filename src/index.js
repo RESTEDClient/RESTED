@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import localforage from 'localforage';
-import localDriver  from 'localforage-webextensionstorage-driver/local';
+import localDriver from 'localforage-webextensionstorage-driver/local';
 import syncDriver from 'localforage-webextensionstorage-driver/sync';
 
 const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';

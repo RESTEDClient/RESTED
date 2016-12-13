@@ -28,7 +28,7 @@ export function fetchCollections() {
     return localforage
       .getItem('collections')
       .then(collections => dispatch(
-        receiveCollections(Immutable.fromJS(collections))
+        receiveCollections(Immutable.fromJS(collections) || Immutable.List())
       ));
   };
 }
