@@ -16,7 +16,6 @@ Promise.all([
   localforage.defineDriver(localDriver),
   localforage.defineDriver(syncDriver),
 ])
-//.then(() => new Promise(resolve => setTimeout(resolve)))
 .then(() => localforage.setDriver('webExtensionLocalStorage'))
 .then(() => {
   ReactDOM.render(

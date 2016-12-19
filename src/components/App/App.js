@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
+import flow from 'lodash.flow';
 
 import Header from '../Header';
 import Collections from '../Collections';
 import Request from '../Request';
 import Response from '../Response';
 import Modal from '../Modal';
+import * as Actions from '../../store/options/actions';
 
 /*
  * This must be a React.Component because DragDropContext
@@ -16,6 +19,11 @@ import Modal from '../Modal';
  */
 /* eslint-disable react/prefer-stateless-function */
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props.fetchOptions();
+  }
+
   render() {
     return (
       <div>
@@ -41,5 +49,12 @@ class App extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(App);
+App.propTypes = {
+  fetchOptions: PropTypes.func.isRequired,
+};
+
+export default flow(
+  connect(null, Actions),
+  DragDropContext(HTML5Backend),
+)(App);
 

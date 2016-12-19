@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import Highlight from 'react-highlight';
 import { Clearfix, Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
-function GeneralOptionsPane() {
+import * as Actions from '../../store/options/actions';
+import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from '../../constants/constants';
+
+function GeneralOptionsPane({ options, updateOption }) {
   return (
     <Clearfix>
       <br />
@@ -18,13 +22,19 @@ function GeneralOptionsPane() {
                   </ControlLabel>
                   <FormControl
                     componentClass="select"
-                    data-ng-model="$root.options.theme"
-                    data-ng-change="$root.setOption('theme', $root.options.theme)"
-                    data-ng-options="theme for theme in $parent.themes"
-                  />
+                    value={options.get('theme', THEMES[0])}
+                    onChange={e => {
+                      updateOption('theme', e.target.value);
+                    }}
+                  >
+                    {THEMES.map(theme => (
+                      <option value={theme}>{theme}</option>
+                    ))}
+                  </FormControl>
                 </FormGroup>
               </td>
             </tr>
+
             <tr>
               <td>
                 <FormGroup>
@@ -33,28 +43,35 @@ function GeneralOptionsPane() {
                   </ControlLabel>
                   <FormControl
                     componentClass="select"
-                    data-ng-model="$root.options.highlightStyle"
-                    data-ng-change="$root.setOption('highlightStyle', $root.options.highlightStyle)"
-                    data-ng-options="style.style as style.title for style in $parent.styles"
-                  />
+                    value={options.get('highlightStyle', HIGHLIGHT_STYLES[0].style)}
+                    onChange={e => {
+                      updateOption('highlightStyle', e.target.value);
+                    }}
+                  >
+                    {HIGHLIGHT_STYLES.map(option => (
+                      <option value={option.style}>{option.title}</option>
+                    ))}
+                  </FormControl>
                 </FormGroup>
               </td>
             </tr>
+
             <tr>
               <td>
                 <FormGroup>
                   <Highlight className="json">
                     {`
-                      {
-                        example: "json",
-                        soThatYouCan: 7357,
-                        your: "HIGHLIGHT_STYLE"
-                      }
+              {
+                example: "json",
+                soThatYouCan: 7357,
+                your: "HIGHLIGHT_STYLE"
+              }
                     `}
                   </Highlight>
                 </FormGroup>
               </td>
             </tr>
+
             <tr>
               <td>
                 <FormGroup>
@@ -63,22 +80,35 @@ function GeneralOptionsPane() {
                   </ControlLabel>
                   <FormControl
                     type="number"
-                    data-ng-model="$root.options.historySize"
-                    data-ng-change="$root.setOption('historySize', $root.options.historySize)"
+                    value={options.get('historySize', DEFAULT_HISTORY_SIZE)}
+                    onChange={e => {
+                      updateOption('historySize', e.target.value);
+                    }}
                   />
                 </FormGroup>
               </td>
             </tr>
+
             <tr>
               <td>
-                <Checkbox>
+                <Checkbox
+                  checked={options.get('disableHighlighting', false)}
+                  onChange={e => {
+                    updateOption('disableHighlighting', e.target.checked);
+                  }}
+                >
                   Disable highlight styles
                   <p>
                     If you struggle with performance on large responses,
                     disabling hightlight styles may help
                   </p>
                 </Checkbox>
-                <Checkbox>
+                <Checkbox
+                  checked={options.get('wrapResponse', false)}
+                  onChange={e => {
+                    updateOption('wrapResponse', e.target.checked);
+                  }}
+                >
                   Wrap response
                   <p>
                     Wrap the lines of the response automatically when it
@@ -95,8 +125,14 @@ function GeneralOptionsPane() {
   );
 }
 
-const mapStateToProps = () => ({
+GeneralOptionsPane.propTypes = {
+  updateOption: PropTypes.func.isRequired,
+  options: ImmutablePropTypes.map,
+};
+
+const mapStateToProps = state => ({
+  options: state.options.get('options'),
 });
 
-export default connect(mapStateToProps)(GeneralOptionsPane);
+export default connect(mapStateToProps, Actions)(GeneralOptionsPane);
 
