@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import Collection from './Collection';
 
-import collectionPropType from '../../propTypes/collection';
-import { getCollections, collectionsAreFetching } from '../../store/collections/selectors';
-import * as Actions from '../../store/collections/actions';
+import collectionPropType from 'propTypes/collection';
+import { getCollections, collectionsAreFetching } from 'store/collections/selectors';
+import * as Actions from 'store/collections/actions';
 
 class CollectionList extends React.Component {
   componentDidMount() {

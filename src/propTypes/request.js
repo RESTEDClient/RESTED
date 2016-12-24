@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import { REQUEST_METHODS } from '../constants/constants';
+import { REQUEST_METHODS } from 'constants/constants';
 
 const { string, oneOf, shape, arrayOf, bool } = PropTypes;
 

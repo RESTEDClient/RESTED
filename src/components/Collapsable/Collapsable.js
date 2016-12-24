@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
-import Fonticon from '../Fonticon';
-import * as Actions from '../../store/collapsable/actions';
-import { isOpen } from '../../store/collapsable/selectors';
+import Fonticon from 'components/Fonticon';
+import * as Actions from 'store/collapsable/actions';
+import { isOpen } from 'store/collapsable/selectors';
 
 export function Collapsable({ id, title, open, children, toggleCollapse }) {
   return (

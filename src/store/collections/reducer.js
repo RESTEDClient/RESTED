@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-import newCollection from '../../utils/newCollection';
+import newCollection from 'utils/newCollection';
 import {
   FETCH_COLLECTIONS,
   RECEIVE_COLLECTIONS,

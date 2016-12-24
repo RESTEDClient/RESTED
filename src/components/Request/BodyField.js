@@ -9,9 +9,9 @@ import {
   Col,
 } from 'react-bootstrap';
 
-import Fonticon from '../Fonticon';
-import Collapsable from '../Collapsable';
-import * as RequestActions from '../../store/request/actions';
+import Fonticon from 'components/Fonticon';
+import Collapsable from 'components/Collapsable';
+import * as RequestActions from 'store/request/actions';
 
 function renderField({ input, placeholder }) {
   return (

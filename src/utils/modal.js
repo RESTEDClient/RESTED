@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-import ModalBody from '../components/OptionsModal';
+import ModalBody from 'components/OptionsModal';
 
 export function showOptionsModal({ setModalData }) {
   return new Promise((resolve, reject) => {

@@ -7,7 +7,7 @@ import {
   Button,
 } from 'react-bootstrap';
 
-import { REQUEST_METHODS } from '../../constants/constants';
+import { REQUEST_METHODS } from 'constants/constants';
 
 function MethodField({ input, meta }) {
   return (

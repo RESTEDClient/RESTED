@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
 
-import App from '../App';
-import DevTools from '../DevTools';
+import App from 'components/App';
+import DevTools from 'components/DevTools';
 
 export default function Root() {
   return (

@@ -4,10 +4,12 @@ const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
+const rootDir = resolve(__dirname, '..', '..');
+
 const doNothing = () => {};
 
 module.exports = {
-  context: resolve(__dirname, '..', '..'),
+  context: rootDir,
 
   entry: "./src/index.js",
 
@@ -57,17 +59,24 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'eslint-loader',
-        include: resolve(__dirname, '..', '..', 'src'),
+        include: resolve(rootDir, 'src'),
       },
       {
         test: /\.js/,
-        include: resolve(__dirname, '..', '..', 'src'),
+        include: resolve(rootDir, 'src'),
         loader: 'babel-loader',
         options: {
           cacheDirectory: !isProd,
         }
       }
     ]
+  },
+
+  resolve: {
+    modules: [
+      resolve(rootDir, 'src'),
+      'node_modules',
+    ],
   }
 }
 

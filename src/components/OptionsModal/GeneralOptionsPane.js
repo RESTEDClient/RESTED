@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import Highlight from 'react-highlight';
 import { Clearfix, Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
-import * as Actions from '../../store/options/actions';
-import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from '../../constants/constants';
+import * as Actions from 'store/options/actions';
+import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/constants';
 
 function GeneralOptionsPane({ options, updateOption }) {
   return (

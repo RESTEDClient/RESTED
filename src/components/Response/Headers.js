@@ -1,8 +1,8 @@
 import React from 'react';
 import Highlight from 'react-highlight';
 
-import Collapse from '../Collapsable';
-import { responseShape } from '../../propTypes/response';
+import Collapse from 'components/Collapsable';
+import { responseShape } from 'propTypes/response';
 
 function Headers({ headers }) {
   return (

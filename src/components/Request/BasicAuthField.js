@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Col, FormGroup, FormControl } from 'react-bootstrap';
 
-import Collapsable from '../Collapsable';
+import Collapsable from 'components/Collapsable';
 
 export function BasicAuthField(fields) {
   return (

@@ -4,7 +4,7 @@ import {
   DB_URL_VARIABLES_STORE_NAME,
   DB_OPTIONS_STORE_NAME,
   DB_HISTORY_STORE_NAME,
-} from '../constants/constants';
+} from 'constants/constants';
 
 function msg(success, message, object) {
   return { success, message, object };

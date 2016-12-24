@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import { getFormValues, isInvalid, isPristine, touch } from 'redux-form';
 import UUID from 'uuid-js';
 
-import requestPropType from '../../propTypes/request';
-import collectionShape from '../../propTypes/collection';
-import { showChooseCollectionModal, showOptionsModal } from '../../utils/modal';
-import { getCollections } from '../../store/collections/selectors';
-import * as collectionsActions from '../../store/collections/actions';
-import * as modalActions from '../../store/modal/actions';
+import requestPropType from 'propTypes/request';
+import collectionShape from 'propTypes/collection';
+import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
+import { getCollections } from 'store/collections/selectors';
+import * as collectionsActions from 'store/collections/actions';
+import * as modalActions from 'store/modal/actions';
 
 function handleSubmit(props, collectionIndex = 0) {
   const addableRequest = Object.assign({}, props.request, {

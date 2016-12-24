@@ -1,4 +1,4 @@
-import { randomURL } from '../../utils/requestUtils';
+import { randomURL } from 'utils/requestUtils';
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,

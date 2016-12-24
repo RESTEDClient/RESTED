@@ -7,8 +7,8 @@ import {
   Col,
 } from 'react-bootstrap';
 
-import Fonticon from '../Fonticon';
-import Collapsable from '../Collapsable';
+import Fonticon from 'components/Fonticon';
+import Collapsable from 'components/Collapsable';
 
 function renderField({ input, placeholder }) {
   return (

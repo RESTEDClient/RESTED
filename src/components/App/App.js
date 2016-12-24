@@ -5,12 +5,12 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import flow from 'lodash.flow';
 
-import Header from '../Header';
-import Collections from '../Collections';
-import Request from '../Request';
-import Response from '../Response';
-import Modal from '../Modal';
-import * as Actions from '../../store/options/actions';
+import Header from 'components/Header';
+import Collections from 'components/Collections';
+import Request from 'components/Request';
+import Response from 'components/Response';
+import Modal from 'components/Modal';
+import * as Actions from 'store/options/actions';
 
 /*
  * This must be a React.Component because DragDropContext

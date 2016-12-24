@@ -1,4 +1,4 @@
-import { PLACEHOLDER_URLS } from '../constants/constants';
+import { PLACEHOLDER_URLS } from 'constants/constants';
 
 /**
  * According to MDN, this makes us more adherent

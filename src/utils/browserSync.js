@@ -1,4 +1,4 @@
-import { setModalData, throwError } from '../store/modal/actions';
+import { setModalData, throwError } from 'store/modal/actions';
 /*
  * This service uses the browser.storage.sync API to
  * store requested data in Chrome or Firefox sync.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
 
-import App from '../App';
+import App from 'components/App';
 
 export default function Root() {
   return (

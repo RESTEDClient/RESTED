@@ -5,7 +5,7 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import { StyledRequest } from './styledComponents';
-import * as Actions from '../../store/collections/actions';
+import * as Actions from 'store/collections/actions';
 import * as Type from './dropTypes';
 
 /**

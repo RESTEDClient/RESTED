@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Fonticon from '../Fonticon';
+import Fonticon from 'components/Fonticon';
 
 export default function Loading() {
   return (

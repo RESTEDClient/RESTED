@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import md5 from 'md5';
 
-import modalPropTypes from '../../propTypes/modal';
-import * as Actions from '../../store/modal/actions';
+import modalPropTypes from 'propTypes/modal';
+import * as Actions from 'store/modal/actions';
 
 function ModalComponent({ modal, removeModal }) {
   return (

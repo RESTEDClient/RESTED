@@ -1,7 +1,7 @@
 import { change } from 'redux-form';
 
-import base64Encode from '../../utils/base64';
-import { reMapHeaders } from '../../utils/requestUtils';
+import base64Encode from 'utils/base64';
+import { reMapHeaders } from 'utils/requestUtils';
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,

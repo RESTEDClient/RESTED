@@ -5,8 +5,8 @@ import Highlight from 'react-highlight';
 
 import Loading from './Loading';
 import Headers from './Headers';
-import * as Actions from '../../store/request/actions';
-import responsePropTypes, { responseShape } from '../../propTypes/response';
+import * as Actions from 'store/request/actions';
+import responsePropTypes, { responseShape } from 'propTypes/response';
 
 function Titlebar({ url }) {
   return (

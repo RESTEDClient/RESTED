@@ -8,8 +8,8 @@ import Request from './Request';
 import { StyledCollection } from './styledComponents';
 import * as Type from './dropTypes';
 
-import * as Actions from '../../store/collections/actions';
-import requestPropType from '../../propTypes/request';
+import * as Actions from 'store/collections/actions';
+import requestPropType from 'propTypes/request';
 
 /**
  * Specifies the drag source contract.
