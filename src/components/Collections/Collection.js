@@ -4,12 +4,12 @@ import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
+import * as Actions from 'store/collections/actions';
+import requestPropType from 'propTypes/request';
+
 import Request from './Request';
 import { StyledCollection } from './styledComponents';
 import * as Type from './dropTypes';
-
-import * as Actions from 'store/collections/actions';
-import requestPropType from 'propTypes/request';
 
 /**
  * Specifies the drag source contract.

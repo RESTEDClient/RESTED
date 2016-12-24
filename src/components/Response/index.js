@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { Panel, Alert } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
-import Loading from './Loading';
-import Headers from './Headers';
 import * as Actions from 'store/request/actions';
 import responsePropTypes, { responseShape } from 'propTypes/response';
+
+import Loading from './Loading';
+import Headers from './Headers';
 
 function Titlebar({ url }) {
   return (

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* Redux devtools. Is not a part of the prod bundle */
 import React from 'react';
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';

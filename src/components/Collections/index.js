@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Panel } from 'react-bootstrap';
 
-import CollectionList from './CollectionList';
 import * as Actions from 'store/collections/actions';
+import CollectionList from './CollectionList';
 
 function Titlebar({ addCollection }) {
   return (

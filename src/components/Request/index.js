@@ -4,17 +4,16 @@ import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
 import { Panel } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
+import * as requestActions from 'store/request/actions';
+import requestValidation from 'utils/requestValidation';
+import { DEFAULT_REQUEST } from 'constants/constants';
+
 import Titlebar from './Titlebar';
 import URLField from './URLField';
 import MethodField from './MethodField';
 import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 import BodyField from './BodyField';
-
-import * as requestActions from 'store/request/actions';
-import requestValidation from 'utils/requestValidation';
-import { DEFAULT_REQUEST } from 'constants/constants';
-
 
 function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (

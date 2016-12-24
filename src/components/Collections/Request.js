@@ -4,8 +4,8 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
-import { StyledRequest } from './styledComponents';
 import * as Actions from 'store/collections/actions';
+import { StyledRequest } from './styledComponents';
 import * as Type from './dropTypes';
 
 /**
