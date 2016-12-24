@@ -1,4 +1,4 @@
-const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -7,14 +7,20 @@ const isProd = nodeEnv === 'production';
 const doNothing = () => {};
 
 module.exports = {
-  context: path.resolve(__dirname, '..', '..'),
+  context: resolve(__dirname, '..', '..'),
+
   entry: "./src/index.js",
+
   output: {
     path: "./dist",
     filename: "rested.js"
   },
+
   /* Note: Inline source maps are super slow in Firefox */
   devtool: isProd ? 'source-map' : 'cheap-source-map',
+
+  performance: { hints: false },
+
   // Compiler plugins. See https://github.com/webpack/docs/wiki/list-of-plugins
   plugins: [
     new webpack.LoaderOptionsPlugin({
@@ -27,10 +33,6 @@ module.exports = {
         }
       }
     }),
-    // Performance optimizations
-    isProd
-      ? new webpack.optimize.DedupePlugin()
-      : doNothing,
     isProd
       ? new webpack.optimize.UglifyJsPlugin({
         // Keep legible sources for the AMO reviewers
@@ -44,39 +46,25 @@ module.exports = {
         },
       })
       : doNothing,
-    isProd
-      ? new webpack.optimize.LimitChunkCountPlugin({
-        // This breaks when set to 1. Probably because we use System.import
-        // in index.js, which requires a separate file to do its runtime
-        // import.. Or something
-        maxChunks: 2,
-      })
-      : doNothing,
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': `"${nodeEnv}"`,
     }),
   ],
+
   module: {
-    loaders: [
+    rules: [
       {
-         enforce: 'pre',
-         test: /\.js$/,
-         loader: 'eslint-loader',
-         exclude: /node_modules/,
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        include: resolve(__dirname, '..', '..', 'src'),
       },
       {
-        exclude: /node_modules/,
         test: /\.js/,
+        include: resolve(__dirname, '..', '..', 'src'),
         loader: 'babel-loader',
-        query: {
+        options: {
           cacheDirectory: !isProd,
-          babelrc: false,
-          presets: [['es2015', { modules: false }], 'react'],
-          plugins: [
-            'transform-object-assign',
-            'transform-es2015-destructuring',
-            'transform-object-rest-spread'
-          ]
         }
       }
     ]
