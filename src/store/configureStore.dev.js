@@ -8,7 +8,7 @@ const enhancer = compose(
   // Middleware
   applyMiddleware(thunk),
   // Enable Redux DevTools with the monitors you chose
-  DevTools.instrument()
+  DevTools.instrument(),
 );
 
 export default function configureStore(initialState) {
@@ -17,7 +17,7 @@ export default function configureStore(initialState) {
   // Hot reload reducers
   if (module.hot) {
     module.hot.accept('./', () =>
-      store.replaceReducer(require('./').default) // eslint-disable-line global-require
+      store.replaceReducer(require('./').default), // eslint-disable-line global-require
     );
   }
 

@@ -25,7 +25,7 @@ it('should render correctly', () => {
   const tree = renderer.create(
     <Provider store={store}>
       <Decorated sendRequest={() => {}} />
-    </Provider>
+    </Provider>,
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

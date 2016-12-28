@@ -11,7 +11,7 @@ import collapsable from 'store/collapsable/reducer';
 
 const makeStore = (initial = {}) => createStore(
   combineReducers({ collapsable, form }),
-  { collapsable: initial }
+  { collapsable: initial },
 );
 
 describe('HeadersField', () => {
@@ -60,7 +60,7 @@ describe('HeadersField', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -85,7 +85,7 @@ describe('HeadersField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     const inputs = tree.find('input');
@@ -111,7 +111,7 @@ describe('HeadersField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     expect(props.fields.push).not.toHaveBeenCalled();
@@ -128,7 +128,7 @@ describe('HeadersField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     expect(props.fields.remove).not.toHaveBeenCalled();

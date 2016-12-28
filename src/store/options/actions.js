@@ -22,7 +22,7 @@ export function fetchOptions() {
     return localforage
       .getItem('options')
       .then(options => dispatch(
-        receiveOptions(Immutable.fromJS(options) || Immutable.Map())
+        receiveOptions(Immutable.fromJS(options) || Immutable.Map()),
       ));
   };
 }

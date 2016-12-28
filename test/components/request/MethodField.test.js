@@ -21,7 +21,7 @@ describe('MethodField', () => {
 
   it('should match the previous snapshot', () => {
     const tree = renderer.create(
-      <MethodField {...initialProps} />
+      <MethodField {...initialProps} />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('MethodField', () => {
     initialProps.meta.invalid = true;
 
     const tree = renderer.create(
-      <MethodField {...initialProps} />
+      <MethodField {...initialProps} />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('MethodField', () => {
     initialProps.meta.invalid = true;
 
     const tree = mount(
-      <MethodField {...initialProps} />
+      <MethodField {...initialProps} />,
     );
 
     expect(tree.find('.form-group').hasClass('has-error')).toBe(true);
@@ -51,7 +51,7 @@ describe('MethodField', () => {
 
   it('should render all the methods of the REQUEST_METHODS constant', () => {
     const tree = mount(
-      <MethodField {...initialProps} />
+      <MethodField {...initialProps} />,
     );
 
     const options = tree.find('option');

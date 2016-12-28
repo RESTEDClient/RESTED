@@ -11,7 +11,7 @@ describe('reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {})
+      reducer(undefined, {}),
     ).toEqual({
       title: null,
       body: null,
@@ -32,7 +32,7 @@ describe('reducer', () => {
           cancelClick: null,
           actions: [],
         },
-      })
+      }),
     ).toEqual({
       title: 'foo foo bar bar',
       body: 'yes no oui non',
@@ -47,7 +47,7 @@ describe('reducer', () => {
     expect(
       reducer(dirtyState, {
         type: types.REMOVE_MODAL,
-      })
+      }),
     ).toEqual({
       title: null,
       body: null,
@@ -71,7 +71,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.THROW_ERROR,
         data: errorData,
-      })
+      }),
     ).toEqual({
       title: 'Error!',
       body: 'Sorry, something went wrong.. If there is anything useful in a gray box below (or the web console), please create an issue on <a href="https://github.com/esphen/RESTED/issues" target="_blank">GitHub</a> with any relevant data you find. Remember to remove any sensitive data before posting.',

@@ -28,7 +28,7 @@ describe('response component', () => {
 
   it('renders nothing given no props', () => {
     const tree = renderer.create(
-      <Response loading={false} />
+      <Response loading={false} />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('response component', () => {
     const tree = mount(
       <Provider store={store}>
         <Response response={response} loading />
-      </Provider>
+      </Provider>,
     );
 
     expect(!tree.find('Loading').isEmpty()).toBe(true);
@@ -48,7 +48,7 @@ describe('response component', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Response response={response} loading={false} />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -58,7 +58,7 @@ describe('response component', () => {
     const tree = mount(
       <Provider store={store}>
         <Response response={response} loading={false} />
-      </Provider>
+      </Provider>,
     );
 
     const h3 = tree.find('.panel-body h3');
@@ -72,7 +72,7 @@ describe('response component', () => {
     const tree = mount(
       <Provider store={store}>
         <Response response={response} loading={false} />
-      </Provider>
+      </Provider>,
     );
 
     const expectedLink = (

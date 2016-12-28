@@ -12,7 +12,7 @@ function handleErrorsAndCallCallback(dispatch, callback, ...args) {
   if (chrome.runtime.lastError) {
     dispatch(throwError(
       'An error occured when reading/writing the browser sync storage\n',
-      chrome.runtime.lastError
+      chrome.runtime.lastError,
     ));
     return;
   }

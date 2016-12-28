@@ -23,7 +23,7 @@ describe('reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {})
+      reducer(undefined, {}),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
@@ -37,7 +37,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: types.EXECUTE_REQUEST,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
@@ -52,7 +52,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.RECEIVE_RESPONSE,
         response,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
@@ -67,7 +67,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.UPDATE_REQUEST,
         request,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request,
@@ -81,7 +81,7 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: types.CLEAR_RESPONSE,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
@@ -96,7 +96,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.USE_FORM_DATA,
         useFormData: true,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
@@ -109,7 +109,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.USE_FORM_DATA,
         useFormData: false,
-      })
+      }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,

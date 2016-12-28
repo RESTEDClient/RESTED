@@ -51,8 +51,7 @@ function ExportPane() {
             <h4
               data-ng-bind="$parent.exportFeedback"
               className="text-danger"
-            >
-            </h4>
+            />
           </Col>
           <FormGroup>
             <ControlLabel>

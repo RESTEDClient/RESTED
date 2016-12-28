@@ -10,7 +10,7 @@ import collapsable from 'store/collapsable/reducer';
 
 const makeStore = (initial = {}) => createStore(
   combineReducers({ collapsable }),
-  { collapsable: initial }
+  { collapsable: initial },
 );
 
 describe('BasicAuthField', () => {
@@ -38,7 +38,7 @@ describe('BasicAuthField', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -68,7 +68,7 @@ describe('BasicAuthField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     const inputs = tree.find('input');

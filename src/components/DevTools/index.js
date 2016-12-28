@@ -20,7 +20,7 @@ const DevTools = createDevTools(
       markStateDiff
       theme="tomorrow"
     />
-  </DockMonitor>
+  </DockMonitor>,
 );
 
 export default DevTools;

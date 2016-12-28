@@ -13,7 +13,7 @@ describe('reducer', () => {
   };
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {})
+      reducer(undefined, {}),
     ).toEqual({});
   });
 
@@ -22,7 +22,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.SET_EXPANDED,
         id: 'foo',
-      })
+      }),
     ).toEqual({
       foo: {
         expanded: true,
@@ -33,7 +33,7 @@ describe('reducer', () => {
       reducer(undefined, {
         type: types.SET_EXPANDED,
         id: 'headers',
-      })
+      }),
     ).toEqual({
       headers: {
         expanded: true,
@@ -46,7 +46,7 @@ describe('reducer', () => {
       reducer(dirtyState, {
         type: types.SET_COLLAPSED,
         id: 'foo',
-      })
+      }),
     ).toEqual({
       headers: {
         expanded: true,
@@ -60,7 +60,7 @@ describe('reducer', () => {
       reducer(dirtyState, {
         type: types.SET_COLLAPSED,
         id: 'headers',
-      })
+      }),
     ).toEqual({
       headers: {
         expanded: false,

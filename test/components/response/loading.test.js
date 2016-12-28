@@ -7,7 +7,7 @@ import Loading from 'components/Response/Loading';
 describe('Loading', () => {
   it('matches the previous snapshot', () => {
     const tree = renderer.create(
-      <Loading icon="cog" />
+      <Loading icon="cog" />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

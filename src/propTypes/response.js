@@ -13,7 +13,7 @@ export const responseShape = {
     shape({
       name: string.isRequired,
       value: string.isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
 };
 

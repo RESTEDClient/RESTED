@@ -59,7 +59,7 @@ describe('reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      reducer(undefined, {}).toJSON()
+      reducer(undefined, {}).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [],
@@ -75,7 +75,7 @@ describe('reducer', () => {
     expect(
       reducer(initialState, {
         type: types.FETCH_COLLECTIONS,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: true,
       collections: [],
@@ -92,7 +92,7 @@ describe('reducer', () => {
       reducer(initialState, {
         type: types.RECEIVE_COLLECTIONS,
         collections,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections,
@@ -108,7 +108,7 @@ describe('reducer', () => {
     expect(
       reducer(initialState, {
         type: types.ADD_COLLECTION,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [{
@@ -130,7 +130,7 @@ describe('reducer', () => {
       reducer(initialState, {
         type: types.DELETE_COLLECTION,
         collectionId: 'some-collection-UUID',
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [{
@@ -153,7 +153,7 @@ describe('reducer', () => {
         type: types.ADD_REQUEST,
         request,
         collectionIndex: 1,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [{
@@ -191,7 +191,7 @@ describe('reducer', () => {
         type: types.DELETE_REQUEST,
         requestId: 'some-request-UUID',
         collectionIndex: 0,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [{
@@ -255,7 +255,7 @@ describe('reducer', () => {
           collectionIndex: 1,
           requestIndex: 0,
         },
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [
@@ -320,7 +320,7 @@ describe('reducer', () => {
           collectionIndex: 0,
           requestIndex: 1,
         },
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [
@@ -360,7 +360,7 @@ describe('reducer', () => {
         type: types.REORDER_COLLECTION,
         oldIndex: 0,
         newIndex: 1,
-      }).toJSON()
+      }).toJSON(),
     ).toEqual({
       isFetching: false,
       collections: [{

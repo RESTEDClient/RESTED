@@ -62,6 +62,6 @@ export { Request };
 
 export default flow(
   reduxForm(formOptions),
-  connect(mapStateToProps, requestActions)
+  connect(mapStateToProps, requestActions),
 )(Request);
 

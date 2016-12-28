@@ -53,8 +53,7 @@ function ImportPane() {
             <h4
               data-ng-bind="$parent.importFeedback"
               className="text-danger"
-            >
-            </h4>
+            />
           </Col>
           <Row>
             <Col xs={12}>

@@ -13,7 +13,7 @@ it('should render correctly', () => {
       toggleCollapse={() => {}}
     >
       <h3>test</h3>
-    </Collapsable>
+    </Collapsable>,
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
@@ -29,7 +29,7 @@ it('should call the toggleCollapse function when activated', () => {
       toggleCollapse={toggleCollapse}
     >
       <h3>test</h3>
-    </Collapsable>
+    </Collapsable>,
   );
 
   expect(toggleCollapse).not.toHaveBeenCalled();
@@ -47,7 +47,7 @@ it('should call the toggleCollapse function when activated', () => {
       toggleCollapse={toggleCollapse}
     >
       <h3>test</h3>
-    </Collapsable>
+    </Collapsable>,
   );
 
   expect(toggleCollapse).not.toHaveBeenCalled();

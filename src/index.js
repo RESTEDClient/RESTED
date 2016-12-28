@@ -22,7 +22,7 @@ Promise.all([
     <Provider store={configureStore.default()}>
       <Root.default />
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('app'),
   );
 });
 
