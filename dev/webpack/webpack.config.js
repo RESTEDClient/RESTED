@@ -19,7 +19,7 @@ module.exports = {
   },
 
   /* Note: Inline source maps are super slow in Firefox */
-  devtool: isProd ? 'source-map' : 'cheap-source-map',
+  devtool: isProd ? 'source-map' : 'inline-source-map',
 
   performance: { hints: false },
 
