@@ -22,8 +22,7 @@ function ImportPane() {
             href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor#CopySave_All_As_HAR"
             target="_blank"
             rel="noopener noreferrer"
-          >
-          this link</a> for details.
+          > this link</a> for details.
         </p>
         <p>
           An option to import data from Postman (Chrome extension)
@@ -36,7 +35,6 @@ function ImportPane() {
           <Col xs={12} className="text-center">
             <ButtonGroup>
               <Button
-                class="btn btn-default"
                 data-ng-class="{active: $parent.importMethod === 'HAR'}"
                 data-ng-click="$parent.importMethod = 'HAR'"
               >

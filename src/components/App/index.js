@@ -10,7 +10,8 @@ import Collections from 'components/Collections';
 import Request from 'components/Request';
 import Response from 'components/Response';
 import Modal from 'components/Modal';
-import * as Actions from 'store/options/actions';
+import { fetchOptions } from 'store/options/actions';
+import { fetchUrlVariables } from 'store/urlVariables/actions';
 
 /*
  * This must be a React.Component because DragDropContext
@@ -22,6 +23,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.props.fetchOptions();
+    this.props.fetchUrlVariables();
   }
 
   render() {
@@ -50,11 +52,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  fetchUrlVariables: PropTypes.func.isRequired,
   fetchOptions: PropTypes.func.isRequired,
 };
 
 export default flow(
-  connect(null, Actions),
+  connect(null, { fetchOptions, fetchUrlVariables }),
   DragDropContext(HTML5Backend),
 )(App);
 
