@@ -28,7 +28,9 @@ function GeneralOptionsPane({ options, updateOption }) {
                     }}
                   >
                     {THEMES.map(theme => (
-                      <option value={theme}>{theme}</option>
+                      <option key={theme} value={theme}>
+                        {theme}
+                      </option>
                     ))}
                   </FormControl>
                 </FormGroup>
@@ -49,7 +51,9 @@ function GeneralOptionsPane({ options, updateOption }) {
                     }}
                   >
                     {HIGHLIGHT_STYLES.map(option => (
-                      <option value={option.style}>{option.title}</option>
+                      <option key={option.style} value={option.style}>
+                        {option.title}
+                      </option>
                     ))}
                   </FormControl>
                 </FormGroup>

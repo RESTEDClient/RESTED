@@ -24,7 +24,7 @@ describe('BodyField', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('BodyField', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -78,7 +78,7 @@ describe('BodyField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     // Filter out the initial checkbox
@@ -121,7 +121,7 @@ describe('BodyField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     const input = tree.find('textarea');
@@ -144,7 +144,7 @@ describe('BodyField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     expect(setUseFormData).not.toHaveBeenCalled();
@@ -170,7 +170,7 @@ describe('BodyField', () => {
     const tree = mount(
       <Provider store={store}>
         <Decorated />
-      </Provider>
+      </Provider>,
     );
 
     expect(setUseFormData).not.toHaveBeenCalled();

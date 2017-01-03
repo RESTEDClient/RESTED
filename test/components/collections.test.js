@@ -28,7 +28,7 @@ function wrapInTestContext(DecoratedComponent, store = makeStore()) {
           </Provider>
         );
       }
-    }
+    },
     /* eslint-enable react/prefer-stateless-function */
   );
 }
@@ -41,7 +41,7 @@ describe('Collections component', () => {
   it('should match the previous snapshot', () => {
     const BoxedComponent = wrapInTestContext(Collections, store);
     const tree = renderer.create(
-      <BoxedComponent />
+      <BoxedComponent />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -49,7 +49,7 @@ describe('Collections component', () => {
   it('should render a "no requests" message when given no collections', () => {
     const BoxedComponent = wrapInTestContext(Collections);
     const tree = mount(
-      <BoxedComponent />
+      <BoxedComponent />,
     );
 
     expect(tree.find('h5').prop('children')).toEqual('No collected requests. Add by pressing "plus" in the top right of the request panel.');
@@ -58,7 +58,7 @@ describe('Collections component', () => {
   it('should render two collections when given a dataset with two collections', () => {
     const BoxedComponent = wrapInTestContext(Collections, store);
     const tree = mount(
-      <BoxedComponent />
+      <BoxedComponent />,
     );
 
     expect(tree.find('Collection').length).toEqual(2);
@@ -76,7 +76,7 @@ describe('Collection component', () => {
       <BoxedComponent
         collectionIndex={0}
         requests={requests}
-      />
+      />,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,10 +1,11 @@
-import * as BrowserSync from './browserSync';
 import {
   DB_OBJECT_STORE_NAME,
   DB_URL_VARIABLES_STORE_NAME,
   DB_OPTIONS_STORE_NAME,
   DB_HISTORY_STORE_NAME,
 } from 'constants/constants';
+
+import * as BrowserSync from './browserSync';
 
 function msg(success, message, object) {
   return { success, message, object };

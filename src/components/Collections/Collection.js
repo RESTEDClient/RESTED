@@ -122,7 +122,7 @@ class Collection extends React.Component {
             />
           ))}
         </StyledCollection>
-      </div>
+      </div>,
     ));
   }
 }
@@ -147,6 +147,6 @@ export default flow(
     connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  connect(null, Actions)
+  connect(null, Actions),
 )(Collection);
 

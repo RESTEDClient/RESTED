@@ -18,6 +18,6 @@ export function throwError(data) {
 
 export function errorHandler(event) {
   return throwError('An error occured when reading/writing to ' +
-    `chrome.storage: ${JSON.stringify(event, ' ', 2)}`
+    `chrome.storage: ${JSON.stringify(event, ' ', 2)}`,
   );
 }

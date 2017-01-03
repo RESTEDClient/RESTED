@@ -96,7 +96,7 @@ function Request(props) {
           </ListGroupItem>
         </ListGroup>
       </StyledRequest>
-    </div>
+    </div>,
   ));
 }
 
@@ -108,6 +108,6 @@ export default flow(
     connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  connect(null, Actions)
+  connect(null, Actions),
 )(Request);
 

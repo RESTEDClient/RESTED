@@ -46,7 +46,7 @@ function Titlebar(props) {
             showChooseCollectionModal(props)
               .then(
                 index => handleSubmit(props, index),
-                removeModal
+                removeModal,
               );
           }
           // if (requestExists)

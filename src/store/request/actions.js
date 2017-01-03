@@ -44,7 +44,7 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
     if (basicAuth && basicAuth.username) {
       requestHeaders.append(
         'Authorization',
-        `Basic ${base64Encode(`${basicAuth.username}:${basicAuth.password}`)}`
+        `Basic ${base64Encode(`${basicAuth.username}:${basicAuth.password}`)}`,
       );
     }
 
@@ -63,6 +63,8 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
     }).then(response => {
       // TODO Move out to a separate function to it can be tested
       const responseHeaders = [];
+
+      // eslint-disable-next-line no-restricted-syntax
       for (const header of response.headers) {
         responseHeaders.push({
           name: header[0],
@@ -80,8 +82,9 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
           method,
         }));
       });
-    }).catch(() => {
+    }).catch(e => {
       // TODO Handle network errors, permission errors..
+      throw e;
     });
   };
 }

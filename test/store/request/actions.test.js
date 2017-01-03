@@ -115,7 +115,7 @@ describe('actions', () => {
       expect(dispatch).toHaveBeenCalledWith(change(
         'request',               // Redux store to be updated
         'url',                   // Field to be updated
-        'http://fallbackUrl.com' // Value
+        'http://fallbackUrl.com', // Value
       ));
     });
 

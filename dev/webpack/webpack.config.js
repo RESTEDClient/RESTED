@@ -60,6 +60,9 @@ module.exports = {
         test: /\.js$/,
         loader: 'eslint-loader',
         include: resolve(rootDir, 'src'),
+        options: {
+          cache: false,
+        }
       },
       {
         test: /\.js/,

@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Col, Clearfix } from 'react-bootstrap';
+import { Col, Clearfix, Table, Button, FormControl } from 'react-bootstrap';
 
-function TemplateOptionsPane() {
+import Fonticon from 'components/Fonticon';
+import * as Actions from 'store/urlVariables/actions';
+
+function TemplateOptionsPane(props) {
+  const {
+    urlVariables,
+    addTemplate,
+    updateTemplate,
+    deleteTemplate,
+  } = props;
+
   return (
     <Clearfix>
       <br />
@@ -16,13 +26,92 @@ function TemplateOptionsPane() {
           making it great for things like API keys or IDs that you may
           have to change in several URLs at once.
         </p>
+        <Table striped>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Value</th>
+              <th />
+            </tr>
+          </thead>
+
+          <tbody>
+            {urlVariables.map((variable, i) => {
+              const { name, value } = variable.toJS();
+
+              return (
+                <tr key={i}>
+                  <td>
+                    <FormControl
+                      value={name}
+                      placeholder="Key"
+                      onChange={e => {
+                        updateTemplate(i, {
+                          name: e.target.value,
+                          value,
+                        });
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <FormControl
+                      value={value}
+                      placeholder="Value"
+                      onChange={e => {
+                        updateTemplate(i, {
+                          name,
+                          value: e.target.value,
+                        });
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <Button
+                      bsStyle="link"
+                      title="Remove URL parameter"
+                      onClick={() => deleteTemplate(i)}
+                    >
+                      <Fonticon icon="trash" />
+                    </Button>
+                  </td>
+                </tr>
+              );
+            }).toArray()}
+
+            <tr>
+              <td colSpan="3">
+                <Button
+                  bsStyle="link"
+                  title="Add a variable"
+                  onClick={addTemplate}
+                >
+                  <Fonticon icon="plus" />
+                  Add a variable
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
       </Col>
     </Clearfix>
   );
 }
 
-const mapStateToProps = () => ({
+TemplateOptionsPane.propTypes = {
+  addTemplate: PropTypes.func.isRequired,
+  updateTemplate: PropTypes.func.isRequired,
+  deleteTemplate: PropTypes.func.isRequired,
+  urlVariables: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string,
+    }),
+  ).isRequired,
+};
+
+const mapStateToProps = state => ({
+  urlVariables: state.urlVariables.get('urlVariables'),
 });
 
-export default connect(mapStateToProps)(TemplateOptionsPane);
+export default connect(mapStateToProps, Actions)(TemplateOptionsPane);
 

@@ -41,7 +41,7 @@ export function fromPostman(json) {
         result.data.map(data => ({
           name: data.key,
           value: data.value,
-        }))
+        })),
       );
     }
 

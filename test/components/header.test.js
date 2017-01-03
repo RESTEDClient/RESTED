@@ -9,21 +9,21 @@ jest.mock('react-dom');
 
 test('Header renders correctly', () => {
   const tree = renderer.create(
-    <Header />
+    <Header />,
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Header contains the RESTED logo', () => {
   const tree = mount(
-    <Header />
+    <Header />,
   );
   expect(tree.find('img').prop('alt')).toBe('RESTED logo');
 });
 
 test('Header contains the RESTED name', () => {
   const tree = mount(
-    <Header />
+    <Header />,
   );
   expect(tree.find('h1 span').prop('children')).toBe('RESTED');
 });

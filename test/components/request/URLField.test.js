@@ -21,7 +21,7 @@ describe('URLField', () => {
 
   it('should match the previous snapshot', () => {
     const tree = renderer.create(
-      <URLField {...initialProps} />
+      <URLField {...initialProps} />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('URLField', () => {
     initialProps.meta.invalid = true;
 
     const tree = renderer.create(
-      <URLField {...initialProps} />
+      <URLField {...initialProps} />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('URLField', () => {
     initialProps.meta.invalid = true;
 
     const tree = mount(
-      <URLField {...initialProps} />
+      <URLField {...initialProps} />,
     );
 
     expect(tree.find('.form-group').hasClass('has-error')).toBe(true);
@@ -53,7 +53,7 @@ describe('URLField', () => {
 
   it('should render a placeholder into the field', () => {
     const tree = mount(
-      <URLField {...initialProps} />
+      <URLField {...initialProps} />,
     );
 
     expect(tree.find('input').prop('placeholder')).toBe('https://example.com');

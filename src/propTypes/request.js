@@ -13,13 +13,13 @@ export const requestShape = {
     shape({
       name: string.isRequired,
       value: string.isRequired,
-    })
+    }),
   ).isRequired,
   headers: arrayOf(
     shape({
       name: string.isRequired,
       value: string.isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
 };
 
