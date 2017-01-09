@@ -3,11 +3,21 @@
   plugins: [
     'transform-object-assign',
     'transform-es2015-destructuring',
-    'transform-object-rest-spread'
+    'transform-object-rest-spread',
+    'transform-class-properties'
   ],
   env: {
     test: {
       presets: ['es2015', 'react'],
+    },
+    production: {
+      plugins: [
+        'transform-react-remove-prop-types',
+        'transform-object-assign',
+        'transform-es2015-destructuring',
+        'transform-object-rest-spread',
+        'transform-class-properties'
+      ]
     }
   }
 }

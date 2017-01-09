@@ -1,6 +1,7 @@
 import {
   SET_MODAL_DATA,
   REMOVE_MODAL,
+  CLEAR_MODAL_DATA,
   THROW_ERROR,
 } from './types';
 
@@ -10,6 +11,10 @@ export function setModalData(data) {
 
 export function removeModal() {
   return { type: REMOVE_MODAL };
+}
+
+export function clearModalData() {
+  return { type: CLEAR_MODAL_DATA };
 }
 
 export function throwError(data) {

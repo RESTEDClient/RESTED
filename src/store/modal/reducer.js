@@ -1,6 +1,7 @@
 import {
   SET_MODAL_DATA,
   REMOVE_MODAL,
+  CLEAR_MODAL_DATA,
   THROW_ERROR,
 } from './types';
 
@@ -26,6 +27,11 @@ export default function (state = initialState, action) {
       });
 
     case REMOVE_MODAL:
+      return Object.assign({}, state, {
+        visible: false,
+      });
+
+    case CLEAR_MODAL_DATA:
       return initialState;
 
     case THROW_ERROR:

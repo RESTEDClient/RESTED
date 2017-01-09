@@ -33,14 +33,14 @@ export function fetchCollections() {
   };
 }
 
-export function doAddCollection() {
-  return { type: ADD_COLLECTION };
+export function doAddCollection(requests) {
+  return { type: ADD_COLLECTION, requests };
 }
 
 // TODO Test
-export function addCollection() {
+export function addCollection(requests) {
   return (dispatch, getState) => {
-    dispatch(doAddCollection());
+    dispatch(doAddCollection(requests));
 
     return localforage
       .setItem('collections', getCollections(getState()).toJS());

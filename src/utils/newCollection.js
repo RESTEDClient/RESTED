@@ -20,12 +20,12 @@ function createId() {
  * Creates a new collection, factoring in the names of
  * the collections that already exist
  */
-export default function newCollection(collections) {
+export default function newCollection(collections, requests = []) {
   let i = 0;
   let name;
 
   do {
-    name = `Collection${(i ? ` ${i}` : '')}`;
+    name = `Collection${i ? ` ${i}` : ''}`;
     i += 1;
   } while (!isUnique(name, collections));
 
@@ -33,6 +33,6 @@ export default function newCollection(collections) {
     name,
     id: createId(),
     minimized: false,
-    requests: [],
+    requests,
   });
 }

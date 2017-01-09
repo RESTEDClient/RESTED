@@ -10,10 +10,7 @@ export function showOptionsModal({ setModalData }) {
       body: <ModalBody />,
       visible: true,
       cancelClick: reject,
-      actions: [{
-        text: 'Save',
-        click: resolve,
-      }],
+      actions: [],
     });
   });
 }
