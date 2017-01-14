@@ -197,12 +197,18 @@ class ImportPane extends React.Component {
                 </FormGroup>
               </Col>
             </Row>
+            <Row>
+              <Col xs={12}>
+                <Button
+                  bsStyle="primary"
+                  className="pull-right"
+                  onClick={this.submit}
+                >
+                  Import
+                </Button>
+              </Col>
+            </Row>
           </section>
-          <div className="text-right">
-            <Button onClick={this.submit}>
-              Import
-            </Button>
-          </div>
         </Col>
       </Clearfix>
     );
