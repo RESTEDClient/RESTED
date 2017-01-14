@@ -48,6 +48,11 @@ function SelectCollectionForm({ collections, onChange }) {
   );
 }
 
+SelectCollectionForm.propTypes = {
+  collections: ImmutablePropTypes.listOf(collectionShape),
+  onChange: PropTypes.func.isRequired,
+};
+
 class ImportPane extends React.Component {
   static propTypes = {
     collections: ImmutablePropTypes.listOf(collectionShape),
