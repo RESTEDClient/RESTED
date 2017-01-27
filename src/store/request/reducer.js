@@ -30,6 +30,7 @@ export default function (state = initialState, action) {
         loading: false,
       });
 
+    // TODO Not needed?
     case UPDATE_REQUEST:
       return Object.assign({}, state, {
         request: action.request,

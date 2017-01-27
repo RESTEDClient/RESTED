@@ -15,6 +15,8 @@ import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 import BodyField from './BodyField';
 
+export const requestForm = 'request';
+
 function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (
     <Panel header={<Titlebar />}>
@@ -48,7 +50,7 @@ Request.propTypes = {
 };
 
 const formOptions = {
-  form: 'request',
+  form: requestForm,
   validate: requestValidation,
 };
 

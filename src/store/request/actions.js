@@ -1,7 +1,11 @@
-import { change } from 'redux-form';
+import Immutable from 'immutable';
+import { change, initialize } from 'redux-form';
 
 import base64Encode from 'utils/base64';
 import { reMapHeaders } from 'utils/requestUtils';
+import { pushHistory } from 'store/history/actions';
+import { requestForm } from 'components/Request';
+
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
@@ -30,13 +34,21 @@ export function setUseFormData(useFormData) {
   return { type: USE_FORM_DATA, useFormData };
 }
 
-export function sendRequest({ url, method, headers, formData, basicAuth }) {
+export function selectRequest(request) {
+  return dispatch => {
+    dispatch(initialize(requestForm, request.toJS()));
+  };
+}
+
+export function sendRequest(request) {
+  const { url, method, headers, formData, basicAuth } = request;
   return (dispatch, getState) => {
     dispatch(executeRequest());
 
     const fallbackUrl = getState().request.placeholderUrl;
     if (!url) {
-      dispatch(change('request', 'url', fallbackUrl));
+      dispatch(change(requestForm, 'url', fallbackUrl));
+      request.url = fallbackUrl;
     }
 
     const requestHeaders = new Headers(reMapHeaders(headers, true));
@@ -54,6 +66,8 @@ export function sendRequest({ url, method, headers, formData, basicAuth }) {
 
       formData.forEach(f => { body.append(f.name, f.value); });
     }
+
+    dispatch(pushHistory(Immutable.fromJS(request)));
 
     return fetch(url || fallbackUrl, {
       method,

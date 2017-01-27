@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd';
 import flow from 'lodash.flow';
 
 import Header from 'components/Header';
-import Collections from 'components/Collections';
+import LeftPanel from 'components/LeftPanel';
 import Request from 'components/Request';
 import Response from 'components/Response';
 import Modal from 'components/Modal';
@@ -36,7 +36,7 @@ class App extends React.Component {
           <main>
             <Row>
               <Col xsHidden sm={4}>
-                <Collections />
+                <LeftPanel />
               </Col>
               <Col xs={12} sm={8}>
                 <Request />
