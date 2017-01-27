@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Nav, NavItem, Panel } from 'react-bootstrap';
+import { Nav, NavItem, Panel } from 'react-bootstrap';
 
 import Collections from 'components/Collections';
 import History from 'components/History';
@@ -24,6 +24,11 @@ function LeftPanel({ activeTab, setActiveTab }) {
     </Panel>
   );
 }
+
+LeftPanel.propTypes = {
+  activeTab: PropTypes.string.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   activeTab: getActiveTab(state),

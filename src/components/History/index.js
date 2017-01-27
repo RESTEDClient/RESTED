@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Panel } from 'react-bootstrap';
 
 import HistoryList from './HistoryList';

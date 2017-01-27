@@ -10,6 +10,10 @@ import {
   CLEAR_HISTORY,
 } from './types';
 
+function updateLocalStorage(state) {
+  return localforage.setItem('history', getHistory(state).toJS());
+}
+
 export function startFetch() {
   return { type: FETCH_HISTORY };
 }
@@ -36,7 +40,7 @@ export function selectRequest(request) {
     // dispatch history.setSelected ?
     // dispatch request.updateRequest
     dispatch(doSelectRequest(request));
-  }
+  };
 }
 
 export function doPushHistory(request) {
@@ -76,9 +80,5 @@ export function clearHistory() {
 
     return updateLocalStorage(getState());
   };
-}
-
-function updateLocalStorage(state) {
-  return localforage.setItem('history', getHistory(state).toJS());
 }
 

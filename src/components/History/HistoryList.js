@@ -1,16 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-import { getHistory } from 'store/history/selectors';
+import requestShape from 'propTypes/request';
+import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
 
-function ListGroupHeader({ request, index, removeFromHistory }) {
+function ListGroupHeader({ request, removeFromHistory }) {
   return (
     <h4>
       {request.get('method')}
       <div
-        class="pull-right"
+        className="pull-right"
         id="removeRequest"
       >
         <button
@@ -25,6 +26,11 @@ function ListGroupHeader({ request, index, removeFromHistory }) {
   );
 }
 
+ListGroupHeader.propTypes = {
+  request: requestShape.isRequired,
+  removeFromHistory: PropTypes.func.isRequired,
+};
+
 class HistoryList extends React.Component {
   componentDidMount() {
     this.props.fetchHistory();
@@ -33,10 +39,9 @@ class HistoryList extends React.Component {
   render() {
     const { history, removeFromHistory, selectRequest } = this.props;
     return (
-      <ul class="panel-body collection-body"
-        data-ng-hide="history.length === 0">
+      <ul>
         {history.map((request, index) => (
-          <li>
+          <li key={index}>
             <ListGroup>
               <ListGroupItem
                 header={
@@ -46,7 +51,6 @@ class HistoryList extends React.Component {
                     removeFromHistory={removeFromHistory}
                   />
                 }
-                data-ng-class="{active: request == selectedRequest}"
                 onClick={() => selectRequest(request)}
               >
 
@@ -66,6 +70,12 @@ class HistoryList extends React.Component {
     */
   }
 }
+
+HistoryList.propTypes = {
+  selectRequest: PropTypes.func.isRequired,
+  fetchHistory: PropTypes.func.isRequired,
+  removeFromHistory: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   history: getHistory(state),
