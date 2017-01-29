@@ -1,23 +1,24 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 import requestShape from 'propTypes/request';
 import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
 
-function ListGroupHeader({ request, removeFromHistory }) {
+function ListGroupHeader({ index, request, removeFromHistory }) {
   return (
-    <h4>
+    <h4 className="list-group-item-heading">
       {request.get('method')}
       <div
         className="pull-right"
         id="removeRequest"
       >
         <button
-          data-config="removeRequestConfig"
-          onClick={removeFromHistory}
-          data-click-event="removeFromHistory($index)"
+          onClick={e => {
+            e.stopPropagation();
+            removeFromHistory(index);
+          }}
         >
           Remove from history
         </button>
@@ -27,6 +28,7 @@ function ListGroupHeader({ request, removeFromHistory }) {
 }
 
 ListGroupHeader.propTypes = {
+  index: PropTypes.number.isRequired,
   request: requestShape.isRequired,
   removeFromHistory: PropTypes.func.isRequired,
 };
@@ -42,20 +44,18 @@ class HistoryList extends React.Component {
       <ul>
         {history.map((request, index) => (
           <li key={index}>
-            <ListGroup>
-              <ListGroupItem
-                header={
-                  <ListGroupHeader
-                    request={request}
-                    index={index}
-                    removeFromHistory={removeFromHistory}
-                  />
-                }
+            <ListGroup componentClass="ul">
+              <li
+                className="list-group-item"
                 onClick={() => selectRequest(request)}
               >
-
+                <ListGroupHeader
+                  request={request}
+                  index={index}
+                  removeFromHistory={removeFromHistory}
+                />
                 {request.get('url')}
-              </ListGroupItem>
+              </li>
             </ListGroup>
           </li>
         ))}

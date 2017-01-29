@@ -36,9 +36,9 @@ export function fetchHistory() {
 }
 
 export function selectRequest(request) {
+  // TODO Don't use this dispatch "redirect", instead dspatch selectRequest
+  // directly
   return dispatch => {
-    // dispatch history.setSelected ?
-    // dispatch request.updateRequest
     dispatch(doSelectRequest(request));
   };
 }
@@ -50,20 +50,27 @@ export function doPushHistory(request) {
 // TODO Test
 export function pushHistory(request) {
   return (dispatch, getState) => {
+    const { url, method } = getHistory(getState()).first().toJS();
+
+    // Do not add the same request if sent several times
+    if (url === request.get('url') && method === request.get('method')) {
+      return null;
+    }
+
     dispatch(doPushHistory(request));
 
     return updateLocalStorage(getState());
   };
 }
 
-export function doDeleteItem(index) {
+export function doRemoveFromHistory(index) {
   return { type: DELETE_ITEM, index };
 }
 
 // TODO Test
-export function deleteItem(index) {
+export function removeFromHistory(index) {
   return (dispatch, getState) => {
-    dispatch(doPushHistory(index));
+    dispatch(doRemoveFromHistory(index));
 
     return updateLocalStorage(getState());
   };

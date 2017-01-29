@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
     case PUSH_HISTORY:
       return state
         .update('data', history => (
-          history.push(action.request)
+          history.unshift(action.request)
         ));
 
     case DELETE_ITEM:
