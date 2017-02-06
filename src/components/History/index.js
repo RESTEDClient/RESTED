@@ -1,6 +1,6 @@
 import React from 'react';
-import { Panel } from 'react-bootstrap';
 
+import { Panel } from './StyledComponents';
 import HistoryList from './HistoryList';
 
 export default function History() {

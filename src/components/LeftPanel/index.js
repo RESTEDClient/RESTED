@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Nav, NavItem, Panel } from 'react-bootstrap';
+import { Nav, NavItem } from 'react-bootstrap';
 
 import Collections from 'components/Collections';
 import History from 'components/History';
 import { updateOption } from 'store/options/actions';
 import { getActiveTab } from 'store/options/selectors';
+
+import { Panel } from './StyledComponents';
 
 function Titlebar(props) {
   return (

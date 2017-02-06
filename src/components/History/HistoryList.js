@@ -6,6 +6,8 @@ import requestShape from 'propTypes/request';
 import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
 
+import { List, ListGroupItem } from './StyledComponents';
+
 function ListGroupHeader({ index, request, removeFromHistory }) {
   return (
     <h4 className="list-group-item-heading">
@@ -41,11 +43,11 @@ class HistoryList extends React.Component {
   render() {
     const { history, removeFromHistory, selectRequest } = this.props;
     return (
-      <ul>
+      <List>
         {history.map((request, index) => (
           <li key={index}>
             <ListGroup componentClass="ul">
-              <li
+              <ListGroupItem
                 className="list-group-item"
                 onClick={() => selectRequest(request)}
               >
@@ -55,11 +57,11 @@ class HistoryList extends React.Component {
                   removeFromHistory={removeFromHistory}
                 />
                 {request.get('url')}
-              </li>
+              </ListGroupItem>
             </ListGroup>
           </li>
         ))}
-      </ul>
+      </List>
     );
     /*
       <div data-ng-show="!history || history.length === 0">
