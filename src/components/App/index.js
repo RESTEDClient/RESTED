@@ -10,8 +10,11 @@ import LeftPanel from 'components/LeftPanel';
 import Request from 'components/Request';
 import Response from 'components/Response';
 import Modal from 'components/Modal';
+import updateTheme from 'utils/updateTheme';
+import { getTheme } from 'store/options/selectors';
 import { fetchOptions } from 'store/options/actions';
 import { fetchUrlVariables } from 'store/urlVariables/actions';
+import { THEMES } from 'constants/constants';
 
 /*
  * This must be a React.Component because DragDropContext
@@ -22,8 +25,14 @@ import { fetchUrlVariables } from 'store/urlVariables/actions';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.props.fetchOptions();
-    this.props.fetchUrlVariables();
+    props.fetchOptions();
+    props.fetchUrlVariables();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.theme !== this.props.theme) {
+      updateTheme(newProps.theme);
+    }
   }
 
   render() {
@@ -54,10 +63,15 @@ class App extends React.Component {
 App.propTypes = {
   fetchUrlVariables: PropTypes.func.isRequired,
   fetchOptions: PropTypes.func.isRequired,
+  theme: PropTypes.oneOf(THEMES).isRequired,
 };
 
+const mapStateToProps = state => ({
+  theme: getTheme(state),
+});
+
 export default flow(
-  connect(null, { fetchOptions, fetchUrlVariables }),
+  connect(mapStateToProps, { fetchOptions, fetchUrlVariables }),
   DragDropContext(HTML5Backend),
 )(App);
 

@@ -8,3 +8,8 @@ export const getActiveTab = createSelector(
   options => options && options.getIn(['options', 'activeTab'], 'collections'),
 );
 
+export const getTheme = createSelector(
+  [optionsSelector],
+  options => options && options.getIn(['options', 'theme'], 'retro'),
+);
+
