@@ -7,6 +7,7 @@ import UUID from 'uuid-js';
 
 import requestPropType from 'propTypes/request';
 import collectionShape from 'propTypes/collection';
+import IconButton from 'components/IconButton';
 import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
 import { getCollections } from 'store/collections/selectors';
 import * as collectionsActions from 'store/collections/actions';
@@ -25,11 +26,11 @@ function Titlebar(props) {
   const { collections, removeModal, formPristine, formInvalid } = props;
 
   return (
-    <span>
-      <h2>
+    <span className="clearfix">
+      <h2 className="pull-left">
         Request
       </h2>
-      <button
+      <IconButton
         onClick={() => {
           if (formPristine || formInvalid) {
             // Set URL as touched to give feedback to user
@@ -52,12 +53,16 @@ function Titlebar(props) {
           // if (requestExists)
           // Modal (do you want to replace?)
         }}
-      >
-        +
-      </button>
-      <button onClick={() => showOptionsModal(props)}>
-        Options
-      </button>
+        tooltip="Add to collection"
+        icon="plus"
+        className="pull-right"
+      />
+      <IconButton
+        onClick={() => showOptionsModal(props)}
+        tooltip="Options"
+        icon="cog"
+        className="pull-right"
+      />
     </span>
   );
 }
