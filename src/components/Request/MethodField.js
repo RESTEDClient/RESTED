@@ -21,7 +21,7 @@ function MethodField({ input, meta }) {
         </ControlLabel>
       </Col>
 
-      <Col sm={8}>
+      <Col sm={7}>
         <FormControl
           componentClass="select"
           placeholder="Method"
@@ -34,7 +34,7 @@ function MethodField({ input, meta }) {
           ))}
         </FormControl>
       </Col>
-      <Col sm={2}>
+      <Col sm={3}>
         <Button
           type="submit"
           bsStyle="primary"

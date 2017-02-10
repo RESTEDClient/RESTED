@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Col } from 'react-bootstrap';
 
-// Strip collapsed prop
+// Strip collapsed prop to avoid react warning
 // eslint-disable-next-line
 const Left = ({ collapsed, ...props }) => <Col {...props} />;
 
