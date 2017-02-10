@@ -10,8 +10,10 @@ import collectionShape from 'propTypes/collection';
 import IconButton from 'components/IconButton';
 import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
 import { getCollections } from 'store/collections/selectors';
+import { getCollectionsMinimized } from 'store/options/selectors';
 import * as collectionsActions from 'store/collections/actions';
 import * as modalActions from 'store/modal/actions';
+import * as optionsActions from 'store/options/actions';
 
 function handleSubmit(props, collectionIndex = 0) {
   const addableRequest = Object.assign({}, props.request, {
@@ -22,8 +24,18 @@ function handleSubmit(props, collectionIndex = 0) {
   props.removeModal();
 }
 
+function toggleCollectionsExpanded({ collectionsMinimized, updateOption }) {
+  updateOption('collectionsMinimized', !collectionsMinimized);
+}
+
 function Titlebar(props) {
-  const { collections, removeModal, formPristine, formInvalid } = props;
+  const {
+    collections,
+    removeModal,
+    formPristine,
+    formInvalid,
+    collectionsMinimized,
+  } = props;
 
   return (
     <span className="clearfix">
@@ -63,6 +75,12 @@ function Titlebar(props) {
         icon="cog"
         className="pull-right"
       />
+      <IconButton
+        onClick={() => toggleCollectionsExpanded(props)}
+        tooltip={`${collectionsMinimized ? 'Show' : 'Hide'} collections`}
+        icon={collectionsMinimized ? 'compress' : 'expand'}
+        className="pull-right"
+      />
     </span>
   );
 }
@@ -72,6 +90,7 @@ Titlebar.propTypes = {
   removeModal: PropTypes.func.isRequired,
   formPristine: PropTypes.bool.isRequired,
   formInvalid: PropTypes.bool.isRequired,
+  collectionsMinimized: PropTypes.bool.isRequired,
   /* eslint-disable react/no-unused-prop-types */
   touch: PropTypes.func.isRequired,
   addCollection: PropTypes.func.isRequired,
@@ -85,11 +104,13 @@ const mapStateToProps = state => ({
   formPristine: isPristine('request')(state),
   formInvalid: isInvalid('request')(state),
   collections: getCollections(state),
+  collectionsMinimized: getCollectionsMinimized(state),
 });
 
 export default connect(mapStateToProps, {
   ...collectionsActions,
   ...modalActions,
+  ...optionsActions,
   touch,
 })(Titlebar);
 

@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 
 const optionsSelector = state => state.options;
 
-/* eslint-disable import/prefer-default-export */
 export const getActiveTab = createSelector(
   [optionsSelector],
   options => options && options.getIn(['options', 'activeTab'], 'collections'),
@@ -11,5 +10,10 @@ export const getActiveTab = createSelector(
 export const getTheme = createSelector(
   [optionsSelector],
   options => options && options.getIn(['options', 'theme'], 'retro'),
+);
+
+export const getCollectionsMinimized = createSelector(
+  [optionsSelector],
+  options => options && options.getIn(['options', 'collectionsMinimized'], false),
 );
 
