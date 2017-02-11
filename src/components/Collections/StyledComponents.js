@@ -1,3 +1,4 @@
+/* eslint-disable no-confusing-arrow */
 import styled, { css } from 'styled-components';
 
 const hoverStyle = css`
@@ -46,12 +47,14 @@ export const StyledRequest = styled.div`
   }
 `;
 
+const asideWidth = 36;
+
 export const AsideButtons = styled.aside`
-  max-width: 36px;
+  max-width: ${asideWidth}px;
   flex: 1;
 
   button {
-    height: 50%;
+    height: ${props => props.compact ? 100 : 50}%;
   }
 
   button:first-child {
@@ -63,5 +66,16 @@ export const MainContent = styled.div`
   padding: 10px;
   word-break: break-all;
   border-left: 1px solid #ddd;
+  width: calc(100% - ${asideWidth}px);
+
+  input {
+    width: calc(100% - 36px);
+  }
+
+  ${props => props.compact && css`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `}
 `;
 

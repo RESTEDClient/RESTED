@@ -10,6 +10,7 @@ import {
   DELETE_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
+  RENAME_REQUEST,
 } from './types';
 
 export function startFetch() {
@@ -111,6 +112,19 @@ export function doReorderCollection(oldIndex, newIndex) {
 export function reorderCollection(oldIndex, newIndex) {
   return (dispatch, getState) => {
     dispatch(doReorderCollection(oldIndex, newIndex));
+
+    return localforage
+      .setItem('collections', getCollections(getState()).toJS());
+  };
+}
+
+export function doRenameRequest(collectionIndex, requestIndex, name) {
+  return { type: RENAME_REQUEST, collectionIndex, requestIndex, name };
+}
+
+export function renameRequest(collectionIndex, requestIndex, name) {
+  return (dispatch, getState) => {
+    dispatch(doRenameRequest(collectionIndex, requestIndex, name));
 
     return localforage
       .setItem('collections', getCollections(getState()).toJS());

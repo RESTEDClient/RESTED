@@ -8,7 +8,7 @@ export default class IconButton extends React.Component {
   static propTypes = {
     tooltip: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     className: PropTypes.string,
   };
 

@@ -14,7 +14,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
     <div>
        
       <div
-        className="cKerge">
+        className="kzXmMh">
         <div
           className="list-group">
           <div
@@ -23,6 +23,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
               className="goDgEe">
               <button
                 className="eZEqWd"
+                onClick={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}>
                 <div
@@ -31,7 +32,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
                     className="ddxWyy" />
                   <span
                     className="jsYWMN">
-                    Edit
+                    Toggle edit
                   </span>
                 </div>
                 <i
@@ -49,16 +50,16 @@ exports[`Collection component should match the previous snapshot 1`] = `
                     className="ddxWyy" />
                   <span
                     className="jsYWMN">
-                    Delete
+                    Minimize
                   </span>
                 </div>
                 <i
-                  className="fa fa-trash"
+                  className="fa fa-minus"
                   role="presentation" />
               </button>
             </aside>
             <div
-              className="dBEkk">
+              className="kHaGmh">
               <h4>
                 POST
               </h4>
@@ -120,7 +121,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="cKerge">
+              className="kzXmMh">
               <div
                 className="list-group">
                 <div
@@ -129,6 +130,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe">
                     <button
                       className="eZEqWd"
+                      onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}>
                       <div
@@ -137,7 +139,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Edit
+                          Toggle edit
                         </span>
                       </div>
                       <i
@@ -155,16 +157,16 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Delete
+                          Minimize
                         </span>
                       </div>
                       <i
-                        className="fa fa-trash"
+                        className="fa fa-minus"
                         role="presentation" />
                     </button>
                   </aside>
                   <div
-                    className="dBEkk">
+                    className="kHaGmh">
                     <h4>
                       POST
                     </h4>
@@ -193,7 +195,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="cKerge">
+              className="kzXmMh">
               <div
                 className="list-group">
                 <div
@@ -202,6 +204,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe">
                     <button
                       className="eZEqWd"
+                      onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}>
                       <div
@@ -210,7 +213,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Edit
+                          Toggle edit
                         </span>
                       </div>
                       <i
@@ -228,16 +231,16 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Delete
+                          Minimize
                         </span>
                       </div>
                       <i
-                        className="fa fa-trash"
+                        className="fa fa-minus"
                         role="presentation" />
                     </button>
                   </aside>
                   <div
-                    className="dBEkk">
+                    className="kHaGmh">
                     <h4>
                       POST
                     </h4>
@@ -250,7 +253,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="cKerge">
+              className="kzXmMh">
               <div
                 className="list-group">
                 <div
@@ -259,6 +262,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe">
                     <button
                       className="eZEqWd"
+                      onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}>
                       <div
@@ -267,7 +271,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Edit
+                          Toggle edit
                         </span>
                       </div>
                       <i
@@ -285,16 +289,16 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Delete
+                          Minimize
                         </span>
                       </div>
                       <i
-                        className="fa fa-trash"
+                        className="fa fa-minus"
                         role="presentation" />
                     </button>
                   </aside>
                   <div
-                    className="dBEkk">
+                    className="kHaGmh">
                     <h4>
                       POST
                     </h4>
@@ -307,7 +311,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="cKerge">
+              className="kzXmMh">
               <div
                 className="list-group">
                 <div
@@ -316,6 +320,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe">
                     <button
                       className="eZEqWd"
+                      onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}>
                       <div
@@ -324,7 +329,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Edit
+                          Toggle edit
                         </span>
                       </div>
                       <i
@@ -342,16 +347,16 @@ exports[`Collections component should match the previous snapshot 1`] = `
                           className="ddxWyy" />
                         <span
                           className="jsYWMN">
-                          Delete
+                          Minimize
                         </span>
                       </div>
                       <i
-                        className="fa fa-trash"
+                        className="fa fa-minus"
                         role="presentation" />
                     </button>
                   </aside>
                   <div
-                    className="dBEkk">
+                    className="kHaGmh">
                     <h4>
                       POST
                     </h4>

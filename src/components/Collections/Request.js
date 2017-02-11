@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup } from 'react-bootstrap';
@@ -61,44 +61,120 @@ const requestTarget = {
   },
 };
 
-function Request(props) {
-  const {
-    connectDragSource,
-    connectDropTarget,
-    isDragging,
-    id,
-    collectionIndex,
-    method,
-    url,
-    deleteRequest,
-  } = props;
+class Request extends React.Component {
+  static propTypes = {
+    connectDragSource: PropTypes.func.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    index: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    collectionIndex: PropTypes.string.isRequired,
+    method: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    renameRequest: PropTypes.func.isRequired,
+    deleteRequest: PropTypes.func.isRequired,
+  };
 
-  return connectDragSource(connectDropTarget(
-    <div> {/* Need a wrapper div for React DnD support */}
-      <StyledRequest isDragging={isDragging}>
-        <ListGroup componentClass="div">
-          <div className="list-group-item">
-            <AsideButtons>
-              <IconButton
-                tooltip="Edit"
-                icon="cog"
-              />
-              <IconButton
-                tooltip="Delete"
-                icon="trash"
-                onClick={() => deleteRequest(id, collectionIndex)}
-              />
-            </AsideButtons>
+  constructor(props) {
+    super(props);
+    this.toggleCompact = this.toggleCompact.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.renameRequest = this.renameRequest.bind(this);
+  }
 
-            <MainContent>
-              <h4>{method}</h4>
-              {url}
-            </MainContent>
-          </div>
-        </ListGroup>
-      </StyledRequest>
-    </div>,
-  ));
+  state = {};
+
+  toggleCompact() {
+    this.setState({ compact: !this.state.compact });
+  }
+
+  toggleEdit() {
+    this.setState({ edit: !this.state.edit });
+  }
+
+  renameRequest(e) {
+    const { collectionIndex, index, renameRequest } = this.props;
+    e.preventDefault();
+
+    this.setState({ edit: false });
+    renameRequest(collectionIndex, index, this.nameRef.value);
+  }
+
+  render() {
+    const { compact, edit } = this.state;
+    const {
+      connectDragSource,
+      connectDropTarget,
+      isDragging,
+      id,
+      collectionIndex,
+      method,
+      name,
+      url,
+      deleteRequest,
+    } = this.props;
+
+    return connectDragSource(connectDropTarget(
+      <div> {/* Need a wrapper div for React DnD support */}
+        <StyledRequest isDragging={isDragging}>
+          <ListGroup componentClass="div">
+            <div className="list-group-item">
+              <AsideButtons compact={compact}>
+                {!compact && (
+                  <IconButton
+                    tooltip="Toggle edit"
+                    icon="cog"
+                    onClick={this.toggleEdit}
+                  />
+                )}
+                {compact && (
+                  <IconButton
+                    tooltip="Expand"
+                    icon="plus"
+                    onClick={this.toggleCompact}
+                  />
+                )}
+
+                {!compact && !edit && (
+                  <IconButton
+                    tooltip="Minimize"
+                    icon="minus"
+                    onClick={this.toggleCompact}
+                  />
+                )}
+                {!compact && edit && (
+                  <IconButton
+                    tooltip="Delete"
+                    icon="trash"
+                    onClick={() => deleteRequest(id, collectionIndex)}
+                  />
+                )}
+              </AsideButtons>
+
+              <MainContent compact={compact}>
+                {!compact && <h4>{method}</h4>}
+                {edit ? (
+                  <form onSubmit={this.renameRequest}>
+                    <input
+                      defaultValue={name}
+                      ref={ref => { this.nameRef = ref; }}
+                    />
+                    <IconButton
+                      tooltip="Save"
+                      icon="check"
+                    />
+                  </form>
+                ) : (
+                  name || url
+                )}
+              </MainContent>
+            </div>
+          </ListGroup>
+        </StyledRequest>
+      </div>,
+    ));
+  }
 }
 
 export default flow(

@@ -376,5 +376,60 @@ describe('reducer', () => {
       }],
     });
   });
+
+  it('should handle RENAME_REQUEST', () => {
+    const initialState = Immutable.fromJS({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [{
+          url: 'http://foo.com',
+          method: 'POST',
+          name: 'Update it',
+        }, {
+          url: 'http://foo.com',
+          method: 'GET',
+          name: 'Fetch it',
+        }],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.RENAME_REQUEST,
+        collectionIndex: 0,
+        requestIndex: 1,
+        name: 'The new name',
+      }).toJSON(),
+    ).toEqual({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [{
+          url: 'http://foo.com',
+          method: 'POST',
+          name: 'Update it',
+        }, {
+          url: 'http://foo.com',
+          method: 'GET',
+          name: 'The new name',
+        }],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+  });
 });
 

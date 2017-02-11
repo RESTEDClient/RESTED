@@ -100,5 +100,19 @@ describe('actions', () => {
 
     expect(actions.doReorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
   });
+
+  it('should create an action to rename a request', () => {
+    const collectionIndex = 1;
+    const requestIndex = 0;
+    const name = 'Test';
+    const expectedAction = {
+      type: types.RENAME_REQUEST,
+      collectionIndex,
+      requestIndex,
+      name,
+    };
+
+    expect(actions.doRenameRequest(collectionIndex, requestIndex, name)).toEqual(expectedAction);
+  });
 });
 
