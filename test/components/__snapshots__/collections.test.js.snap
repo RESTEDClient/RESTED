@@ -3,11 +3,44 @@ exports[`Collection component should match the previous snapshot 1`] = `
    
   <div
     className="byfiIm">
-    <span>
+    <span
+      className="jNknPg">
       <h3 />
       <button
-        onClick={[Function]}>
-        Delete
+        className="pull-right eZEqWd"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="QxewG">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Change name
+          </span>
+        </div>
+        <i
+          className="fa fa-pencil"
+          role="presentation" />
+      </button>
+      <button
+        className="pull-right eZEqWd"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="QxewG">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Delete
+          </span>
+        </div>
+        <i
+          className="fa fa-trash"
+          role="presentation" />
       </button>
       <hr />
     </span>
@@ -108,13 +141,46 @@ exports[`Collections component should match the previous snapshot 1`] = `
          
         <div
           className="byfiIm">
-          <span>
+          <span
+            className="jNknPg">
             <h3>
               Collection
             </h3>
             <button
-              onClick={[Function]}>
-              Delete
+              className="pull-right eZEqWd"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}>
+              <div
+                className="QxewG">
+                <div
+                  className="ddxWyy" />
+                <span
+                  className="jsYWMN">
+                  Change name
+                </span>
+              </div>
+              <i
+                className="fa fa-pencil"
+                role="presentation" />
+            </button>
+            <button
+              className="pull-right eZEqWd"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}>
+              <div
+                className="QxewG">
+                <div
+                  className="ddxWyy" />
+                <span
+                  className="jsYWMN">
+                  Delete
+                </span>
+              </div>
+              <i
+                className="fa fa-trash"
+                role="presentation" />
             </button>
             <hr />
           </span>
@@ -182,13 +248,46 @@ exports[`Collections component should match the previous snapshot 1`] = `
          
         <div
           className="byfiIm">
-          <span>
+          <span
+            className="jNknPg">
             <h3>
               Collection 2
             </h3>
             <button
-              onClick={[Function]}>
-              Delete
+              className="pull-right eZEqWd"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}>
+              <div
+                className="QxewG">
+                <div
+                  className="ddxWyy" />
+                <span
+                  className="jsYWMN">
+                  Change name
+                </span>
+              </div>
+              <i
+                className="fa fa-pencil"
+                role="presentation" />
+            </button>
+            <button
+              className="pull-right eZEqWd"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}>
+              <div
+                className="QxewG">
+                <div
+                  className="ddxWyy" />
+                <span
+                  className="jsYWMN">
+                  Delete
+                </span>
+              </div>
+              <i
+                className="fa fa-trash"
+                role="presentation" />
             </button>
             <hr />
           </span>

@@ -4,11 +4,12 @@ import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
+import IconButton from 'components/IconButton';
 import * as Actions from 'store/collections/actions';
 import requestPropType from 'propTypes/request';
 
 import Request from './Request';
-import { StyledCollection } from './StyledComponents';
+import { StyledCollection, StyledCollectionHeader } from './StyledComponents';
 import * as Type from './dropTypes';
 
 /**
@@ -74,15 +75,55 @@ const collectionTarget = {
   },
 };
 
-function PanelHeader({ name, collectionId, deleteCollection }) {
+function PanelHeader(props) {
+  const {
+    name,
+    collectionId,
+    deleteCollection,
+    toggleEdit,
+    edit,
+    renameCollection,
+    onChange,
+  } = props;
+
   return (
-    <span>
-      <h3>{name}</h3>
-      <button onClick={() => deleteCollection(collectionId)}>
-        Delete
-      </button>
+    <StyledCollectionHeader>
+      {edit ? (
+        <form onSubmit={renameCollection}>
+          <label
+            className="sr-only"
+            htmlFor={`${name}.renameRequest`}
+          >
+            Request name
+          </label>
+          <input
+            id={`${name}.renameRequest`}
+            defaultValue={name}
+            onChange={e => onChange(e.target.value)}
+          />
+          <IconButton
+            tooltip="Save"
+            icon="check"
+          />
+        </form>
+      ) : (
+        <h3>{name}</h3>
+      )}
+
+      <IconButton
+        tooltip="Change name"
+        icon="pencil"
+        className="pull-right"
+        onClick={toggleEdit}
+      />
+      <IconButton
+        tooltip="Delete"
+        icon="trash"
+        className="pull-right"
+        onClick={() => deleteCollection(collectionId)}
+      />
       <hr />
-    </span>
+    </StyledCollectionHeader>
   );
 }
 
@@ -90,9 +131,50 @@ PanelHeader.propTypes = {
   name: PropTypes.string.isRequired,
   collectionId: PropTypes.string.isRequired,
   deleteCollection: PropTypes.func.isRequired,
+  toggleEdit: PropTypes.func.isRequired,
+  renameCollection: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  edit: PropTypes.bool.isRequired,
 };
 
 class Collection extends React.Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    deleteCollection: PropTypes.func.isRequired,
+    requests: PropTypes.arrayOf(requestPropType).isRequired,
+    collectionIndex: PropTypes.number.isRequired,
+    connectDragSource: PropTypes.func.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool.isRequired,
+    renameCollection: PropTypes.func.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.renameCollection = this.renameCollection.bind(this);
+  }
+
+  state = {};
+
+  toggleEdit() {
+    this.setState({ edit: !this.state.edit });
+  }
+
+  handleInputChange(name) {
+    this.setState({ name });
+  }
+
+  renameCollection(e) {
+    e.preventDefault();
+    const { collectionIndex, renameCollection } = this.props;
+
+    this.setState({ edit: false });
+    renameCollection(collectionIndex, this.state.name);
+  }
+
   render() {
     const {
       id,
@@ -112,6 +194,10 @@ class Collection extends React.Component {
             name={name}
             collectionId={id}
             deleteCollection={deleteCollection}
+            toggleEdit={this.toggleEdit}
+            onChange={this.handleInputChange}
+            renameCollection={this.renameCollection}
+            edit={this.state.edit}
           />
           {requests.map((request, index) => (
             <Request
@@ -126,17 +212,6 @@ class Collection extends React.Component {
     ));
   }
 }
-
-Collection.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  deleteCollection: PropTypes.func.isRequired,
-  requests: PropTypes.arrayOf(requestPropType).isRequired,
-  collectionIndex: PropTypes.number.isRequired,
-  connectDragSource: PropTypes.func.isRequired,
-  connectDropTarget: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired,
-};
 
 
 export default flow(

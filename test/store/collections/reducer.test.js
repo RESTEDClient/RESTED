@@ -377,6 +377,44 @@ describe('reducer', () => {
     });
   });
 
+  it('should handle RENAME_COLLECTION', () => {
+    const initialState = Immutable.fromJS({
+      isFetching: false,
+      collections: [{
+        name: 'Collection',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+
+    expect(
+      reducer(initialState, {
+        type: types.RENAME_COLLECTION,
+        collectionIndex: 0,
+        name: 'The new name',
+      }).toJSON(),
+    ).toEqual({
+      isFetching: false,
+      collections: [{
+        name: 'The new name',
+        id: 'some-collection-UUID',
+        minimized: true,
+        requests: [],
+      }, {
+        name: 'Collection 2',
+        id: 'some-collection-UUID2',
+        minimized: true,
+        requests: [],
+      }],
+    });
+  });
+
   it('should handle RENAME_REQUEST', () => {
     const initialState = Immutable.fromJS({
       isFetching: false,

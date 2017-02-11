@@ -101,6 +101,18 @@ describe('actions', () => {
     expect(actions.doReorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
   });
 
+  it('should create an action to rename a collection', () => {
+    const collectionIndex = 1;
+    const name = 'Test';
+    const expectedAction = {
+      type: types.RENAME_COLLECTION,
+      collectionIndex,
+      name,
+    };
+
+    expect(actions.doRenameCollection(collectionIndex, name)).toEqual(expectedAction);
+  });
+
   it('should create an action to rename a request', () => {
     const collectionIndex = 1;
     const requestIndex = 0;

@@ -10,6 +10,7 @@ import {
   DELETE_REQUEST,
   REORDER_REQUEST,
   REORDER_COLLECTION,
+  RENAME_COLLECTION,
   RENAME_REQUEST,
 } from './types';
 
@@ -108,6 +109,14 @@ export default function (state = initialState, action) {
           requests.insert(action.target.requestIndex, request)
         ));
     }
+
+    case RENAME_COLLECTION:
+      return state
+        .setIn([
+          'collections',
+          action.collectionIndex,
+          'name',
+        ], action.name);
 
     case RENAME_REQUEST:
       return state

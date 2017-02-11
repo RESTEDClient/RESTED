@@ -38,6 +38,15 @@ export const StyledCollection = styled.div`
   }
 `;
 
+export const StyledCollectionHeader = styled.span`
+  h3, form {
+    display: inline;
+  }
+  input {
+    width: 130px;
+  }
+`;
+
 export const StyledRequest = styled.div`
   .list-group-item {
     display: flex;
