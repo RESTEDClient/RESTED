@@ -53,6 +53,7 @@
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-plugin-transform-es2015-destructuring": "^6.19.0",
+    "babel-plugin-transform-exponentiation-operator": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.11",

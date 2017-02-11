@@ -1,9 +1,5 @@
 language: node_js
-cache:
-  directories:
-  - $HOME/.yarn-cache
-before_install:
-  - npm install -g yarn
+cache: yarn
 install:
   - yarn --pure-lockfile
 script:
