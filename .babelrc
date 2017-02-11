@@ -4,11 +4,19 @@
     'transform-object-assign',
     'transform-es2015-destructuring',
     'transform-object-rest-spread',
-    'transform-class-properties'
+    'transform-class-properties',
+    'transform-exponentiation-operator',
   ],
   env: {
     test: {
       presets: ['es2015', 'react'],
+      plugins: [
+        'transform-object-assign',
+        'transform-es2015-destructuring',
+        'transform-object-rest-spread',
+        'transform-class-properties',
+        'transform-exponentiation-operator',
+      ],
     },
     production: {
       plugins: [
@@ -16,7 +24,8 @@
         'transform-object-assign',
         'transform-es2015-destructuring',
         'transform-object-rest-spread',
-        'transform-class-properties'
+        'transform-class-properties',
+        'transform-exponentiation-operator',
       ]
     }
   }

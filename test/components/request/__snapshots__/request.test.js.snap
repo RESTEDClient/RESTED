@@ -4,17 +4,65 @@ exports[`test should render correctly 1`] = `
   id={undefined}>
   <div
     className="panel-heading">
-    <span>
-      <h2>
+    <span
+      className="clearfix">
+      <h2
+        className="pull-left">
         Request
       </h2>
       <button
-        onClick={[Function]}>
-        +
+        className="pull-right bFhpey"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="bEVxIZ">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Add to collection
+          </span>
+        </div>
+        <i
+          className="fa fa-plus"
+          role="presentation" />
       </button>
       <button
-        onClick={[Function]}>
-        Options
+        className="pull-right bFhpey"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="bEVxIZ">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Options
+          </span>
+        </div>
+        <i
+          className="fa fa-cog"
+          role="presentation" />
+      </button>
+      <button
+        className="pull-right bFhpey"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="bEVxIZ">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Hide collections
+          </span>
+        </div>
+        <i
+          className="fa fa-expand"
+          role="presentation" />
       </button>
     </span>
   </div>
@@ -59,7 +107,7 @@ exports[`test should render correctly 1`] = `
           </label>
         </div>
         <div
-          className="col-sm-8">
+          className="col-sm-7">
           <select
             className="form-control"
             id="method"
@@ -107,7 +155,7 @@ exports[`test should render correctly 1`] = `
           </select>
         </div>
         <div
-          className="col-sm-2">
+          className="col-sm-3">
           <button
             className="btn btn-primary"
             disabled={false}

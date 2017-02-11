@@ -10,7 +10,7 @@ exports[`MethodField should match the previous snapshot 1`] = `
     </label>
   </div>
   <div
-    className="col-sm-8">
+    className="col-sm-7">
     <select
       className="form-control"
       id="method"
@@ -51,7 +51,7 @@ exports[`MethodField should match the previous snapshot 1`] = `
     </select>
   </div>
   <div
-    className="col-sm-2">
+    className="col-sm-3">
     <button
       className="btn btn-primary"
       disabled={false}
@@ -74,7 +74,7 @@ exports[`MethodField should match the previous snapshot with invalid field state
     </label>
   </div>
   <div
-    className="col-sm-8">
+    className="col-sm-7">
     <select
       className="form-control"
       id="method"
@@ -115,7 +115,7 @@ exports[`MethodField should match the previous snapshot with invalid field state
     </select>
   </div>
   <div
-    className="col-sm-2">
+    className="col-sm-3">
     <button
       className="btn btn-primary"
       disabled={false}

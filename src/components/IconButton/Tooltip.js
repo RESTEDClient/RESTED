@@ -27,6 +27,9 @@ export default class Tooltip extends Component {
   setRippleSize() {
     const ripple = this.rippleRef;
     const tooltip = this.tooltipRef;
+
+    if (!ripple || !tooltip) return;
+
     const tooltipWidth = parseInt(tooltip.offsetWidth, 10) / 2;
     const tooltipHeight = parseInt(tooltip.offsetHeight, 10);
 
@@ -45,7 +48,8 @@ export default class Tooltip extends Component {
   }
 
   setTooltipPosition() {
-    this.setState({ offsetWidth: this.tooltipRef.offsetWidth });
+    const offsetWidth = this.tooltipRef ? this.tooltipRef.offsetWidth : 0;
+    this.setState({ offsetWidth });
   }
 
   render() {

@@ -47,10 +47,24 @@ exports[`Collections component should match the previous snapshot 1`] = `
   <div
     className="panel-heading">
     <span
-      className="clearfix pull-right">
+      className="clearfix">
       <button
-        onClick={[Function]}>
-        Add new collection
+        className="pull-right bFhpey"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}>
+        <div
+          className="bEVxIZ">
+          <div
+            className="ddxWyy" />
+          <span
+            className="jsYWMN">
+            Add new collection
+          </span>
+        </div>
+        <i
+          className="fa fa-plus"
+          role="presentation" />
       </button>
     </span>
   </div>

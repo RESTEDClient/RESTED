@@ -7,6 +7,9 @@ describe('reducer', () => {
     title: 'Something something title',
     body: '<h1>Foo bar boo boo fooo foo</h1>',
     visible: true,
+    errorData: null,
+    cancelClick: null,
+    actions: [],
   };
 
   it('should return the initial state', () => {
@@ -49,8 +52,8 @@ describe('reducer', () => {
         type: types.REMOVE_MODAL,
       }),
     ).toEqual({
-      title: null,
-      body: null,
+      title: 'Something something title',
+      body: '<h1>Foo bar boo boo fooo foo</h1>',
       errorData: null,
       visible: false,
       cancelClick: null,
