@@ -9,6 +9,7 @@ import {
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
+import IconButton from 'components/IconButton';
 
 function renderField({ input, placeholder }) {
   return (
@@ -52,15 +53,12 @@ function HeadersField({ meta, fields }) {
             />
           </Col>
           <Col xs={1}>
-            <Button
+            <IconButton
               id={`removeHeaderButton${key}`}
+              tooltip="Remove header"
+              icon="trash"
               onClick={() => fields.remove(key)}
-            >
-              <Fonticon icon="trash" />
-              <span className="sr-only">
-                Remove header
-              </span>
-            </Button>
+            />
           </Col>
         </FormGroup>
       ))}

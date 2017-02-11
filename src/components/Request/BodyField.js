@@ -11,6 +11,7 @@ import {
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
+import IconButton from 'components/IconButton';
 import * as RequestActions from 'store/request/actions';
 
 function renderField({ input, placeholder }) {
@@ -63,15 +64,12 @@ function renderFormDataFields({ fields, meta, setUseFormData }) {
             />
           </Col>
           <Col xs={1}>
-            <Button
+            <IconButton
               id={`removeFormDataButton${key}`}
+              tooltip="Remove form field"
+              icon="trash"
               onClick={() => fields.remove(key)}
-            >
-              <Fonticon icon="trash" />
-              <span className="sr-only">
-                Remove form field
-              </span>
-            </Button>
+            />
           </Col>
         </FormGroup>
       ))}

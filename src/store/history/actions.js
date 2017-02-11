@@ -49,18 +49,20 @@ export function doPushHistory(request) {
 
 // TODO Test
 export function pushHistory(request) {
-  return (dispatch, getState) => {
-    const { url, method } = getHistory(getState()).first().toJS();
+  return (dispatch, getState) => (
+    fetchHistory()(dispatch).then(() => {
+      const { url, method } = getHistory(getState()).first().toJS();
 
-    // Do not add the same request if sent several times
-    if (url === request.get('url') && method === request.get('method')) {
-      return null;
-    }
+      // Do not add the same request if sent several times
+      if (url === request.get('url') && method === request.get('method')) {
+        return null;
+      }
 
-    dispatch(doPushHistory(request));
+      dispatch(doPushHistory(request));
 
-    return updateLocalStorage(getState());
-  };
+      return updateLocalStorage(getState());
+    })
+  );
 }
 
 export function doRemoveFromHistory(index) {

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { ListGroup } from 'react-bootstrap';
 
@@ -63,7 +64,7 @@ class HistoryList extends React.Component {
         ))}
       </List>
     );
-    /*
+    /* TODO
       <div data-ng-show="!history || history.length === 0">
         <h5>
             You have no recorded history. Send some requests and start making your legacy!
@@ -74,6 +75,7 @@ class HistoryList extends React.Component {
 }
 
 HistoryList.propTypes = {
+  history: ImmutablePropTypes.listOf(requestShape).isRequired,
   selectRequest: PropTypes.func.isRequired,
   fetchHistory: PropTypes.func.isRequired,
   removeFromHistory: PropTypes.func.isRequired,

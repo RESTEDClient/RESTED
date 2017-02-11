@@ -51,18 +51,23 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="btn btn-default"
-          disabled={false}
+          className="bFhpey"
           id="removeHeaderButton0"
           onClick={[Function]}
-          type="button">
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}>
+          <div
+            className="bEVxIZ">
+            <div
+              className="ddxWyy" />
+            <span
+              className="jsYWMN">
+              Remove header
+            </span>
+          </div>
           <i
             className="fa fa-trash"
             role="presentation" />
-          <span
-            className="sr-only">
-            Remove header
-          </span>
         </button>
       </div>
     </div>
@@ -101,18 +106,23 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="btn btn-default"
-          disabled={false}
+          className="bFhpey"
           id="removeHeaderButton1"
           onClick={[Function]}
-          type="button">
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}>
+          <div
+            className="bEVxIZ">
+            <div
+              className="ddxWyy" />
+            <span
+              className="jsYWMN">
+              Remove header
+            </span>
+          </div>
           <i
             className="fa fa-trash"
             role="presentation" />
-          <span
-            className="sr-only">
-            Remove header
-          </span>
         </button>
       </div>
     </div>
@@ -151,18 +161,23 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="btn btn-default"
-          disabled={false}
+          className="bFhpey"
           id="removeHeaderButton2"
           onClick={[Function]}
-          type="button">
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}>
+          <div
+            className="bEVxIZ">
+            <div
+              className="ddxWyy" />
+            <span
+              className="jsYWMN">
+              Remove header
+            </span>
+          </div>
           <i
             className="fa fa-trash"
             role="presentation" />
-          <span
-            className="sr-only">
-            Remove header
-          </span>
         </button>
       </div>
     </div>

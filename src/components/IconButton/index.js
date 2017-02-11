@@ -43,7 +43,7 @@ export default class IconButton extends React.Component {
   }
 
   render() {
-    const { tooltip, icon, className } = this.props;
+    const { tooltip, icon, ...rest } = this.props;
 
     const tooltipElement = tooltip ? (
       <Tooltip
@@ -54,10 +54,9 @@ export default class IconButton extends React.Component {
 
     return (
       <StyledButton
-        onClick={this.props.onClick}
         onMouseLeave={this.handleMouseLeave}
         onMouseEnter={this.handleMouseEnter}
-        className={className}
+        {...rest}
       >
         {tooltipElement}
         <Fonticon icon={icon} />

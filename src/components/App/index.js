@@ -15,6 +15,7 @@ import { getTheme, getCollectionsMinimized } from 'store/options/selectors';
 import { fetchOptions } from 'store/options/actions';
 import { fetchUrlVariables } from 'store/urlVariables/actions';
 import { THEMES } from 'constants/constants';
+import './GlobalStyles';
 
 import { LeftCol, RightCol } from './StyledComponents';
 

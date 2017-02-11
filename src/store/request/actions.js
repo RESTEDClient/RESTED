@@ -48,7 +48,7 @@ export function sendRequest(request) {
     const fallbackUrl = getState().request.placeholderUrl;
     if (!url) {
       dispatch(change(requestForm, 'url', fallbackUrl));
-      request.url = fallbackUrl;
+      request.url = fallbackUrl; // eslint-disable-line no-param-reassign
     }
 
     const requestHeaders = new Headers(reMapHeaders(headers, true));
