@@ -109,6 +109,7 @@ class Request extends React.Component {
       isDragging,
       id,
       collectionIndex,
+      index,
       method,
       name,
       url,
@@ -156,7 +157,14 @@ class Request extends React.Component {
                 {!compact && <h4>{method}</h4>}
                 {edit ? (
                   <form onSubmit={this.renameRequest}>
+                    <label
+                      className="sr-only"
+                      htmlFor={`${collectionIndex}.${index}.RequestName`}
+                    >
+                      Request name
+                    </label>
                     <input
+                      id={`${collectionIndex}.${index}.RequestName`}
                       defaultValue={name}
                       ref={ref => { this.nameRef = ref; }}
                     />
