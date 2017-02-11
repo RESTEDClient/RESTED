@@ -2,7 +2,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
 <div>
    
   <div
-    className="dLMdGK">
+    className="byfiIm">
     <span>
       <h3 />
       <button
@@ -14,26 +14,58 @@ exports[`Collection component should match the previous snapshot 1`] = `
     <div>
        
       <div
-        className="DFkvH">
-        <ul
+        className="cKerge">
+        <div
           className="list-group">
-          <li
+          <div
             className="list-group-item">
-            <span>
+            <aside
+              className="goDgEe">
+              <button
+                className="eZEqWd"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}>
+                <div
+                  className="QxewG">
+                  <div
+                    className="ddxWyy" />
+                  <span
+                    className="jsYWMN">
+                    Edit
+                  </span>
+                </div>
+                <i
+                  className="fa fa-cog"
+                  role="presentation" />
+              </button>
+              <button
+                className="eZEqWd"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}>
+                <div
+                  className="QxewG">
+                  <div
+                    className="ddxWyy" />
+                  <span
+                    className="jsYWMN">
+                    Delete
+                  </span>
+                </div>
+                <i
+                  className="fa fa-trash"
+                  role="presentation" />
+              </button>
+            </aside>
+            <div
+              className="dBEkk">
               <h4>
                 POST
               </h4>
-              <button
-                onClick={[Function]}>
-                Delete
-              </button>
-            </span>
-            <p
-              className="list-group-item-text">
               www.foo.no
-            </p>
-          </li>
-        </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -49,12 +81,12 @@ exports[`Collections component should match the previous snapshot 1`] = `
     <span
       className="clearfix">
       <button
-        className="pull-right bFhpey"
+        className="pull-right eZEqWd"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}>
         <div
-          className="bEVxIZ">
+          className="QxewG">
           <div
             className="ddxWyy" />
           <span
@@ -74,7 +106,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
       <div>
          
         <div
-          className="dLMdGK">
+          className="byfiIm">
           <span>
             <h3>
               Collection
@@ -88,26 +120,58 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="DFkvH">
-              <ul
+              className="cKerge">
+              <div
                 className="list-group">
-                <li
+                <div
                   className="list-group-item">
-                  <span>
+                  <aside
+                    className="goDgEe">
+                    <button
+                      className="eZEqWd"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Edit
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-cog"
+                        role="presentation" />
+                    </button>
+                    <button
+                      className="eZEqWd"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Delete
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-trash"
+                        role="presentation" />
+                    </button>
+                  </aside>
+                  <div
+                    className="dBEkk">
                     <h4>
                       POST
                     </h4>
-                    <button
-                      onClick={[Function]}>
-                      Delete
-                    </button>
-                  </span>
-                  <p
-                    className="list-group-item-text">
                     www.foo.no
-                  </p>
-                </li>
-              </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -115,7 +179,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
       <div>
          
         <div
-          className="dLMdGK">
+          className="byfiIm">
           <span>
             <h3>
               Collection 2
@@ -129,76 +193,172 @@ exports[`Collections component should match the previous snapshot 1`] = `
           <div>
              
             <div
-              className="DFkvH">
-              <ul
+              className="cKerge">
+              <div
                 className="list-group">
-                <li
+                <div
                   className="list-group-item">
-                  <span>
+                  <aside
+                    className="goDgEe">
+                    <button
+                      className="eZEqWd"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Edit
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-cog"
+                        role="presentation" />
+                    </button>
+                    <button
+                      className="eZEqWd"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Delete
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-trash"
+                        role="presentation" />
+                    </button>
+                  </aside>
+                  <div
+                    className="dBEkk">
                     <h4>
                       POST
                     </h4>
-                    <button
-                      onClick={[Function]}>
-                      Delete
-                    </button>
-                  </span>
-                  <p
-                    className="list-group-item-text">
                     www.foo.no
-                  </p>
-                </li>
-              </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div>
              
             <div
-              className="DFkvH">
-              <ul
+              className="cKerge">
+              <div
                 className="list-group">
-                <li
+                <div
                   className="list-group-item">
-                  <span>
+                  <aside
+                    className="goDgEe">
+                    <button
+                      className="eZEqWd"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Edit
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-cog"
+                        role="presentation" />
+                    </button>
+                    <button
+                      className="eZEqWd"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Delete
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-trash"
+                        role="presentation" />
+                    </button>
+                  </aside>
+                  <div
+                    className="dBEkk">
                     <h4>
                       POST
                     </h4>
-                    <button
-                      onClick={[Function]}>
-                      Delete
-                    </button>
-                  </span>
-                  <p
-                    className="list-group-item-text">
                     www.bar.no
-                  </p>
-                </li>
-              </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div>
              
             <div
-              className="DFkvH">
-              <ul
+              className="cKerge">
+              <div
                 className="list-group">
-                <li
+                <div
                   className="list-group-item">
-                  <span>
+                  <aside
+                    className="goDgEe">
+                    <button
+                      className="eZEqWd"
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Edit
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-cog"
+                        role="presentation" />
+                    </button>
+                    <button
+                      className="eZEqWd"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}>
+                      <div
+                        className="QxewG">
+                        <div
+                          className="ddxWyy" />
+                        <span
+                          className="jsYWMN">
+                          Delete
+                        </span>
+                      </div>
+                      <i
+                        className="fa fa-trash"
+                        role="presentation" />
+                    </button>
+                  </aside>
+                  <div
+                    className="dBEkk">
                     <h4>
                       POST
                     </h4>
-                    <button
-                      onClick={[Function]}>
-                      Delete
-                    </button>
-                  </span>
-                  <p
-                    className="list-group-item-text">
                     www.baz.no
-                  </p>
-                </li>
-              </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

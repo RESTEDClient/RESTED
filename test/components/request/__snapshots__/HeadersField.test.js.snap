@@ -51,13 +51,13 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="bFhpey"
+          className="eZEqWd"
           id="removeHeaderButton0"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}>
           <div
-            className="bEVxIZ">
+            className="QxewG">
             <div
               className="ddxWyy" />
             <span
@@ -106,13 +106,13 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="bFhpey"
+          className="eZEqWd"
           id="removeHeaderButton1"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}>
           <div
-            className="bEVxIZ">
+            className="QxewG">
             <div
               className="ddxWyy" />
             <span
@@ -161,13 +161,13 @@ exports[`HeadersField should match the previous snapshot 1`] = `
       <div
         className="col-xs-1">
         <button
-          className="bFhpey"
+          className="eZEqWd"
           id="removeHeaderButton2"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}>
           <div
-            className="bEVxIZ">
+            className="QxewG">
             <div
               className="ddxWyy" />
             <span
