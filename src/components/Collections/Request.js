@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
+import IconButton from 'components/IconButton';
 import * as Actions from 'store/collections/actions';
-import { StyledRequest } from './styledComponents';
+
+import { StyledRequest, AsideButtons, MainContent } from './StyledComponents';
 import * as Type from './dropTypes';
 
 /**
@@ -59,41 +61,40 @@ const requestTarget = {
   },
 };
 
-function RequestHeader({ method, deleteRequest, collectionIndex, id }) {
-  return (
-    <span>
-      <h4>{method}</h4>
-      <button onClick={() => deleteRequest(id, collectionIndex)}>
-        Delete
-      </button>
-    </span>
-  );
-}
-
-RequestHeader.propTypes = {
-  method: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  collectionIndex: PropTypes.number.isRequired,
-  deleteRequest: PropTypes.func.isRequired,
-};
-
 function Request(props) {
   const {
     connectDragSource,
     connectDropTarget,
     isDragging,
+    id,
+    collectionIndex,
+    method,
     url,
+    deleteRequest,
   } = props;
 
   return connectDragSource(connectDropTarget(
     <div> {/* Need a wrapper div for React DnD support */}
       <StyledRequest isDragging={isDragging}>
-        <ListGroup>
-          <ListGroupItem
-            header={<RequestHeader {...props} />}
-          >
-            {url}
-          </ListGroupItem>
+        <ListGroup componentClass="div">
+          <div className="list-group-item">
+            <AsideButtons>
+              <IconButton
+                tooltip="Edit"
+                icon="cog"
+              />
+              <IconButton
+                tooltip="Delete"
+                icon="trash"
+                onClick={() => deleteRequest(id, collectionIndex)}
+              />
+            </AsideButtons>
+
+            <MainContent>
+              <h4>{method}</h4>
+              {url}
+            </MainContent>
+          </div>
         </ListGroup>
       </StyledRequest>
     </div>,

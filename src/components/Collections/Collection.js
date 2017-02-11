@@ -8,7 +8,7 @@ import * as Actions from 'store/collections/actions';
 import requestPropType from 'propTypes/request';
 
 import Request from './Request';
-import { StyledCollection } from './styledComponents';
+import { StyledCollection } from './StyledComponents';
 import * as Type from './dropTypes';
 
 /**

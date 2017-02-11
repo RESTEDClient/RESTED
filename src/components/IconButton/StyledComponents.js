@@ -3,13 +3,15 @@ import styled, { css } from 'styled-components';
 
 const ease = 'cubic-bezier(0.23, 1, 0.32, 1)';
 
+const iconSize = 18;
+
 export const StyledButton = styled.button`
   border: 10px none;
   boxSizing: border-box;
   overflow: visible;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  padding: ${iconSize / 2}px;
+  width: ${iconSize * 2}px;
+  height: ${iconSize * 2}px;
   fontSize: 0;
   backgroundColor: transparent;
 
@@ -22,12 +24,12 @@ export const StyledButton = styled.button`
   zIndex: 1;
 
   .fa {
-    fontSize: 24px;
+    fontSize: ${iconSize}px;
   }
 `;
 
 const containerWhenShown = css`
-  top: 36px;
+  top: ${iconSize * 1.5}px;
   opacity: 0.9;
   transform: translate(0px, 5px);
   transition: 0ms top ${ease} 0ms, 450ms transform ${ease} 0ms, 450ms opacity ${ease} 0ms;
@@ -50,7 +52,7 @@ export const TooltipContainer = styled.div`
   borderRadius: 2px;
   userSelect: none;
   opacity: 0;
-  left: ${props => ((props.offsetWidth - 48) / 2) * -1}px;
+  left: ${props => ((props.offsetWidth - (iconSize * 2)) / 2) * -1}px;
 
   transition: 0ms top ${ease} 450ms, 450ms transform ${ease} 0ms, 450ms opacity ${ease} 0ms;
 
