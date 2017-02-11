@@ -3,6 +3,14 @@ import styled, { css } from 'styled-components';
 const hoverStyle = css`
   background-color: gray;
   color: gray;
+
+  button:first-child {
+    border-bottom-width: 0;
+  }
+
+  > div {
+    border-left-width: 0;
+  }
 `;
 
 export const StyledCollection = styled.div`
@@ -30,13 +38,11 @@ export const StyledCollection = styled.div`
 `;
 
 export const StyledRequest = styled.div`
-  ul, li {
-    ${props => props.isDragging && hoverStyle}
-  }
-
   .list-group-item {
     display: flex;
     padding: 0;
+
+    ${props => props.isDragging && hoverStyle}
   }
 `;
 
