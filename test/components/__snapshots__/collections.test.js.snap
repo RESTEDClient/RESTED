@@ -52,7 +52,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
           className="list-group">
           <div
             className="list-group-item">
-            <aside
+            <div
               className="goDgEe">
               <button
                 className="eZEqWd"
@@ -90,16 +90,18 @@ exports[`Collection component should match the previous snapshot 1`] = `
                   className="fa fa-minus"
                   role="presentation" />
               </button>
-            </aside>
-            <div
-              className="kHaGmh"
+            </div>
+            <button
+              className="XnOQh"
               onClick={[Function]}
               onDoubleClick={[Function]}>
-              <h4>
-                POST
-              </h4>
-              www.foo.no
-            </div>
+              <div>
+                <h4>
+                  POST
+                </h4>
+                www.foo.no
+              </div>
+            </button>
           </div>
         </div>
       </div>
@@ -194,7 +196,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                 className="list-group">
                 <div
                   className="list-group-item">
-                  <aside
+                  <div
                     className="goDgEe">
                     <button
                       className="eZEqWd"
@@ -232,16 +234,18 @@ exports[`Collections component should match the previous snapshot 1`] = `
                         className="fa fa-minus"
                         role="presentation" />
                     </button>
-                  </aside>
-                  <div
-                    className="kHaGmh"
+                  </div>
+                  <button
+                    className="XnOQh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}>
-                    <h4>
-                      POST
-                    </h4>
-                    www.foo.no
-                  </div>
+                    <div>
+                      <h4>
+                        POST
+                      </h4>
+                      www.foo.no
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -303,7 +307,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                 className="list-group">
                 <div
                   className="list-group-item">
-                  <aside
+                  <div
                     className="goDgEe">
                     <button
                       className="eZEqWd"
@@ -341,16 +345,18 @@ exports[`Collections component should match the previous snapshot 1`] = `
                         className="fa fa-minus"
                         role="presentation" />
                     </button>
-                  </aside>
-                  <div
-                    className="kHaGmh"
+                  </div>
+                  <button
+                    className="XnOQh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}>
-                    <h4>
-                      POST
-                    </h4>
-                    www.foo.no
-                  </div>
+                    <div>
+                      <h4>
+                        POST
+                      </h4>
+                      www.foo.no
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -363,7 +369,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                 className="list-group">
                 <div
                   className="list-group-item">
-                  <aside
+                  <div
                     className="goDgEe">
                     <button
                       className="eZEqWd"
@@ -401,16 +407,18 @@ exports[`Collections component should match the previous snapshot 1`] = `
                         className="fa fa-minus"
                         role="presentation" />
                     </button>
-                  </aside>
-                  <div
-                    className="kHaGmh"
+                  </div>
+                  <button
+                    className="XnOQh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}>
-                    <h4>
-                      POST
-                    </h4>
-                    www.bar.no
-                  </div>
+                    <div>
+                      <h4>
+                        POST
+                      </h4>
+                      www.bar.no
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -423,7 +431,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                 className="list-group">
                 <div
                   className="list-group-item">
-                  <aside
+                  <div
                     className="goDgEe">
                     <button
                       className="eZEqWd"
@@ -461,16 +469,18 @@ exports[`Collections component should match the previous snapshot 1`] = `
                         className="fa fa-minus"
                         role="presentation" />
                     </button>
-                  </aside>
-                  <div
-                    className="kHaGmh"
+                  </div>
+                  <button
+                    className="XnOQh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}>
-                    <h4>
-                      POST
-                    </h4>
-                    www.baz.no
-                  </div>
+                    <div>
+                      <h4>
+                        POST
+                      </h4>
+                      www.baz.no
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
