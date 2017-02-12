@@ -92,7 +92,9 @@ exports[`Collection component should match the previous snapshot 1`] = `
               </button>
             </aside>
             <div
-              className="kHaGmh">
+              className="kHaGmh"
+              onClick={[Function]}
+              onDoubleClick={[Function]}>
               <h4>
                 POST
               </h4>
@@ -232,7 +234,9 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     </button>
                   </aside>
                   <div
-                    className="kHaGmh">
+                    className="kHaGmh"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}>
                     <h4>
                       POST
                     </h4>
@@ -339,7 +343,9 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     </button>
                   </aside>
                   <div
-                    className="kHaGmh">
+                    className="kHaGmh"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}>
                     <h4>
                       POST
                     </h4>
@@ -397,7 +403,9 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     </button>
                   </aside>
                   <div
-                    className="kHaGmh">
+                    className="kHaGmh"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}>
                     <h4>
                       POST
                     </h4>
@@ -455,7 +463,9 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     </button>
                   </aside>
                   <div
-                    className="kHaGmh">
+                    className="kHaGmh"
+                    onClick={[Function]}
+                    onDoubleClick={[Function]}>
                     <h4>
                       POST
                     </h4>

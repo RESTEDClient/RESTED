@@ -204,7 +204,7 @@ class Collection extends React.Component {
               key={request.id || index}
               index={index}
               collectionIndex={collectionIndex}
-              {...request}
+              request={request}
             />
           ))}
         </StyledCollection>

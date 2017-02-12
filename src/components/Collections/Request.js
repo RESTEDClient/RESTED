@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
+import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import IconButton from 'components/IconButton';
-import * as Actions from 'store/collections/actions';
+import * as CollectionActions from 'store/collections/actions';
+import * as RequestActions from 'store/request/actions';
 
 import { StyledRequest, AsideButtons, MainContent } from './StyledComponents';
 import * as Type from './dropTypes';
@@ -66,14 +68,18 @@ class Request extends React.Component {
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
     collectionIndex: PropTypes.number.isRequired,
-    method: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
     renameRequest: PropTypes.func.isRequired,
+    selectRequest: PropTypes.func.isRequired,
+    sendRequest: PropTypes.func.isRequired,
     deleteRequest: PropTypes.func.isRequired,
+    request: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      method: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   constructor(props) {
@@ -107,14 +113,19 @@ class Request extends React.Component {
       connectDragSource,
       connectDropTarget,
       isDragging,
-      id,
-      collectionIndex,
+      request,
       index,
+      collectionIndex,
+      selectRequest,
+      sendRequest,
+      deleteRequest,
+    } = this.props;
+    const {
+      id,
       method,
       name,
       url,
-      deleteRequest,
-    } = this.props;
+    } = request;
 
     return connectDragSource(connectDropTarget(
       <div> {/* Need a wrapper div for React DnD support */}
@@ -153,7 +164,11 @@ class Request extends React.Component {
                 )}
               </AsideButtons>
 
-              <MainContent compact={compact}>
+              <MainContent
+                compact={compact}
+                onClick={() => selectRequest(Immutable.fromJS(request))}
+                onDoubleClick={() => sendRequest(request)}
+              >
                 {!compact && <h4>{method}</h4>}
                 {edit ? (
                   <form onSubmit={this.renameRequest}>
@@ -193,6 +208,9 @@ export default flow(
     connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  connect(null, Actions),
+  connect(null, {
+    ...CollectionActions,
+    ...RequestActions,
+  }),
 )(Request);
 
