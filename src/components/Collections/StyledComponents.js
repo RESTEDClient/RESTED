@@ -58,7 +58,7 @@ export const StyledRequest = styled.div`
 
 const asideWidth = 36;
 
-export const AsideButtons = styled.aside`
+export const RequestButtons = styled.div`
   max-width: ${asideWidth}px;
   flex: 1;
 

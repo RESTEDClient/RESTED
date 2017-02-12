@@ -12,7 +12,12 @@ import {
   REORDER_COLLECTION,
   RENAME_COLLECTION,
   RENAME_REQUEST,
+  SELECT_REQUEST,
 } from './types';
+
+function persistState(state) {
+  return localforage.setItem('collections', getCollections(state).toJS());
+}
 
 export function startFetch() {
   return { type: FETCH_COLLECTIONS };
@@ -44,8 +49,7 @@ export function addCollection(requests) {
   return (dispatch, getState) => {
     dispatch(doAddCollection(requests));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -58,8 +62,7 @@ export function deleteCollection(collectionId) {
   return (dispatch, getState) => {
     dispatch(doDeleteCollection(collectionId));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -72,8 +75,7 @@ export function deleteRequest(requestId, collectionIndex) {
   return (dispatch, getState) => {
     dispatch(doDeleteRequest(requestId, collectionIndex));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -86,8 +88,7 @@ export function addRequest(request, collectionIndex) {
   return (dispatch, getState) => {
     dispatch(doAddRequest(request, collectionIndex));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -100,8 +101,7 @@ export function reorderRequest(source, target) {
   return (dispatch, getState) => {
     dispatch(doReorderRequest(source, target));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -114,8 +114,7 @@ export function reorderCollection(oldIndex, newIndex) {
   return (dispatch, getState) => {
     dispatch(doReorderCollection(oldIndex, newIndex));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -127,8 +126,7 @@ export function renameCollection(collectionIndex, name) {
   return (dispatch, getState) => {
     dispatch(doRenameCollection(collectionIndex, name));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
   };
 }
 
@@ -140,8 +138,19 @@ export function renameRequest(collectionIndex, requestIndex, name) {
   return (dispatch, getState) => {
     dispatch(doRenameRequest(collectionIndex, requestIndex, name));
 
-    return localforage
-      .setItem('collections', getCollections(getState()).toJS());
+    return persistState(getState());
+  };
+}
+
+export function doSelectRequest(collectionIndex, requestIndex) {
+  return { type: SELECT_REQUEST, collectionIndex, requestIndex };
+}
+
+export function selectRequest(collectionIndex, requestIndex) {
+  return (dispatch, getState) => {
+    dispatch(doSelectRequest(collectionIndex, requestIndex));
+
+    return persistState(getState());
   };
 }
 

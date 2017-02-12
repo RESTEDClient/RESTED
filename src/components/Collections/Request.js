@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup } from 'react-bootstrap';
@@ -11,7 +11,7 @@ import * as RequestActions from 'store/request/actions';
 
 import {
   StyledRequest,
-  AsideButtons,
+  RequestButtons,
   MainContentButton,
   MainContentDiv,
 } from './StyledComponents';
@@ -153,6 +153,7 @@ class Request extends React.Component {
       isDragging,
       request,
       collectionIndex,
+      index,
       selectRequest,
       sendRequest,
       deleteRequest,
@@ -162,8 +163,12 @@ class Request extends React.Component {
       <div> {/* Need a wrapper div for React DnD support */}
         <StyledRequest isDragging={isDragging}>
           <ListGroup componentClass="div">
-            <div className="list-group-item">
-              <AsideButtons compact={compact}>
+            <div
+              className={classNames('list-group-item', {
+                active: request.selected,
+              })}
+            >
+              <RequestButtons compact={compact}>
                 {!compact && (
                   <IconButton
                     tooltip="Toggle edit"
@@ -193,7 +198,7 @@ class Request extends React.Component {
                     onClick={() => deleteRequest(request.id, collectionIndex)}
                   />
                 )}
-              </AsideButtons>
+              </RequestButtons>
 
               {edit ? (
                 <MainContentDiv compact={compact}>
@@ -202,7 +207,9 @@ class Request extends React.Component {
               ) : (
                 <MainContentButton
                   compact={compact}
-                  onClick={() => selectRequest(Immutable.fromJS(request))}
+                  onClick={() => {
+                    selectRequest(collectionIndex, index);
+                  }}
                   onDoubleClick={() => sendRequest(request)}
                 >
                   {this.renderRequest()}

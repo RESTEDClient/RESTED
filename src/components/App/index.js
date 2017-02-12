@@ -45,24 +45,26 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <main>
-          <Row>
-            <LeftCol
-              xsHidden
-              sm={collectionsMinimized ? null : 4}
-              collapsed={collectionsMinimized}
-            >
+        <Row>
+          <LeftCol
+            xsHidden
+            sm={collectionsMinimized ? null : 4}
+            collapsed={collectionsMinimized}
+          >
+            <aside>
               <LeftPanel />
-            </LeftCol>
-            <RightCol
-              xs={12}
-              sm={collectionsMinimized ? 12 : 8}
-            >
+            </aside>
+          </LeftCol>
+          <RightCol
+            xs={12}
+            sm={collectionsMinimized ? 12 : 8}
+          >
+            <main>
               <Request />
               <Response />
-            </RightCol>
-          </Row>
-        </main>
+            </main>
+          </RightCol>
+        </Row>
         <Modal />
       </div>
     );
