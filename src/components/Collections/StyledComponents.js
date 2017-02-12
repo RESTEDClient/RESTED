@@ -71,7 +71,24 @@ export const AsideButtons = styled.aside`
   }
 `;
 
-export const MainContent = styled.button`
+export const MainContentDiv = styled.div`
+  padding: 10px;
+  word-break: break-all;
+  border-left: 1px solid #ddd;
+  width: calc(100% - ${asideWidth}px);
+
+  input {
+    width: calc(100% - 36px);
+  }
+
+  ${props => props.compact && css`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `}
+`;
+
+export const MainContentButton = styled.button`
   border: 10px none;
   boxSizing: border-box;
   backgroundColor: inherit;

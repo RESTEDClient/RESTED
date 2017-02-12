@@ -9,7 +9,12 @@ import IconButton from 'components/IconButton';
 import * as CollectionActions from 'store/collections/actions';
 import * as RequestActions from 'store/request/actions';
 
-import { StyledRequest, AsideButtons, MainContent } from './StyledComponents';
+import {
+  StyledRequest,
+  AsideButtons,
+  MainContentButton,
+  MainContentDiv,
+} from './StyledComponents';
 import * as Type from './dropTypes';
 
 /**
@@ -107,6 +112,39 @@ class Request extends React.Component {
     renameRequest(collectionIndex, index, this.nameRef.value);
   }
 
+  renderRequest() {
+    const { compact, edit } = this.state;
+    const { request, index, collectionIndex } = this.props;
+    const { method, name, url } = request;
+
+    return (
+      <div>
+        {!compact && <h4>{method}</h4>}
+        {edit ? (
+          <form onSubmit={this.renameRequest}>
+            <label
+              className="sr-only"
+              htmlFor={`${collectionIndex}.${index}.RequestName`}
+            >
+              Request name
+            </label>
+            <input
+              id={`${collectionIndex}.${index}.RequestName`}
+              defaultValue={name}
+              ref={ref => { this.nameRef = ref; }}
+            />
+            <IconButton
+              tooltip="Save"
+              icon="check"
+            />
+          </form>
+        ) : (
+          name || url
+        )}
+      </div>
+    );
+  }
+
   render() {
     const { compact, edit } = this.state;
     const {
@@ -114,18 +152,11 @@ class Request extends React.Component {
       connectDropTarget,
       isDragging,
       request,
-      index,
       collectionIndex,
       selectRequest,
       sendRequest,
       deleteRequest,
     } = this.props;
-    const {
-      id,
-      method,
-      name,
-      url,
-    } = request;
 
     return connectDragSource(connectDropTarget(
       <div> {/* Need a wrapper div for React DnD support */}
@@ -159,39 +190,24 @@ class Request extends React.Component {
                   <IconButton
                     tooltip="Delete"
                     icon="trash"
-                    onClick={() => deleteRequest(id, collectionIndex)}
+                    onClick={() => deleteRequest(request.id, collectionIndex)}
                   />
                 )}
               </AsideButtons>
 
-              <MainContent
-                compact={compact}
-                onClick={() => selectRequest(Immutable.fromJS(request))}
-                onDoubleClick={() => sendRequest(request)}
-              >
-                {!compact && <h4>{method}</h4>}
-                {edit ? (
-                  <form onSubmit={this.renameRequest}>
-                    <label
-                      className="sr-only"
-                      htmlFor={`${collectionIndex}.${index}.RequestName`}
-                    >
-                      Request name
-                    </label>
-                    <input
-                      id={`${collectionIndex}.${index}.RequestName`}
-                      defaultValue={name}
-                      ref={ref => { this.nameRef = ref; }}
-                    />
-                    <IconButton
-                      tooltip="Save"
-                      icon="check"
-                    />
-                  </form>
-                ) : (
-                  name || url
-                )}
-              </MainContent>
+              {edit ? (
+                <MainContentDiv compact={compact}>
+                  {this.renderRequest()}
+                </MainContentDiv>
+              ) : (
+                <MainContentButton
+                  compact={compact}
+                  onClick={() => selectRequest(Immutable.fromJS(request))}
+                  onDoubleClick={() => sendRequest(request)}
+                >
+                  {this.renderRequest()}
+                </MainContentButton>
+              )}
             </div>
           </ListGroup>
         </StyledRequest>
