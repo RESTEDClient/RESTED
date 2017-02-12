@@ -71,7 +71,11 @@ export const AsideButtons = styled.aside`
   }
 `;
 
-export const MainContent = styled.div`
+export const MainContent = styled.button`
+  border: 10px none;
+  boxSizing: border-box;
+  backgroundColor: inherit;
+  textAlign: left;
   padding: 10px;
   word-break: break-all;
   border-left: 1px solid #ddd;
