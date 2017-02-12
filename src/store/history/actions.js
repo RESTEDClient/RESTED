@@ -51,10 +51,12 @@ export function doPushHistory(request) {
 export function pushHistory(request) {
   return (dispatch, getState) => (
     fetchHistory()(dispatch).then(() => {
-      const { url, method } = getHistory(getState()).first().toJS();
+      const lastRequest = getHistory(getState()).first();
 
       // Do not add the same request if sent several times
-      if (url === request.get('url') && method === request.get('method')) {
+      if (lastRequest
+      && lastRequest.url === request.get('url')
+      && lastRequest.method === request.get('method')) {
         return null;
       }
 

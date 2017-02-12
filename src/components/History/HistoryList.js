@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ListGroup } from 'react-bootstrap';
 
 import requestShape from 'propTypes/request';
+import IconButton from 'components/IconButton';
 import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
 
@@ -17,14 +18,14 @@ function ListGroupHeader({ index, request, removeFromHistory }) {
         className="pull-right"
         id="removeRequest"
       >
-        <button
+        <IconButton
+          tooltip="Remove from history"
+          icon="trash"
           onClick={e => {
             e.stopPropagation();
             removeFromHistory(index);
           }}
-        >
-          Remove from history
-        </button>
+        />
       </div>
     </h4>
   );
