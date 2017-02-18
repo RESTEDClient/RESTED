@@ -4,15 +4,12 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Table, Clearfix, Row, Col, Button, ButtonGroup, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import classNames from 'classnames';
-import debug from 'debug';
 
 import { fromPostman, fromHAR } from 'utils/import';
 import { getCollections } from 'store/collections/selectors';
 import * as ModalActions from 'store/modal/actions';
 import * as CollectionsActions from 'store/collections/actions';
 import collectionShape from 'propTypes/collection';
-
-const log = debug('import');
 
 function SelectCollectionForm({ collections, onChange }) {
   return (
@@ -129,7 +126,6 @@ class ImportPane extends React.Component {
         }],
       });
     } catch (e) {
-      log(e);
       this.setState({
         importFeedback: 'Error while parsing. Is your text formatted correctly?',
       });

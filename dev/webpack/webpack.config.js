@@ -11,7 +11,9 @@ const doNothing = () => {};
 module.exports = {
   context: rootDir,
 
-  entry: "./src/index.js",
+  entry: [
+    './src/index.js',
+  ],
 
   output: {
     path: "./dist",

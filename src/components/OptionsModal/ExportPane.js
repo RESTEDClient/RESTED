@@ -3,14 +3,11 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Clearfix, Row, Col, Button, ButtonGroup, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import classNames from 'classnames';
-import debug from 'debug';
 
 import { toPostman, toHAR } from 'utils/export';
 import encode from 'utils/base64';
 import { getCollections } from 'store/collections/selectors';
 import collectionShape from 'propTypes/collection';
-
-const log = debug('export');
 
 class ExportPane extends React.Component {
   static propTypes = {
@@ -42,7 +39,6 @@ class ExportPane extends React.Component {
     this.setState({ importFeedback: null });
 
     try {
-      log('collections', collections);
       const collection = collections.get(selectedCollection).toJS();
       const requests = collection.requests;
 
@@ -60,7 +56,6 @@ class ExportPane extends React.Component {
         base64EncodedExportText: encode(exportText),
       });
     } catch (e) {
-      log(e);
       this.setState({
         exportFeedback: `Error while exporting: ${e}`,
       });
