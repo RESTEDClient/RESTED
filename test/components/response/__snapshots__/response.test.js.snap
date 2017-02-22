@@ -1,19 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`response component renders a result when given one 1`] = `
 <div
   className="panel panel-default"
-  id={undefined}>
+  id={undefined}
+>
   <div
-    className="panel-heading">
+    className="panel-heading"
+  >
     <h3>
       Response - 
       <a
-        href="http://example.com">
+        href="http://example.com"
+      >
         http://example.com
       </a>
     </h3>
   </div>
   <div
-    className="panel-body">
+    className="panel-body"
+  >
     <h3>
       200
       <small>
@@ -21,22 +27,26 @@ exports[`response component renders a result when given one 1`] = `
       </small>
     </h3>
     <div
-      className="row">
+      className="row"
+    >
       <button
         className="btn btn-link"
         disabled={false}
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         <h4>
           Headers
           <i
             className="fa fa-angle-right"
-            role="presentation" />
+            role="presentation"
+          />
         </h4>
       </button>
       <div
         aria-expanded={null}
-        className="collapse col-xs-12" />
+        className="collapse col-xs-12"
+      />
     </div>
   </div>
 </div>

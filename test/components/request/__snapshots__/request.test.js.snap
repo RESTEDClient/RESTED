@@ -1,87 +1,114 @@
-exports[`test should render correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
 <div
   className="panel panel-default"
-  id={undefined}>
+  id={undefined}
+>
   <div
-    className="panel-heading">
+    className="panel-heading"
+  >
     <span
-      className="clearfix">
+      className="clearfix"
+    >
       <h2
-        className="pull-left">
+        className="pull-left"
+      >
         Request
       </h2>
       <button
         className="pull-right eZEqWd"
         onClick={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}>
+        onMouseLeave={[Function]}
+      >
         <div
-          className="QxewG">
+          className="QxewG"
+        >
           <div
-            className="ddxWyy" />
+            className="ddxWyy"
+          />
           <span
-            className="jsYWMN">
+            className="jsYWMN"
+          >
             Add to collection
           </span>
         </div>
         <i
           className="fa fa-plus"
-          role="presentation" />
+          role="presentation"
+        />
       </button>
       <button
         className="pull-right eZEqWd"
         onClick={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}>
+        onMouseLeave={[Function]}
+      >
         <div
-          className="QxewG">
+          className="QxewG"
+        >
           <div
-            className="ddxWyy" />
+            className="ddxWyy"
+          />
           <span
-            className="jsYWMN">
+            className="jsYWMN"
+          >
             Options
           </span>
         </div>
         <i
           className="fa fa-cog"
-          role="presentation" />
+          role="presentation"
+        />
       </button>
       <button
         className="pull-right eZEqWd"
         onClick={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}>
+        onMouseLeave={[Function]}
+      >
         <div
-          className="QxewG">
+          className="QxewG"
+        >
           <div
-            className="ddxWyy" />
+            className="ddxWyy"
+          />
           <span
-            className="jsYWMN">
+            className="jsYWMN"
+          >
             Hide collections
           </span>
         </div>
         <i
           className="fa fa-expand"
-          role="presentation" />
+          role="presentation"
+        />
       </button>
     </span>
   </div>
   <div
-    className="panel-body">
+    className="panel-body"
+  >
     <form
-      onSubmit={[Function]}>
+      onSubmit={[Function]}
+    >
       <div
-        className="form-group">
+        className="form-group"
+      >
         <div
-          className="col-sm-2">
+          className="col-sm-2"
+        >
           <label
             className="control-label"
-            htmlFor="url">
+            htmlFor="url"
+          >
             URL
           </label>
         </div>
         <div
-          className="col-sm-10">
+          className="col-sm-10"
+        >
           <input
             className="form-control"
             id="url"
@@ -93,21 +120,26 @@ exports[`test should render correctly 1`] = `
             onFocus={[Function]}
             placeholder={undefined}
             type="text"
-            value="" />
+            value=""
+          />
         </div>
       </div>
       <div
-        className="form-group">
+        className="form-group"
+      >
         <div
-          className="col-sm-2">
+          className="col-sm-2"
+        >
           <label
             className="control-label"
-            htmlFor="method">
+            htmlFor="method"
+          >
             Method
           </label>
         </div>
         <div
-          className="col-sm-7">
+          className="col-sm-7"
+        >
           <select
             className="form-control"
             id="method"
@@ -119,105 +151,129 @@ exports[`test should render correctly 1`] = `
             onFocus={[Function]}
             placeholder="Method"
             type={undefined}
-            value="">
+            value=""
+          >
             <option
-              value="GET">
+              value="GET"
+            >
               GET
             </option>
             <option
-              value="POST">
+              value="POST"
+            >
               POST
             </option>
             <option
-              value="PUT">
+              value="PUT"
+            >
               PUT
             </option>
             <option
-              value="DELETE">
+              value="DELETE"
+            >
               DELETE
             </option>
             <option
-              value="PATCH">
+              value="PATCH"
+            >
               PATCH
             </option>
             <option
-              value="HEAD">
+              value="HEAD"
+            >
               HEAD
             </option>
             <option
-              value="JSONP">
+              value="JSONP"
+            >
               JSONP
             </option>
             <option
-              value="CUSTOM">
+              value="CUSTOM"
+            >
               CUSTOM
             </option>
           </select>
         </div>
         <div
-          className="col-sm-3">
+          className="col-sm-3"
+        >
           <button
             className="btn btn-primary"
             disabled={false}
-            type="submit">
+            type="submit"
+          >
             Send request
           </button>
         </div>
       </div>
       <div
-        className="row">
+        className="row"
+      >
         <button
           className="btn btn-link"
           disabled={false}
           onClick={[Function]}
-          type="button">
+          type="button"
+        >
           <h4>
             Headers
             <i
               className="fa fa-angle-right"
-              role="presentation" />
+              role="presentation"
+            />
           </h4>
         </button>
         <div
           aria-expanded={null}
-          className="collapse col-xs-12">
+          className="collapse col-xs-12"
+        >
           <div
-            className="col-xs-12">
+            className="col-xs-12"
+          >
             <button
               className="btn btn-default"
               disabled={false}
               id="addHeaderButton"
               onClick={[Function]}
-              type="button">
+              type="button"
+            >
               <i
                 className="fa fa-plus"
-                role="presentation" />
+                role="presentation"
+              />
               Add header
             </button>
           </div>
         </div>
       </div>
       <div
-        className="row">
+        className="row"
+      >
         <button
           className="btn btn-link"
           disabled={false}
           onClick={[Function]}
-          type="button">
+          type="button"
+        >
           <h4>
             Basic auth
             <i
               className="fa fa-angle-right"
-              role="presentation" />
+              role="presentation"
+            />
           </h4>
         </button>
         <div
           aria-expanded={null}
-          className="collapse col-xs-12">
+          className="collapse col-xs-12"
+        >
           <div
-            className="form-group">
+            className="form-group"
+          >
             <div
-              className="col-xs-5">
+              className="col-xs-5"
+            >
               <input
                 className="form-control"
                 id="method"
@@ -229,10 +285,12 @@ exports[`test should render correctly 1`] = `
                 onFocus={[Function]}
                 placeholder="Username"
                 type="text"
-                value="" />
+                value=""
+              />
             </div>
             <div
-              className="col-xs-5">
+              className="col-xs-5"
+            >
               <input
                 className="form-control"
                 id="method"
@@ -244,50 +302,61 @@ exports[`test should render correctly 1`] = `
                 onFocus={[Function]}
                 placeholder="Password"
                 type="text"
-                value="" />
+                value=""
+              />
             </div>
             <div
-              className="col-xs-2">
+              className="col-xs-2"
+            >
               Show password?
             </div>
           </div>
         </div>
       </div>
       <div
-        className="row">
+        className="row"
+      >
         <button
           className="btn btn-link"
           disabled={false}
           onClick={[Function]}
-          type="button">
+          type="button"
+        >
           <h4>
             Request body
             <i
               className="fa fa-angle-right"
-              role="presentation" />
+              role="presentation"
+            />
           </h4>
         </button>
         <div
           aria-expanded={null}
-          className="collapse col-xs-12">
+          className="collapse col-xs-12"
+        >
           <div
-            className="col-xs-12">
+            className="col-xs-12"
+          >
             <div
               className="checkbox"
-              style={undefined}>
+              style={undefined}
+            >
               <label>
                 <input
                   disabled={false}
                   onChange={[Function]}
-                  type="checkbox" />
+                  type="checkbox"
+                />
                 Use form data
               </label>
             </div>
           </div>
           <div
-            className="col-xs-12">
+            className="col-xs-12"
+          >
             <div
-              className="form-group">
+              className="form-group"
+            >
               <textarea
                 className="form-control"
                 id="requestBody"
@@ -299,7 +368,8 @@ exports[`test should render correctly 1`] = `
                 onFocus={[Function]}
                 rows={10}
                 type={undefined}
-                value="" />
+                value=""
+              />
             </div>
           </div>
         </div>

@@ -1,61 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`MethodField should match the previous snapshot 1`] = `
 <div
-  className="form-group">
+  className="form-group"
+>
   <div
-    className="col-sm-2">
+    className="col-sm-2"
+  >
     <label
       className="control-label"
-      htmlFor="method">
+      htmlFor="method"
+    >
       Method
     </label>
   </div>
   <div
-    className="col-sm-7">
+    className="col-sm-7"
+  >
     <select
       className="form-control"
       id="method"
       placeholder="Method"
-      type={undefined}>
+      type={undefined}
+    >
       <option
-        value="GET">
+        value="GET"
+      >
         GET
       </option>
       <option
-        value="POST">
+        value="POST"
+      >
         POST
       </option>
       <option
-        value="PUT">
+        value="PUT"
+      >
         PUT
       </option>
       <option
-        value="DELETE">
+        value="DELETE"
+      >
         DELETE
       </option>
       <option
-        value="PATCH">
+        value="PATCH"
+      >
         PATCH
       </option>
       <option
-        value="HEAD">
+        value="HEAD"
+      >
         HEAD
       </option>
       <option
-        value="JSONP">
+        value="JSONP"
+      >
         JSONP
       </option>
       <option
-        value="CUSTOM">
+        value="CUSTOM"
+      >
         CUSTOM
       </option>
     </select>
   </div>
   <div
-    className="col-sm-3">
+    className="col-sm-3"
+  >
     <button
       className="btn btn-primary"
       disabled={false}
-      type="submit">
+      type="submit"
+    >
       Send request
     </button>
   </div>
@@ -64,62 +81,77 @@ exports[`MethodField should match the previous snapshot 1`] = `
 
 exports[`MethodField should match the previous snapshot with invalid field state 1`] = `
 <div
-  className="form-group has-error">
+  className="form-group has-error"
+>
   <div
-    className="col-sm-2">
+    className="col-sm-2"
+  >
     <label
       className="control-label"
-      htmlFor="method">
+      htmlFor="method"
+    >
       Method
     </label>
   </div>
   <div
-    className="col-sm-7">
+    className="col-sm-7"
+  >
     <select
       className="form-control"
       id="method"
       placeholder="Method"
-      type={undefined}>
+      type={undefined}
+    >
       <option
-        value="GET">
+        value="GET"
+      >
         GET
       </option>
       <option
-        value="POST">
+        value="POST"
+      >
         POST
       </option>
       <option
-        value="PUT">
+        value="PUT"
+      >
         PUT
       </option>
       <option
-        value="DELETE">
+        value="DELETE"
+      >
         DELETE
       </option>
       <option
-        value="PATCH">
+        value="PATCH"
+      >
         PATCH
       </option>
       <option
-        value="HEAD">
+        value="HEAD"
+      >
         HEAD
       </option>
       <option
-        value="JSONP">
+        value="JSONP"
+      >
         JSONP
       </option>
       <option
-        value="CUSTOM">
+        value="CUSTOM"
+      >
         CUSTOM
       </option>
     </select>
   </div>
   <div
-    className="col-sm-3">
+    className="col-sm-3"
+  >
     <button
       className="btn btn-primary"
       disabled={false}
-      type="submit">
+      type="submit"
+    >
       Send request
     </button>
   </div>

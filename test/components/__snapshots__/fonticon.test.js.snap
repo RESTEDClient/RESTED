@@ -1,5 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Fonticon matches the previous snapshot 1`] = `
 <i
   className="fa fa-cog"
-  role="presentation" />
+  role="presentation"
+/>
 `;

@@ -1,25 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`HeadersField should match the previous snapshot 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <button
     className="btn btn-link"
     disabled={false}
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     <h4>
       Headers
       <i
         className="fa fa-angle-right"
-        role="presentation" />
+        role="presentation"
+      />
     </h4>
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12">
+    className="collapse col-xs-12"
+  >
     <div
-      className="form-group">
+      className="form-group"
+    >
       <div
-        className="col-xs-5">
+        className="col-xs-5"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -31,10 +39,12 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Name"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-6">
+        className="col-xs-6"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -46,35 +56,44 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Value"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-1">
+        className="col-xs-1"
+      >
         <button
           className="eZEqWd"
           id="removeHeaderButton0"
           onClick={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}>
+          onMouseLeave={[Function]}
+        >
           <div
-            className="QxewG">
+            className="QxewG"
+          >
             <div
-              className="ddxWyy" />
+              className="ddxWyy"
+            />
             <span
-              className="jsYWMN">
+              className="jsYWMN"
+            >
               Remove header
             </span>
           </div>
           <i
             className="fa fa-trash"
-            role="presentation" />
+            role="presentation"
+          />
         </button>
       </div>
     </div>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <div
-        className="col-xs-5">
+        className="col-xs-5"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -86,10 +105,12 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Name"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-6">
+        className="col-xs-6"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -101,35 +122,44 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Value"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-1">
+        className="col-xs-1"
+      >
         <button
           className="eZEqWd"
           id="removeHeaderButton1"
           onClick={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}>
+          onMouseLeave={[Function]}
+        >
           <div
-            className="QxewG">
+            className="QxewG"
+          >
             <div
-              className="ddxWyy" />
+              className="ddxWyy"
+            />
             <span
-              className="jsYWMN">
+              className="jsYWMN"
+            >
               Remove header
             </span>
           </div>
           <i
             className="fa fa-trash"
-            role="presentation" />
+            role="presentation"
+          />
         </button>
       </div>
     </div>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <div
-        className="col-xs-5">
+        className="col-xs-5"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -141,10 +171,12 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Name"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-6">
+        className="col-xs-6"
+      >
         <input
           className="form-control"
           id="header.[object Object]"
@@ -156,42 +188,52 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           onFocus={[Function]}
           placeholder="Value"
           type="text"
-          value="" />
+          value=""
+        />
       </div>
       <div
-        className="col-xs-1">
+        className="col-xs-1"
+      >
         <button
           className="eZEqWd"
           id="removeHeaderButton2"
           onClick={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}>
+          onMouseLeave={[Function]}
+        >
           <div
-            className="QxewG">
+            className="QxewG"
+          >
             <div
-              className="ddxWyy" />
+              className="ddxWyy"
+            />
             <span
-              className="jsYWMN">
+              className="jsYWMN"
+            >
               Remove header
             </span>
           </div>
           <i
             className="fa fa-trash"
-            role="presentation" />
+            role="presentation"
+          />
         </button>
       </div>
     </div>
     <div
-      className="col-xs-12">
+      className="col-xs-12"
+    >
       <button
         className="btn btn-default"
         disabled={false}
         id="addHeaderButton"
         onClick={[Function]}
-        type="button">
+        type="button"
+      >
         <i
           className="fa fa-plus"
-          role="presentation" />
+          role="presentation"
+        />
         Add header
       </button>
     </div>

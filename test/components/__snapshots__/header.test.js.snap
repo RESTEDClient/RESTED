@@ -1,11 +1,14 @@
-exports[`test Header renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
 <header>
   <h1>
     <img
       alt="RESTED logo"
       className="logo"
       height="40"
-      src="img/rested-logo.png" />
+      src="img/rested-logo.png"
+    />
     <span>
       RESTED
     </span>

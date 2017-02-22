@@ -25,7 +25,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
-    "localforage": "^1.4.3",
+    "localforage": "^1.5.0",
     "localforage-webextensionstorage-driver": "^1.1.2",
     "lodash.flow": "^3.5.0",
     "md5": "^2.2.1",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^18.0.0",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
@@ -66,7 +66,7 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
-    "jest": "^18.1.0",
+    "jest": "^19.0.1",
     "react-addons-test-utils": "^15.4.2",
     "react-dnd-test-backend": "^2.2.3",
     "react-test-renderer": "^15.4.2",

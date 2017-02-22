@@ -1,41 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`BasicAuthField should match the previous snapshot 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <button
     className="btn btn-link"
     disabled={false}
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     <h4>
       Basic auth
       <i
         className="fa fa-angle-right"
-        role="presentation" />
+        role="presentation"
+      />
     </h4>
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12">
+    className="collapse col-xs-12"
+  >
     <div
-      className="form-group">
+      className="form-group"
+    >
       <div
-        className="col-xs-5">
+        className="col-xs-5"
+      >
         <input
           className="form-control"
           id="method"
           placeholder="Username"
-          type="text" />
+          type="text"
+        />
       </div>
       <div
-        className="col-xs-5">
+        className="col-xs-5"
+      >
         <input
           className="form-control"
           id="method"
           placeholder="Password"
-          type="text" />
+          type="text"
+        />
       </div>
       <div
-        className="col-xs-2">
+        className="col-xs-2"
+      >
         Show password?
       </div>
     </div>

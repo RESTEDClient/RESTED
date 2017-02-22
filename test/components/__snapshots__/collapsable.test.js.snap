@@ -1,21 +1,27 @@
-exports[`test should render correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
 <div
-  className="row">
+  className="row"
+>
   <button
     className="btn btn-link"
     disabled={false}
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     <h4>
       Test
       <i
         className="fa fa-angle-right"
-        role="presentation" />
+        role="presentation"
+      />
     </h4>
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12">
+    className="collapse col-xs-12"
+  >
     <h3>
       test
     </h3>
