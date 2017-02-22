@@ -3,6 +3,7 @@ import { change, initialize } from 'redux-form';
 
 import base64Encode from 'utils/base64';
 import { reMapHeaders } from 'utils/requestUtils';
+import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
 import { selectRequest as doSelectRequest } from 'store/collections/actions';
 import { requestForm } from 'components/Request';
@@ -50,17 +51,22 @@ export function selectRequest(collectionIndex, requestIndex) {
 }
 
 export function sendRequest(request) {
-  const { url, method, headers, formData, basicAuth } = request;
+  const { method, headers, formData, basicAuth } = request;
   return (dispatch, getState) => {
     dispatch(executeRequest());
 
-    const fallbackUrl = getState().request.placeholderUrl;
-    if (!url) {
+    const state = getState();
+    const parameters = state.urlVariables.get('urlVariables');
+    const fallbackUrl = state.request.placeholderUrl;
+
+    if (!request.url) {
       dispatch(change(requestForm, 'url', fallbackUrl));
       request.url = fallbackUrl; // eslint-disable-line no-param-reassign
     }
 
     const requestHeaders = new Headers(reMapHeaders(headers, true));
+    let resource = mapParameters(request.url, parameters);
+    resource = prependHttp(resource);
 
     if (basicAuth && basicAuth.username) {
       requestHeaders.append(
@@ -78,7 +84,7 @@ export function sendRequest(request) {
 
     dispatch(pushHistory(Immutable.fromJS(request)));
 
-    return fetch(url || fallbackUrl, {
+    return fetch(resource, {
       method,
       body,
       headers: requestHeaders,

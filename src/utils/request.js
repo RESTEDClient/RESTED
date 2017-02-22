@@ -23,6 +23,8 @@ export function prependHttp(url) {
 * left behind.
 */
 export function mapParameters(url, params) {
+  if (!url) return null;
+
   return url.replace(/\{\{(\w+)\}\}/g, (match, capture) => {
     const param = params ? params[capture] : null;
     return param || '';

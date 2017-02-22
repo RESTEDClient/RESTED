@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import { change } from 'redux-form';
 
 /* eslint-disable import/no-unresolved */
@@ -78,6 +79,8 @@ describe('actions', () => {
       const payload = {};
       const mockState = {
         request: {},
+        url: 'http://mozilla.com',
+        urlVariables: Immutable.Map(),
       };
 
       const dispatch = jest.fn(() => {});
@@ -100,6 +103,7 @@ describe('actions', () => {
         request: {
           placeholderUrl: 'http://fallbackUrl.com',
         },
+        urlVariables: Immutable.Map(),
       };
 
       const dispatch = jest.fn(() => {});
@@ -143,6 +147,7 @@ describe('actions', () => {
         request: {
           placeholderUrl: 'http://fallbackUrl.com',
         },
+        urlVariables: Immutable.Map(),
       };
 
       const expectedData = new FormData();
