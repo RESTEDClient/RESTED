@@ -11,7 +11,7 @@ function Titlebar({ addCollection }) {
   return (
     <span className="clearfix">
       <IconButton
-        onClick={addCollection}
+        onClick={() => addCollection()}
         tooltip="Add new collection"
         icon="plus"
         className="pull-right"
