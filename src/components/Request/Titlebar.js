@@ -50,17 +50,17 @@ function Titlebar(props) {
             return;
           }
 
-          if (collections.size === 0) {
+          switch (collections.size) {
+          case 0:
             props.addCollection();
+          case 1:
             handleSubmit(props);
-          } else if (collections.size === 1) {
-            handleSubmit(props);
-          } else {
-            showChooseCollectionModal(props)
-              .then(
-                index => handleSubmit(props, index),
-                removeModal,
-              );
+            break;
+          default:
+            showChooseCollectionModal(props).then(
+              index => handleSubmit(props, index),
+              removeModal,
+            );
           }
           // if (requestExists)
           // Modal (do you want to replace?)
