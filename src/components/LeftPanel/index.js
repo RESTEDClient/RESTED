@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Nav, NavItem } from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
 
 import Collections from 'components/Collections';
 import History from 'components/History';
 import { updateOption } from 'store/options/actions';
 import { getActiveTab } from 'store/options/selectors';
 
-import { Panel } from './StyledComponents';
+import { Panel, StyledTitlebar } from './StyledComponents';
 
 function Titlebar(props) {
   return (
-    <Nav {...props} bsStyle="pills">
+    <StyledTitlebar {...props} bsStyle="pills">
       <NavItem eventKey="collections">Collections</NavItem>
       <NavItem eventKey="history">History</NavItem>
-    </Nav>
+    </StyledTitlebar>
   );
 }
 
