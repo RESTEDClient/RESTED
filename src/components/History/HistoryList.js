@@ -63,15 +63,13 @@ class HistoryList extends React.Component {
             </ListGroup>
           </li>
         ))}
+        {!history.size && (
+          <h5>
+            You have no recorded history. Send some requests and start making your legacy!
+          </h5>
+        )}
       </List>
     );
-    /* TODO
-      <div data-ng-show="!history || history.length === 0">
-        <h5>
-            You have no recorded history. Send some requests and start making your legacy!
-        </h5>
-      </div>
-    */
   }
 }
 
