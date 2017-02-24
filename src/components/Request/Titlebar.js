@@ -62,7 +62,7 @@ function Titlebar(props) {
                 removeModal,
               );
           }
-          // if (requestExists)
+          // TODO if (requestExists)
           // Modal (do you want to replace?)
         }}
         tooltip="Add to collection"

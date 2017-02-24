@@ -17,6 +17,7 @@ function URLField({ input, meta, placeholderUrl }) {
         <FormControl
           type="text"
           placeholder={placeholderUrl}
+          autoFocus
           {...input}
         />
       </Col>
