@@ -51,16 +51,16 @@ function Titlebar(props) {
           }
 
           switch (collections.size) {
-          case 0:
-            props.addCollection();
-          case 1:
-            handleSubmit(props);
-            break;
-          default:
-            showChooseCollectionModal(props).then(
-              index => handleSubmit(props, index),
-              removeModal,
-            );
+            case 0:
+              props.addCollection();
+            case 1: // eslint-disable-line no-fallthrough
+              handleSubmit(props);
+              break;
+            default:
+              showChooseCollectionModal(props).then(
+                index => handleSubmit(props, index),
+                removeModal,
+              );
           }
           // if (requestExists)
           // Modal (do you want to replace?)
