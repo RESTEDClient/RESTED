@@ -1,18 +1,19 @@
 import React from 'react';
+import { StyledHeader } from './StyledComponents';
 
 export default function Header() {
   return (
-    <header>
+    <StyledHeader>
       <h1>
         <img
           className="logo"
-          alt="RESTED logo"
+          role="presentation"
           height="40"
           src="img/rested-logo.png"
         />
         <span>RESTED</span>
       </h1>
-    </header>
+    </StyledHeader>
   );
 }
 
