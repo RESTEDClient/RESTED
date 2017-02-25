@@ -7,16 +7,12 @@ exports[`URLField should match the previous snapshot 1`] = `
   <div
     className="row"
   >
-    <div
-      className="col-sm-2"
+    <label
+      className="col-sm-2 control-label"
+      htmlFor="url"
     >
-      <label
-        className="control-label"
-        htmlFor="url"
-      >
-        URL
-      </label>
-    </div>
+      URL
+    </label>
     <div
       className="col-sm-10"
     >
@@ -39,16 +35,12 @@ exports[`URLField should match the previous snapshot with invalid field state 1`
   <div
     className="row"
   >
-    <div
-      className="col-sm-2"
+    <label
+      className="col-sm-2 control-label"
+      htmlFor="url"
     >
-      <label
-        className="control-label"
-        htmlFor="url"
-      >
-        URL
-      </label>
-    </div>
+      URL
+    </label>
     <div
       className="col-sm-10"
     >

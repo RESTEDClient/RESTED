@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
-import { Panel } from 'react-bootstrap';
+import { Panel, Form } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import * as requestActions from 'store/request/actions';
@@ -20,7 +20,7 @@ export const requestForm = 'request';
 function Request({ placeholderUrl, handleSubmit, sendRequest }) {
   return (
     <Panel header={<Titlebar />}>
-      <form onSubmit={handleSubmit(sendRequest)}>
+      <Form horizontal onSubmit={handleSubmit(sendRequest)}>
         <Field
           name="url"
           component={URLField}
@@ -39,7 +39,7 @@ function Request({ placeholderUrl, handleSubmit, sendRequest }) {
           component={BasicAuthField}
         />
         <BodyField />
-      </form>
+      </Form>
     </Panel>
   );
 }

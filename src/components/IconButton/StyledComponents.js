@@ -2,16 +2,14 @@
 import styled, { css } from 'styled-components';
 
 const ease = 'cubic-bezier(0.23, 1, 0.32, 1)';
-
-const iconSize = 18;
+const iconSize = 16;
 
 export const StyledButton = styled.button`
   border: 10px none;
   boxSizing: border-box;
   overflow: visible;
-  padding: ${iconSize / 2}px;
   width: ${iconSize * 2}px;
-  height: ${iconSize * 2}px;
+  height: ${iconSize * 1.5}px;
   fontSize: 0;
   backgroundColor: transparent;
 

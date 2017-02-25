@@ -8,10 +8,11 @@ function URLField({ input, meta, placeholderUrl }) {
       validationState={meta.touched && meta.invalid ? 'error' : null}
     >
       <Row>
-        <Col sm={2}>
-          <ControlLabel>
-            URL
-          </ControlLabel>
+        <Col
+          componentClass={ControlLabel}
+          sm={2}
+        >
+          URL
         </Col>
 
         <Col sm={10}>

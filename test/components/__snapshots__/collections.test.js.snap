@@ -11,13 +11,13 @@ exports[`Collection component should match the previous snapshot 1`] = `
     >
       <h3 />
       <button
-        className="pull-right eZEqWd"
+        className="pull-right exyKyC"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
         <div
-          className="QxewG"
+          className="eMVcPd"
         >
           <div
             className="ddxWyy"
@@ -34,13 +34,13 @@ exports[`Collection component should match the previous snapshot 1`] = `
         />
       </button>
       <button
-        className="pull-right eZEqWd"
+        className="pull-right exyKyC"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
         <div
-          className="QxewG"
+          className="eMVcPd"
         >
           <div
             className="ddxWyy"
@@ -73,13 +73,13 @@ exports[`Collection component should match the previous snapshot 1`] = `
               className="goDgEe"
             >
               <button
-                className="eZEqWd"
+                className="exyKyC"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
                 <div
-                  className="QxewG"
+                  className="eMVcPd"
                 >
                   <div
                     className="ddxWyy"
@@ -96,13 +96,13 @@ exports[`Collection component should match the previous snapshot 1`] = `
                 />
               </button>
               <button
-                className="eZEqWd"
+                className="exyKyC"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
                 <div
-                  className="QxewG"
+                  className="eMVcPd"
                 >
                   <div
                     className="ddxWyy"
@@ -151,13 +151,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
       className="clearfix"
     >
       <button
-        className="pull-right eZEqWd"
+        className="pull-right exyKyC"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
         <div
-          className="QxewG"
+          className="eMVcPd"
         >
           <div
             className="ddxWyy"
@@ -191,13 +191,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
               Collection
             </h3>
             <button
-              className="pull-right eZEqWd"
+              className="pull-right exyKyC"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
               <div
-                className="QxewG"
+                className="eMVcPd"
               >
                 <div
                   className="ddxWyy"
@@ -214,13 +214,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
               />
             </button>
             <button
-              className="pull-right eZEqWd"
+              className="pull-right exyKyC"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
               <div
-                className="QxewG"
+                className="eMVcPd"
               >
                 <div
                   className="ddxWyy"
@@ -253,13 +253,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe"
                   >
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -276,13 +276,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -329,13 +329,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
               Collection 2
             </h3>
             <button
-              className="pull-right eZEqWd"
+              className="pull-right exyKyC"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
               <div
-                className="QxewG"
+                className="eMVcPd"
               >
                 <div
                   className="ddxWyy"
@@ -352,13 +352,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
               />
             </button>
             <button
-              className="pull-right eZEqWd"
+              className="pull-right exyKyC"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
               <div
-                className="QxewG"
+                className="eMVcPd"
               >
                 <div
                   className="ddxWyy"
@@ -391,13 +391,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe"
                   >
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -414,13 +414,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -468,13 +468,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe"
                   >
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -491,13 +491,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -545,13 +545,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="goDgEe"
                   >
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"
@@ -568,13 +568,13 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                     <button
-                      className="eZEqWd"
+                      className="exyKyC"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
                       <div
-                        className="QxewG"
+                        className="eMVcPd"
                       >
                         <div
                           className="ddxWyy"

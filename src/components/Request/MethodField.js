@@ -17,10 +17,11 @@ function MethodField({ input, meta }) {
       validationState={meta.invalid ? 'error' : undefined}
     >
       <Row>
-        <Col sm={2}>
-          <ControlLabel>
-            Method
-          </ControlLabel>
+        <Col
+          componentClass={ControlLabel}
+          sm={2}
+        >
+          Method
         </Col>
 
         <Col sm={7}>

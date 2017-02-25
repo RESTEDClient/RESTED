@@ -15,6 +15,8 @@ import * as collectionsActions from 'store/collections/actions';
 import * as modalActions from 'store/modal/actions';
 import * as optionsActions from 'store/options/actions';
 
+import { StyledHeader } from './StyledComponents';
+
 function handleSubmit(props, collectionIndex = 0) {
   const addableRequest = Object.assign({}, props.request, {
     id: UUID.create().toString(),
@@ -38,7 +40,7 @@ function Titlebar(props) {
   } = props;
 
   return (
-    <span className="clearfix">
+    <StyledHeader>
       <h2 className="pull-left">
         Request
       </h2>
@@ -81,7 +83,7 @@ function Titlebar(props) {
         icon={collectionsMinimized ? 'compress' : 'expand'}
         className="pull-right"
       />
-    </span>
+    </StyledHeader>
   );
 }
 
