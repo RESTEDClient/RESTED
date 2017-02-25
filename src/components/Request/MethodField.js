@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
+  Row,
   Col,
   FormGroup,
   FormControl,
@@ -15,33 +16,35 @@ function MethodField({ input, meta }) {
       controlId="method"
       validationState={meta.invalid ? 'error' : undefined}
     >
-      <Col sm={2}>
-        <ControlLabel>
-          Method
-        </ControlLabel>
-      </Col>
+      <Row>
+        <Col sm={2}>
+          <ControlLabel>
+            Method
+          </ControlLabel>
+        </Col>
 
-      <Col sm={7}>
-        <FormControl
-          componentClass="select"
-          placeholder="Method"
-          {...input}
-        >
-          {REQUEST_METHODS.map(method => (
-            <option key={method} value={method}>
-              {method}
-            </option>
-          ))}
-        </FormControl>
-      </Col>
-      <Col sm={3}>
-        <Button
-          type="submit"
-          bsStyle="primary"
-        >
-          Send request
-        </Button>
-      </Col>
+        <Col sm={7}>
+          <FormControl
+            componentClass="select"
+            placeholder="Method"
+            {...input}
+          >
+            {REQUEST_METHODS.map(method => (
+              <option key={method} value={method}>
+                {method}
+              </option>
+            ))}
+          </FormControl>
+        </Col>
+        <Col sm={3}>
+          <Button
+            type="submit"
+            bsStyle="primary"
+          >
+            Send request
+          </Button>
+        </Col>
+      </Row>
     </FormGroup>
   );
 }

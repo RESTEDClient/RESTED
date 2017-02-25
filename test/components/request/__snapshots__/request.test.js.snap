@@ -97,115 +97,123 @@ exports[`should render correctly 1`] = `
         className="form-group"
       >
         <div
-          className="col-sm-2"
+          className="row"
         >
-          <label
-            className="control-label"
-            htmlFor="url"
+          <div
+            className="col-sm-2"
           >
-            URL
-          </label>
-        </div>
-        <div
-          className="col-sm-10"
-        >
-          <input
-            autoFocus={true}
-            className="form-control"
-            id="url"
-            name="url"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder={undefined}
-            type="text"
-            value=""
-          />
+            <label
+              className="control-label"
+              htmlFor="url"
+            >
+              URL
+            </label>
+          </div>
+          <div
+            className="col-sm-10"
+          >
+            <input
+              autoFocus={true}
+              className="form-control"
+              id="url"
+              name="url"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder={undefined}
+              type="text"
+              value=""
+            />
+          </div>
         </div>
       </div>
       <div
         className="form-group"
       >
         <div
-          className="col-sm-2"
+          className="row"
         >
-          <label
-            className="control-label"
-            htmlFor="method"
+          <div
+            className="col-sm-2"
           >
-            Method
-          </label>
-        </div>
-        <div
-          className="col-sm-7"
-        >
-          <select
-            className="form-control"
-            id="method"
-            name="method"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder="Method"
-            type={undefined}
-            value=""
+            <label
+              className="control-label"
+              htmlFor="method"
+            >
+              Method
+            </label>
+          </div>
+          <div
+            className="col-sm-7"
           >
-            <option
-              value="GET"
+            <select
+              className="form-control"
+              id="method"
+              name="method"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder="Method"
+              type={undefined}
+              value=""
             >
-              GET
-            </option>
-            <option
-              value="POST"
-            >
-              POST
-            </option>
-            <option
-              value="PUT"
-            >
-              PUT
-            </option>
-            <option
-              value="DELETE"
-            >
-              DELETE
-            </option>
-            <option
-              value="PATCH"
-            >
-              PATCH
-            </option>
-            <option
-              value="HEAD"
-            >
-              HEAD
-            </option>
-            <option
-              value="JSONP"
-            >
-              JSONP
-            </option>
-            <option
-              value="CUSTOM"
-            >
-              CUSTOM
-            </option>
-          </select>
-        </div>
-        <div
-          className="col-sm-3"
-        >
-          <button
-            className="btn btn-primary"
-            disabled={false}
-            type="submit"
+              <option
+                value="GET"
+              >
+                GET
+              </option>
+              <option
+                value="POST"
+              >
+                POST
+              </option>
+              <option
+                value="PUT"
+              >
+                PUT
+              </option>
+              <option
+                value="DELETE"
+              >
+                DELETE
+              </option>
+              <option
+                value="PATCH"
+              >
+                PATCH
+              </option>
+              <option
+                value="HEAD"
+              >
+                HEAD
+              </option>
+              <option
+                value="JSONP"
+              >
+                JSONP
+              </option>
+              <option
+                value="CUSTOM"
+              >
+                CUSTOM
+              </option>
+            </select>
+          </div>
+          <div
+            className="col-sm-3"
           >
-            Send request
-          </button>
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              type="submit"
+            >
+              Send request
+            </button>
+          </div>
         </div>
       </div>
       <div
