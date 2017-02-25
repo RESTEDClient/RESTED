@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly 1`] = `
-<header>
+<header
+  className="eKzrsb"
+>
   <h1>
     <img
-      alt="RESTED logo"
       className="logo"
       height="40"
+      role="presentation"
       src="img/rested-logo.png"
     />
     <span>

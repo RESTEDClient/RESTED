@@ -18,7 +18,7 @@ test('Header contains the RESTED logo', () => {
   const tree = mount(
     <Header />,
   );
-  expect(tree.find('img').prop('alt')).toBe('RESTED logo');
+  expect(tree.find('img').prop('src')).toBe('img/rested-logo.png');
 });
 
 test('Header contains the RESTED name', () => {

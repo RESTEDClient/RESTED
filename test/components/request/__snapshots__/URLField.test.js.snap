@@ -18,6 +18,7 @@ exports[`URLField should match the previous snapshot 1`] = `
     className="col-sm-10"
   >
     <input
+      autoFocus={true}
       className="form-control"
       id="url"
       placeholder="https://example.com"
@@ -45,6 +46,7 @@ exports[`URLField should match the previous snapshot with invalid field state 1`
     className="col-sm-10"
   >
     <input
+      autoFocus={true}
       className="form-control"
       id="url"
       placeholder="https://example.com"

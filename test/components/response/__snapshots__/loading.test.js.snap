@@ -2,7 +2,7 @@
 
 exports[`Loading matches the previous snapshot 1`] = `
 <i
-  className="fa fa-gear fa-spin col-xs-12 text-center"
+  className="fa fa-gear fa-spin col-xs-12 text-center iKhhRu"
   role="presentation"
 />
 `;

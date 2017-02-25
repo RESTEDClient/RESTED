@@ -110,6 +110,7 @@ exports[`should render correctly 1`] = `
           className="col-sm-10"
         >
           <input
+            autoFocus={true}
             className="form-control"
             id="url"
             name="url"
