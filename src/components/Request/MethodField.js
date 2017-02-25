@@ -1,12 +1,5 @@
 import React, { PropTypes } from 'react';
-import {
-  Row,
-  Col,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Button,
-} from 'react-bootstrap';
+import { Col, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
 import { REQUEST_METHODS } from 'constants/constants';
 
@@ -16,36 +9,34 @@ function MethodField({ input, meta }) {
       controlId="method"
       validationState={meta.invalid ? 'error' : undefined}
     >
-      <Row>
-        <Col
-          componentClass={ControlLabel}
-          sm={2}
-        >
-          Method
-        </Col>
+      <Col
+        componentClass={ControlLabel}
+        sm={2}
+      >
+        Method
+      </Col>
 
-        <Col sm={7}>
-          <FormControl
-            componentClass="select"
-            placeholder="Method"
-            {...input}
-          >
-            {REQUEST_METHODS.map(method => (
-              <option key={method} value={method}>
-                {method}
-              </option>
-            ))}
-          </FormControl>
-        </Col>
-        <Col sm={3}>
-          <Button
-            type="submit"
-            bsStyle="primary"
-          >
-            Send request
-          </Button>
-        </Col>
-      </Row>
+      <Col sm={7}>
+        <FormControl
+          componentClass="select"
+          placeholder="Method"
+          {...input}
+        >
+          {REQUEST_METHODS.map(method => (
+            <option key={method} value={method}>
+              {method}
+            </option>
+          ))}
+        </FormControl>
+      </Col>
+      <Col sm={3}>
+        <Button
+          type="submit"
+          bsStyle="primary"
+        >
+          Send request
+        </Button>
+      </Col>
     </FormGroup>
   );
 }

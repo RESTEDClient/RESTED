@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 function URLField({ input, meta, placeholderUrl }) {
   return (
@@ -7,23 +7,21 @@ function URLField({ input, meta, placeholderUrl }) {
       controlId="url"
       validationState={meta.touched && meta.invalid ? 'error' : null}
     >
-      <Row>
-        <Col
-          componentClass={ControlLabel}
-          sm={2}
-        >
-          URL
-        </Col>
+      <Col
+        componentClass={ControlLabel}
+        sm={2}
+      >
+        URL
+      </Col>
 
-        <Col sm={10}>
-          <FormControl
-            type="text"
-            placeholder={placeholderUrl}
-            autoFocus
-            {...input}
-          />
-        </Col>
-      </Row>
+      <Col sm={10}>
+        <FormControl
+          type="text"
+          placeholder={placeholderUrl}
+          autoFocus
+          {...input}
+        />
+      </Col>
     </FormGroup>
   );
 }
