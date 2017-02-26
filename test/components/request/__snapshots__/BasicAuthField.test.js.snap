@@ -42,13 +42,26 @@ exports[`BasicAuthField should match the previous snapshot 1`] = `
           className="form-control"
           id="method"
           placeholder="Password"
-          type="text"
+          type="password"
         />
       </div>
       <div
         className="col-xs-2"
       >
-        Show password?
+        <div
+          className="checkbox"
+          style={undefined}
+        >
+          <label>
+            <input
+              checked={false}
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            Show password?
+          </label>
+        </div>
       </div>
     </div>
   </div>

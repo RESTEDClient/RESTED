@@ -295,14 +295,27 @@ exports[`should render correctly 1`] = `
                 onDrop={undefined}
                 onFocus={[Function]}
                 placeholder="Password"
-                type="text"
+                type="password"
                 value=""
               />
             </div>
             <div
               className="col-xs-2"
             >
-              Show password?
+              <div
+                className="checkbox"
+                style={undefined}
+              >
+                <label>
+                  <input
+                    checked={false}
+                    disabled={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  Show password?
+                </label>
+              </div>
             </div>
           </div>
         </div>

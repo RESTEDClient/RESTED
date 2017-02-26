@@ -73,9 +73,9 @@ describe('BasicAuthField', () => {
 
     const inputs = tree.find('input');
 
-    expect(inputs.length).toBe(2);
+    expect(inputs.length).toBe(3);
     expect(inputs.first().prop('value')).toBe('someUsername');
-    expect(inputs.last().prop('value')).toBe('somePassword');
+    expect(inputs.at(1).prop('value')).toBe('somePassword');
   });
 });
 
