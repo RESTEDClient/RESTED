@@ -202,7 +202,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="NupZf"
+        className="gbeLmT"
       >
         <button
           className="btn btn-link"
@@ -223,26 +223,30 @@ exports[`should render correctly 1`] = `
           className="collapse col-xs-12"
         >
           <div
-            className="col-xs-12"
+            className="row"
           >
-            <button
-              className="btn btn-default"
-              disabled={false}
-              id="addHeaderButton"
-              onClick={[Function]}
-              type="button"
+            <div
+              className="col-xs-12"
             >
-              <i
-                className="fa fa-plus"
-                role="presentation"
-              />
-              Add header
-            </button>
+              <button
+                className="ducMpy btn btn-link"
+                disabled={false}
+                id="addHeaderButton"
+                onClick={[Function]}
+                type="button"
+              >
+                <i
+                  className="fa fa-plus"
+                  role="presentation"
+                />
+                Add header
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="NupZf"
+        className="gbeLmT"
       >
         <button
           className="btn btn-link"
@@ -316,67 +320,6 @@ exports[`should render correctly 1`] = `
                   Show password?
                 </label>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="NupZf"
-      >
-        <button
-          className="btn btn-link"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          <h4>
-            Request body
-            <i
-              className="fa fa-angle-right"
-              role="presentation"
-            />
-          </h4>
-        </button>
-        <div
-          aria-expanded={null}
-          className="collapse col-xs-12"
-        >
-          <div
-            className="col-xs-12"
-          >
-            <div
-              className="checkbox"
-              style={undefined}
-            >
-              <label>
-                <input
-                  disabled={false}
-                  onChange={[Function]}
-                  type="checkbox"
-                />
-                Use form data
-              </label>
-            </div>
-          </div>
-          <div
-            className="col-xs-12"
-          >
-            <div
-              className="form-group"
-            >
-              <textarea
-                className="form-control"
-                id="requestBody"
-                name="data"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onDragStart={[Function]}
-                onDrop={[Function]}
-                onFocus={[Function]}
-                rows={10}
-                type={undefined}
-                value=""
-              />
             </div>
           </div>
         </div>

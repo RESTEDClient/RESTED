@@ -25,7 +25,8 @@ renderField.propTypes = {
   placeholder: PropTypes.string.isRequired,
 };
 
-function renderFormDataFields({ fields, meta, setUseFormData }) {
+function renderFormDataFields(props) {
+  const { fields, meta, setUseFormData } = props;
   return (
     <Collapsable
       title="Request body"

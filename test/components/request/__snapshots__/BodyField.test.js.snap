@@ -2,7 +2,7 @@
 
 exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 <div
-  className="NupZf"
+  className="gbeLmT"
 >
   <button
     className="btn btn-link"
@@ -41,21 +41,25 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
       </div>
     </div>
     <div
-      className="col-xs-12"
+      className="row"
     >
-      <button
-        className="btn btn-default"
-        disabled={false}
-        id="addParameter"
-        onClick={[Function]}
-        type="button"
+      <div
+        className="col-xs-12"
       >
-        <i
-          className="fa fa-plus"
-          role="presentation"
-        />
-        Add parameter
-      </button>
+        <button
+          className="ducMpy btn btn-link"
+          disabled={false}
+          id="addParameter"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fa fa-plus"
+            role="presentation"
+          />
+          Add parameter
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -63,7 +67,7 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 
 exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
 <div
-  className="NupZf"
+  className="gbeLmT"
 >
   <button
     className="btn btn-link"
