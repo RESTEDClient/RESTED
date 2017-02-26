@@ -2,7 +2,7 @@
 
 exports[`HeadersField should match the previous snapshot 1`] = `
 <div
-  className="row"
+  className="NupZf"
 >
   <button
     className="btn btn-link"

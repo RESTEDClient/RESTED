@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="row"
+  className="NupZf"
 >
   <button
     className="btn btn-link"

@@ -27,7 +27,7 @@ exports[`response component renders a result when given one 1`] = `
       </small>
     </h3>
     <div
-      className="row"
+      className="NupZf"
     >
       <button
         className="btn btn-link"

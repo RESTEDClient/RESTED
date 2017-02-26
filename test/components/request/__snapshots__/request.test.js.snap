@@ -202,7 +202,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="row"
+        className="NupZf"
       >
         <button
           className="btn btn-link"
@@ -242,7 +242,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="row"
+        className="NupZf"
       >
         <button
           className="btn btn-link"
@@ -308,7 +308,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="row"
+        className="NupZf"
       >
         <button
           className="btn btn-link"

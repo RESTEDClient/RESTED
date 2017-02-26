@@ -2,7 +2,7 @@
 
 exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 <div
-  className="row"
+  className="NupZf"
 >
   <button
     className="btn btn-link"
@@ -63,7 +63,7 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 
 exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
 <div
-  className="row"
+  className="NupZf"
 >
   <button
     className="btn btn-link"
