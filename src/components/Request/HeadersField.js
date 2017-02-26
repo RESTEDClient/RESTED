@@ -3,13 +3,15 @@ import { Field } from 'redux-form';
 import {
   FormGroup,
   FormControl,
-  Button,
+  Row,
   Col,
 } from 'react-bootstrap';
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
 import IconButton from 'components/IconButton';
+
+import { UnstyledButton } from './StyledComponents';
 
 function renderField({ input, placeholder }) {
   return (
@@ -63,15 +65,18 @@ function HeadersField({ meta, fields }) {
         </FormGroup>
       ))}
 
-      <Col xs={12}>
-        <Button
-          id="addHeaderButton"
-          onClick={() => fields.push({})}
-        >
-          <Fonticon icon="plus" />
-          Add header
-        </Button>
-      </Col>
+      <Row>
+        <Col xs={12}>
+          <UnstyledButton
+            id="addHeaderButton"
+            bsStyle="link"
+            onClick={() => fields.push({})}
+          >
+            <Fonticon icon="plus" />
+            Add header
+          </UnstyledButton>
+        </Col>
+      </Row>
     </Collapsable>
   );
 }

@@ -10,5 +10,9 @@ export const StyledCollapsable = styled.div`
     margin-left: 5px;
     transition: .25s ease-in-out;
   }
+  button:hover,
+  button:active {
+    text-decoration: none;
+  }
 `;
 

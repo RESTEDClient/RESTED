@@ -1,18 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, FieldArray } from 'redux-form';
-import {
-  FormGroup,
-  FormControl,
-  Checkbox,
-  Button,
-  Col,
-} from 'react-bootstrap';
+import { FormGroup, FormControl, Checkbox, Row, Col } from 'react-bootstrap';
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
 import IconButton from 'components/IconButton';
 import * as RequestActions from 'store/request/actions';
+
+import { UnstyledButton } from './StyledComponents';
 
 function renderField({ input, placeholder }) {
   return (
@@ -73,15 +69,18 @@ function renderFormDataFields({ fields, meta, setUseFormData }) {
           </Col>
         </FormGroup>
       ))}
-      <Col xs={12}>
-        <Button
-          id="addParameter"
-          onClick={() => fields.push({})}
-        >
-          <Fonticon icon="plus" />
-          Add parameter
-        </Button>
-      </Col>
+      <Row>
+        <Col xs={12}>
+          <UnstyledButton
+            id="addParameter"
+            bsStyle="link"
+            onClick={() => fields.push({})}
+          >
+            <Fonticon icon="plus" />
+            Add parameter
+          </UnstyledButton>
+        </Col>
+      </Row>
     </Collapsable>
   );
 }

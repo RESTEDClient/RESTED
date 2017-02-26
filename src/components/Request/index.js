@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, Fields, FieldArray, propTypes } from 'redux-form';
+import { reduxForm, Field, Fields, FieldArray, propTypes, getFormValues } from 'redux-form';
 import { Panel, Form } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
@@ -17,7 +17,8 @@ import BodyField from './BodyField';
 
 export const requestForm = 'request';
 
-function Request({ placeholderUrl, handleSubmit, sendRequest }) {
+function Request(props) {
+  const { formValues = {}, placeholderUrl, handleSubmit, sendRequest } = props;
   return (
     <Panel header={<Titlebar />}>
       <Form horizontal onSubmit={handleSubmit(sendRequest)}>
@@ -38,7 +39,9 @@ function Request({ placeholderUrl, handleSubmit, sendRequest }) {
           names={['basicAuth.username', 'basicAuth.password']}
           component={BasicAuthField}
         />
-        <BodyField />
+        {['POST', 'PUT', 'PATCH', 'CUSTOM'].includes(formValues.method) && (
+          <BodyField />
+        )}
       </Form>
     </Panel>
   );
@@ -54,10 +57,11 @@ const formOptions = {
   validate: requestValidation,
 };
 
-const mapStateToProps = ({ request: { useFormData, placeholderUrl } }) => ({
-  useFormData,
-  placeholderUrl,
+const mapStateToProps = state => ({
+  useFormData: state.request.useFormData,
+  placeholderUrl: state.request.placeholderUrl,
   initialValues: DEFAULT_REQUEST,
+  formValues: getFormValues(requestForm)(state),
 });
 
 export { Request };
