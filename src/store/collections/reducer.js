@@ -12,7 +12,6 @@ import {
   REORDER_COLLECTION,
   RENAME_COLLECTION,
   RENAME_REQUEST,
-  SELECT_REQUEST,
 } from './types';
 
 export const initialState = Immutable.fromJS({
@@ -128,31 +127,6 @@ export default function (state = initialState, action) {
           action.requestIndex,
           'name',
         ], action.name);
-
-    case SELECT_REQUEST:
-      return state
-        .update(
-          'collections',
-          collections => (
-            collections.map(collection => (
-              collection.update(
-                'requests',
-                requests => (
-                  requests.map(request => (
-                    request.set('selected', false)
-                  ))
-                ),
-              )
-            ))
-          ),
-        )
-        .setIn([
-          'collections',
-          action.collectionIndex,
-          'requests',
-          action.requestIndex,
-          'selected',
-        ], true);
 
     default:
       return state;

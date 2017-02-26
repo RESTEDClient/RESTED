@@ -12,7 +12,6 @@ import {
   REORDER_COLLECTION,
   RENAME_COLLECTION,
   RENAME_REQUEST,
-  SELECT_REQUEST,
 } from './types';
 
 function persistState(state) {
@@ -137,18 +136,6 @@ export function doRenameRequest(collectionIndex, requestIndex, name) {
 export function renameRequest(collectionIndex, requestIndex, name) {
   return (dispatch, getState) => {
     dispatch(doRenameRequest(collectionIndex, requestIndex, name));
-
-    return persistState(getState());
-  };
-}
-
-export function doSelectRequest(collectionIndex, requestIndex) {
-  return { type: SELECT_REQUEST, collectionIndex, requestIndex };
-}
-
-export function selectRequest(collectionIndex, requestIndex) {
-  return (dispatch, getState) => {
-    dispatch(doSelectRequest(collectionIndex, requestIndex));
 
     return persistState(getState());
   };

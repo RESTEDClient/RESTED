@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { ListGroup } from 'react-bootstrap';
@@ -153,7 +152,6 @@ class Request extends React.Component {
       isDragging,
       request,
       collectionIndex,
-      index,
       selectRequest,
       sendRequest,
       deleteRequest,
@@ -163,11 +161,7 @@ class Request extends React.Component {
       <div> {/* Need a wrapper div for React DnD support */}
         <StyledRequest isDragging={isDragging}>
           <ListGroup componentClass="div">
-            <div
-              className={classNames('list-group-item', {
-                active: request.selected,
-              })}
-            >
+            <div className="list-group-item">
               <RequestButtons compact={compact}>
                 {!compact && (
                   <IconButton
@@ -208,7 +202,7 @@ class Request extends React.Component {
                 <MainContentButton
                   compact={compact}
                   onClick={() => {
-                    selectRequest(collectionIndex, index);
+                    selectRequest(request);
                   }}
                   onDoubleClick={() => sendRequest(request)}
                 >

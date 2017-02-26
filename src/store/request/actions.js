@@ -5,7 +5,6 @@ import base64Encode from 'utils/base64';
 import { reMapHeaders } from 'utils/requestUtils';
 import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
-import { selectRequest as doSelectRequest } from 'store/collections/actions';
 import { requestForm } from 'components/Request';
 
 import {
@@ -36,17 +35,9 @@ export function setUseFormData(useFormData) {
   return { type: USE_FORM_DATA, useFormData };
 }
 
-export function selectRequest(collectionIndex, requestIndex) {
-  return (dispatch, getState) => {
-    const request = getState().collections.getIn([
-      'collections',
-      collectionIndex,
-      'requests',
-      requestIndex,
-    ]);
-
-    dispatch(doSelectRequest(collectionIndex, requestIndex));
-    dispatch(initialize(requestForm, request.toJS()));
+export function selectRequest(request) {
+  return dispatch => {
+    dispatch(initialize(requestForm, request));
   };
 }
 

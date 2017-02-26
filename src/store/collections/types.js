@@ -8,5 +8,4 @@ export const REORDER_REQUEST = 'collections/REORDER_REQUEST';
 export const REORDER_COLLECTION = 'collections/REORDER_COLLECTION';
 export const RENAME_COLLECTION = 'collections/RENAME_COLLECTION';
 export const RENAME_REQUEST = 'collections/RENAME_REQUEST';
-export const SELECT_REQUEST = 'collections/SELECT_REQUEST';
 
