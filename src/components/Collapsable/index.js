@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { Button, Collapse, Col } from 'react-bootstrap';
+import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
 import Fonticon from 'components/Fonticon';
 import * as Actions from 'store/collapsable/actions';
@@ -30,9 +30,11 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
         </h4>
       </Button>
       <Collapse in={open}>
-        <Col xs={12}>
-          {children}
-        </Col>
+        <Row>
+          <Col xs={12}>
+            {children}
+          </Col>
+        </Row>
       </Collapse>
     </StyledCollapsable>
   );

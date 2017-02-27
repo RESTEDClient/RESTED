@@ -6,14 +6,17 @@ import Highlight from 'react-highlight';
 import * as Actions from 'store/request/actions';
 import responsePropTypes, { responseShape } from 'propTypes/response';
 
+import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Loading from './Loading';
 import Headers from './Headers';
 
 function Titlebar({ url }) {
   return (
-    <h3>
-      Response - <a href={url}>{url}</a>
-    </h3>
+    <StyledHeader>
+      <h3>
+        Response - <a href={url} className="text-muted">{url}</a>
+      </h3>
+    </StyledHeader>
   );
 }
 
@@ -38,10 +41,15 @@ export function Response({ response, loading }) {
   ));
 
   return (
-    <Panel header={<Titlebar method={method} url={url} />}>
+    <StyledResponse header={<Titlebar method={method} url={url} />}>
       <h3>
-        {response.status}
-        <small>{response.statusText}</small>
+        <Status
+          green={response.status >= 200 && response.status < 300}
+          red={response.status >= 400 && response.status < 600}
+        >
+          {response.status}
+        </Status>
+        <small> {response.statusText}</small>
       </h3>
       <Headers headers={headers} />
       {!contentLength || Number(contentLength.value) < 50000
@@ -62,7 +70,7 @@ export function Response({ response, loading }) {
           </span>
         )
       }
-    </Panel>
+    </StyledResponse>
   );
 }
 
