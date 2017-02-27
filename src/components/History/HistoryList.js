@@ -51,7 +51,7 @@ class HistoryList extends React.Component {
             <ListGroup componentClass="ul">
               <ListGroupItem
                 className="list-group-item"
-                onClick={() => selectRequest(request)}
+                onClick={() => selectRequest(request.toJS())}
               >
                 <ListGroupHeader
                   request={request}
