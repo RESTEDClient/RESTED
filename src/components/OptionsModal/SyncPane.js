@@ -4,9 +4,56 @@ import { connect } from 'react-redux';
 import { Clearfix, Col, Table, Checkbox } from 'react-bootstrap';
 
 import syncIsSupported from 'utils/syncIsSupported';
-import * as Actions from 'store/options/actions';
+import replicateStorage from 'utils/replicateStorage';
+import * as OptionsActions from 'store/options/actions';
+import * as ModalActions from 'store/modal/actions';
 
-function SyncPane({ options, updateOption }) {
+function showTargetModal() {
+  this.setModalData({
+    title: 'Enabling sync storage',
+    body: 'You have existing data in your sync storage. Would you like ' +
+      'to replace your local data with the data in the sync storage, ' +
+      'or would you like to upload your local data and replace the sync' +
+      'storage data?',
+    actions: [{
+      text: 'Upload local data to sync',
+      click: () => {
+        replicateStorage(false);
+        this.removeModal();
+      },
+    }, {
+      text: 'Download sync data to local',
+      click: () => {
+        replicateStorage(true);
+        this.removeModal();
+      },
+    }],
+  });
+}
+
+function replicate(targetLocal) {
+  if (!targetLocal) {
+    // FF does not support this. Show modal
+    if (!chrome.storage.sync.getBytesInUse) {
+      showTargetModal.call(this);
+      return;
+    }
+
+    chrome.storage.sync.getBytesInUse(null, usage => {
+      if (usage > 0) {
+        showTargetModal.call(this);
+      } else {
+        replicateStorage(true);
+      }
+    });
+  } else {
+    replicateStorage(false);
+  }
+}
+
+function SyncPane(props) {
+  const { options, updateOption } = props;
+
   return (
     <Clearfix>
       <br />
@@ -31,6 +78,7 @@ function SyncPane({ options, updateOption }) {
                   disabled={!syncIsSupported()}
                   onChange={e => {
                     updateOption('sync', e.target.checked);
+                    replicate.call(props, !e.target.checked);
                   }}
                 >
                   Enable BrowserSync
@@ -64,5 +112,8 @@ const mapStateToProps = state => ({
   options: state.options.get('options'),
 });
 
-export default connect(mapStateToProps, Actions)(SyncPane);
+export default connect(mapStateToProps, {
+  ...OptionsActions,
+  ...ModalActions,
+})(SyncPane);
 
