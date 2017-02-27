@@ -2,7 +2,7 @@
 
 exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 <div
-  className="gbeLmT"
+  className="beUPta"
 >
   <button
     className="btn btn-link"
@@ -20,45 +20,49 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12"
+    className="collapse row"
   >
     <div
       className="col-xs-12"
     >
       <div
-        className="checkbox"
-        style={undefined}
-      >
-        <label>
-          <input
-            checked={true}
-            disabled={false}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Use form data
-        </label>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
         className="col-xs-12"
       >
-        <button
-          className="ducMpy btn btn-link"
-          disabled={false}
-          id="addParameter"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="checkbox"
+          style={undefined}
         >
-          <i
-            className="fa fa-plus"
-            role="presentation"
-          />
-          Add parameter
-        </button>
+          <label>
+            <input
+              checked={true}
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            Use form data
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12"
+        >
+          <button
+            className="ducMpy btn btn-link"
+            disabled={false}
+            id="addParameter"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              className="fa fa-plus"
+              role="presentation"
+            />
+            Add parameter
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -67,7 +71,7 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 
 exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
 <div
-  className="gbeLmT"
+  className="beUPta"
 >
   <button
     className="btn btn-link"
@@ -85,44 +89,48 @@ exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12"
+    className="collapse row"
   >
     <div
       className="col-xs-12"
     >
       <div
-        className="checkbox"
-        style={undefined}
+        className="col-xs-12"
       >
-        <label>
-          <input
-            disabled={false}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Use form data
-        </label>
+        <div
+          className="checkbox"
+          style={undefined}
+        >
+          <label>
+            <input
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            Use form data
+          </label>
+        </div>
       </div>
-    </div>
-    <div
-      className="col-xs-12"
-    >
       <div
-        className="form-group"
+        className="col-xs-12"
       >
-        <textarea
-          className="form-control"
-          id="requestBody"
-          name="data"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          rows={10}
-          type={undefined}
-          value=""
-        />
+        <div
+          className="form-group"
+        >
+          <textarea
+            className="form-control"
+            id="requestBody"
+            name="data"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            rows={10}
+            type={undefined}
+            value=""
+          />
+        </div>
       </div>
     </div>
   </div>

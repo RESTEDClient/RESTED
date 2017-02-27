@@ -2,32 +2,42 @@
 
 exports[`response component renders a result when given one 1`] = `
 <div
-  className="panel panel-default"
+  className="csTyaI panel panel-default"
   id={undefined}
 >
   <div
     className="panel-heading"
   >
-    <h3>
-      Response - 
-      <a
-        href="http://example.com"
-      >
-        http://example.com
-      </a>
-    </h3>
+    <div
+      className="iKvJLI"
+    >
+      <h3>
+        Response - 
+        <a
+          className="text-muted"
+          href="http://example.com"
+        >
+          http://example.com
+        </a>
+      </h3>
+    </div>
   </div>
   <div
     className="panel-body"
   >
     <h3>
-      200
+      <span
+        className="cSFbuC"
+      >
+        200
+      </span>
       <small>
+         
         OK
       </small>
     </h3>
     <div
-      className="gbeLmT"
+      className="beUPta"
     >
       <button
         className="btn btn-link"
@@ -45,8 +55,12 @@ exports[`response component renders a result when given one 1`] = `
       </button>
       <div
         aria-expanded={null}
-        className="collapse col-xs-12"
-      />
+        className="collapse row"
+      >
+        <div
+          className="col-xs-12"
+        />
+      </div>
     </div>
   </div>
 </div>

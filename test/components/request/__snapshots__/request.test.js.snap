@@ -202,7 +202,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="gbeLmT"
+        className="beUPta"
       >
         <button
           className="btn btn-link"
@@ -220,33 +220,37 @@ exports[`should render correctly 1`] = `
         </button>
         <div
           aria-expanded={null}
-          className="collapse col-xs-12"
+          className="collapse row"
         >
           <div
-            className="row"
+            className="col-xs-12"
           >
             <div
-              className="col-xs-12"
+              className="row"
             >
-              <button
-                className="ducMpy btn btn-link"
-                disabled={false}
-                id="addHeaderButton"
-                onClick={[Function]}
-                type="button"
+              <div
+                className="col-xs-12"
               >
-                <i
-                  className="fa fa-plus"
-                  role="presentation"
-                />
-                Add header
-              </button>
+                <button
+                  className="ducMpy btn btn-link"
+                  disabled={false}
+                  id="addHeaderButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    className="fa fa-plus"
+                    role="presentation"
+                  />
+                  Add header
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="gbeLmT"
+        className="beUPta"
       >
         <button
           className="btn btn-link"
@@ -264,61 +268,65 @@ exports[`should render correctly 1`] = `
         </button>
         <div
           aria-expanded={null}
-          className="collapse col-xs-12"
+          className="collapse row"
         >
           <div
-            className="form-group"
+            className="col-xs-12"
           >
             <div
-              className="col-xs-5"
-            >
-              <input
-                className="form-control"
-                id="method"
-                name="basicAuth.username"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onDragStart={undefined}
-                onDrop={undefined}
-                onFocus={[Function]}
-                placeholder="Username"
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              className="col-xs-5"
-            >
-              <input
-                className="form-control"
-                id="method"
-                name="basicAuth.password"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onDragStart={undefined}
-                onDrop={undefined}
-                onFocus={[Function]}
-                placeholder="Password"
-                type="password"
-                value=""
-              />
-            </div>
-            <div
-              className="col-xs-2"
+              className="form-group"
             >
               <div
-                className="checkbox"
-                style={undefined}
+                className="col-xs-5"
               >
-                <label>
-                  <input
-                    checked={false}
-                    disabled={false}
-                    onChange={[Function]}
-                    type="checkbox"
-                  />
-                  Show password?
-                </label>
+                <input
+                  className="form-control"
+                  id="method"
+                  name="basicAuth.username"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={undefined}
+                  onDrop={undefined}
+                  onFocus={[Function]}
+                  placeholder="Username"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="col-xs-5"
+              >
+                <input
+                  className="form-control"
+                  id="method"
+                  name="basicAuth.password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={undefined}
+                  onDrop={undefined}
+                  onFocus={[Function]}
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <div
+                className="col-xs-2"
+              >
+                <div
+                  className="checkbox"
+                  style={undefined}
+                >
+                  <label>
+                    <input
+                      checked={false}
+                      disabled={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                    Show password?
+                  </label>
+                </div>
               </div>
             </div>
           </div>

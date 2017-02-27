@@ -2,7 +2,7 @@
 
 exports[`HeadersField should match the previous snapshot 1`] = `
 <div
-  className="gbeLmT"
+  className="beUPta"
 >
   <button
     className="btn btn-link"
@@ -20,225 +20,229 @@ exports[`HeadersField should match the previous snapshot 1`] = `
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12"
+    className="collapse row"
   >
     <div
-      className="form-group"
+      className="col-xs-12"
     >
       <div
-        className="col-xs-5"
+        className="form-group"
       >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Name"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-xs-6"
-      >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].value"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Value"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-xs-1"
-      >
-        <button
-          className="exyKyC"
-          id="removeHeaderButton0"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
+        <div
+          className="col-xs-5"
         >
-          <div
-            className="eMVcPd"
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Name"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].value"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Value"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-1"
+        >
+          <button
+            className="exyKyC"
+            id="removeHeaderButton0"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
-              className="ddxWyy"
-            />
-            <span
-              className="jsYWMN"
+              className="eMVcPd"
             >
-              Remove header
-            </span>
-          </div>
-          <i
-            className="fa fa-trash"
-            role="presentation"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="form-group"
-    >
-      <div
-        className="col-xs-5"
-      >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Name"
-          type="text"
-          value=""
-        />
+              <div
+                className="ddxWyy"
+              />
+              <span
+                className="jsYWMN"
+              >
+                Remove header
+              </span>
+            </div>
+            <i
+              className="fa fa-trash"
+              role="presentation"
+            />
+          </button>
+        </div>
       </div>
       <div
-        className="col-xs-6"
+        className="form-group"
       >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].value"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Value"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-xs-1"
-      >
-        <button
-          className="exyKyC"
-          id="removeHeaderButton1"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
+        <div
+          className="col-xs-5"
         >
-          <div
-            className="eMVcPd"
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Name"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].value"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Value"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-1"
+        >
+          <button
+            className="exyKyC"
+            id="removeHeaderButton1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
-              className="ddxWyy"
-            />
-            <span
-              className="jsYWMN"
+              className="eMVcPd"
             >
-              Remove header
-            </span>
-          </div>
-          <i
-            className="fa fa-trash"
-            role="presentation"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="form-group"
-    >
-      <div
-        className="col-xs-5"
-      >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].name"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Name"
-          type="text"
-          value=""
-        />
+              <div
+                className="ddxWyy"
+              />
+              <span
+                className="jsYWMN"
+              >
+                Remove header
+              </span>
+            </div>
+            <i
+              className="fa fa-trash"
+              role="presentation"
+            />
+          </button>
+        </div>
       </div>
       <div
-        className="col-xs-6"
+        className="form-group"
       >
-        <input
-          className="form-control"
-          id="header.[object Object]"
-          name="[object Object].value"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          placeholder="Value"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-xs-1"
-      >
-        <button
-          className="exyKyC"
-          id="removeHeaderButton2"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
+        <div
+          className="col-xs-5"
         >
-          <div
-            className="eMVcPd"
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Name"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <input
+            className="form-control"
+            id="header.[object Object]"
+            name="[object Object].value"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Value"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col-xs-1"
+        >
+          <button
+            className="exyKyC"
+            id="removeHeaderButton2"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
-              className="ddxWyy"
-            />
-            <span
-              className="jsYWMN"
+              className="eMVcPd"
             >
-              Remove header
-            </span>
-          </div>
-          <i
-            className="fa fa-trash"
-            role="presentation"
-          />
-        </button>
+              <div
+                className="ddxWyy"
+              />
+              <span
+                className="jsYWMN"
+              >
+                Remove header
+              </span>
+            </div>
+            <i
+              className="fa fa-trash"
+              role="presentation"
+            />
+          </button>
+        </div>
       </div>
-    </div>
-    <div
-      className="row"
-    >
       <div
-        className="col-xs-12"
+        className="row"
       >
-        <button
-          className="ducMpy btn btn-link"
-          disabled={false}
-          id="addHeaderButton"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="col-xs-12"
         >
-          <i
-            className="fa fa-plus"
-            role="presentation"
-          />
-          Add header
-        </button>
+          <button
+            className="ducMpy btn btn-link"
+            disabled={false}
+            id="addHeaderButton"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              className="fa fa-plus"
+              role="presentation"
+            />
+            Add header
+          </button>
+        </div>
       </div>
     </div>
   </div>

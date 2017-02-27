@@ -2,7 +2,7 @@
 
 exports[`BasicAuthField should match the previous snapshot 1`] = `
 <div
-  className="gbeLmT"
+  className="beUPta"
 >
   <button
     className="btn btn-link"
@@ -20,47 +20,51 @@ exports[`BasicAuthField should match the previous snapshot 1`] = `
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12"
+    className="collapse row"
   >
     <div
-      className="form-group"
+      className="col-xs-12"
     >
       <div
-        className="col-xs-5"
-      >
-        <input
-          className="form-control"
-          id="method"
-          placeholder="Username"
-          type="text"
-        />
-      </div>
-      <div
-        className="col-xs-5"
-      >
-        <input
-          className="form-control"
-          id="method"
-          placeholder="Password"
-          type="password"
-        />
-      </div>
-      <div
-        className="col-xs-2"
+        className="form-group"
       >
         <div
-          className="checkbox"
-          style={undefined}
+          className="col-xs-5"
         >
-          <label>
-            <input
-              checked={false}
-              disabled={false}
-              onChange={[Function]}
-              type="checkbox"
-            />
-            Show password?
-          </label>
+          <input
+            className="form-control"
+            id="method"
+            placeholder="Username"
+            type="text"
+          />
+        </div>
+        <div
+          className="col-xs-5"
+        >
+          <input
+            className="form-control"
+            id="method"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+        <div
+          className="col-xs-2"
+        >
+          <div
+            className="checkbox"
+            style={undefined}
+          >
+            <label>
+              <input
+                checked={false}
+                disabled={false}
+                onChange={[Function]}
+                type="checkbox"
+              />
+              Show password?
+            </label>
+          </div>
         </div>
       </div>
     </div>

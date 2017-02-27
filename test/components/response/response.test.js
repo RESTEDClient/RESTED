@@ -62,10 +62,10 @@ describe('response component', () => {
     );
 
     const h3 = tree.find('.panel-body h3');
-    expect(h3.prop('children')[0]).toEqual(200);
+    expect(h3.text()).toEqual('200 OK');
 
     const small = h3.find('small');
-    expect(small.prop('children')).toEqual('OK');
+    expect(small.prop('children')).toContain('OK');
   });
 
   it('displays the URL and method in the titlebar', () => {
@@ -76,7 +76,7 @@ describe('response component', () => {
     );
 
     const expectedLink = (
-      <a href="http://example.com">
+      <a href="http://example.com" className="text-muted">
         http://example.com
       </a>
     );

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="gbeLmT"
+  className="beUPta"
 >
   <button
     className="btn btn-link"
@@ -20,11 +20,15 @@ exports[`should render correctly 1`] = `
   </button>
   <div
     aria-expanded={null}
-    className="collapse col-xs-12"
+    className="collapse row"
   >
-    <h3>
-      test
-    </h3>
+    <div
+      className="col-xs-12"
+    >
+      <h3>
+        test
+      </h3>
+    </div>
   </div>
 </div>
 `;
