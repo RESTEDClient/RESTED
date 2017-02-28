@@ -58,6 +58,21 @@ function buildFormData({ formData }) {
   return null;
 }
 
+function buildResponseHeaders(response) {
+  const headers = [];
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const header of response.headers) {
+    headers.push({
+      name: header[0],
+      value: header[1],
+    });
+  }
+
+  return headers;
+}
+
+
 function* fetchData({ request }) {
   try {
     yield put(executeRequest());
@@ -76,16 +91,7 @@ function* fetchData({ request }) {
       credentials: 'include', // Include cookies
     });
 
-    const responseHeaders = [];
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const header of response.headers) {
-      responseHeaders.push({
-        name: header[0],
-        value: header[1],
-      });
-    }
-
+    const responseHeaders = buildResponseHeaders(response);
     const responseBody = yield apply(response, response.text);
 
     yield put(receiveResponse({
