@@ -12,6 +12,7 @@ module.exports = {
   context: rootDir,
 
   entry: [
+    'babel-polyfill',
     './src/index.js',
   ],
 

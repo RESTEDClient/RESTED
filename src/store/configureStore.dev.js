@@ -1,12 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
 import DevTools from 'components/DevTools';
 import rootReducer from './';
+import sagas from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(
   // Middleware
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, sagaMiddleware),
   // Enable Redux DevTools with the monitors you chose
   DevTools.instrument(),
 );
@@ -17,9 +21,12 @@ export default function configureStore(initialState) {
   // Hot reload reducers
   if (module.hot) {
     module.hot.accept('./', () =>
-      store.replaceReducer(require('./').default), // eslint-disable-line global-require
+      // eslint-disable-next-line global-require
+      store.replaceReducer(require('./').default),
     );
   }
+
+  sagaMiddleware.run(sagas);
 
   return store;
 }
