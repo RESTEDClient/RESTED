@@ -1,7 +1,3 @@
-import Immutable from 'immutable';
-import { change } from 'redux-form';
-
-/* eslint-disable import/no-unresolved */
 import * as actions from 'store/request/actions';
 import * as types from 'store/request/types';
 

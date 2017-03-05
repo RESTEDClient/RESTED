@@ -27,8 +27,8 @@ const mockRequest = {
 
 describe('fetchData saga', () => {
   const mockResponseData = {
-    status : 200,
-    statusText : "SuperSmashingGreat!",
+    status: 200,
+    statusText: 'SuperSmashingGreat!',
     headers: new Headers({
       Header: 'Value',
     }),
@@ -45,7 +45,7 @@ describe('fetchData saga', () => {
 
   it('should call createResource to build a URL', () => {
     expect(iterator.next().value).toEqual(
-      call(createResource, mockRequest)
+      call(createResource, mockRequest),
     );
   });
 
@@ -95,12 +95,12 @@ describe('fetchData saga', () => {
   });
 
   it('should dispatch a requestFailed when something throws', () => {
-    const iterator = fetchData({ request: mockRequest })
+    const iterator2 = fetchData({ request: mockRequest });
     const error = { foo: 'bar' };
-    iterator.next();
+    iterator2.next();
 
-    expect(iterator.throw(error).value).toEqual(
-      put({ type: types.REQUEST_FAILED, error })
+    expect(iterator2.throw(error).value).toEqual(
+      put({ type: types.REQUEST_FAILED, error }),
     );
   });
 });
@@ -114,25 +114,25 @@ describe('createResource saga', () => {
 
   it('should call getUrl with the request', () => {
     expect(iterator.next().value).toEqual(
-      call(getUrl, mockRequest)
+      call(getUrl, mockRequest),
     );
   });
 
   it('should fetch the urlVariables from the store', () => {
     expect(iterator.next(mockUrl).value).toEqual(
-      select(getUrlVariables)
+      select(getUrlVariables),
     );
   });
 
   it('should call prependHttp on the url', () => {
     expect(iterator.next(mockUrlVariables).value).toEqual(
-      call(prependHttp, 'foo.com/bar')
+      call(prependHttp, 'foo.com/bar'),
     );
   });
 
   it('should return the resulting resource', () => {
     expect(iterator.next('http://foo.com/bar').value).toBe(
-      'http://foo.com/bar'
+      'http://foo.com/bar',
     );
   });
 });
@@ -142,19 +142,19 @@ describe('getUrl saga', () => {
   const fallbackUrl = 'http://test.com';
 
   it('should return the URL on the request if present', () => {
-    const iterator = getUrl(mockRequest);
-    expect(iterator.next().value).toBe(mockRequest.url);
+    const iterator2 = getUrl(mockRequest);
+    expect(iterator2.next().value).toBe(mockRequest.url);
   });
 
   it('should getch the placeholderUrl from the store', () => {
     expect(iterator.next().value).toEqual(
-      select(getPlaceholderUrl)
+      select(getPlaceholderUrl),
     );
   });
 
   it('should dispatch a URL change event to redux form', () => {
     expect(iterator.next(fallbackUrl).value).toEqual(
-      put(change(requestForm, 'url', fallbackUrl))
+      put(change(requestForm, 'url', fallbackUrl)),
     );
   });
 
