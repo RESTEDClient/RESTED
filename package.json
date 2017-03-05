@@ -74,6 +74,7 @@
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "whatwg-fetch": "^2.0.3"
   }
 }

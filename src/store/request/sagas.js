@@ -6,15 +6,14 @@ import base64Encode from 'utils/base64';
 import { reMapHeaders } from 'utils/requestUtils';
 import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
+import { getUrlVariables } from 'store/urlVariables/selectors';
 import { requestForm } from 'components/Request';
 
+import { getPlaceholderUrl } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
-import { SEND_REQUEST } from './types';
+import { SEND_REQUEST, REQUEST_FAILED } from './types';
 
-const getUrlVariables = state => state.urlVariables.get('urlVariables');
-const getPlaceholderUrl = state => state.request.placeholderUrl;
-
-function* getUrl(request) {
+export function* getUrl(request) {
   if (!request.url) {
     const fallbackUrl = yield select(getPlaceholderUrl);
     yield put(change(requestForm, 'url', fallbackUrl));
@@ -24,7 +23,7 @@ function* getUrl(request) {
   return request.url;
 }
 
-function* createResource(request) {
+export function* createResource(request) {
   const url = yield call(getUrl, request);
   const parameters = yield select(getUrlVariables);
   const resource = mapParameters(url, parameters);
@@ -73,7 +72,7 @@ function buildResponseHeaders(response) {
 }
 
 
-function* fetchData({ request }) {
+export function* fetchData({ request }) {
   try {
     yield put(executeRequest());
 
@@ -103,7 +102,7 @@ function* fetchData({ request }) {
       method: request.method,
     }));
   } catch (error) {
-    yield put({ type: 'REQUEST_FAILED', error });
+    yield put({ type: REQUEST_FAILED, error });
   }
 }
 
