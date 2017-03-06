@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 
 import { initialState as collectionInitialState } from '../src/store/collections/reducer';
