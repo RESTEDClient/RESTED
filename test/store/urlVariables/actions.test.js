@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import * as actions from 'store/urlVariables/actions';
 import * as types from 'store/urlVariables/types';
 
@@ -13,7 +12,7 @@ describe('actions', () => {
     },
   ];
 
-  it('should create an action to fetch urlVariables', () => {
+  it('should create an action to start fetching urlVariables', () => {
     const expectedAction = {
       type: types.FETCH_URL_VARIABLES,
     };
@@ -30,31 +29,39 @@ describe('actions', () => {
     expect(actions.receiveUrlVariables(urlVariables)).toEqual(expectedAction);
   });
 
-  it('should create an action to create a new urlVariable', () => {
+  it('should create an action to fetch urlVariables', () => {
     const expectedAction = {
-      type: types.ADD_URL_VARIABLE,
+      type: types.FETCH_REQUESTED,
     };
 
-    expect(actions.doAddTemplate()).toEqual(expectedAction);
+    expect(actions.fetchUrlVariables()).toEqual(expectedAction);
+  });
+
+  it('should create an action to create a new urlVariable', () => {
+    const expectedAction = {
+      type: types.ADD_REQUESTED,
+    };
+
+    expect(actions.addTemplate()).toEqual(expectedAction);
   });
 
   it('should create an action to update a urlVariable', () => {
     const expectedAction = {
-      type: types.UPDATE_URL_VARIABLE,
+      type: types.UPDATE_REQUESTED,
       index: 1,
       value: urlVariables[0],
     };
 
-    expect(actions.doUpdateTemplate(1, urlVariables[0])).toEqual(expectedAction);
+    expect(actions.updateTemplate(1, urlVariables[0])).toEqual(expectedAction);
   });
 
   it('should create an action to delete a urlVariable', () => {
     const expectedAction = {
-      type: types.DELETE_URL_VARIABLE,
+      type: types.DELETE_REQUESTED,
       index: 1,
     };
 
-    expect(actions.doDeleteTemplate(1)).toEqual(expectedAction);
+    expect(actions.deleteTemplate(1)).toEqual(expectedAction);
   });
 });
 

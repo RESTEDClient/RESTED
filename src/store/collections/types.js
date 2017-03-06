@@ -1,11 +1,20 @@
+export const FETCH_REQUESTED = 'collections/FETCH_REQUESTED';
 export const FETCH_COLLECTIONS = 'collections/FETCH_COLLECTIONS';
 export const RECEIVE_COLLECTIONS = 'collections/RECEIVE_COLLECTIONS';
+export const ADD_COLLECTION_REQUESTED = 'collections/ADD_COLLECTION_REQUESTED';
 export const ADD_COLLECTION = 'collections/ADD_COLLECTION';
+export const DELETE_COLLECTION_REQUESTED = 'collections/DELETE_COLLECTION_REQUESTED';
 export const DELETE_COLLECTION = 'collections/DELETE_COLLECTION';
+export const ADD_REQUEST_REQUESTED = 'collections/ADD_REQUEST_REQUESTED';
 export const ADD_REQUEST = 'collections/ADD_REQUEST';
+export const DELETE_REQUEST_REQUESTED = 'collections/DELETE_REQUEST_REQUESTED';
 export const DELETE_REQUEST = 'collections/DELETE_REQUEST';
+export const REORDER_REQUEST_REQUESTED = 'collections/REORDER_REQUEST_REQUESTED';
 export const REORDER_REQUEST = 'collections/REORDER_REQUEST';
+export const REORDER_COLLECTION_REQUESTED = 'collections/REORDER_COLLECTION_REQUESTED';
 export const REORDER_COLLECTION = 'collections/REORDER_COLLECTION';
+export const RENAME_COLLECTION_REQUESTED = 'collections/RENAME_COLLECTION_REQUESTED';
 export const RENAME_COLLECTION = 'collections/RENAME_COLLECTION';
+export const RENAME_REQUEST_REQUESTED = 'collections/RENAME_REQUEST_REQUESTED';
 export const RENAME_REQUEST = 'collections/RENAME_REQUEST';
 

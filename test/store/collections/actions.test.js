@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import * as actions from 'store/collections/actions';
 import * as types from 'store/collections/types';
 
@@ -14,12 +13,12 @@ describe('actions', () => {
     };
   });
 
-  it('should create an action to fetch collections', () => {
+  it('should create an action to start fetching collections', () => {
     const expectedAction = {
-      type: types.FETCH_COLLECTIONS,
+      type: types.FETCH_REQUESTED,
     };
 
-    expect(actions.startFetch()).toEqual(expectedAction);
+    expect(actions.fetchCollections()).toEqual(expectedAction);
   });
 
   it('should create an action to receive collections', () => {
@@ -34,41 +33,49 @@ describe('actions', () => {
     expect(actions.receiveCollections(collections)).toEqual(expectedAction);
   });
 
-  it('should create an action to add a collection', () => {
+  it('should create an action to fetch collections', () => {
     const expectedAction = {
-      type: types.ADD_COLLECTION,
+      type: types.FETCH_REQUESTED,
     };
 
-    expect(actions.doAddCollection()).toEqual(expectedAction);
+    expect(actions.fetchCollections()).toEqual(expectedAction);
+  });
+
+  it('should create an action to add a collection', () => {
+    const expectedAction = {
+      type: types.ADD_COLLECTION_REQUESTED,
+    };
+
+    expect(actions.addCollection()).toEqual(expectedAction);
   });
 
   it('should create an action to delete a collection', () => {
     const expectedAction = {
-      type: types.DELETE_COLLECTION,
+      type: types.DELETE_COLLECTION_REQUESTED,
       collectionId: 'foo',
     };
 
-    expect(actions.doDeleteCollection('foo')).toEqual(expectedAction);
+    expect(actions.deleteCollection('foo')).toEqual(expectedAction);
   });
 
   it('should create an action to add a request', () => {
     const expectedAction = {
-      type: types.ADD_REQUEST,
+      type: types.ADD_REQUEST_REQUESTED,
       collectionIndex: 2,
       request,
     };
 
-    expect(actions.doAddRequest(request, 2)).toEqual(expectedAction);
+    expect(actions.addRequest(request, 2)).toEqual(expectedAction);
   });
 
   it('should create an action to delete a request', () => {
     const expectedAction = {
-      type: types.DELETE_REQUEST,
+      type: types.DELETE_REQUEST_REQUESTED,
       collectionIndex: 2,
       requestId: 1,
     };
 
-    expect(actions.doDeleteRequest(1, 2)).toEqual(expectedAction);
+    expect(actions.deleteRequest(1, 2)).toEqual(expectedAction);
   });
 
   it('should create an action to reorder a request', () => {
@@ -81,36 +88,36 @@ describe('actions', () => {
       requestIndex: 0,
     };
     const expectedAction = {
-      type: types.REORDER_REQUEST,
+      type: types.REORDER_REQUEST_REQUESTED,
       source,
       target,
     };
 
-    expect(actions.doReorderRequest(source, target)).toEqual(expectedAction);
+    expect(actions.reorderRequest(source, target)).toEqual(expectedAction);
   });
 
   it('should create an action to reorder a collection', () => {
     const oldIndex = 0;
     const newIndex = 1;
     const expectedAction = {
-      type: types.REORDER_COLLECTION,
+      type: types.REORDER_COLLECTION_REQUESTED,
       oldIndex,
       newIndex,
     };
 
-    expect(actions.doReorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
+    expect(actions.reorderCollection(oldIndex, newIndex)).toEqual(expectedAction);
   });
 
   it('should create an action to rename a collection', () => {
     const collectionIndex = 1;
     const name = 'Test';
     const expectedAction = {
-      type: types.RENAME_COLLECTION,
+      type: types.RENAME_COLLECTION_REQUESTED,
       collectionIndex,
       name,
     };
 
-    expect(actions.doRenameCollection(collectionIndex, name)).toEqual(expectedAction);
+    expect(actions.renameCollection(collectionIndex, name)).toEqual(expectedAction);
   });
 
   it('should create an action to rename a request', () => {
@@ -118,13 +125,13 @@ describe('actions', () => {
     const requestIndex = 0;
     const name = 'Test';
     const expectedAction = {
-      type: types.RENAME_REQUEST,
+      type: types.RENAME_REQUEST_REQUESTED,
       collectionIndex,
       requestIndex,
       name,
     };
 
-    expect(actions.doRenameRequest(collectionIndex, requestIndex, name)).toEqual(expectedAction);
+    expect(actions.renameRequest(collectionIndex, requestIndex, name)).toEqual(expectedAction);
   });
 });
 

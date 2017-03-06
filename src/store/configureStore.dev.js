@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
 
 import DevTools from 'components/DevTools';
 import rootReducer from './';
@@ -10,7 +9,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(
   // Middleware
-  applyMiddleware(thunk, sagaMiddleware),
+  applyMiddleware(sagaMiddleware),
   // Enable Redux DevTools with the monitors you chose
   DevTools.instrument(),
 );

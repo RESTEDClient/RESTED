@@ -1,13 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as form } from 'redux-form';
-import thunk from 'redux-thunk';
 
 import { initialState as collectionInitialState } from '../src/store/collections/reducer';
-
-const middleware = compose(
-  // Middleware
-  applyMiddleware(thunk),
-);
 
 export default (state = {}) => createStore(
   combineReducers({
@@ -18,6 +12,5 @@ export default (state = {}) => createStore(
     collapsable: (initialState = {}) => initialState,
   }),
   state,
-  middleware,
 );
 

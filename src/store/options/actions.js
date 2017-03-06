@@ -1,9 +1,8 @@
-import Immutable from 'immutable';
-import localforage from 'localforage';
 import {
+  FETCH_REQUESTED,
   FETCH_OPTIONS,
   RECEIVE_OPTIONS,
-  UPDATE_OPTION,
+  UPDATE_REQUESTED,
 } from './types';
 
 export function startFetch() {
@@ -16,28 +15,11 @@ export function receiveOptions(collections) {
 
 // TODO Test
 export function fetchOptions() {
-  return dispatch => {
-    dispatch(startFetch());
-
-    return localforage
-      .getItem('options')
-      .then(options => dispatch(
-        receiveOptions(Immutable.fromJS(options) || Immutable.Map()),
-      ));
-  };
-}
-
-export function doUpdateOption(option, value) {
-  return { type: UPDATE_OPTION, option, value };
+  return { type: FETCH_REQUESTED };
 }
 
 // TODO Test
 export function updateOption(option, value) {
-  return (dispatch, getState) => {
-    dispatch(doUpdateOption(option, value));
-
-    return localforage
-      .setItem('options', getState().options.get('options').toJS());
-  };
+  return { type: UPDATE_REQUESTED, option, value };
 }
 
