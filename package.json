@@ -20,7 +20,7 @@
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
     "dev": "NODE_ENV=development webpack --progress --colors --watch --config dev/webpack/webpack.config.js",
-    "build": "NODE_ENV=production webpack --progress --config dev/webpack/webpack.config.js"
+    "build": "NODE_ENV=production webpack -p --progress --config dev/webpack/webpack.config.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -74,6 +74,7 @@
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
     "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.0",
     "whatwg-fetch": "^2.0.3"
   }
 }

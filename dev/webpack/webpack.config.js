@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -17,12 +18,9 @@ module.exports = {
   ],
 
   output: {
-    path: "./dist",
-    filename: "rested.js"
+    path: './dist',
+    filename: 'rested.js',
   },
-
-  /* Note: Inline source maps are super slow in Firefox */
-  devtool: isProd ? 'source-map' : 'inline-source-map',
 
   performance: { hints: false },
 
@@ -30,7 +28,7 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false,
+      debug: !isProd,
       options: {
         eslint: {
           failOnWarning: isProd,
@@ -38,21 +36,8 @@ module.exports = {
         }
       }
     }),
-    isProd
-      ? new webpack.optimize.UglifyJsPlugin({
-        // Keep legible sources for the AMO reviewers
-        mangle: false,
-        beautify: true,
-        compress: {
-          warnings: false
-        },
-        output: {
-          comments: false
-        },
-      })
-      : doNothing,
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': `"${nodeEnv}"`,
+      'process.env.NODE_ENV': JSON.stringify(nodeEnv),
     }),
   ],
 
