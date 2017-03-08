@@ -1,14 +1,9 @@
 /* eslint-disable import/no-unresolved */
-import RunRequest, * as Request from 'utils/request';
+import * as Request from 'utils/request';
 
 describe('Request', () => {
   it('should load the service', () => {
     expect(Request).toBeDefined();
-  });
-
-  it('should have a run method as default export', () => {
-    expect(RunRequest).toBeDefined();
-    expect(RunRequest).toBeInstanceOf(Function);
   });
 
   /* prependHttp tests */
@@ -45,35 +40,6 @@ describe('Request', () => {
     const templateUrl = 'http://someapi.com?API_KEY={{key}}&{{STATIC_KEY}}=why';
     const result = 'http://someapi.com?API_KEY=value&EuR_ek44!\\=why';
     expect(Request.mapParameters(templateUrl, params)).toEqual(result);
-  });
-
-  /* createXMLHttpRequest tests */
-  it('should have a createXMLHttpRequest method', () => {
-    expect(Request.createXMLHttpRequest).toBeDefined();
-    expect(typeof Request.createXMLHttpRequest).toBe('function');
-  });
-
-  it('should generate an XMLHttpRequest when passed a request object', () => {
-    const request = {
-      method: 'GET',
-      headers: [{ name: 'test', value: 'blah' }],
-      cache: false,
-      url: 'http://www.aperturescience.com',
-    };
-    expect(Request.createXMLHttpRequest(request)).toBeInstanceOf(XMLHttpRequest);
-  });
-
-  // withCredentials means that setCookie headers in the response will send the set cookie
-  // in subequent requests to that domain. This is useful for RESTful services behind
-  // logins.
-  it('should generate an XMLHttpRequest with "withCredentials" set', () => {
-    const request = {
-      method: 'GET',
-      headers: [{ name: 'test', value: 'blah' }],
-      cache: false,
-      url: 'http://www.aperturescience.com',
-    };
-    expect(Request.createXMLHttpRequest(request).withCredentials).toEqual(true);
   });
 });
 

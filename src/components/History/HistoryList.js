@@ -7,6 +7,7 @@ import requestShape from 'propTypes/request';
 import IconButton from 'components/IconButton';
 import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
+import { selectRequest as selectRequestAction } from 'store/request/actions';
 
 import { List, ListGroupItem } from './StyledComponents';
 
@@ -84,5 +85,8 @@ const mapStateToProps = state => ({
   history: getHistory(state),
 });
 
-export default connect(mapStateToProps, Actions)(HistoryList);
+export default connect(mapStateToProps, {
+  ...Actions,
+  selectRequest: selectRequestAction,
+})(HistoryList);
 

@@ -1,9 +1,9 @@
 import Immutable from 'immutable';
-import { change } from 'redux-form';
-import { call, apply, fork, put, select, takeLatest } from 'redux-saga/effects';
+import { initialize, change } from 'redux-form';
+import { call, apply, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import base64Encode from 'utils/base64';
-import { reMapHeaders } from 'utils/requestUtils';
+import { reMapHeaders, focusUrlField } from 'utils/requestUtils';
 import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
 import { getUrlVariables } from 'store/urlVariables/selectors';
@@ -11,7 +11,7 @@ import { requestForm } from 'components/Request';
 
 import { getPlaceholderUrl } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
-import { SEND_REQUEST, REQUEST_FAILED } from './types';
+import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED } from './types';
 
 export function* getUrl(request) {
   if (!request.url) {
@@ -106,11 +106,13 @@ export function* fetchData({ request }) {
   }
 }
 
-function* sendRequest() {
-  yield takeLatest(SEND_REQUEST, fetchData);
+function* selectRequest({ request }) {
+  yield put(initialize(requestForm, request));
+  yield call(focusUrlField);
 }
 
 export default function* rootSaga() {
-  yield fork(sendRequest);
+  yield takeLatest(SEND_REQUEST, fetchData);
+  yield takeEvery(SELECT_REQUESTED, selectRequest);
 }
 

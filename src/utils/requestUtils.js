@@ -112,3 +112,7 @@ export function headersToHeaderString(headers) {
   return `${result}\n`;
 }
 
+export function focusUrlField() {
+  document.getElementById('url').focus();
+}
+

@@ -5,4 +5,5 @@ export const UPDATE_REQUEST = 'request/UPDATE_REQUEST';
 export const CLEAR_RESPONSE = 'request/CLEAR_RESPONSE';
 export const USE_FORM_DATA = 'request/USE_FORM_DATA';
 export const REQUEST_FAILED = 'request/RECEIVE_FAILED';
+export const SELECT_REQUESTED = 'request/SELECT_REQUESTED';
 

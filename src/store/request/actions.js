@@ -1,6 +1,3 @@
-import { initialize } from 'redux-form';
-import { requestForm } from 'components/Request';
-
 import {
   SEND_REQUEST,
   EXECUTE_REQUEST,
@@ -8,6 +5,7 @@ import {
   UPDATE_REQUEST,
   CLEAR_RESPONSE,
   USE_FORM_DATA,
+  SELECT_REQUESTED,
 } from './types';
 
 export function executeRequest() {
@@ -31,9 +29,7 @@ export function setUseFormData(useFormData) {
 }
 
 export function selectRequest(request) {
-  return dispatch => {
-    dispatch(initialize(requestForm, request));
-  };
+  return { type: SELECT_REQUESTED, request };
 }
 
 export function sendRequest(request) {
