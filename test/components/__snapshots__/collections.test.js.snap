@@ -58,9 +58,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
       </button>
       <hr />
     </span>
-    <div
-      id="collection0"
-    >
+    <div>
        
       <div
         className="kzXmMh"
@@ -240,9 +238,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
             </button>
             <hr />
           </span>
-          <div
-            id="collection0"
-          >
+          <div>
              
             <div
               className="kzXmMh"
@@ -380,9 +376,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
             </button>
             <hr />
           </span>
-          <div
-            id="collection1"
-          >
+          <div>
              
             <div
               className="kzXmMh"
@@ -459,9 +453,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
               </div>
             </div>
           </div>
-          <div
-            id="collection1"
-          >
+          <div>
              
             <div
               className="kzXmMh"
@@ -538,9 +530,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
               </div>
             </div>
           </div>
-          <div
-            id="collection1"
-          >
+          <div>
              
             <div
               className="kzXmMh"
