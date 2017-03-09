@@ -10,11 +10,11 @@ import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Loading from './Loading';
 import Headers from './Headers';
 
-function Titlebar({ url }) {
+function Titlebar({ url, time }) {
   return (
     <StyledHeader>
       <h3>
-        Response - <a href={url} className="text-muted">{url}</a>
+        Response ({time / 1000}s) - <a href={url} className="text-muted">{url}</a>
       </h3>
     </StyledHeader>
   );
@@ -22,6 +22,7 @@ function Titlebar({ url }) {
 
 Titlebar.propTypes = {
   url: responseShape.url,
+  time: responseShape.time,
 };
 
 export function Response({ response, loading }) {
@@ -35,13 +36,13 @@ export function Response({ response, loading }) {
 
   if (!response) return null;
 
-  const { method, url, headers, body } = response;
+  const { method, url, headers, body, time } = response;
   const contentLength = headers.find(header => (
     header.name === 'content-length'
   ));
 
   return (
-    <StyledResponse header={<Titlebar method={method} url={url} />}>
+    <StyledResponse header={<Titlebar method={method} url={url} time={time} />}>
       <h3>
         <Status
           green={response.status >= 200 && response.status < 300}

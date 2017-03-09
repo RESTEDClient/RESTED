@@ -8,6 +8,7 @@ export const responseShape = {
   body: string.isRequired,
   status: number.isRequired,
   statusText: string.isRequired,
+  time: number.isRequired,
   method: oneOf(REQUEST_METHODS).isRequired,
   headers: arrayOf(
     shape({

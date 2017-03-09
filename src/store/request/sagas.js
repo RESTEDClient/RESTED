@@ -83,12 +83,15 @@ export function* fetchData({ request }) {
     const historyEntry = Immutable.fromJS(request).set('url', resource);
     yield put(pushHistory(historyEntry));
 
+    const before = Date.now();
     const response = yield call(fetch, resource, {
       method: request.method,
       body,
       headers,
       credentials: 'include', // Include cookies
     });
+
+    const millisPassed = Date.now() - before;
 
     const responseHeaders = buildResponseHeaders(response);
     const responseBody = yield apply(response, response.text);
@@ -100,6 +103,7 @@ export function* fetchData({ request }) {
       body: responseBody,
       headers: responseHeaders,
       method: request.method,
+      time: millisPassed,
     }));
   } catch (error) {
     yield put({ type: REQUEST_FAILED, error });
