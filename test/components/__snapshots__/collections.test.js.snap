@@ -119,8 +119,8 @@ exports[`Collection component should match the previous snapshot 1`] = `
                 />
               </button>
             </div>
-            <button
-              className="XnOQh"
+            <div
+              className="kHaGmh"
               onClick={[Function]}
               onDoubleClick={[Function]}
             >
@@ -130,7 +130,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
                 </h4>
                 www.foo.no
               </div>
-            </button>
+            </div>
           </div>
         </div>
       </div>
@@ -299,8 +299,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                   </div>
-                  <button
-                    className="XnOQh"
+                  <div
+                    className="kHaGmh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                   >
@@ -310,7 +310,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </h4>
                       www.foo.no
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -437,8 +437,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                   </div>
-                  <button
-                    className="XnOQh"
+                  <div
+                    className="kHaGmh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                   >
@@ -448,7 +448,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </h4>
                       www.foo.no
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -514,8 +514,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                   </div>
-                  <button
-                    className="XnOQh"
+                  <div
+                    className="kHaGmh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                   >
@@ -525,7 +525,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </h4>
                       www.bar.no
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -591,8 +591,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       />
                     </button>
                   </div>
-                  <button
-                    className="XnOQh"
+                  <div
+                    className="kHaGmh"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                   >
@@ -602,7 +602,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </h4>
                       www.baz.no
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>

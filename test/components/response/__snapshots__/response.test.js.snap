@@ -12,7 +12,9 @@ exports[`response component renders a result when given one 1`] = `
       className="iKvJLI"
     >
       <h3>
-        Response - 
+        Response (
+        NaN
+        s) - 
         <a
           className="text-muted"
           href="http://example.com"

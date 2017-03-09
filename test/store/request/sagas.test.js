@@ -4,7 +4,7 @@ import { change } from 'redux-form';
 import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
-import { fetchData, createResource, getUrl } from 'store/request/sagas';
+import { fetchData, createResource, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
 import { getPlaceholderUrl } from 'store/request/selectors';
 import { getUrlVariables } from 'store/urlVariables/selectors';
 import { pushHistory } from 'store/history/actions';
@@ -55,11 +55,19 @@ describe('fetchData saga', () => {
     );
   });
 
+  let timeBefore;
+  it('should calculate the time passed', () => {
+    timeBefore = Date.now();
+    expect(iterator.next().value).toEqual(
+      call(getBeforeTime),
+    );
+  });
+
   it('should fetch the resource', () => {
     const body = new FormData();
     body.append('Yes', 'Sir');
 
-    expect(iterator.next().value).toEqual(
+    expect(iterator.next(timeBefore).value).toEqual(
       call(fetch, 'foo', {
         method: 'GET',
         body,
@@ -71,8 +79,15 @@ describe('fetchData saga', () => {
     );
   });
 
-  it('should get the response text', () => {
+  const timePassed = 1337;
+  it('should calculate the time passed', () => {
     expect(iterator.next(mockResponse).value).toEqual(
+      call(getMillisPassed, timeBefore),
+    );
+  });
+
+  it('should get the response text', () => {
+    expect(iterator.next(timePassed).value).toEqual(
       apply(mockResponse, mockResponse.text),
     );
   });
@@ -82,6 +97,7 @@ describe('fetchData saga', () => {
       type: types.RECEIVE_RESPONSE,
       response: {
         method: 'GET',
+        time: timePassed,
         url: mockResponse.url,
         body: undefined,
         status: mockResponse.status,

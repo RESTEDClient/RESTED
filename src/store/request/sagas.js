@@ -57,6 +57,16 @@ function buildFormData({ formData }) {
   return null;
 }
 
+// Needed for unit tests to be consistent
+export function getBeforeTime() {
+  return Date.now();
+}
+
+// Needed for unit tests to be consistent
+export function getMillisPassed(before) {
+  return Date.now() - before;
+}
+
 function buildResponseHeaders(response) {
   const headers = [];
 
@@ -83,7 +93,8 @@ export function* fetchData({ request }) {
     const historyEntry = Immutable.fromJS(request).set('url', resource);
     yield put(pushHistory(historyEntry));
 
-    const before = Date.now();
+    const beforeTime = yield call(getBeforeTime);
+
     const response = yield call(fetch, resource, {
       method: request.method,
       body,
@@ -91,7 +102,7 @@ export function* fetchData({ request }) {
       credentials: 'include', // Include cookies
     });
 
-    const millisPassed = Date.now() - before;
+    const millisPassed = yield call(getMillisPassed, beforeTime);
 
     const responseHeaders = buildResponseHeaders(response);
     const responseBody = yield apply(response, response.text);
