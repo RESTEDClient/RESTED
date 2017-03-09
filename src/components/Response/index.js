@@ -37,8 +37,11 @@ export function Response({ response, loading }) {
   if (!response) return null;
 
   const { method, url, headers, body, time } = response;
+
+  // Some responses don't include the Content-Length header, in those cases
+  // we simply allow it to be highligthed, for better or worse
   const contentLength = headers.find(header => (
-    header.name === 'content-length'
+    header.name.toLowerCase() === 'content-length'
   ));
 
   return (
@@ -53,7 +56,7 @@ export function Response({ response, loading }) {
         <small> {response.statusText}</small>
       </h3>
       <Headers headers={headers} />
-      {!contentLength || Number(contentLength.value) < 50000
+      {!contentLength || Number(contentLength.value) < 20000
         ? (
           <Highlight>
             {body}
@@ -61,7 +64,7 @@ export function Response({ response, loading }) {
         ) : (
           <span>
             <Alert bsStyle="warning">
-              The size of the response is greater than 50KB, syntax
+              The size of the response is greater than 20KB, syntax
               highlighting has been disabled for performance reasons.
             </Alert>
 
