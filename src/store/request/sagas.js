@@ -97,6 +97,7 @@ export function* fetchData({ request }) {
 
     const response = yield call(fetch, resource, {
       method: request.method,
+      redirect: 'follow',
       body,
       headers,
       credentials: 'include', // Include cookies

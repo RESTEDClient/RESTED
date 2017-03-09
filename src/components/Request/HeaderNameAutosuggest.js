@@ -5,7 +5,7 @@ import Autosuggest from 'react-autosuggest';
 import headers from 'constants/commonHeaders';
 import { SuggestWrapper } from './StyledComponents';
 
-const maxEntries = 5;
+const maxEntries = 7;
 
 // Calculate suggestions for any given input value.
 const getSuggestions = value => {
@@ -24,6 +24,13 @@ const getSuggestions = value => {
 // Teach Autosuggest how to calculate the input value for
 // every given suggestion.
 const getSuggestionValue = suggestion => suggestion;
+
+// Ensure the user does not send a request when selecting using enter
+function preventDefaultOnEnter(event, { method }) {
+  if (method === 'enter') {
+    event.preventDefault();
+  }
+}
 
 const renderSuggestion = suggestion => (
   <div>
@@ -73,6 +80,7 @@ export default class HeaderNameAutosuggest extends React.PureComponent {
           suggestions={this.state.suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionSelected={preventDefaultOnEnter}
           getSuggestionValue={getSuggestionValue}
           renderInputComponent={renderInputComponent}
           renderSuggestion={renderSuggestion}
