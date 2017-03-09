@@ -43,13 +43,13 @@ acorn@^3.0.4:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
 
-acorn@^4.0.1, acorn@^4.0.3, acorn@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
-
-acorn@^4.0.11:
+acorn@^4.0.1, acorn@^4.0.11, acorn@^4.0.3:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
+
+acorn@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
 
 ajv-keywords@^1.0.0, ajv-keywords@^1.1.1:
   version "1.5.0"
@@ -1452,9 +1452,9 @@ doctrine@1.5.0, doctrine@^1.2.2:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-dom-helpers@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-2.4.0.tgz#9bb4b245f637367b1fa670274272aa28fe06c367"
+dom-helpers@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
 
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
@@ -3544,6 +3544,10 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
+object-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
+
 object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
@@ -3907,6 +3911,20 @@ react-addons-test-utils@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-autosuggest@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/react-autosuggest/-/react-autosuggest-9.0.0.tgz#976b02e20d05615d05c328c8f1384daf98587821"
+  dependencies:
+    react-autowhatever "^9.1.0"
+    shallow-equal "^1.0.0"
+
+react-autowhatever@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/react-autowhatever/-/react-autowhatever-9.1.0.tgz#cc19ea05e0541ec04bb07fd53792215dc802bf75"
+  dependencies:
+    react-themeable "^1.1.0"
+    section-iterator "^2.0.0"
+
 react-base16-styling@^0.4.1:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/react-base16-styling/-/react-base16-styling-0.4.6.tgz#ac23cb19b278974d965003b88f06a038d790bc80"
@@ -3917,16 +3935,16 @@ react-base16-styling@^0.4.1:
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
 
-react-bootstrap@^0.30.7:
-  version "0.30.7"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.30.7.tgz#39da80088693ecb71e8e63b5bdc313571fd993d1"
+react-bootstrap@^0.30.8:
+  version "0.30.8"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.30.8.tgz#4ceca8e138ce2351228c4a58d59db00c003ca9c0"
   dependencies:
     babel-runtime "^6.11.6"
     classnames "^2.2.5"
-    dom-helpers "^2.4.0"
+    dom-helpers "^3.2.0"
     invariant "^2.2.1"
     keycode "^2.1.2"
-    react-overlays "^0.6.10"
+    react-overlays "^0.6.12"
     react-prop-types "^0.4.0"
     uncontrollable "^4.0.1"
     warning "^3.0.0"
@@ -3988,12 +4006,12 @@ react-json-tree@^0.10.0:
     react-base16-styling "^0.4.1"
     react-pure-render "^1.0.2"
 
-react-overlays@^0.6.10:
-  version "0.6.10"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.6.10.tgz#e7e52dad47f00a0fc784eb044428c3a9e874bfa3"
+react-overlays@^0.6.12:
+  version "0.6.12"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.6.12.tgz#a079c750cc429d7db4c7474a95b4b54033e255c3"
   dependencies:
     classnames "^2.2.5"
-    dom-helpers "^2.4.0"
+    dom-helpers "^3.2.0"
     react-prop-types "^0.4.0"
     warning "^3.0.0"
 
@@ -4023,6 +4041,12 @@ react-test-renderer@^15.4.2:
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
+
+react-themeable@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-themeable/-/react-themeable-1.1.0.tgz#7d4466dd9b2b5fa75058727825e9f152ba379a0e"
+  dependencies:
+    object-assign "^3.0.0"
 
 "react@^0.14.0 || ^15.0.0", react@^15.4.2:
   version "15.4.2"
@@ -4339,6 +4363,10 @@ sax@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
+section-iterator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/section-iterator/-/section-iterator-2.0.0.tgz#bf444d7afeeb94ad43c39ad2fb26151627ccba2a"
+
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
@@ -4391,6 +4419,10 @@ sha.js@^2.3.6:
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.8.tgz#37068c2c476b6baf402d14a49c67f597921f634f"
   dependencies:
     inherits "^2.0.1"
+
+shallow-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/shallow-equal/-/shallow-equal-1.0.0.tgz#508d1838b3de590ab8757b011b25e430900945f7"
 
 shelljs@^0.7.5:
   version "0.7.5"

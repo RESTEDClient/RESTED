@@ -11,9 +11,10 @@ import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
 import IconButton from 'components/IconButton';
 
+import HeaderNameAutosuggest from './HeaderNameAutosuggest';
 import { UnstyledButton } from './StyledComponents';
 
-function renderField({ input, placeholder }) {
+function renderValueField({ input, placeholder }) {
   return (
     <FormControl
       type="text"
@@ -23,7 +24,7 @@ function renderField({ input, placeholder }) {
   );
 }
 
-renderField.propTypes = {
+renderValueField.propTypes = {
   input: PropTypes.shape({}).isRequired,
   placeholder: PropTypes.string.isRequired,
 };
@@ -43,14 +44,14 @@ function HeadersField({ meta, fields }) {
           <Col xs={5}>
             <Field
               name={`${field}.name`}
-              component={renderField}
+              component={HeaderNameAutosuggest}
               placeholder="Name"
             />
           </Col>
           <Col xs={6}>
             <Field
               name={`${field}.value`}
-              component={renderField}
+              component={renderValueField}
               placeholder="Value"
             />
           </Col>
