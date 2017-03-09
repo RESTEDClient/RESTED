@@ -56,7 +56,7 @@ export const StyledRequest = styled.div`
   }
 `;
 
-const asideWidth = 36;
+const asideWidth = 32;
 
 export const RequestButtons = styled.div`
   max-width: ${asideWidth}px;
@@ -72,27 +72,6 @@ export const RequestButtons = styled.div`
 `;
 
 export const MainContentDiv = styled.div`
-  padding: 10px;
-  word-break: break-all;
-  border-left: 1px solid #ddd;
-  width: calc(100% - ${asideWidth}px);
-
-  input {
-    width: calc(100% - 36px);
-  }
-
-  ${props => props.compact && css`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  `}
-`;
-
-export const MainContentButton = styled.button`
-  border: 10px none;
-  boxSizing: border-box;
-  backgroundColor: inherit;
-  textAlign: left;
   padding: 10px;
   word-break: break-all;
   border-left: 1px solid #ddd;

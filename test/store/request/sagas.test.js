@@ -71,6 +71,7 @@ describe('fetchData saga', () => {
       call(fetch, 'foo', {
         method: 'GET',
         body,
+        redirect: 'follow',
         headers: new Headers({
           Foo: 'Bar',
         }),

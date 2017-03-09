@@ -8,12 +8,7 @@ import IconButton from 'components/IconButton';
 import * as CollectionActions from 'store/collections/actions';
 import * as RequestActions from 'store/request/actions';
 
-import {
-  StyledRequest,
-  RequestButtons,
-  MainContentButton,
-  MainContentDiv,
-} from './StyledComponents';
+import { StyledRequest, RequestButtons, MainContentDiv } from './StyledComponents';
 import * as Type from './dropTypes';
 
 /**
@@ -26,8 +21,8 @@ const requestSource = {
     return true;
   },
 
-  beginDrag({ id, index, collectionIndex }) {
-    return { id, index, collectionIndex };
+  beginDrag({ request, index, collectionIndex }) {
+    return { request, index, collectionIndex };
   },
 };
 
@@ -35,10 +30,10 @@ const requestTarget = {
   hover(props, monitor) {
     const dragIndex = monitor.getItem().index;
     const dragCollectionIndex = monitor.getItem().collectionIndex;
-    const dragUUID = monitor.getItem().id;
+    const dragUUID = monitor.getItem().request.id;
     const hoverIndex = props.index;
     const hoverCollectionIndex = props.collectionIndex;
-    const hoverUUID = props.id;
+    const hoverUUID = props.request.id;
 
     // Abort further processing if dragged item is hovering over itself
     if (dragUUID === hoverUUID) {
@@ -86,24 +81,17 @@ class Request extends React.Component {
     }).isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.toggleCompact = this.toggleCompact.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.renameRequest = this.renameRequest.bind(this);
-  }
-
   state = {};
 
-  toggleCompact() {
+  toggleCompact = () => {
     this.setState({ compact: !this.state.compact });
   }
 
-  toggleEdit() {
+  toggleEdit = () => {
     this.setState({ edit: !this.state.edit });
   }
 
-  renameRequest(e) {
+  renameRequest = e => {
     const { collectionIndex, index, renameRequest } = this.props;
     e.preventDefault();
 
@@ -199,7 +187,7 @@ class Request extends React.Component {
                   {this.renderRequest()}
                 </MainContentDiv>
               ) : (
-                <MainContentButton
+                <MainContentDiv
                   compact={compact}
                   onClick={() => {
                     selectRequest(request);
@@ -207,7 +195,7 @@ class Request extends React.Component {
                   onDoubleClick={() => sendRequest(request)}
                 >
                   {this.renderRequest()}
-                </MainContentButton>
+                </MainContentDiv>
               )}
             </div>
           </ListGroup>
