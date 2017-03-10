@@ -60,7 +60,10 @@ function HeadersField({ meta, fields }) {
               id={`removeHeaderButton${key}`}
               tooltip="Remove header"
               icon="trash"
-              onClick={() => fields.remove(key)}
+              onClick={e => {
+                e.preventDefault();
+                fields.remove(key);
+              }}
             />
           </Col>
         </FormGroup>
