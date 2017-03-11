@@ -1,3 +1,4 @@
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Col, Clearfix, Table, Button, FormControl } from 'react-bootstrap';
@@ -101,8 +102,8 @@ TemplateOptionsPane.propTypes = {
   addTemplate: PropTypes.func.isRequired,
   updateTemplate: PropTypes.func.isRequired,
   deleteTemplate: PropTypes.func.isRequired,
-  urlVariables: PropTypes.arrayOf(
-    PropTypes.shape({
+  urlVariables: ImmutablePropTypes.listOf(
+    ImmutablePropTypes.contains({
       name: PropTypes.string,
       value: PropTypes.string,
     }),

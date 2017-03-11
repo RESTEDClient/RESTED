@@ -7,11 +7,11 @@ import classNames from 'classnames';
 import { toPostman, toHAR } from 'utils/export';
 import encode from 'utils/base64';
 import { getCollections } from 'store/collections/selectors';
-import collectionShape from 'propTypes/collection';
+import { immutableCollectionShape } from 'propTypes/collection';
 
 class ExportPane extends React.Component {
   static propTypes = {
-    collections: ImmutablePropTypes.listOf(collectionShape),
+    collections: ImmutablePropTypes.listOf(immutableCollectionShape),
   };
 
   constructor(props) {

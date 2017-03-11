@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import UUID from 'uuid-js';
 import { initialize, change } from 'redux-form';
 import { call, apply, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
@@ -81,6 +82,13 @@ function buildResponseHeaders(response) {
   return headers;
 }
 
+function createUUID() {
+  if (process.env.NODE_ENV === 'test') {
+    return 'test-UUID';
+  }
+
+  return UUID.create().toString();
+}
 
 export function* fetchData({ request }) {
   try {
@@ -90,7 +98,10 @@ export function* fetchData({ request }) {
     const headers = buildHeaders(request);
     const body = buildFormData(request);
 
-    const historyEntry = Immutable.fromJS(request).set('url', resource);
+    const historyEntry = Immutable.fromJS(request)
+      .set('url', resource)
+      .set('id', createUUID());
+
     yield put(pushHistory(historyEntry));
 
     const beforeTime = yield call(getBeforeTime);

@@ -51,7 +51,10 @@ describe('fetchData saga', () => {
 
   it('should push the history', () => {
     expect(iterator.next('foo').value).toEqual(
-      put(pushHistory(Immutable.fromJS(mockRequest).set('url', 'foo'))),
+      put(pushHistory(Immutable.fromJS(mockRequest)
+        .set('url', 'foo')
+        .set('id', 'test-UUID')
+      )),
     );
   });
 

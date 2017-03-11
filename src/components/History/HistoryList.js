@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { ListGroup } from 'react-bootstrap';
 
-import requestShape from 'propTypes/request';
+import { immutableRequestShape } from 'propTypes/request';
 import IconButton from 'components/IconButton';
 import { getHistory } from 'store/history/selectors';
 import * as Actions from 'store/history/actions';
@@ -34,7 +34,7 @@ function ListGroupHeader({ index, request, removeFromHistory }) {
 
 ListGroupHeader.propTypes = {
   index: PropTypes.number.isRequired,
-  request: requestShape.isRequired,
+  request: immutableRequestShape.isRequired,
   removeFromHistory: PropTypes.func.isRequired,
 };
 
@@ -75,7 +75,7 @@ class HistoryList extends React.Component {
 }
 
 HistoryList.propTypes = {
-  history: ImmutablePropTypes.listOf(requestShape).isRequired,
+  history: ImmutablePropTypes.listOf(immutableRequestShape).isRequired,
   selectRequest: PropTypes.func.isRequired,
   fetchHistory: PropTypes.func.isRequired,
   removeFromHistory: PropTypes.func.isRequired,

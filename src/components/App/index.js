@@ -26,6 +26,14 @@ import { LeftCol, RightCol } from './StyledComponents';
  * not work with a stateless functional component.
  */
 class App extends React.Component {
+  static propTypes = {
+    fetchUrlVariables: PropTypes.func.isRequired,
+    fetchOptions: PropTypes.func.isRequired,
+    theme: PropTypes.oneOf(THEMES).isRequired,
+    highlightStyle: PropTypes.oneOf(HIGHLIGHT_STYLES.map(style => style.style)).isRequired,
+    collectionsMinimized: PropTypes.bool.isRequired,
+  };
+
   constructor(props) {
     super(props);
     props.fetchOptions();
@@ -76,14 +84,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  fetchUrlVariables: PropTypes.func.isRequired,
-  fetchOptions: PropTypes.func.isRequired,
-  theme: PropTypes.oneOf(THEMES).isRequired,
-  highlightStyle: PropTypes.oneOf(HIGHLIGHT_STYLES.map(style => style.style)).isRequired,
-  collectionsMinimized: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = state => ({
   theme: getTheme(state),

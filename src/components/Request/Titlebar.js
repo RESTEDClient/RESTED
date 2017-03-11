@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { getFormValues, isInvalid, isPristine, touch } from 'redux-form';
 import UUID from 'uuid-js';
 
-import requestPropType from 'propTypes/request';
-import collectionShape from 'propTypes/collection';
+import { immutableCollectionShape } from 'propTypes/collection';
 import IconButton from 'components/IconButton';
 import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
 import { getCollections } from 'store/collections/selectors';
@@ -88,7 +87,7 @@ function Titlebar(props) {
 }
 
 Titlebar.propTypes = {
-  collections: ImmutablePropTypes.listOf(collectionShape),
+  collections: ImmutablePropTypes.listOf(immutableCollectionShape),
   removeModal: PropTypes.func.isRequired,
   formPristine: PropTypes.bool.isRequired,
   formInvalid: PropTypes.bool.isRequired,
@@ -96,7 +95,9 @@ Titlebar.propTypes = {
   /* eslint-disable react/no-unused-prop-types */
   touch: PropTypes.func.isRequired,
   addCollection: PropTypes.func.isRequired,
-  request: requestPropType,
+  request: PropTypes.shape({
+    url: PropTypes.string,
+  }).isRequired,
   addRequest: PropTypes.func.isRequired,
   setModalData: PropTypes.func.isRequired,
 };

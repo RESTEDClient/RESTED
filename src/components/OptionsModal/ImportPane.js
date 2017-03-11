@@ -9,7 +9,7 @@ import { fromPostman, fromHAR } from 'utils/import';
 import { getCollections } from 'store/collections/selectors';
 import * as ModalActions from 'store/modal/actions';
 import * as CollectionsActions from 'store/collections/actions';
-import collectionShape from 'propTypes/collection';
+import { immutableCollectionShape } from 'propTypes/collection';
 
 function SelectCollectionForm({ collections, onChange }) {
   return (
@@ -46,13 +46,13 @@ function SelectCollectionForm({ collections, onChange }) {
 }
 
 SelectCollectionForm.propTypes = {
-  collections: ImmutablePropTypes.listOf(collectionShape),
+  collections: ImmutablePropTypes.listOf(immutableCollectionShape),
   onChange: PropTypes.func.isRequired,
 };
 
 class ImportPane extends React.Component {
   static propTypes = {
-    collections: ImmutablePropTypes.listOf(collectionShape),
+    collections: ImmutablePropTypes.listOf(immutableCollectionShape),
     addRequest: PropTypes.func.isRequired,
     addCollection: PropTypes.func.isRequired,
     setModalData: PropTypes.func.isRequired,

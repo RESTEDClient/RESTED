@@ -177,7 +177,9 @@ class Collection extends React.Component {
     this.renameCollection = this.renameCollection.bind(this);
   }
 
-  state = {};
+  state = {
+    edit: false,
+  };
 
   toggleEdit() {
     this.setState({ edit: !this.state.edit });
