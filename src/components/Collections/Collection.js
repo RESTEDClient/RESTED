@@ -5,7 +5,8 @@ import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
 import IconButton from 'components/IconButton';
-import * as Actions from 'store/collections/actions';
+import * as CollectionsActions from 'store/collections/actions';
+import * as ModalActions from 'store/modal/actions';
 import requestPropType from 'propTypes/request';
 
 import Request from './Request';
@@ -84,6 +85,8 @@ function PanelHeader(props) {
     edit,
     renameCollection,
     onChange,
+    setModalData,
+    removeModal,
   } = props;
 
   return (
@@ -120,7 +123,20 @@ function PanelHeader(props) {
         tooltip="Delete"
         icon="trash"
         className="pull-right"
-        onClick={() => deleteCollection(collectionId)}
+        onClick={() => {
+          setModalData({
+            title: 'Goodbye collection',
+            body: `You are about to delete the collection "${name}". ` +
+              'Are you sure?',
+            actions: [{
+              text: 'Delete',
+              click() {
+                deleteCollection(collectionId);
+                removeModal();
+              },
+            }],
+          });
+        }}
       />
       <hr />
     </StyledCollectionHeader>
@@ -134,6 +150,8 @@ PanelHeader.propTypes = {
   toggleEdit: PropTypes.func.isRequired,
   renameCollection: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  setModalData: PropTypes.func.isRequired,
+  removeModal: PropTypes.func.isRequired,
   edit: PropTypes.bool.isRequired,
 };
 
@@ -148,6 +166,8 @@ class Collection extends React.Component {
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
     renameCollection: PropTypes.func.isRequired,
+    setModalData: PropTypes.func.isRequired,
+    removeModal: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -185,6 +205,8 @@ class Collection extends React.Component {
       connectDropTarget,
       isDragging,
       deleteCollection,
+      setModalData,
+      removeModal,
     } = this.props;
 
     return connectDragSource(connectDropTarget(
@@ -197,6 +219,8 @@ class Collection extends React.Component {
             toggleEdit={this.toggleEdit}
             onChange={this.handleInputChange}
             renameCollection={this.renameCollection}
+            setModalData={setModalData}
+            removeModal={removeModal}
             edit={this.state.edit}
           />
           {requests.map((request, index) => (
@@ -222,6 +246,9 @@ export default flow(
     connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  connect(null, Actions),
+  connect(null, {
+    ...CollectionsActions,
+    ...ModalActions,
+  }),
 )(Collection);
 
