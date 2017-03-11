@@ -6,7 +6,7 @@ _Note: This is the source code, the extension download is [here](https://addons.
 
 [![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
 
-**RESTED** is a new take on rest clients on Firefox.
+**RESTED** is a new take on REST clients for browsers.
 It is designed to be easy to use to let you work as effective as possible.
 It features all the most commonly used HTTP methods, setting headers, beautiful themes,
 saving requests in your browser, and more.
@@ -23,14 +23,5 @@ javascript and html, so come join! All contributions welcome.
 
 Rewriting it is a large endeavour, will take a long time, and depending on
 several factors may or may not actually see completion. If you wish to help out,
-see the [react-rewrite](https://github.com/esphen/RESTED/tree/react-rewrite)
+see the [next](https://github.com/esphen/RESTED/tree/next)
 branch for details.
-
-This is, necessary, as because of recent Mozilla changes in review
-policy, Angular 1.x apps are no longer possible to get past review. See
-[this issue](https://github.com/esphen/RESTED/issues/17#issuecomment-249315070)
-for details.
-
-This change of policy also means I am unable to push out bug fixes or changes
-for the 1.x version of **RESTED**.
-
