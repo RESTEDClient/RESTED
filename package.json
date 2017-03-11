@@ -20,7 +20,8 @@
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
     "dev": "NODE_ENV=development webpack --progress --colors --watch --config dev/webpack/webpack.config.js",
-    "build": "NODE_ENV=production webpack -p --progress --config dev/webpack/webpack.config.js"
+    "build": "NODE_ENV=production webpack -p --progress --config dev/webpack/webpack.config.js",
+    "precommit": "npm run eslint && npm test"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -67,6 +68,7 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
+    "husky": "^0.13.2",
     "jest": "^19.0.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dnd-test-backend": "^2.2.4",

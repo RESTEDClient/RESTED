@@ -53,7 +53,7 @@ describe('fetchData saga', () => {
     expect(iterator.next('foo').value).toEqual(
       put(pushHistory(Immutable.fromJS(mockRequest)
         .set('url', 'foo')
-        .set('id', 'test-UUID')
+        .set('id', 'test-UUID'),
       )),
     );
   });
