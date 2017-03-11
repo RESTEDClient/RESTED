@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
-const rootDir = resolve(__dirname, '..', '..');
+const rootDir = resolve(__dirname);
 
 const doNothing = () => {};
 

@@ -1,5 +1,14 @@
 {
-  presets: [['es2015', { modules: false }], 'react'],
+  presets: [
+    ['env', {
+      targets: {
+        firefox: 47,
+        useBuiltIns: true,
+      },
+      modules: false,
+    }],
+    'react'
+  ],
   plugins: [
     'transform-object-assign',
     'transform-es2015-destructuring',
@@ -9,7 +18,10 @@
   ],
   env: {
     test: {
-      presets: ['es2015', 'react'],
+      presets: [
+        'env',
+        'react'
+      ],
       plugins: [
         'transform-object-assign',
         'transform-es2015-destructuring',

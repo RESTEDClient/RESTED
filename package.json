@@ -19,9 +19,9 @@
     "eslint": "eslint src test",
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
-    "dev": "NODE_ENV=development webpack --progress --colors --watch --config dev/webpack/webpack.config.js",
-    "build": "NODE_ENV=production webpack -p --progress --config dev/webpack/webpack.config.js",
-    "precommit": "npm run eslint && npm test"
+    "dev": "NODE_ENV=development webpack --progress --colors --watch",
+    "build": "NODE_ENV=production webpack -p --progress",
+    "precommit": "echo Please wait while tests run && npm run eslint && npm test"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
