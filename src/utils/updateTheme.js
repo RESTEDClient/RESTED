@@ -5,5 +5,10 @@
 export default function updateTheme(theme) {
   const newLink = `ext/bootswatch/${theme}.min.css`;
   document.getElementById('bootstrapLink').href = newLink;
+
+  const tempStyle = document.getElementById('removeWhenThemeLoaded');
+  if (tempStyle) {
+    tempStyle.remove();
+  }
 }
 

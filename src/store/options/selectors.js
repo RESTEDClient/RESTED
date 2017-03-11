@@ -12,6 +12,11 @@ export const getTheme = createSelector(
   options => options && options.getIn(['options', 'theme'], 'retro'),
 );
 
+export const getHighlightStyle = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'highlightStyle'], 'default'),
+);
+
 export const getCollectionsMinimized = createSelector(
   [getOptions],
   options => options && options.getIn(['options', 'collectionsMinimized'], false),

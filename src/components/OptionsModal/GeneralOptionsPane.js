@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import Highlight from 'react-highlight';
-import { Clearfix, Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
+import { Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
 import * as Actions from 'store/options/actions';
 import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/constants';
 
+import { StyledGeneralOptions } from './StyledComponents';
+
 function GeneralOptionsPane({ options, updateOption }) {
   return (
-    <Clearfix>
+    <StyledGeneralOptions>
       <br />
       <Col xs={12}>
         <Table>
@@ -125,7 +127,7 @@ function GeneralOptionsPane({ options, updateOption }) {
           </tbody>
         </Table>
       </Col>
-    </Clearfix>
+    </StyledGeneralOptions>
   );
 }
 

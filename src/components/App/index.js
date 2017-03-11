@@ -11,10 +11,11 @@ import Request from 'components/Request';
 import Response from 'components/Response';
 import Modal from 'components/Modal';
 import updateTheme from 'utils/updateTheme';
-import { getTheme, getCollectionsMinimized } from 'store/options/selectors';
+import updateHighlightStyle from 'utils/updateHighlightStyle';
+import { getTheme, getHighlightStyle, getCollectionsMinimized } from 'store/options/selectors';
 import { fetchOptions } from 'store/options/actions';
 import { fetchUrlVariables } from 'store/urlVariables/actions';
-import { THEMES } from 'constants/constants';
+import { THEMES, HIGHLIGHT_STYLES } from 'constants/constants';
 import './GlobalStyles';
 
 import { LeftCol, RightCol } from './StyledComponents';
@@ -31,11 +32,16 @@ class App extends React.Component {
     props.fetchUrlVariables();
 
     updateTheme(props.theme);
+    updateHighlightStyle(props.highlightStyle);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.theme !== this.props.theme) {
-      updateTheme(newProps.theme);
+  // Need to do this on prop change to react to sync storage option change
+  componentWillReceiveProps({ theme, highlightStyle }) {
+    if (this.props.theme !== theme) {
+      updateTheme(theme);
+    }
+    if (this.props.highlightStyle !== highlightStyle) {
+      updateHighlightStyle(highlightStyle);
     }
   }
 
@@ -75,11 +81,13 @@ App.propTypes = {
   fetchUrlVariables: PropTypes.func.isRequired,
   fetchOptions: PropTypes.func.isRequired,
   theme: PropTypes.oneOf(THEMES).isRequired,
+  highlightStyle: PropTypes.oneOf(HIGHLIGHT_STYLES.map(style => style.style)).isRequired,
   collectionsMinimized: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   theme: getTheme(state),
+  highlightStyle: getHighlightStyle(state),
   collectionsMinimized: getCollectionsMinimized(state),
 });
 
