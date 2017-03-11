@@ -17,3 +17,8 @@ export const getCollectionsMinimized = createSelector(
   options => options && options.getIn(['options', 'collectionsMinimized'], false),
 );
 
+export const getHistorySize = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'historySize'], 10),
+);
+

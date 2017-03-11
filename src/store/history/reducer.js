@@ -4,6 +4,7 @@ import {
   FETCH_HISTORY,
   RECEIVE_HISTORY,
   PUSH_HISTORY,
+  PRUNE_HISTORY,
   DELETE_ITEM,
   CLEAR_HISTORY,
 } from './types';
@@ -27,6 +28,12 @@ export default function (state = initialState, action) {
       return state
         .update('data', history => (
           history.unshift(action.request)
+        ));
+
+    case PRUNE_HISTORY:
+      return state
+        .update('data', history => (
+          history.slice(0, action.historySize)
         ));
 
     case DELETE_ITEM:

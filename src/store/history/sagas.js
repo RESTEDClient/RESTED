@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import localforage from 'localforage';
 import { select, put, call, takeEvery } from 'redux-saga/effects';
 
+import { getHistorySize } from 'store/options/selectors';
 import {
   FETCH_REQUESTED,
   PUSH_REQUESTED,
@@ -10,6 +11,7 @@ import {
   FETCH_HISTORY,
   RECEIVE_HISTORY,
   PUSH_HISTORY,
+  PRUNE_HISTORY,
   CLEAR_HISTORY,
   DELETE_ITEM,
 } from './types';
@@ -42,6 +44,8 @@ function* pushHistorySaga({ request }) {
   }
 
   yield put({ type: PUSH_HISTORY, request });
+  const historySize = yield select(getHistorySize);
+  yield put({ type: PRUNE_HISTORY, historySize });
   yield call(updateLocalStorage);
 }
 
