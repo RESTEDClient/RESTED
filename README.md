@@ -4,7 +4,7 @@ A REST client for the rest of us.
 
 _Note: This is the source code, the extension download is [here](https://addons.mozilla.org/en-US/firefox/addon/rested/?src=github)._
 
-[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=react-rewrite)](https://travis-ci.org/esphen/RESTED)
+[![Build Status](https://travis-ci.org/esphen/RESTED.svg?branch=next)](https://travis-ci.org/esphen/RESTED)
 [![Join the chat at https://gitter.im/RESTEDclient](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RESTEDclient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **RESTED** is a new take on rest clients for browsers.
@@ -44,7 +44,7 @@ will compile the code into something that can be loaded in the browser.
 
     nvm install
     yarn
-    npm start
+    yarn start
 
 Now you can go into your favourite browser's extension panel and enable
 developer mode. Then manually load the extension as a "Temporary Add-on" or
@@ -55,25 +55,25 @@ If you need to empty and reset the database, enter
 `chrome.storage.local.clear()` into your developer console. That should clear
 the entire database and force a clean install on refresh.
 
-**Please develop on the react-rewrite branch.**
-This is where all the magic happens. Eventually it will be merged into the
-_next_ branch, but until it is stable, this is the place to be.
+**Please develop on the next branch.**
+This is where all the magic happens, and all the development on the react
+rewrite takes place.
 
 ### Tests
 
 To run the tests, run one of the following commands.
 
-    npm run test
-    npm run test:watch
+    yarn run test
+    yarn run test:watch
 
 If you get snapshot mismatches, inspect the changes, and if they look OK, run
 this command:
 
-    npm run test:snapshot
+    yarn run test:snapshot
 
 You can use Chrome's debugger if you need to inspect any part of a test. Simply
 place a `debugger;` statement where you want the debugger to start and run the
 following command. Then open the provided URL in Chrome.
 
-    npm run test:watch
+    yarn run test:watch
 
