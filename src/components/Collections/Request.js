@@ -7,6 +7,7 @@ import flow from 'lodash.flow';
 import IconButton from 'components/IconButton';
 import * as CollectionActions from 'store/collections/actions';
 import * as RequestActions from 'store/request/actions';
+import selectText from 'utils/selectText';
 
 import { StyledRequest, RequestButtons, MainContentDiv } from './StyledComponents';
 import * as Type from './dropTypes';
@@ -116,6 +117,8 @@ class Request extends React.Component {
               Request name
             </label>
             <input
+              autoFocus
+              onFocus={selectText}
               id={`${collectionIndex}.${index}.RequestName`}
               defaultValue={name}
               ref={ref => { this.nameRef = ref; }}

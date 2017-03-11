@@ -8,6 +8,7 @@ import IconButton from 'components/IconButton';
 import * as CollectionsActions from 'store/collections/actions';
 import * as ModalActions from 'store/modal/actions';
 import requestPropType from 'propTypes/request';
+import selectText from 'utils/selectText';
 
 import Request from './Request';
 import { StyledCollection, StyledCollectionHeader } from './StyledComponents';
@@ -100,6 +101,8 @@ function PanelHeader(props) {
             Request name
           </label>
           <input
+            autoFocus
+            onFocus={selectText}
             id={`${name}.renameRequest`}
             defaultValue={name}
             onChange={e => onChange(e.target.value)}
