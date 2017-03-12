@@ -128,9 +128,10 @@ describe('fetchData saga', () => {
 describe('createResource saga', () => {
   const iterator = createResource(mockRequest);
   const mockUrl = 'foo.com/{{foo}}';
-  const mockUrlVariables = {
-    foo: 'bar',
-  };
+  const mockUrlVariables = Immutable.fromJS([{
+    name: 'foo',
+    value: 'bar',
+  }]);
 
   it('should call getUrl with the request', () => {
     expect(iterator.next().value).toEqual(

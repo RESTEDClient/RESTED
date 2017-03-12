@@ -26,7 +26,11 @@ export function* getUrl(request) {
 
 export function* createResource(request) {
   const url = yield call(getUrl, request);
-  const parameters = yield select(getUrlVariables);
+  let parameters = (yield select(getUrlVariables));
+  parameters = parameters.reduce((prev, parameter) => ({
+    ...prev,
+    [parameter.get('name')]: parameter.get('value'),
+  }), {});
   const resource = mapParameters(url, parameters);
 
   return yield call(prependHttp, resource);
