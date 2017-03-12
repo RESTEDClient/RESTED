@@ -1,4 +1,5 @@
 import { PLACEHOLDER_URLS } from 'constants/constants';
+import { mapParameters } from 'utils/request';
 
 /**
  * According to MDN, this makes us more adherent
@@ -12,53 +13,34 @@ function fixedEncodeURIComponent(str) {
   ));
 }
 
+function assignUrlVariables(header, params) {
+  return {
+    name: header.name,
+    value: mapParameters(header.value, params),
+  };
+}
+
 /**
  * Translates data from the way we can use it
- * effectively, to the way $http takes data
- * (and back again).
+ * effectively to the way fetch takes data.
  *
- * If asObject is falsey, the method will take
- * an object and return an array of objects.
- * If asObject is truthy, it takes an array of
- * objects and returns an object.
- *
- * The two methods look like this:
  * Object:
  * {
  *   headerName: value
  * }
- *
- * Array:
- * [
- *   {
- *     headerName: headerName,
- *     value: value
- *   }
- * ]
  */
-export function reMapHeaders(headers, asObject) {
-  // TODO - we no longer use asObject = false
-  if (!headers && !asObject) {
-    return [];
-  } else if (!headers && asObject) {
+export function reMapHeaders(headers, parameters) {
+  if (!headers) {
     return {};
   }
 
-  if (asObject) {
-    const headersAsObject = {};
-    headers
-      .filter(header => header && header.name)
-      .forEach(header => {
-        headersAsObject[header.name] = header.value;
-      });
-
-    return headersAsObject;
-  }
-
-  return Object.keys(headers).map(key => ({
-    name: key,
-    value: headers[key],
-  }));
+  return headers
+    .filter(header => header && header.name)
+    .map(variable => assignUrlVariables(variable, parameters))
+    .reduce((result, header) => ({
+      ...result,
+      [header.name]: header.value,
+    }), {});
 }
 
 /**

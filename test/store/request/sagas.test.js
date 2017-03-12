@@ -4,9 +4,8 @@ import { change } from 'redux-form';
 import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
-import { fetchData, createResource, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
+import { fetchData, createResource, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
 import { getPlaceholderUrl } from 'store/request/selectors';
-import { getUrlVariables } from 'store/urlVariables/selectors';
 import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
@@ -26,6 +25,9 @@ const mockRequest = {
 };
 
 describe('fetchData saga', () => {
+  const mockHeaders = new Headers({
+    Foo: 'Bar',
+  });
   const mockResponseData = {
     status: 200,
     statusText: 'SuperSmashingGreat!',
@@ -49,8 +51,14 @@ describe('fetchData saga', () => {
     );
   });
 
-  it('should push the history', () => {
+  it('should call buildHeaders to prepare the header set', () => {
     expect(iterator.next('foo').value).toEqual(
+      call(buildHeaders, mockRequest),
+    );
+  });
+
+  it('should push the history', () => {
+    expect(iterator.next(mockHeaders).value).toEqual(
       put(pushHistory(Immutable.fromJS(mockRequest)
         .set('url', 'foo')
         .set('id', 'test-UUID'),
@@ -128,10 +136,9 @@ describe('fetchData saga', () => {
 describe('createResource saga', () => {
   const iterator = createResource(mockRequest);
   const mockUrl = 'foo.com/{{foo}}';
-  const mockUrlVariables = Immutable.fromJS([{
-    name: 'foo',
-    value: 'bar',
-  }]);
+  const mockUrlVariables = {
+    foo: 'bar',
+  };
 
   it('should call getUrl with the request', () => {
     expect(iterator.next().value).toEqual(
@@ -139,9 +146,9 @@ describe('createResource saga', () => {
     );
   });
 
-  it('should fetch the urlVariables from the store', () => {
+  it('should call getParameters to get the urlVariables', () => {
     expect(iterator.next(mockUrl).value).toEqual(
-      select(getUrlVariables),
+      call(getParameters),
     );
   });
 

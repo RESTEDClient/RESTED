@@ -22,12 +22,8 @@ describe('Service: RequestUtils', () => {
     expect(typeof RequestUtils.reMapHeaders).toBe('function');
   });
 
-  it('should reMap from object to array', () => {
-    expect(RequestUtils.reMapHeaders(object, false)).toEqual(array);
-  });
-
   it('should reMap from array to object', () => {
-    expect(RequestUtils.reMapHeaders(array, true)).toEqual(object);
+    expect(RequestUtils.reMapHeaders(array, {})).toEqual(object);
   });
 
   /* formDataToFormString tests */

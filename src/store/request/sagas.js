@@ -24,20 +24,27 @@ export function* getUrl(request) {
   return request.url;
 }
 
-export function* createResource(request) {
-  const url = yield call(getUrl, request);
+export function* getParameters() {
   let parameters = (yield select(getUrlVariables));
   parameters = parameters.reduce((prev, parameter) => ({
     ...prev,
     [parameter.get('name')]: parameter.get('value'),
   }), {});
+
+  return parameters;
+}
+
+export function* createResource(request) {
+  const url = yield call(getUrl, request);
+  const parameters = yield call(getParameters);
   const resource = mapParameters(url, parameters);
 
   return yield call(prependHttp, resource);
 }
 
-function buildHeaders({ headers, basicAuth }) {
-  const requestHeaders = new Headers(reMapHeaders(headers, true));
+export function* buildHeaders({ headers, basicAuth }) {
+  const parameters = yield call(getParameters);
+  const requestHeaders = new Headers(reMapHeaders(headers, parameters));
   if (basicAuth && basicAuth.username) {
     requestHeaders.append(
       'Authorization',
@@ -99,7 +106,7 @@ export function* fetchData({ request }) {
     yield put(executeRequest());
 
     const resource = yield call(createResource, request);
-    const headers = buildHeaders(request);
+    const headers = yield call(buildHeaders, request);
     const body = buildFormData(request);
 
     const historyEntry = Immutable.fromJS(request)
