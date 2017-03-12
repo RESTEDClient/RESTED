@@ -1,13 +1,16 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 
 import { LoadingSpinner } from './StyledComponents';
 
 export default function Loading() {
   return (
-    <LoadingSpinner
-      icon="gear"
-      className="fa-spin col-xs-12 text-center"
-    />
+    <Col xs={12} className="text-center">
+      <LoadingSpinner
+        icon="gear"
+        className="fa-spin"
+      />
+    </Col>
   );
 }
 

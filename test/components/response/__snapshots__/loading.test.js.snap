@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Loading matches the previous snapshot 1`] = `
-<i
-  className="fa fa-gear fa-spin col-xs-12 text-center iKhhRu"
-  role="presentation"
-/>
+<div
+  className="text-center col-xs-12"
+>
+  <i
+    className="fa fa-gear fa-spin iKhhRu"
+    role="presentation"
+  />
+</div>
 `;
