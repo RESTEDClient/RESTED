@@ -12,6 +12,8 @@ import {
   ADD_REQUEST_REQUESTED,
   DELETE_REQUEST,
   DELETE_REQUEST_REQUESTED,
+  TOGGLE_COLLAPSED,
+  TOGGLE_COLLAPSED_REQUESTED,
   REORDER_REQUEST,
   REORDER_REQUEST_REQUESTED,
   REORDER_COLLECTION,
@@ -53,6 +55,11 @@ function* deleteRequestSaga({ collectionIndex, requestId }) {
   yield call(updateLocalStorage);
 }
 
+function* toggleCollapsedSaga({ collectionIndex }) {
+  yield put({ type: TOGGLE_COLLAPSED, collectionIndex });
+  yield call(updateLocalStorage);
+}
+
 function* addRequestSaga({ request, collectionIndex }) {
   yield put({ type: ADD_REQUEST, request, collectionIndex });
   yield call(updateLocalStorage);
@@ -83,6 +90,7 @@ export default function* rootSaga() {
   yield takeEvery(ADD_COLLECTION_REQUESTED, addCollectionSaga);
   yield takeEvery(DELETE_COLLECTION_REQUESTED, deleteCollectionSaga);
   yield takeEvery(DELETE_REQUEST_REQUESTED, deleteRequestSaga);
+  yield takeEvery(TOGGLE_COLLAPSED_REQUESTED, toggleCollapsedSaga);
   yield takeEvery(ADD_REQUEST_REQUESTED, addRequestSaga);
   yield takeEvery(REORDER_REQUEST_REQUESTED, reorderRequestSaga);
   yield takeEvery(REORDER_COLLECTION_REQUESTED, reorderCollectionSaga);

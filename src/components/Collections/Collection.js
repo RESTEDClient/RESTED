@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
+import { Collapse } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import IconButton from 'components/IconButton';
@@ -81,8 +82,11 @@ function PanelHeader(props) {
   const {
     name,
     collectionId,
+    index,
     deleteCollection,
     toggleEdit,
+    toggleCollapsed,
+    minimized,
     edit,
     renameCollection,
     onChange,
@@ -91,7 +95,13 @@ function PanelHeader(props) {
   } = props;
 
   return (
-    <StyledCollectionHeader>
+    <StyledCollectionHeader
+      minimized={minimized}
+      onClick={e => {
+        e.preventDefault();
+        toggleCollapsed(index);
+      }}
+    >
       {edit ? (
         <form onSubmit={renameCollection}>
           <label
@@ -149,7 +159,10 @@ function PanelHeader(props) {
 PanelHeader.propTypes = {
   name: PropTypes.string.isRequired,
   collectionId: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   deleteCollection: PropTypes.func.isRequired,
+  minimized: PropTypes.bool.isRequired,
+  toggleCollapsed: PropTypes.func.isRequired,
   toggleEdit: PropTypes.func.isRequired,
   renameCollection: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -163,6 +176,8 @@ class Collection extends React.Component {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     deleteCollection: PropTypes.func.isRequired,
+    toggleCollapsed: PropTypes.func.isRequired,
+    minimized: PropTypes.bool.isRequired,
     requests: PropTypes.arrayOf(requestPropType).isRequired,
     collectionIndex: PropTypes.number.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -210,6 +225,8 @@ class Collection extends React.Component {
       connectDropTarget,
       isDragging,
       deleteCollection,
+      toggleCollapsed,
+      minimized,
       setModalData,
       removeModal,
     } = this.props;
@@ -220,7 +237,10 @@ class Collection extends React.Component {
           <PanelHeader
             name={name}
             collectionId={id}
+            index={collectionIndex}
             deleteCollection={deleteCollection}
+            toggleCollapsed={toggleCollapsed}
+            minimized={minimized}
             toggleEdit={this.toggleEdit}
             onChange={this.handleInputChange}
             renameCollection={this.renameCollection}
@@ -228,14 +248,18 @@ class Collection extends React.Component {
             removeModal={removeModal}
             edit={this.state.edit}
           />
-          {requests.map((request, index) => (
-            <Request
-              key={request.id || index}
-              index={index}
-              collectionIndex={collectionIndex}
-              request={request}
-            />
-          ))}
+          <Collapse in={!minimized}>
+            <div>
+              {requests.map((request, index) => (
+                <Request
+                  key={request.id || index}
+                  index={index}
+                  collectionIndex={collectionIndex}
+                  request={request}
+                />
+              ))}
+            </div>
+          </Collapse>
         </StyledCollection>
       </div>,
     ));

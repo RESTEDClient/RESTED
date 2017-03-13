@@ -41,10 +41,16 @@ export const StyledCollection = styled.div`
 export const StyledCollectionHeader = styled.span`
   h3, form {
     display: inline;
+    cursor: pointer;
   }
   input {
     width: 130px;
   }
+  ${props => props.minimized && css`
+    h3 {
+      font-style: italic;
+    }
+  `}
 `;
 
 export const StyledRequest = styled.div`

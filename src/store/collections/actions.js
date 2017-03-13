@@ -5,6 +5,7 @@ import {
   ADD_COLLECTION_REQUESTED,
   DELETE_COLLECTION_REQUESTED,
   DELETE_REQUEST_REQUESTED,
+  TOGGLE_COLLAPSED_REQUESTED,
   ADD_REQUEST_REQUESTED,
   REORDER_REQUEST_REQUESTED,
   REORDER_COLLECTION_REQUESTED,
@@ -38,6 +39,10 @@ export function deleteCollection(collectionId) {
 // TODO Test
 export function deleteRequest(requestId, collectionIndex) {
   return { type: DELETE_REQUEST_REQUESTED, requestId, collectionIndex };
+}
+
+export function toggleCollapsed(collectionIndex) {
+  return { type: TOGGLE_COLLAPSED_REQUESTED, collectionIndex };
 }
 
 // TODO Test

@@ -8,6 +8,7 @@ import {
   DELETE_COLLECTION,
   ADD_REQUEST,
   DELETE_REQUEST,
+  TOGGLE_COLLAPSED,
   REORDER_REQUEST,
   REORDER_COLLECTION,
   RENAME_COLLECTION,
@@ -68,6 +69,14 @@ export default function (state = initialState, action) {
             request.get('id') !== action.requestId
           ))
         ));
+
+    case TOGGLE_COLLAPSED:
+      return state
+        .updateIn([
+          'collections',
+          action.collectionIndex,
+          'minimized',
+        ], minimized => !minimized);
 
     case REORDER_COLLECTION: {
       const collection = state.getIn([

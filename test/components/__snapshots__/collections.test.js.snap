@@ -7,7 +7,8 @@ exports[`Collection component should match the previous snapshot 1`] = `
     className="byfiIm"
   >
     <span
-      className="jNknPg"
+      className="drgkCg"
+      onClick={[Function]}
     >
       <h3 />
       <button
@@ -58,77 +59,82 @@ exports[`Collection component should match the previous snapshot 1`] = `
       </button>
       <hr />
     </span>
-    <div>
-       
-      <div
-        className="kzXmMh"
-      >
+    <div
+      aria-expanded={null}
+      className="collapse in"
+    >
+      <div>
+         
         <div
-          className="list-group"
+          className="kzXmMh"
         >
           <div
-            className="list-group-item"
+            className="list-group"
           >
             <div
-              className="ldGGuX"
+              className="list-group-item"
             >
-              <button
-                className="exyKyC"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
+              <div
+                className="ldGGuX"
               >
-                <div
-                  className="eMVcPd"
+                <button
+                  className="exyKyC"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
-                    className="ddxWyy"
-                  />
-                  <span
-                    className="jsYWMN"
+                    className="eMVcPd"
                   >
-                    Toggle edit
-                  </span>
-                </div>
-                <i
-                  className="fa fa-cog"
-                  role="presentation"
-                />
-              </button>
-              <button
-                className="exyKyC"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="eMVcPd"
+                    <div
+                      className="ddxWyy"
+                    />
+                    <span
+                      className="jsYWMN"
+                    >
+                      Toggle edit
+                    </span>
+                  </div>
+                  <i
+                    className="fa fa-cog"
+                    role="presentation"
+                  />
+                </button>
+                <button
+                  className="exyKyC"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
-                    className="ddxWyy"
-                  />
-                  <span
-                    className="jsYWMN"
+                    className="eMVcPd"
                   >
-                    Minimize
-                  </span>
+                    <div
+                      className="ddxWyy"
+                    />
+                    <span
+                      className="jsYWMN"
+                    >
+                      Minimize
+                    </span>
+                  </div>
+                  <i
+                    className="fa fa-minus"
+                    role="presentation"
+                  />
+                </button>
+              </div>
+              <div
+                className="bGRROV"
+                onClick={[Function]}
+                onDoubleClick={[Function]}
+              >
+                <div>
+                  <h4>
+                    POST
+                  </h4>
+                  www.foo.no
                 </div>
-                <i
-                  className="fa fa-minus"
-                  role="presentation"
-                />
-              </button>
-            </div>
-            <div
-              className="bGRROV"
-              onClick={[Function]}
-              onDoubleClick={[Function]}
-            >
-              <div>
-                <h4>
-                  POST
-                </h4>
-                www.foo.no
               </div>
             </div>
           </div>
@@ -185,7 +191,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
           className="byfiIm"
         >
           <span
-            className="jNknPg"
+            className="cznwYF"
+            onClick={[Function]}
           >
             <h3>
               Collection
@@ -238,77 +245,82 @@ exports[`Collections component should match the previous snapshot 1`] = `
             </button>
             <hr />
           </span>
-          <div>
-             
-            <div
-              className="kzXmMh"
-            >
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div>
+               
               <div
-                className="list-group"
+                className="kzXmMh"
               >
                 <div
-                  className="list-group-item"
+                  className="list-group"
                 >
                   <div
-                    className="ldGGuX"
+                    className="list-group-item"
                   >
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
+                    <div
+                      className="ldGGuX"
                     >
-                      <div
-                        className="eMVcPd"
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Toggle edit
-                        </span>
-                      </div>
-                      <i
-                        className="fa fa-cog"
-                        role="presentation"
-                      />
-                    </button>
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <div
-                        className="eMVcPd"
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Toggle edit
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-cog"
+                          role="presentation"
+                        />
+                      </button>
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Minimize
-                        </span>
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Minimize
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-minus"
+                          role="presentation"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      className="bGRROV"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                    >
+                      <div>
+                        <h4>
+                          POST
+                        </h4>
+                        www.foo.no
                       </div>
-                      <i
-                        className="fa fa-minus"
-                        role="presentation"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    className="bGRROV"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                  >
-                    <div>
-                      <h4>
-                        POST
-                      </h4>
-                      www.foo.no
                     </div>
                   </div>
                 </div>
@@ -323,7 +335,8 @@ exports[`Collections component should match the previous snapshot 1`] = `
           className="byfiIm"
         >
           <span
-            className="jNknPg"
+            className="cznwYF"
+            onClick={[Function]}
           >
             <h3>
               Collection 2
@@ -376,231 +389,236 @@ exports[`Collections component should match the previous snapshot 1`] = `
             </button>
             <hr />
           </span>
-          <div>
-             
-            <div
-              className="kzXmMh"
-            >
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div>
+               
               <div
-                className="list-group"
+                className="kzXmMh"
               >
                 <div
-                  className="list-group-item"
+                  className="list-group"
                 >
                   <div
-                    className="ldGGuX"
+                    className="list-group-item"
                   >
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
+                    <div
+                      className="ldGGuX"
                     >
-                      <div
-                        className="eMVcPd"
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Toggle edit
-                        </span>
-                      </div>
-                      <i
-                        className="fa fa-cog"
-                        role="presentation"
-                      />
-                    </button>
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <div
-                        className="eMVcPd"
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Toggle edit
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-cog"
+                          role="presentation"
+                        />
+                      </button>
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Minimize
-                        </span>
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Minimize
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-minus"
+                          role="presentation"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      className="bGRROV"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                    >
+                      <div>
+                        <h4>
+                          POST
+                        </h4>
+                        www.foo.no
                       </div>
-                      <i
-                        className="fa fa-minus"
-                        role="presentation"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    className="bGRROV"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                  >
-                    <div>
-                      <h4>
-                        POST
-                      </h4>
-                      www.foo.no
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-             
-            <div
-              className="kzXmMh"
-            >
+            <div>
+               
               <div
-                className="list-group"
+                className="kzXmMh"
               >
                 <div
-                  className="list-group-item"
+                  className="list-group"
                 >
                   <div
-                    className="ldGGuX"
+                    className="list-group-item"
                   >
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
+                    <div
+                      className="ldGGuX"
                     >
-                      <div
-                        className="eMVcPd"
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Toggle edit
-                        </span>
-                      </div>
-                      <i
-                        className="fa fa-cog"
-                        role="presentation"
-                      />
-                    </button>
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <div
-                        className="eMVcPd"
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Toggle edit
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-cog"
+                          role="presentation"
+                        />
+                      </button>
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Minimize
-                        </span>
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Minimize
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-minus"
+                          role="presentation"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      className="bGRROV"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                    >
+                      <div>
+                        <h4>
+                          POST
+                        </h4>
+                        www.bar.no
                       </div>
-                      <i
-                        className="fa fa-minus"
-                        role="presentation"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    className="bGRROV"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                  >
-                    <div>
-                      <h4>
-                        POST
-                      </h4>
-                      www.bar.no
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-             
-            <div
-              className="kzXmMh"
-            >
+            <div>
+               
               <div
-                className="list-group"
+                className="kzXmMh"
               >
                 <div
-                  className="list-group-item"
+                  className="list-group"
                 >
                   <div
-                    className="ldGGuX"
+                    className="list-group-item"
                   >
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
+                    <div
+                      className="ldGGuX"
                     >
-                      <div
-                        className="eMVcPd"
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Toggle edit
-                        </span>
-                      </div>
-                      <i
-                        className="fa fa-cog"
-                        role="presentation"
-                      />
-                    </button>
-                    <button
-                      className="exyKyC"
-                      onClick={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <div
-                        className="eMVcPd"
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Toggle edit
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-cog"
+                          role="presentation"
+                        />
+                      </button>
+                      <button
+                        className="exyKyC"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
                       >
                         <div
-                          className="ddxWyy"
-                        />
-                        <span
-                          className="jsYWMN"
+                          className="eMVcPd"
                         >
-                          Minimize
-                        </span>
+                          <div
+                            className="ddxWyy"
+                          />
+                          <span
+                            className="jsYWMN"
+                          >
+                            Minimize
+                          </span>
+                        </div>
+                        <i
+                          className="fa fa-minus"
+                          role="presentation"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      className="bGRROV"
+                      onClick={[Function]}
+                      onDoubleClick={[Function]}
+                    >
+                      <div>
+                        <h4>
+                          POST
+                        </h4>
+                        www.baz.no
                       </div>
-                      <i
-                        className="fa fa-minus"
-                        role="presentation"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    className="bGRROV"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                  >
-                    <div>
-                      <h4>
-                        POST
-                      </h4>
-                      www.baz.no
                     </div>
                   </div>
                 </div>
