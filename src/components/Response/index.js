@@ -5,6 +5,7 @@ import Highlight from 'react-highlight';
 
 import * as Actions from 'store/request/actions';
 import responsePropTypes, { responseShape } from 'propTypes/response';
+import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 
 import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Loading from './Loading';
@@ -44,6 +45,10 @@ export function Response({ response, loading }) {
     header.name.toLowerCase() === 'content-length'
   ));
 
+  const contentSize = contentLength
+    ? Number(contentLength.value)
+    : approximateSizeFromLength(body);
+
   return (
     <StyledResponse header={<Titlebar method={method} url={url} time={time} />}>
       <h3>
@@ -56,7 +61,7 @@ export function Response({ response, loading }) {
         <small> {response.statusText}</small>
       </h3>
       <Headers headers={headers} />
-      {!contentLength || Number(contentLength.value) < 20000
+      {contentSize < 20000
         ? (
           <Highlight>
             {body}
