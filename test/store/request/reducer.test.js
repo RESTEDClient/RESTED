@@ -1,25 +1,8 @@
-/* eslint-disable import/no-unresolved */
 import reducer from 'store/request/reducer';
 import * as types from 'store/request/types';
 
 describe('reducer', () => {
-  let request;
   let response;
-
-  beforeEach(() => {
-    request = {
-      method: 'GET',
-      headers: [{ name: 'test', value: 'blah' }],
-      cache: false,
-      url: 'http://www.aperturescience.com',
-    };
-    request = {
-      method: 'GET',
-      headers: [{ name: 'test', value: 'blah' }],
-      cache: false,
-      url: 'http://www.aperturescience.com',
-    };
-  });
 
   it('should return the initial state', () => {
     expect(
@@ -57,21 +40,6 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response,
-      loading: false,
-      useFormData: true,
-    });
-  });
-
-  it('should handle UPDATE_REQUEST', () => {
-    expect(
-      reducer(undefined, {
-        type: types.UPDATE_REQUEST,
-        request,
-      }),
-    ).toEqual({
-      placeholderUrl: 'https://example.com',
-      request,
-      response: null,
       loading: false,
       useFormData: true,
     });

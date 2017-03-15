@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import reducer from 'store/collapsable/reducer';
-import * as types from 'store/collapsable/types';
+import reducer from 'store/config/reducer';
+import * as types from 'store/config/types';
 
 describe('reducer', () => {
   const dirtyState = {
@@ -68,6 +68,24 @@ describe('reducer', () => {
       foo: {
         expanded: true,
       },
+    });
+  });
+
+  it('should handle TOGGLE_EDIT', () => {
+    expect(
+      reducer({ editingRequest: 'fooRequest' }, {
+        type: types.TOGGLE_EDIT,
+        request: 'fooRequest',
+      }),
+    ).toEqual({});
+
+    expect(
+      reducer({}, {
+        type: types.TOGGLE_EDIT,
+        request: 'fooRequest',
+      }),
+    ).toEqual({
+      editingRequest: 'fooRequest',
     });
   });
 });

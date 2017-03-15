@@ -19,4 +19,6 @@ export const RENAME_COLLECTION_REQUESTED = 'collections/RENAME_COLLECTION_REQUES
 export const RENAME_COLLECTION = 'collections/RENAME_COLLECTION';
 export const RENAME_REQUEST_REQUESTED = 'collections/RENAME_REQUEST_REQUESTED';
 export const RENAME_REQUEST = 'collections/RENAME_REQUEST';
+export const UPDATE_REQUEST = 'collections/UPDATE_REQUEST';
+export const UPDATE_REQUEST_REQUESTED = 'collections/UPDATE_REQUEST_REQUESTED';
 

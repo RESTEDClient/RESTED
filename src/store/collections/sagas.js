@@ -2,6 +2,9 @@ import Immutable from 'immutable';
 import localforage from 'localforage';
 import { select, put, call, takeEvery } from 'redux-saga/effects';
 
+import getRequestIndexes from 'utils/getRequestIndexes';
+import { TOGGLE_EDIT } from 'store/config/types';
+import { toggleEditSaga } from 'store/config/sagas';
 import {
   FETCH_REQUESTED,
   ADD_COLLECTION,
@@ -22,11 +25,13 @@ import {
   RENAME_COLLECTION_REQUESTED,
   RENAME_REQUEST,
   RENAME_REQUEST_REQUESTED,
+  UPDATE_REQUEST,
+  UPDATE_REQUEST_REQUESTED,
 } from './types';
 import { getCollections } from './selectors';
 import { startFetch, receiveCollections } from './actions';
 
-function* updateLocalStorage() {
+export function* updateLocalStorage() {
   const collections = (yield select(getCollections)).toJS();
   yield call(localforage.setItem, 'collections', collections);
 }
@@ -82,6 +87,18 @@ function* renameCollectionSaga({ collectionIndex, name }) {
 
 function* renameRequestSaga({ collectionIndex, requestIndex, name }) {
   yield put({ type: RENAME_REQUEST, collectionIndex, requestIndex, name });
+  yield put({ type: TOGGLE_EDIT });
+  yield call(updateLocalStorage);
+}
+
+export function* updateRequestSaga({ request }) {
+  const collections = yield select(getCollections);
+  const {
+    collectionIndex,
+    requestIndex,
+  } = yield call(getRequestIndexes, request.id, collections);
+  yield put({ type: UPDATE_REQUEST, request, collectionIndex, requestIndex });
+  yield call(toggleEditSaga);
   yield call(updateLocalStorage);
 }
 
@@ -96,5 +113,6 @@ export default function* rootSaga() {
   yield takeEvery(REORDER_COLLECTION_REQUESTED, reorderCollectionSaga);
   yield takeEvery(RENAME_REQUEST_REQUESTED, renameRequestSaga);
   yield takeEvery(RENAME_COLLECTION_REQUESTED, renameCollectionSaga);
+  yield takeEvery(UPDATE_REQUEST_REQUESTED, updateRequestSaga);
 }
 

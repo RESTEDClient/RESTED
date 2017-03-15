@@ -6,16 +6,16 @@ import { Provider, connect } from 'react-redux';
 
 /* eslint-disable import/no-unresolved */
 import { BasicAuthField } from 'components/Request/BasicAuthField';
-import collapsable from 'store/collapsable/reducer';
+import config from 'store/config/reducer';
 
 const makeStore = (initial = {}) => createStore(
-  combineReducers({ collapsable }),
-  { collapsable: initial },
+  combineReducers({ config }),
+  { config: initial },
 );
 
 describe('BasicAuthField', () => {
   const store = makeStore({
-    collapsable: {},
+    config: {},
   });
 
   it('should match the previous snapshot', () => {

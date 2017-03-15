@@ -25,7 +25,7 @@ export function* getUrl(request) {
 }
 
 export function* getParameters() {
-  let parameters = (yield select(getUrlVariables));
+  let parameters = yield select(getUrlVariables);
   parameters = parameters.reduce((prev, parameter) => ({
     ...prev,
     [parameter.get('name')]: parameter.get('value'),

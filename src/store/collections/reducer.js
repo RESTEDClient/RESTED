@@ -13,6 +13,7 @@ import {
   REORDER_COLLECTION,
   RENAME_COLLECTION,
   RENAME_REQUEST,
+  UPDATE_REQUEST,
 } from './types';
 
 export const initialState = Immutable.fromJS({
@@ -136,6 +137,15 @@ export default function (state = initialState, action) {
           action.requestIndex,
           'name',
         ], action.name);
+
+    case UPDATE_REQUEST:
+      return state
+        .setIn([
+          'collections',
+          action.collectionIndex,
+          'requests',
+          action.requestIndex,
+        ], Immutable.fromJS(action.request));
 
     default:
       return state;

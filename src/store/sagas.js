@@ -4,6 +4,7 @@ import historySagas from './history/sagas';
 import optionsSagas from './options/sagas';
 import collectionsSagas from './collections/sagas';
 import urlVariablesSagas from './urlVariables/sagas';
+import configSagas from './config/sagas';
 
 export default function* rootSaga() {
   yield fork(requestSagas);
@@ -11,5 +12,6 @@ export default function* rootSaga() {
   yield fork(optionsSagas);
   yield fork(collectionsSagas);
   yield fork(urlVariablesSagas);
+  yield fork(configSagas);
 }
 

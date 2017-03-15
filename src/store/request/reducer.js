@@ -2,7 +2,6 @@ import { randomURL } from 'utils/requestUtils';
 import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
-  UPDATE_REQUEST,
   CLEAR_RESPONSE,
   USE_FORM_DATA,
 } from './types';
@@ -27,13 +26,6 @@ export default function (state = initialState, action) {
     case RECEIVE_RESPONSE:
       return Object.assign({}, state, {
         response: action.response,
-        loading: false,
-      });
-
-    // TODO Not needed?
-    case UPDATE_REQUEST:
-      return Object.assign({}, state, {
-        request: action.request,
         loading: false,
       });
 

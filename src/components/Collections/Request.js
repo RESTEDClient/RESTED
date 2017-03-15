@@ -7,6 +7,8 @@ import flow from 'lodash.flow';
 import IconButton from 'components/IconButton';
 import * as CollectionActions from 'store/collections/actions';
 import * as RequestActions from 'store/request/actions';
+import * as ConfigActions from 'store/config/actions';
+import { getEditingRequest } from 'store/config/selectors';
 import selectText from 'utils/selectText';
 
 import { StyledRequest, RequestButtons, MainContentDiv } from './StyledComponents';
@@ -74,6 +76,8 @@ class Request extends React.Component {
     selectRequest: PropTypes.func.isRequired,
     sendRequest: PropTypes.func.isRequired,
     deleteRequest: PropTypes.func.isRequired,
+    toggleEditMode: PropTypes.func.isRequired,
+    isEditing: PropTypes.bool.isRequired,
     request: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string,
@@ -89,26 +93,26 @@ class Request extends React.Component {
   }
 
   toggleEdit = () => {
-    this.setState({ edit: !this.state.edit });
+    this.props.toggleEditMode(this.props.request);
   }
 
   renameRequest = e => {
     const { collectionIndex, index, renameRequest } = this.props;
     e.preventDefault();
 
-    this.setState({ edit: false });
+    this.toggleEdit();
     renameRequest(collectionIndex, index, this.nameRef.value);
   }
 
   renderRequest() {
-    const { compact, edit } = this.state;
-    const { request, index, collectionIndex } = this.props;
+    const { compact } = this.state;
+    const { request, index, collectionIndex, isEditing } = this.props;
     const { method, name, url } = request;
 
     return (
       <div>
         {!compact && <h4>{method}</h4>}
-        {edit ? (
+        {isEditing ? (
           <form onSubmit={this.renameRequest}>
             <label
               className="sr-only"
@@ -136,7 +140,7 @@ class Request extends React.Component {
   }
 
   render() {
-    const { compact, edit } = this.state;
+    const { compact } = this.state;
     const {
       connectDragSource,
       connectDropTarget,
@@ -146,6 +150,7 @@ class Request extends React.Component {
       selectRequest,
       sendRequest,
       deleteRequest,
+      isEditing,
     } = this.props;
 
     return connectDragSource(connectDropTarget(
@@ -169,14 +174,14 @@ class Request extends React.Component {
                   />
                 )}
 
-                {!compact && !edit && (
+                {!compact && !isEditing && (
                   <IconButton
                     tooltip="Minimize"
                     icon="minus"
                     onClick={this.toggleCompact}
                   />
                 )}
-                {!compact && edit && (
+                {!compact && isEditing && (
                   <IconButton
                     tooltip="Delete"
                     icon="trash"
@@ -185,16 +190,14 @@ class Request extends React.Component {
                 )}
               </RequestButtons>
 
-              {edit ? (
+              {isEditing ? (
                 <MainContentDiv compact={compact}>
                   {this.renderRequest()}
                 </MainContentDiv>
               ) : (
                 <MainContentDiv
                   compact={compact}
-                  onClick={() => {
-                    selectRequest(request);
-                  }}
+                  onClick={() => selectRequest(request)}
                   onDoubleClick={() => sendRequest(request)}
                 >
                   {this.renderRequest()}
@@ -208,6 +211,12 @@ class Request extends React.Component {
   }
 }
 
+const mapStateToProps = (state, props) => ({
+  isEditing: getEditingRequest(state)
+    ? getEditingRequest(state).id === props.request.id
+    : false,
+});
+
 export default flow(
   DropTarget(Type.Request, requestTarget, connector => ({
     connectDropTarget: connector.dropTarget(),
@@ -216,9 +225,10 @@ export default flow(
     connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging(),
   })),
-  connect(null, {
+  connect(mapStateToProps, {
     ...CollectionActions,
     ...RequestActions,
+    ...ConfigActions,
   }),
 )(Request);
 

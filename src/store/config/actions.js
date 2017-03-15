@@ -1,6 +1,7 @@
 import {
   SET_EXPANDED,
   SET_COLLAPSED,
+  TOGGLE_EDIT_REQUESTED,
 } from './types';
 
 export function expand(id) {
@@ -18,3 +19,8 @@ export function toggleCollapse(id, isOpen) {
 
   return expand(id);
 }
+
+export function toggleEditMode(request) {
+  return { type: TOGGLE_EDIT_REQUESTED, request };
+}
+

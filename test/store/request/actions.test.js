@@ -37,15 +37,6 @@ describe('actions', () => {
     expect(actions.receiveResponse(response)).toEqual(expectedAction);
   });
 
-  it('should create an action to update the request', () => {
-    const expectedAction = {
-      type: types.UPDATE_REQUEST,
-      request,
-    };
-
-    expect(actions.updateRequest(request)).toEqual(expectedAction);
-  });
-
   it('should create an action to clear the request', () => {
     const expectedAction = {
       type: types.CLEAR_RESPONSE,

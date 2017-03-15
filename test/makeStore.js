@@ -9,7 +9,7 @@ export default (state = {}) => createStore(
     form,
     collections: (initialState = collectionInitialState) => initialState,
     request: (initialState = {}) => initialState,
-    collapsable: (initialState = {}) => initialState,
+    config: (initialState = {}) => initialState,
   }),
   state,
 );

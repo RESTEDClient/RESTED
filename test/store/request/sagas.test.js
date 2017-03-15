@@ -10,7 +10,6 @@ import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
 
-
 const mockRequest = {
   method: 'GET',
   url: 'http://visitnorway.com',
@@ -131,6 +130,10 @@ describe('fetchData saga', () => {
       put({ type: types.REQUEST_FAILED, error }),
     );
   });
+
+  it('should be done', () => {
+    expect(iterator.next().done).toEqual(true);
+  });
 });
 
 describe('createResource saga', () => {
@@ -163,6 +166,10 @@ describe('createResource saga', () => {
       'http://foo.com/bar',
     );
   });
+
+  it('should be done', () => {
+    expect(iterator.next().done).toEqual(true);
+  });
 });
 
 describe('getUrl saga', () => {
@@ -188,6 +195,10 @@ describe('getUrl saga', () => {
 
   it('should return the fallbackUrl', () => {
     expect(iterator.next().value).toBe(fallbackUrl);
+  });
+
+  it('should be done', () => {
+    expect(iterator.next().done).toEqual(true);
   });
 });
 

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import * as actions from 'store/collapsable/actions';
-import * as types from 'store/collapsable/types';
+import * as actions from 'store/config/actions';
+import * as types from 'store/config/types';
 
 describe('actions', () => {
   it('should create an action to set as expanded', () => {
@@ -38,23 +38,31 @@ describe('actions', () => {
 
     expect(actions.collapse(id)).toEqual(expectedAction);
   });
-
-  it('should create an action to toggle modal as collapsed', () => {
+  it('should create an action to set as collapsed', () => {
     let id = 'headers';
     let expectedAction = {
       type: types.SET_COLLAPSED,
       id,
     };
 
-    expect(actions.toggleCollapse(id, true)).toEqual(expectedAction);
+    expect(actions.collapse(id)).toEqual(expectedAction);
 
     id = 'foo';
     expectedAction = {
-      type: types.SET_EXPANDED,
+      type: types.SET_COLLAPSED,
       id,
     };
 
-    expect(actions.toggleCollapse(id, false)).toEqual(expectedAction);
+    expect(actions.collapse(id)).toEqual(expectedAction);
+  });
+
+  it('should create an action to toggle edit mode', () => {
+    const expectedAction = {
+      type: types.TOGGLE_EDIT_REQUESTED,
+      request: 'fooRequest',
+    };
+
+    expect(actions.toggleEditMode('fooRequest')).toEqual(expectedAction);
   });
 });
 

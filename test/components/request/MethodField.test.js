@@ -2,8 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-/* eslint-disable import/no-unresolved */
-import MethodField from 'components/Request/MethodField';
+import { MethodField } from 'components/Request/MethodField';
 import { REQUEST_METHODS } from 'constants/constants';
 
 describe('MethodField', () => {

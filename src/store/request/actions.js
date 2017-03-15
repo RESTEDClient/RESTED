@@ -2,7 +2,6 @@ import {
   SEND_REQUEST,
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
-  UPDATE_REQUEST,
   CLEAR_RESPONSE,
   USE_FORM_DATA,
   SELECT_REQUESTED,
@@ -14,10 +13,6 @@ export function executeRequest() {
 
 export function receiveResponse(response) {
   return { type: RECEIVE_RESPONSE, response };
-}
-
-export function updateRequest(request) {
-  return { type: UPDATE_REQUEST, request };
 }
 
 export function clearRequest() {

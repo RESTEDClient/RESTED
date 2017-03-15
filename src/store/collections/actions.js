@@ -11,6 +11,7 @@ import {
   REORDER_COLLECTION_REQUESTED,
   RENAME_COLLECTION_REQUESTED,
   RENAME_REQUEST_REQUESTED,
+  UPDATE_REQUEST_REQUESTED,
 } from './types';
 
 export function startFetch() {
@@ -73,5 +74,9 @@ export function renameRequest(collectionIndex, requestIndex, name) {
     requestIndex,
     name,
   };
+}
+
+export function updateRequest(request) {
+  return { type: UPDATE_REQUEST_REQUESTED, request };
 }
 

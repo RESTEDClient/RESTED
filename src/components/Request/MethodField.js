@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Col, Row, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
+import * as Actions from 'store/config/actions';
+import { isEditMode } from 'store/config/selectors';
 import { REQUEST_METHODS } from 'constants/constants';
 
-function MethodField({ input, meta }) {
+function MethodField({ input, meta, editMode }) {
   const isCustom = !REQUEST_METHODS.slice(0, -1).includes(input.value);
 
   return (
@@ -42,23 +45,35 @@ function MethodField({ input, meta }) {
         </Row>
       </Col>
       <Col sm={3}>
-        <Button
-          type="submit"
-          bsStyle="primary"
-        >
-          Send request
-        </Button>
+        {editMode
+          ? (
+            <Button type="submit" bsStyle="success">
+              Update request
+            </Button>
+          )
+          : (
+            <Button type="submit" bsStyle="primary">
+              Send request
+            </Button>
+          )
+        }
       </Col>
     </FormGroup>
   );
 }
 
 MethodField.propTypes = {
+  editMode: PropTypes.bool.isRequired,
   /* eslint-disable react/forbid-prop-types */
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   /* eslint-enable react/forbid-prop-types */
 };
 
-export default MethodField;
+const mapStateToProps = state => ({
+  editMode: isEditMode(state),
+});
+
+export { MethodField };
+export default connect(mapStateToProps, Actions)(MethodField);
 

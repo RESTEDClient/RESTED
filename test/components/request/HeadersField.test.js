@@ -7,11 +7,11 @@ import { mount } from 'enzyme';
 
 /* eslint-disable import/no-unresolved */
 import HeadersField from 'components/Request/HeadersField';
-import collapsable from 'store/collapsable/reducer';
+import config from 'store/config/reducer';
 
 const makeStore = (initial = {}) => createStore(
-  combineReducers({ collapsable, form }),
-  { collapsable: initial },
+  combineReducers({ config, form }),
+  { config: initial },
 );
 
 describe('HeadersField', () => {
@@ -44,7 +44,7 @@ describe('HeadersField', () => {
     };
 
     store = makeStore({
-      collapsable: {},
+      config: {},
       testForm: {},
     });
   });

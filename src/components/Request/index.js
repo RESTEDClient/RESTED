@@ -5,6 +5,8 @@ import { Panel, Form } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import * as requestActions from 'store/request/actions';
+import * as collectionsActions from 'store/collections/actions';
+import { isEditMode } from 'store/config/selectors';
 import requestValidation from 'utils/requestValidation';
 import { DEFAULT_REQUEST } from 'constants/constants';
 
@@ -18,10 +20,21 @@ import BodyField from './BodyField';
 export const requestForm = 'request';
 
 function Request(props) {
-  const { formValues = {}, placeholderUrl, handleSubmit, sendRequest } = props;
+  const {
+    formValues = {},
+    placeholderUrl,
+    handleSubmit,
+    sendRequest,
+    updateRequest,
+    editMode,
+  } = props;
+
   return (
     <Panel header={<Titlebar />}>
-      <Form horizontal onSubmit={handleSubmit(sendRequest)}>
+      <Form
+        horizontal
+        onSubmit={handleSubmit(editMode ? updateRequest : sendRequest)}
+      >
         <Field
           name="url"
           component={URLField}
@@ -62,12 +75,15 @@ const mapStateToProps = state => ({
   placeholderUrl: state.request.placeholderUrl,
   initialValues: DEFAULT_REQUEST,
   formValues: getFormValues(requestForm)(state),
+  editMode: isEditMode(state),
 });
 
 export { Request };
-
 export default flow(
   reduxForm(formOptions),
-  connect(mapStateToProps, requestActions),
+  connect(mapStateToProps, {
+    ...requestActions,
+    ...collectionsActions,
+  }),
 )(Request);
 

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Button, Collapse, Row, Col } from 'react-bootstrap';
 
 import Fonticon from 'components/Fonticon';
-import * as Actions from 'store/collapsable/actions';
-import { isOpen } from 'store/collapsable/selectors';
+import * as Actions from 'store/config/actions';
+import { isOpen } from 'store/config/selectors';
 
 import { StyledCollapsable } from './StyledComponents';
 
