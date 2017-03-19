@@ -2,7 +2,7 @@
 
 exports[`response component renders a result when given one 1`] = `
 <div
-  className="csTyaI panel panel-default"
+  className="hvJMLd panel panel-default"
   id={undefined}
 >
   <div

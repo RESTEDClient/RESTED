@@ -5,7 +5,7 @@ import Highlight from 'react-highlight';
 
 import * as Actions from 'store/request/actions';
 import { getResponse, getLoading } from 'store/request/selectors';
-import { isDisabledHighlighting } from 'store/options/selectors';
+import { isDisabledHighlighting, isWrapResponse } from 'store/options/selectors';
 import responsePropTypes, { responseShape } from 'propTypes/response';
 import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 
@@ -28,7 +28,14 @@ Titlebar.propTypes = {
   time: responseShape.time,
 };
 
-export function Response({ response, loading, highlightingDisabled }) {
+export function Response(props) {
+  const {
+    response,
+    loading,
+    highlightingDisabled,
+    wrapResponse,
+  } = props;
+
   if (loading) {
     return (
       <Panel>
@@ -52,7 +59,10 @@ export function Response({ response, loading, highlightingDisabled }) {
     : approximateSizeFromLength(body);
 
   return (
-    <StyledResponse header={<Titlebar method={method} url={url} time={time} />}>
+    <StyledResponse
+      wrapResponse={wrapResponse}
+      header={<Titlebar method={method} url={url} time={time} />}
+    >
       <h3>
         <Status
           green={response.status >= 200 && response.status < 300}
@@ -91,12 +101,14 @@ Response.propTypes = {
   loading: PropTypes.bool.isRequired,
   response: responsePropTypes,
   highlightingDisabled: PropTypes.bool.isRequired,
+  wrapResponse: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   response: getResponse(state),
   loading: getLoading(state),
   highlightingDisabled: isDisabledHighlighting(state),
+  wrapResponse: isWrapResponse(state),
 });
 
 export default connect(mapStateToProps, Actions)(Response);

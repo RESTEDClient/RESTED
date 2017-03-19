@@ -1,10 +1,18 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Panel } from 'react-bootstrap';
 import Fonticon from 'components/Fonticon';
 
-export const StyledResponse = styled(Panel)`
+// Fix "Unknown prop" warnings
+// eslint-disable-next-line
+const PrunedPanel = ({ wrapResponse, ...rest }) => <Panel {...rest} />;
+
+export const StyledResponse = styled(PrunedPanel)`
   pre {
     padding: 0;
+  }
+  pre, code {
+    ${props => props.wrapResponse && 'white-space: pre-wrap;'};
   }
 `;
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Clearfix, Button } from 'react-bootstrap';
 
-/* eslint-disable import/prefer-default-export */
 export const StyledHeader = styled(Clearfix)`
   h2 {
     color: #333333;
