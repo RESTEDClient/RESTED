@@ -12,6 +12,7 @@ import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Loading from './Loading';
 import Headers from './Headers';
+import RenderedResponse from './RenderedResponse';
 
 function Titlebar({ url, time }) {
   return (
@@ -73,6 +74,7 @@ export function Response(props) {
         <small> {response.statusText}</small>
       </h3>
       <Headers headers={headers} />
+      <RenderedResponse html={body} />
       {!highlightingDisabled && contentSize < 20000
         ? (
           <Highlight>

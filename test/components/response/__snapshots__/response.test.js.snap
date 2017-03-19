@@ -64,6 +64,34 @@ exports[`response component renders a result when given one 1`] = `
         />
       </div>
     </div>
+    <div
+      className="beUPta"
+    >
+      <button
+        className="btn btn-link"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <h4>
+          Preview
+          <i
+            className="fa fa-angle-right"
+            role="presentation"
+          />
+        </h4>
+      </button>
+      <div
+        aria-expanded={null}
+        className="collapse row"
+      >
+        <div
+          className="col-xs-12"
+        >
+          Some long body
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

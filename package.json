@@ -40,6 +40,7 @@
     "react-highlight": "^0.9.0",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.3",
+    "react-render-html": "^0.1.6",
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
     "redux-saga": "^0.14.3",
