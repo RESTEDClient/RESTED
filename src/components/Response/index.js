@@ -4,6 +4,8 @@ import { Panel, Alert } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 
 import * as Actions from 'store/request/actions';
+import { getResponse, getLoading } from 'store/request/selectors';
+import { isDisabledHighlighting } from 'store/options/selectors';
 import responsePropTypes, { responseShape } from 'propTypes/response';
 import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 
@@ -26,7 +28,7 @@ Titlebar.propTypes = {
   time: responseShape.time,
 };
 
-export function Response({ response, loading }) {
+export function Response({ response, loading, highlightingDisabled }) {
   if (loading) {
     return (
       <Panel>
@@ -61,17 +63,19 @@ export function Response({ response, loading }) {
         <small> {response.statusText}</small>
       </h3>
       <Headers headers={headers} />
-      {contentSize < 20000
+      {!highlightingDisabled && contentSize < 20000
         ? (
           <Highlight>
             {body}
           </Highlight>
         ) : (
           <span>
-            <Alert bsStyle="warning">
-              The size of the response is greater than 20KB, syntax
-              highlighting has been disabled for performance reasons.
-            </Alert>
+            {contentSize >= 20000 && (
+              <Alert bsStyle="warning">
+                The size of the response is greater than 20KB, syntax
+                highlighting has been disabled for performance reasons.
+              </Alert>
+            )}
 
             <code><pre>
               { body }
@@ -86,11 +90,13 @@ export function Response({ response, loading }) {
 Response.propTypes = {
   loading: PropTypes.bool.isRequired,
   response: responsePropTypes,
+  highlightingDisabled: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ request: { loading, response } }) => ({
-  response,
-  loading,
+const mapStateToProps = state => ({
+  response: getResponse(state),
+  loading: getLoading(state),
+  highlightingDisabled: isDisabledHighlighting(state),
 });
 
 export default connect(mapStateToProps, Actions)(Response);

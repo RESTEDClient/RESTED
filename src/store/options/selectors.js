@@ -27,3 +27,12 @@ export const getHistorySize = createSelector(
   options => options && options.getIn(['options', 'historySize'], 10),
 );
 
+export const isDisabledHighlighting = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'disableHighlighting'], false),
+);
+
+export const isWrapResponse = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'wrapResponse'], false),
+);
