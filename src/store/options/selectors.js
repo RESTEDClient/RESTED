@@ -36,3 +36,9 @@ export const isWrapResponse = createSelector(
   [getOptions],
   options => options && options.getIn(['options', 'wrapResponse'], false),
 );
+
+export const isDefaultCompact = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'defaultCompact'], false),
+);
+

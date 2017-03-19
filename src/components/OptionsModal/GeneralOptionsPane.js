@@ -122,6 +122,19 @@ function GeneralOptionsPane({ options, updateOption }) {
                     need to scroll left/right
                   </p>
                 </Checkbox>
+                <Checkbox
+                  checked={options.get('defaultCompact', false)}
+                  onChange={e => {
+                    updateOption('defaultCompact', e.target.checked);
+                  }}
+                >
+                  Compact mode
+                  <p>
+                    Sets the default view on load for requests in collections to
+                    compact. Useful if you have large collections, especially if
+                    you use named requests
+                  </p>
+                </Checkbox>
               </td>
             </tr>
           </tbody>

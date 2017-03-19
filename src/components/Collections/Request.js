@@ -8,6 +8,7 @@ import IconButton from 'components/IconButton';
 import * as CollectionActions from 'store/collections/actions';
 import * as RequestActions from 'store/request/actions';
 import * as ConfigActions from 'store/config/actions';
+import { isDefaultCompact } from 'store/options/selectors';
 import { getEditingRequest } from 'store/config/selectors';
 import selectText from 'utils/selectText';
 
@@ -78,6 +79,7 @@ class Request extends React.Component {
     deleteRequest: PropTypes.func.isRequired,
     toggleEditMode: PropTypes.func.isRequired,
     isEditing: PropTypes.bool.isRequired,
+    defaultCompact: PropTypes.bool.isRequired,
     request: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string,
@@ -86,7 +88,9 @@ class Request extends React.Component {
     }).isRequired,
   };
 
-  state = {};
+  state = {
+    compact: this.props.defaultCompact,
+  };
 
   toggleCompact = () => {
     this.setState({ compact: !this.state.compact });
@@ -215,6 +219,7 @@ const mapStateToProps = (state, props) => ({
   isEditing: getEditingRequest(state)
     ? getEditingRequest(state).id === props.request.id
     : false,
+  defaultCompact: isDefaultCompact(state),
 });
 
 export default flow(
