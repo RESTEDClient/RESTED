@@ -9,7 +9,7 @@ exports[`should render correctly 1`] = `
     className="panel-heading"
   >
     <div
-      className="OzKBl clearfix"
+      className="GqDNC clearfix"
     >
       <h2
         className="pull-left"
@@ -17,7 +17,7 @@ exports[`should render correctly 1`] = `
         Request
       </h2>
       <button
-        className="pull-right exyKyC"
+        className="pull-right hidden-xs exyKyC"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -63,7 +63,7 @@ exports[`should render correctly 1`] = `
         />
       </button>
       <button
-        className="pull-right exyKyC"
+        className="pull-right hidden-xs exyKyC"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}

@@ -6,6 +6,11 @@ export const StyledHeader = styled(Clearfix)`
     color: #333333;
     font-size: 15px;
     margin: 4px 0;
+
+    overflow: hidden;
+    max-width: 75%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 

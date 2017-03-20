@@ -10,6 +10,7 @@ import IconButton from 'components/IconButton';
 import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
 import { getCollections } from 'store/collections/selectors';
 import { getCollectionsMinimized } from 'store/options/selectors';
+import { getEditingRequest, isEditMode } from 'store/config/selectors';
 import * as collectionsActions from 'store/collections/actions';
 import * as modalActions from 'store/modal/actions';
 import * as optionsActions from 'store/options/actions';
@@ -36,12 +37,18 @@ function Titlebar(props) {
     formPristine,
     formInvalid,
     collectionsMinimized,
+    isEditing,
+    editingRequest,
   } = props;
 
   return (
     <StyledHeader>
       <h2 className="pull-left">
-        Request
+        {isEditing
+          ? `Editing request ${editingRequest.name
+              ? `- ${editingRequest.name}` : ''}`
+          : 'Request'
+        }
       </h2>
       <IconButton
         onClick={() => {
@@ -68,7 +75,7 @@ function Titlebar(props) {
         }}
         tooltip="Add to collection"
         icon="plus"
-        className="pull-right"
+        className="pull-right hidden-xs"
       />
       <IconButton
         onClick={() => showOptionsModal(props)}
@@ -80,7 +87,7 @@ function Titlebar(props) {
         onClick={() => toggleCollectionsExpanded(props)}
         tooltip={`${collectionsMinimized ? 'Show' : 'Hide'} collections`}
         icon={collectionsMinimized ? 'compress' : 'expand'}
-        className="pull-right"
+        className="pull-right hidden-xs"
       />
     </StyledHeader>
   );
@@ -92,6 +99,10 @@ Titlebar.propTypes = {
   formPristine: PropTypes.bool.isRequired,
   formInvalid: PropTypes.bool.isRequired,
   collectionsMinimized: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  editingRequest: PropTypes.shape({
+    name: PropTypes.string,
+  }),
   /* eslint-disable react/no-unused-prop-types */
   touch: PropTypes.func.isRequired,
   addCollection: PropTypes.func.isRequired,
@@ -108,6 +119,8 @@ const mapStateToProps = state => ({
   formInvalid: isInvalid('request')(state),
   collections: getCollections(state),
   collectionsMinimized: getCollectionsMinimized(state),
+  isEditing: isEditMode(state),
+  editingRequest: getEditingRequest(state),
 });
 
 export default connect(mapStateToProps, {
