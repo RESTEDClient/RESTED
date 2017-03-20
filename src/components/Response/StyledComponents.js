@@ -37,3 +37,15 @@ export const Status = styled.span`
   ${props => props.red && 'color: red;'}
 `;
 
+export const PreviewContainer = styled(Panel)`
+  .panel-body {
+    padding: 0;
+  }
+
+  iframe {
+    border: 0;
+    width: 100%;
+    height: 600px;
+  }
+`;
+

@@ -49,15 +49,17 @@ export function Response(props) {
 
   const { method, url, headers, body, time } = response;
 
-  // Some responses don't include the Content-Length header, in those cases
-  // we simply allow it to be highligthed, for better or worse
   const contentLength = headers.find(header => (
     header.name.toLowerCase() === 'content-length'
+  ));
+  const contentType = headers.find(header => (
+    header.name.toLowerCase() === 'content-type'
   ));
 
   const contentSize = contentLength
     ? Number(contentLength.value)
     : approximateSizeFromLength(body);
+  const isHTML = contentType && contentType.value.includes('text/html');
 
   return (
     <StyledResponse
@@ -73,8 +75,10 @@ export function Response(props) {
         </Status>
         <small> {response.statusText}</small>
       </h3>
+
       <Headers headers={headers} />
-      <RenderedResponse html={body} />
+      {isHTML && <RenderedResponse html={body} />}
+
       {!highlightingDisabled && contentSize < 20000
         ? (
           <Highlight>

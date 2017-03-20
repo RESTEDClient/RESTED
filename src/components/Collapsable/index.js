@@ -9,7 +9,16 @@ import { isOpen } from 'store/config/selectors';
 
 import { StyledCollapsable } from './StyledComponents';
 
-export function Collapsable({ id, title, open, children, toggleCollapse }) {
+export function Collapsable(props) {
+  const {
+    id,
+    title,
+    open,
+    children,
+    toggleCollapse,
+    mountOnEnter,
+    unmountOnExit,
+  } = props;
   return (
     <StyledCollapsable>
       <Button
@@ -29,7 +38,11 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
           />
         </h4>
       </Button>
-      <Collapse in={open}>
+      <Collapse
+        in={open}
+        mountOnEnter={mountOnEnter}
+        unmountOnExit={unmountOnExit}
+      >
         <Row>
           <Col xs={12}>
             {children}
@@ -40,11 +53,19 @@ export function Collapsable({ id, title, open, children, toggleCollapse }) {
   );
 }
 
+Collapsable.defaultProps = {
+  mountOnEnter: false,
+  unmountOnExit: false,
+  open: false,
+};
+
 Collapsable.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   toggleCollapse: PropTypes.func.isRequired,
+  mountOnEnter: PropTypes.bool,
+  unmountOnExit: PropTypes.bool,
   open: PropTypes.bool,
 };
 
