@@ -24,10 +24,14 @@ function* updateLocalStorage() {
 
 function* fetchHistorySaga() {
   yield put({ type: FETCH_HISTORY });
-
   let history = yield call(localforage.getItem, 'history');
-  history = Immutable.fromJS(history) || Immutable.List();
 
+  // v1 -> v2 migration
+  if (history.length && history[0].requests) {
+    history = history[0].requests;
+  }
+
+  history = Immutable.fromJS(history) || Immutable.List();
   yield put({ type: RECEIVE_HISTORY, history });
 }
 

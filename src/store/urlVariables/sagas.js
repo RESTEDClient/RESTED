@@ -21,10 +21,14 @@ function* updateLocalStorage() {
 
 function* fetchUrlVariablesSaga() {
   yield put(startFetch());
-
   let urlVariables = yield call(localforage.getItem, 'urlVariables');
-  urlVariables = Immutable.fromJS(urlVariables) || Immutable.List();
 
+  // v1 -> v2 migration
+  if (urlVariables.length && urlVariables[0].variables) {
+    urlVariables = urlVariables[0].variables;
+  }
+
+  urlVariables = Immutable.fromJS(urlVariables) || Immutable.List();
   yield put(receiveUrlVariables(urlVariables));
 }
 

@@ -13,8 +13,15 @@ function* updateLocalStorage() {
 
 function* fetchOptionsSaga() {
   yield put(startFetch());
-  const options = yield call(localforage.getItem, 'options');
-  yield put(receiveOptions(Immutable.fromJS(options) || Immutable.Map()));
+  let options = yield call(localforage.getItem, 'options');
+
+  // v1 -> v2 migration
+  if (options.length && options[0].options) {
+    options = options[0].options;
+  }
+
+  options = Immutable.fromJS(options) || Immutable.Map();
+  yield put(receiveOptions(options));
 }
 
 function* updateOptionSaga({ option, value }) {

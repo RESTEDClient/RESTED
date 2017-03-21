@@ -172,6 +172,10 @@ PanelHeader.propTypes = {
 };
 
 class Collection extends React.Component {
+  static defaultProps = {
+    minimized: false,
+  };
+
   static propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
