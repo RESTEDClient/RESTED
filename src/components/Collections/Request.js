@@ -17,12 +17,11 @@ import * as Type from './dropTypes';
 
 /**
  * Specifies the drag source contract.
- * Only `beginDrag` function is required.
  */
 const requestSource = {
-  canDrag() {
-    // TODO Disallow drag if editing name
-    return true;
+  canDrag(props) {
+    // Disallow drag if editing request
+    return !props.isEditing;
   },
 
   beginDrag({ request, index, collectionIndex }) {

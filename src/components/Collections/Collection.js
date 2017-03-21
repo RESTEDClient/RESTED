@@ -20,6 +20,11 @@ import * as Type from './dropTypes';
  * Only `beginDrag` function is required.
  */
 const collectionSource = {
+  canDrag(props) {
+    // Disallow drag if editing name
+    return !props.edit;
+  },
+
   beginDrag({ collectionIndex }) {
     return { collectionIndex };
   },
@@ -94,14 +99,9 @@ function PanelHeader(props) {
     removeModal,
   } = props;
 
+  /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
-    <StyledCollectionHeader
-      minimized={minimized}
-      onClick={e => {
-        e.preventDefault();
-        toggleCollapsed(index);
-      }}
-    >
+    <StyledCollectionHeader minimized={minimized}>
       {edit ? (
         <form onSubmit={renameCollection}>
           <label
@@ -123,7 +123,14 @@ function PanelHeader(props) {
           />
         </form>
       ) : (
-        <h3>{name}</h3>
+        <h3
+          onClick={e => {
+            e.preventDefault();
+            toggleCollapsed(index);
+          }}
+        >
+          {name}
+        </h3>
       )}
 
       <IconButton
@@ -188,34 +195,23 @@ class Collection extends React.Component {
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
     renameCollection: PropTypes.func.isRequired,
+    toggleEdit: PropTypes.func.isRequired,
+    edit: PropTypes.bool.isRequired,
     setModalData: PropTypes.func.isRequired,
     removeModal: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.renameCollection = this.renameCollection.bind(this);
-  }
+  state = {};
 
-  state = {
-    edit: false,
-  };
-
-  toggleEdit() {
-    this.setState({ edit: !this.state.edit });
-  }
-
-  handleInputChange(name) {
+  handleInputChange = name => {
     this.setState({ name });
   }
 
-  renameCollection(e) {
+  renameCollection = e => {
     e.preventDefault();
     const { collectionIndex, renameCollection } = this.props;
 
-    this.setState({ edit: false });
+    this.props.toggleEdit();
     renameCollection(collectionIndex, this.state.name);
   }
 
@@ -229,6 +225,8 @@ class Collection extends React.Component {
       connectDropTarget,
       isDragging,
       deleteCollection,
+      edit,
+      toggleEdit,
       toggleCollapsed,
       minimized,
       setModalData,
@@ -236,7 +234,7 @@ class Collection extends React.Component {
     } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <div> {/* Need a wrapper div for React DnD support */}
+      <div>{/* Need a wrapper div for React DnD support */}
         <StyledCollection isDragging={isDragging}>
           <PanelHeader
             name={name}
@@ -245,12 +243,12 @@ class Collection extends React.Component {
             deleteCollection={deleteCollection}
             toggleCollapsed={toggleCollapsed}
             minimized={minimized}
-            toggleEdit={this.toggleEdit}
+            toggleEdit={toggleEdit}
             onChange={this.handleInputChange}
             renameCollection={this.renameCollection}
             setModalData={setModalData}
             removeModal={removeModal}
-            edit={this.state.edit}
+            edit={edit}
           />
           <Collapse in={!minimized}>
             <div>
@@ -270,8 +268,7 @@ class Collection extends React.Component {
   }
 }
 
-
-export default flow(
+const ConnectedCollection = flow(
   DropTarget(Type.Collection, collectionTarget, connector => ({
     connectDropTarget: connector.dropTarget(),
   })),
@@ -284,4 +281,27 @@ export default flow(
     ...ModalActions,
   }),
 )(Collection);
+
+// Lift "editing" state up so that we can access it in "canDrag".
+// Yes, this can be called a hack
+// eslint-disable-next-line react/no-multi-comp
+export default class CollectionWrapper extends React.Component {
+  state = {
+    edit: false,
+  };
+
+  toggleEdit = () => {
+    this.setState({ edit: !this.state.edit });
+  };
+
+  render() {
+    return (
+      <ConnectedCollection
+        edit={this.state.edit}
+        toggleEdit={this.toggleEdit}
+        {...this.props}
+      />
+    );
+  }
+}
 

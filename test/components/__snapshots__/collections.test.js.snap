@@ -2,15 +2,15 @@
 
 exports[`Collection component should match the previous snapshot 1`] = `
 <div>
-   
   <div
     className="byfiIm"
   >
     <span
       className="drgkCg"
-      onClick={[Function]}
     >
-      <h3 />
+      <h3
+        onClick={[Function]}
+      />
       <button
         className="pull-right exyKyC"
         onClick={[Function]}
@@ -186,15 +186,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
   >
     <span>
       <div>
-         
         <div
           className="byfiIm"
         >
           <span
             className="cznwYF"
-            onClick={[Function]}
           >
-            <h3>
+            <h3
+              onClick={[Function]}
+            >
               Collection
             </h3>
             <button
@@ -330,15 +330,15 @@ exports[`Collections component should match the previous snapshot 1`] = `
         </div>
       </div>
       <div>
-         
         <div
           className="byfiIm"
         >
           <span
             className="cznwYF"
-            onClick={[Function]}
           >
-            <h3>
+            <h3
+              onClick={[Function]}
+            >
               Collection 2
             </h3>
             <button
