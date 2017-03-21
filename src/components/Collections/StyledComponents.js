@@ -12,6 +12,9 @@ const hoverStyle = css`
   > div {
     border-left-width: 0;
   }
+  h4 {
+    color: gray;
+  }
 `;
 
 export const StyledCollection = styled.div`
