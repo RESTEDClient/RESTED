@@ -3,7 +3,7 @@
 exports[`Collection component should match the previous snapshot 1`] = `
 <div>
   <div
-    className="byfiIm"
+    className="gRaYYP"
   >
     <span
       className="drgkCg"
@@ -64,7 +64,6 @@ exports[`Collection component should match the previous snapshot 1`] = `
       className="collapse in"
     >
       <div>
-         
         <div
           className="kzXmMh"
         >
@@ -75,7 +74,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
               className="list-group-item"
             >
               <div
-                className="ldGGuX"
+                className="clpLtD"
               >
                 <button
                   className="exyKyC"
@@ -125,7 +124,7 @@ exports[`Collection component should match the previous snapshot 1`] = `
                 </button>
               </div>
               <div
-                className="bGRROV"
+                className="ejiwLo"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
               >
@@ -187,7 +186,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
     <span>
       <div>
         <div
-          className="byfiIm"
+          className="gRaYYP"
         >
           <span
             className="cznwYF"
@@ -250,7 +249,6 @@ exports[`Collections component should match the previous snapshot 1`] = `
             className="collapse"
           >
             <div>
-               
               <div
                 className="kzXmMh"
               >
@@ -261,7 +259,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item"
                   >
                     <div
-                      className="ldGGuX"
+                      className="clpLtD"
                     >
                       <button
                         className="exyKyC"
@@ -311,7 +309,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </button>
                     </div>
                     <div
-                      className="bGRROV"
+                      className="ejiwLo"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
                     >
@@ -331,7 +329,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
       </div>
       <div>
         <div
-          className="byfiIm"
+          className="gRaYYP"
         >
           <span
             className="cznwYF"
@@ -394,7 +392,6 @@ exports[`Collections component should match the previous snapshot 1`] = `
             className="collapse"
           >
             <div>
-               
               <div
                 className="kzXmMh"
               >
@@ -405,7 +402,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item"
                   >
                     <div
-                      className="ldGGuX"
+                      className="clpLtD"
                     >
                       <button
                         className="exyKyC"
@@ -455,7 +452,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </button>
                     </div>
                     <div
-                      className="bGRROV"
+                      className="ejiwLo"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
                     >
@@ -471,7 +468,6 @@ exports[`Collections component should match the previous snapshot 1`] = `
               </div>
             </div>
             <div>
-               
               <div
                 className="kzXmMh"
               >
@@ -482,7 +478,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item"
                   >
                     <div
-                      className="ldGGuX"
+                      className="clpLtD"
                     >
                       <button
                         className="exyKyC"
@@ -532,7 +528,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </button>
                     </div>
                     <div
-                      className="bGRROV"
+                      className="ejiwLo"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
                     >
@@ -548,7 +544,6 @@ exports[`Collections component should match the previous snapshot 1`] = `
               </div>
             </div>
             <div>
-               
               <div
                 className="kzXmMh"
               >
@@ -559,7 +554,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                     className="list-group-item"
                   >
                     <div
-                      className="ldGGuX"
+                      className="clpLtD"
                     >
                       <button
                         className="exyKyC"
@@ -609,7 +604,7 @@ exports[`Collections component should match the previous snapshot 1`] = `
                       </button>
                     </div>
                     <div
-                      className="bGRROV"
+                      className="ejiwLo"
                       onClick={[Function]}
                       onDoubleClick={[Function]}
                     >

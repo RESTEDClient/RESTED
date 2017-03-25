@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { DARK_THEMES } from 'constants/constants';
 
 export const getOptions = state => state.options;
 
@@ -10,6 +11,11 @@ export const getActiveTab = createSelector(
 export const getTheme = createSelector(
   [getOptions],
   options => options && options.getIn(['options', 'theme'], 'retro'),
+);
+
+export const isDarkTheme = createSelector(
+  [getTheme],
+  theme => DARK_THEMES.includes(theme),
 );
 
 export const getHighlightStyle = createSelector(

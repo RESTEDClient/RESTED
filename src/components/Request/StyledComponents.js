@@ -3,7 +3,6 @@ import { Clearfix, Button } from 'react-bootstrap';
 
 export const StyledHeader = styled(Clearfix)`
   h2 {
-    color: #333333;
     font-size: 15px;
     margin: 4px 0;
 
@@ -16,7 +15,6 @@ export const StyledHeader = styled(Clearfix)`
 
 export const UnstyledButton = styled(Button)`
   padding: 0;
-  color: black;
 `;
 
 export const SuggestWrapper = styled.div`

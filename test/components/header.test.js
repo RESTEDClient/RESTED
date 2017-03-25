@@ -2,10 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-/* eslint-disable import/no-unresolved */
-import Header from 'components/Header';
-
-jest.mock('react-dom');
+import { Header } from 'components/Header';
 
 test('Header renders correctly', () => {
   const tree = renderer.create(

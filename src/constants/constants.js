@@ -98,11 +98,6 @@ export const SPINNER_SHOW_DELAY = 300;
  * These are the themes available on bootswatch,
  * alphabethic order - except application default
  * (yeti) first, then bootstrap default (retro).
- *
- * TODO: There are some themes (Black backgrounds)
- * that simply DO NOT work with the logo. We need
- * to figure out something if we want to add them
- * back in. (Make logo white? SVG?)
  */
 export const THEMES = [
   'yeti',
@@ -122,6 +117,17 @@ export const THEMES = [
   'spacelab',
   'superhero',
   'united',
+];
+
+/**
+ * Themes that need special handling because of
+ * being darker than the others
+ */
+export const DARK_THEMES = [
+  'cyborg',
+  'darkly',
+  'slate',
+  'superhero',
 ];
 
 /**

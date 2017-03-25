@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { isDarkTheme } from 'store/options/selectors';
+
 import { StyledHeader } from './StyledComponents';
 
-export default function Header() {
+export function Header({ darkMode }) {
   return (
-    <StyledHeader>
+    <StyledHeader darkMode={darkMode}>
       <h1>
         <img
           className="logo"
@@ -16,4 +19,14 @@ export default function Header() {
     </StyledHeader>
   );
 }
+
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  darkMode: isDarkTheme(state),
+});
+
+export default connect(mapStateToProps)(Header);
 

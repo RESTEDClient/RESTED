@@ -9,7 +9,7 @@ exports[`should render correctly 1`] = `
     className="panel-heading"
   >
     <div
-      className="GqDNC clearfix"
+      className="nUMqf clearfix"
     >
       <h2
         className="pull-left"
@@ -226,7 +226,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="beUPta"
+        className="hNpSwj"
       >
         <button
           className="btn btn-link"
@@ -256,7 +256,7 @@ exports[`should render correctly 1`] = `
                 className="col-xs-12"
               >
                 <button
-                  className="ducMpy btn btn-link"
+                  className="hvMBRh btn btn-link"
                   disabled={false}
                   id="addHeaderButton"
                   onClick={[Function]}
@@ -274,7 +274,7 @@ exports[`should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="beUPta"
+        className="hNpSwj"
       >
         <button
           className="btn btn-link"

@@ -157,7 +157,7 @@ class Request extends React.Component {
     } = this.props;
 
     return connectDragSource(connectDropTarget(
-      <div> {/* Need a wrapper div for React DnD support */}
+      <div>{/* Need a wrapper div for React DnD support */}
         <StyledRequest isDragging={isDragging}>
           <ListGroup componentClass="div">
             <div className="list-group-item">

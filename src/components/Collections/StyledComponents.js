@@ -37,6 +37,7 @@ export const StyledCollection = styled.div`
 
   .panel-heading li.active {
     border-bottom: 3px solid #c8c4c4;
+    border-color: inherit;
     font-weight: bold;
   }
 `;
@@ -70,6 +71,7 @@ const asideWidth = 32;
 export const RequestButtons = styled.div`
   max-width: ${asideWidth}px;
   flex: 1;
+  border-color: inherit;
 
   button {
     height: ${props => props.compact ? 100 : 50}%;
@@ -77,6 +79,8 @@ export const RequestButtons = styled.div`
 
   button:first-child {
     border-bottom: 1px solid #ddd;
+    border-color: inherit;
+    color: inherit;
   }
 `;
 
@@ -84,6 +88,7 @@ export const MainContentDiv = styled.div`
   padding: 10px;
   word-break: break-all;
   border-left: 1px solid #ddd;
+  border-color: inherit;
   width: calc(100% - ${asideWidth}px);
 
   input {
