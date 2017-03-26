@@ -27,7 +27,7 @@ function* fetchHistorySaga() {
   let history = yield call(localforage.getItem, 'history');
 
   // v1 -> v2 migration
-  if (history.length && history[0].requests) {
+  if (history && history.length && history[0].requests) {
     history = history[0].requests;
   }
 

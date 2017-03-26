@@ -16,7 +16,7 @@ function* fetchOptionsSaga() {
   let options = yield call(localforage.getItem, 'options');
 
   // v1 -> v2 migration
-  if (options.length && options[0].options) {
+  if (options && options.length && options[0].options) {
     options = options[0].options;
   }
 

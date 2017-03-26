@@ -24,7 +24,7 @@ function* fetchUrlVariablesSaga() {
   let urlVariables = yield call(localforage.getItem, 'urlVariables');
 
   // v1 -> v2 migration
-  if (urlVariables.length && urlVariables[0].variables) {
+  if (urlVariables && urlVariables.length && urlVariables[0].variables) {
     urlVariables = urlVariables[0].variables;
   }
 
