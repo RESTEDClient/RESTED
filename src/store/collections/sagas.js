@@ -58,6 +58,7 @@ function* deleteCollectionSaga({ collectionId }) {
 function* deleteRequestSaga({ collectionIndex, requestId }) {
   yield put({ type: DELETE_REQUEST, collectionIndex, requestId });
   yield call(updateLocalStorage);
+  yield put({ type: TOGGLE_EDIT });
 }
 
 function* toggleCollapsedSaga({ collectionIndex }) {
