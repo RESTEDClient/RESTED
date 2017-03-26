@@ -11,6 +11,10 @@ import * as ModalActions from 'store/modal/actions';
 import * as CollectionsActions from 'store/collections/actions';
 import { immutableCollectionShape } from 'propTypes/collection';
 
+// Place selection state here because ImportPane unmounts,
+// so we can't use component state
+let selectedCollection = 0;
+
 function SelectCollectionForm({ collections, onChange }) {
   return (
     <Row>
@@ -29,8 +33,8 @@ function SelectCollectionForm({ collections, onChange }) {
                     componentClass="select"
                     onChange={onChange}
                   >
-                    {collections.map(collection => (
-                      <option key={collection.get('id')}>
+                    {collections.map((collection, index) => (
+                      <option key={collection.get('id')} value={index}>
                         {collection.get('name')}
                       </option>
                     ))}
@@ -59,15 +63,8 @@ class ImportPane extends React.Component {
     removeModal: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    this.setSelectedCollection = this.setSelectedCollection.bind(this);
-  }
-
   state = {
     importMethod: 'HAR',
-    selectedCollection: 0,
   };
 
   setMethod(importMethod) {
@@ -78,12 +75,12 @@ class ImportPane extends React.Component {
     this.setState({ text });
   }
 
-  setSelectedCollection(selectedCollection) {
-    this.setState({ selectedCollection });
+  setSelectedCollection = event => {
+    selectedCollection = event.target.value;
   }
 
-  submit() {
-    const { importMethod, text, selectedCollection } = this.state;
+  submit = () => {
+    const { importMethod, text } = this.state;
     const {
       collections,
       addRequest,
@@ -105,7 +102,7 @@ class ImportPane extends React.Component {
         title: 'Successfully parsed imports',
         body: (
           <SelectCollectionForm
-            onSelect={this.setSelectedCollection}
+            onChange={this.setSelectedCollection}
             collections={collections}
           />
         ),

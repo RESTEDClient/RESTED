@@ -14,12 +14,6 @@ class ExportPane extends React.Component {
     collections: ImmutablePropTypes.listOf(immutableCollectionShape),
   };
 
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    this.setSelectedCollection = this.setSelectedCollection.bind(this);
-  }
-
   state = {
     exportMethod: 'HAR',
     selectedCollection: 0,
@@ -29,11 +23,11 @@ class ExportPane extends React.Component {
     this.setState({ exportMethod });
   }
 
-  setSelectedCollection(selectedCollection) {
-    this.setState({ selectedCollection });
+  setSelectedCollection = event => {
+    this.setState({ selectedCollection: event.target.value });
   }
 
-  submit() {
+  submit = () => {
     const { exportMethod, selectedCollection } = this.state;
     const { collections } = this.props;
     this.setState({ importFeedback: null });
@@ -125,10 +119,10 @@ class ExportPane extends React.Component {
               </ControlLabel>
               <FormControl
                 componentClass="select"
-                onSelect={this.setSelectedCollection}
+                onChange={this.setSelectedCollection}
               >
-                {collections.map(collection => (
-                  <option key={collection.get('id')}>
+                {collections.map((collection, index) => (
+                  <option key={collection.get('id')} value={index}>
                     {collection.get('name')}
                   </option>
                 ))}
