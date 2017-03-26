@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, Fields, FieldArray, propTypes, getFormValues } from 'redux-form';
+import { reduxForm, Field, Fields, FieldArray, getFormValues } from 'redux-form';
 import { Panel, Form } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
@@ -62,7 +62,12 @@ function Request(props) {
 
 Request.propTypes = {
   placeholderUrl: PropTypes.string,
-  ...propTypes,
+  formValues: PropTypes.shape({}),
+  handleSubmit: PropTypes.func.isRequired,
+  sendRequest: PropTypes.func.isRequired,
+  updateRequest: PropTypes.func.isRequired,
+  editMode: PropTypes.bool.isRequired,
+
 };
 
 const formOptions = {

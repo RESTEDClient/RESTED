@@ -1,6 +1,5 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -18,7 +17,7 @@ module.exports = {
   ],
 
   output: {
-    path: './dist',
+    path: rootDir + '/dist',
     filename: 'rested.js',
   },
 
