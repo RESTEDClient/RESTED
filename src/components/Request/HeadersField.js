@@ -9,10 +9,9 @@ import {
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
-import IconButton from 'components/IconButton';
 
 import HeaderNameAutosuggest from './HeaderNameAutosuggest';
-import { UnstyledButton } from './StyledComponents';
+import { UnstyledButton, TrashButton } from './StyledComponents';
 
 function renderValueField({ input, placeholder }) {
   return (
@@ -48,15 +47,15 @@ function HeadersField({ meta, fields }) {
               placeholder="Name"
             />
           </Col>
-          <Col xs={6}>
+          <Col xs={5}>
             <Field
               name={`${field}.value`}
               component={renderValueField}
               placeholder="Value"
             />
           </Col>
-          <Col xs={1}>
-            <IconButton
+          <Col xs={2}>
+            <TrashButton
               id={`removeHeaderButton${key}`}
               tooltip="Remove header"
               icon="trash"

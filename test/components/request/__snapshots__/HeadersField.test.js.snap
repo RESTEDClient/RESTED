@@ -66,7 +66,7 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           </div>
         </div>
         <div
-          className="col-xs-6"
+          className="col-xs-5"
         >
           <input
             className="form-control"
@@ -83,10 +83,10 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           />
         </div>
         <div
-          className="col-xs-1"
+          className="col-xs-2"
         >
           <button
-            className="exyKyC"
+            className="dIGbVH exyKyC"
             id="removeHeaderButton0"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -152,7 +152,7 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           </div>
         </div>
         <div
-          className="col-xs-6"
+          className="col-xs-5"
         >
           <input
             className="form-control"
@@ -169,10 +169,10 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           />
         </div>
         <div
-          className="col-xs-1"
+          className="col-xs-2"
         >
           <button
-            className="exyKyC"
+            className="dIGbVH exyKyC"
             id="removeHeaderButton1"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -238,7 +238,7 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           </div>
         </div>
         <div
-          className="col-xs-6"
+          className="col-xs-5"
         >
           <input
             className="form-control"
@@ -255,10 +255,10 @@ exports[`HeadersField should match the previous snapshot 1`] = `
           />
         </div>
         <div
-          className="col-xs-1"
+          className="col-xs-2"
         >
           <button
-            className="exyKyC"
+            className="dIGbVH exyKyC"
             id="removeHeaderButton2"
             onClick={[Function]}
             onMouseEnter={[Function]}

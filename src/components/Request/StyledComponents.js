@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import IconButton from 'components/IconButton';
 import { Clearfix, Button } from 'react-bootstrap';
 
 export const StyledHeader = styled(Clearfix)`
@@ -15,6 +16,10 @@ export const StyledHeader = styled(Clearfix)`
 
 export const UnstyledButton = styled(Button)`
   padding: 0;
+`;
+
+export const TrashButton = styled(IconButton)`
+  height: 40px;
 `;
 
 export const SuggestWrapper = styled.div`
