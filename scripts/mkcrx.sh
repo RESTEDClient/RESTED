@@ -6,7 +6,7 @@
 SCRIPT="$(realpath -s $0)"
 SCRIPTPATH="$(dirname $SCRIPT)"
 BASEDIR="$SCRIPTPATH/.."
-FILES="$BASEDIR/dist $BASEDIR/main.js $BASEDIR/manifest.json"
+FILES="dist main.js manifest.json"
 
 hash xxd 2>/dev/null || {
   echo "The utility xxd is required to run $(basename $0). Install it."
@@ -28,7 +28,7 @@ zip="$name.zip"
 trap 'rm -f "$pub" "$sig" "$zip"' EXIT
 
 # zip up the crx dir
-(cd "$dir" && zip -qr -9 -X "$BASEDIR/$zip" $FILES)
+(cd "$BASEDIR" && zip -qr -9 -X "$zip" $FILES)
 
 # signature
 openssl sha1 -sha1 -binary -sign "$key" < "$zip" > "$sig"
