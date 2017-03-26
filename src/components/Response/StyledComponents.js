@@ -24,7 +24,6 @@ export const LoadingSpinner = styled(Fonticon)`
 
 export const StyledHeader = styled.div`
   h3 {
-    color: #333333;
     font-size: 15px;
     margin: 4px 0;
   }
