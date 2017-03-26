@@ -63,7 +63,6 @@ function SyncPane(props) {
             href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/Storage/sync#Browser_compatibility"
             target="_blank"
             rel="noopener noreferrer"
-            data-ng-if="!syncIsSupported()"
             className="red"
           >
             <p>Sync is not yet supported by your browser :(</p>

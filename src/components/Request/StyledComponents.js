@@ -62,6 +62,7 @@ export const SuggestWrapper = styled.div`
   .react-autosuggest__suggestion {
     cursor: pointer;
     padding: 10px;
+    color: initial;
   }
 
   .react-autosuggest__suggestion--highlighted {
