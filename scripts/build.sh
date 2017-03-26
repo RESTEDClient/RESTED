@@ -1,4 +1,5 @@
 #!/bin/bash
+# Builds a release of RESTED
 # Can read pem from file or stdin
 
 PEM=$1
@@ -21,7 +22,7 @@ echo Packaging for Chrome
 
 rm -fv manifest.json
 ln -vs google-chrome/manifest.json
-$DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}" || exit 1
+bash $DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}" || exit 1
 
 echo Done
 

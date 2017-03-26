@@ -3,10 +3,13 @@
 # Purpose: Pack a Chromium extension directory into crx format
 # Taken from https://developer.chrome.com/extensions/crx#scripts
 
-FILES="dist main.js manifest.json"
+SCRIPT="$(realpath -s $0)"
+SCRIPTPATH="$(dirname $SCRIPT)"
+BASEDIR="$SCRIPTPATH/.."
+FILES="$BASEDIR/dist $BASEDIR/main.js $BASEDIR/manifest.json"
 
 hash xxd 2>/dev/null || {
-  echo "The utility xxd is required to run $(basename $0)."
+  echo "The utility xxd is required to run $(basename $0). Install it."
   exit 1
 }
 
@@ -17,7 +20,7 @@ fi
 
 dir=$1
 key=$2
-name=$(basename "$dir")
+name=RESTED
 crx="$name.crx"
 pub="$name.pub"
 sig="$name.sig"
@@ -25,8 +28,7 @@ zip="$name.zip"
 trap 'rm -f "$pub" "$sig" "$zip"' EXIT
 
 # zip up the crx dir
-cwd=$(pwd -P)
-(cd "$dir" && zip -qr -9 -X "$cwd/$zip" $FILES)
+(cd "$dir" && zip -qr -9 -X "$BASEDIR/$zip" $FILES)
 
 # signature
 openssl sha1 -sha1 -binary -sign "$key" < "$zip" > "$sig"
