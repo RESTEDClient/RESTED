@@ -45,7 +45,8 @@
     "redux-saga": "^0.14.3",
     "reselect": "^3.0.0",
     "styled-components": "^1.4.4",
-    "uuid-js": "^0.7.5"
+    "uuid-js": "^0.7.5",
+    "xml-formatter": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",

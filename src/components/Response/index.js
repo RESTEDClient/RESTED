@@ -2,11 +2,13 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Alert } from 'react-bootstrap';
 import Highlight from 'react-highlight';
+import formatXml from 'xml-formatter';
 
 import * as Actions from 'store/request/actions';
 import { getResponse, getLoading } from 'store/request/selectors';
 import { isDisabledHighlighting, isWrapResponse } from 'store/options/selectors';
 import responsePropTypes, { responseShape } from 'propTypes/response';
+import getContentType from 'utils/contentType';
 import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 
 import { StyledResponse, StyledHeader, Status } from './StyledComponents';
@@ -47,7 +49,8 @@ export function Response(props) {
 
   if (!response) return null;
 
-  const { method, url, headers, body, time } = response;
+  const { method, url, headers, time } = response;
+  let { body } = response;
 
   const contentLength = headers.find(header => (
     header.name.toLowerCase() === 'content-length'
@@ -59,7 +62,13 @@ export function Response(props) {
   const contentSize = contentLength
     ? Number(contentLength.value)
     : approximateSizeFromLength(body);
-  const isHTML = contentType && contentType.value.includes('text/html');
+  const type = getContentType(contentType && contentType.value);
+
+  if (type.json) {
+    body = JSON.stringify(JSON.parse(body), null, 2);
+  } else if (type.xml) {
+    body = formatXml(body);
+  }
 
   return (
     <StyledResponse
@@ -77,7 +86,7 @@ export function Response(props) {
       </h3>
 
       <Headers headers={headers} />
-      {isHTML && <RenderedResponse html={body} />}
+      {type.html && <RenderedResponse html={body} />}
 
       {!highlightingDisabled && contentSize < 20000
         ? (
@@ -94,7 +103,7 @@ export function Response(props) {
             )}
 
             <code><pre>
-              { body }
+              {body}
             </pre></code>
           </span>
         )
