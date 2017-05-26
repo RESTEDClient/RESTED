@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
+<div
+  className="hNpSwj"
+>
+  <button
+    className="btn btn-link"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <h4>
+      Request body
+      <i
+        className="fa fa-angle-right"
+        role="presentation"
+      />
+    </h4>
+  </button>
+  <div
+    aria-expanded={null}
+    className="collapse row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="col-xs-12"
+      >
+        <div
+          className="checkbox"
+          style={undefined}
+        >
+          <label>
+            <input
+              checked={true}
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            Use form data
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12"
+        >
+          <button
+            className="hvMBRh btn btn-link"
+            disabled={false}
+            id="addParameter"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              className="fa fa-plus"
+              role="presentation"
+            />
+            Add parameter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
+<div
+  className="hNpSwj"
+>
+  <button
+    className="btn btn-link"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <h4>
+      Request body
+      <i
+        className="fa fa-angle-right"
+        role="presentation"
+      />
+    </h4>
+  </button>
+  <div
+    aria-expanded={null}
+    className="collapse row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="col-xs-12"
+      >
+        <div
+          className="checkbox"
+          style={undefined}
+        >
+          <label>
+            <input
+              disabled={false}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            Use form data
+          </label>
+        </div>
+      </div>
+      <div
+        className="col-xs-12"
+      >
+        <div
+          className="form-group"
+        >
+          <textarea
+            className="form-control"
+            id="requestBody"
+            name="data"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            rows={10}
+            type={undefined}
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

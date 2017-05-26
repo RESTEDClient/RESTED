@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`response component renders a result when given one 1`] = `
+<div
+  className="hvJMLd panel panel-default"
+  id={undefined}
+>
+  <div
+    className="panel-heading"
+  >
+    <div
+      className="hUDfQX"
+    >
+      <h3>
+        Response (
+        NaN
+        s) - 
+        <a
+          className="text-muted"
+          href="http://example.com"
+        >
+          http://example.com
+        </a>
+      </h3>
+    </div>
+  </div>
+  <div
+    className="panel-body"
+  >
+    <h3>
+      <span
+        className="cSFbuC"
+      >
+        200
+      </span>
+      <small>
+         
+        OK
+      </small>
+    </h3>
+    <div
+      className="hNpSwj"
+    >
+      <button
+        className="btn btn-link"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <h4>
+          Headers
+          <i
+            className="fa fa-angle-right"
+            role="presentation"
+          />
+        </h4>
+      </button>
+      <div
+        aria-expanded={null}
+        className="collapse row"
+      >
+        <div
+          className="col-xs-12"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`response component renders nothing given no props 1`] = `null`;

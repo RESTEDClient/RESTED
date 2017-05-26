@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`URLField should match the previous snapshot 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    className="col-sm-2 control-label"
+    htmlFor="url"
+  >
+    URL
+  </label>
+  <div
+    className="col-sm-10"
+  >
+    <input
+      autoFocus={true}
+      className="form-control"
+      id="url"
+      placeholder="https://example.com"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`URLField should match the previous snapshot with invalid field state 1`] = `
+<div
+  className="form-group has-error"
+>
+  <label
+    className="col-sm-2 control-label"
+    htmlFor="url"
+  >
+    URL
+  </label>
+  <div
+    className="col-sm-10"
+  >
+    <input
+      autoFocus={true}
+      className="form-control"
+      id="url"
+      placeholder="https://example.com"
+      type="text"
+    />
+  </div>
+</div>
+`;
