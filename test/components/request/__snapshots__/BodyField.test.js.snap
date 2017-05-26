@@ -26,42 +26,72 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
       className="col-xs-12"
     >
       <div
-        className="col-xs-12"
+        className="form-group"
       >
-        <div
-          className="checkbox"
-          style={undefined}
+        <label
+          className="col-sm-2 control-label"
+          htmlFor="bodyType"
         >
-          <label>
-            <input
-              checked={true}
-              disabled={false}
-              onChange={[Function]}
-              type="checkbox"
-            />
-            Use form data
-          </label>
+          Type
+        </label>
+        <div
+          className="col-sm-10"
+        >
+          <select
+            className="form-control"
+            id="bodyType"
+            name="bodyType"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Body type"
+            type={undefined}
+            value=""
+          >
+            <option
+              value="custom"
+            >
+              Custom
+            </option>
+            <option
+              value="json"
+            >
+              JSON
+            </option>
+            <option
+              value="multipart"
+            >
+              Multipart form data
+            </option>
+            <option
+              value="urlencoded"
+            >
+              URLencoded form data
+            </option>
+          </select>
         </div>
       </div>
       <div
-        className="row"
+        className="col-xs-12"
       >
         <div
-          className="col-xs-12"
+          className="form-group"
         >
-          <button
-            className="hvMBRh btn btn-link"
-            disabled={false}
-            id="addParameter"
-            onClick={[Function]}
-            type="button"
-          >
-            <i
-              className="fa fa-plus"
-              role="presentation"
-            />
-            Add parameter
-          </button>
+          <textarea
+            className="form-control"
+            id="requestBody"
+            name="data"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            rows={10}
+            type={undefined}
+            value=""
+          />
         </div>
       </div>
     </div>
@@ -95,20 +125,51 @@ exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
       className="col-xs-12"
     >
       <div
-        className="col-xs-12"
+        className="form-group"
       >
-        <div
-          className="checkbox"
-          style={undefined}
+        <label
+          className="col-sm-2 control-label"
+          htmlFor="bodyType"
         >
-          <label>
-            <input
-              disabled={false}
-              onChange={[Function]}
-              type="checkbox"
-            />
-            Use form data
-          </label>
+          Type
+        </label>
+        <div
+          className="col-sm-10"
+        >
+          <select
+            className="form-control"
+            id="bodyType"
+            name="bodyType"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Body type"
+            type={undefined}
+            value=""
+          >
+            <option
+              value="custom"
+            >
+              Custom
+            </option>
+            <option
+              value="json"
+            >
+              JSON
+            </option>
+            <option
+              value="multipart"
+            >
+              Multipart form data
+            </option>
+            <option
+              value="urlencoded"
+            >
+              URLencoded form data
+            </option>
+          </select>
         </div>
       </div>
       <div

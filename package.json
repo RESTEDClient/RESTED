@@ -16,6 +16,7 @@
     "test:watch": "jest --watchman --watchAll --config test/jest.conf.js",
     "test:snapshot": "jest --update-snapshot --config test/jest.conf.js",
     "test:debugger": "node --debug-brk --inspect ./node_modules/.bin/jest -i --config test/jest.conf.js",
+    "load": "web-ext run --no-reload",
     "eslint": "eslint src test",
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
@@ -78,6 +79,7 @@
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
+    "web-ext": "^1.9.1",
     "webpack": "^2.3.2",
     "whatwg-fetch": "^2.0.3"
   }

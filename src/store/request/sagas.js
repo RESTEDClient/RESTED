@@ -10,9 +10,9 @@ import { pushHistory } from 'store/history/actions';
 import { getUrlVariables } from 'store/urlVariables/selectors';
 import { requestForm } from 'components/Request';
 
-import { getPlaceholderUrl } from './selectors';
+import { getPlaceholderUrl, getHeaders } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
-import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED } from './types';
+import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED, CHANGE_BODY_TYPE } from './types';
 
 export function* getUrl(request) {
   if (!request.url) {
@@ -42,7 +42,7 @@ export function* createResource(request) {
   return yield call(prependHttp, resource);
 }
 
-export function* buildHeaders({ headers, basicAuth }) {
+export function* buildHeaders({ headers, basicAuth, bodyType }) {
   const parameters = yield call(getParameters);
   const requestHeaders = new Headers(reMapHeaders(headers, parameters));
   if (basicAuth && basicAuth.username) {
@@ -55,18 +55,47 @@ export function* buildHeaders({ headers, basicAuth }) {
   return requestHeaders;
 }
 
-function buildFormData({ formData }) {
-  if (formData && formData.filter(f => f.name).length > 0) {
-    const body = new FormData();
+function buildRequestData({ bodyType, formData }) {
+  switch (bodyType) {
+    case 'multipart':
+      if (formData && formData.filter(f => f.name).length > 0) {
+        const body = new FormData();
 
-    formData.forEach(f => {
-      body.append(f.name, f.value);
-    });
+        formData.forEach(f => {
+          body.append(f.name, f.value);
+        });
+        console.log('body', body);
 
-    return body;
+        return body;
+      }
+      break;
+
+    case 'urlencoded':
+      if (formData && formData.filter(f => f.name).length > 0) {
+        let body = '';
+
+        formData.forEach((field, index) => {
+          if (index !== 0) {
+            body += '&';
+          }
+          body += `${field.name}=${field.value}`;
+        });
+
+        return body;
+      }
+      break;
+
+    case 'json':
+      if (formData && formData.filter(f => f.name).length > 0) {
+        const body = reMapHeaders(formData);
+
+        return JSON.stringify(body);
+      }
+      break;
+
+    default:
+      return null;
   }
-
-  return null;
 }
 
 // Needed for unit tests to be consistent
@@ -107,7 +136,7 @@ export function* fetchData({ request }) {
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
-    const body = buildFormData(request);
+    const body = buildRequestData(request);
 
     const historyEntry = Immutable.fromJS(request)
       .set('url', resource)
@@ -149,8 +178,50 @@ function* selectRequest({ request }) {
   yield call(focusUrlField);
 }
 
+function setContentType(array, value) {
+  const index = array.findIndex(item => item.name === 'Content-Type');
+
+  if (index > -1) {
+    return [
+      ...array.slice(0, index),
+      { name: 'Content-Type', value },
+      ...array.slice(index + 1)
+    ];
+  } else {
+    return [
+      ...array,
+      { name: 'Content-Type', value },
+    ];
+  }
+}
+
+// TODO breaks when switching after request is sent
+function* setTypeHeaderSaga({ bodyType }) {
+  try {
+    let headers = yield select(getHeaders)
+    console.log('bodyType', bodyType);
+    console.log('headers', headers);
+    switch (bodyType) {
+      case 'multipart':
+        headers = setContentType(headers, 'multipart/form-data');
+        break;
+      case 'urlencoded':
+        headers = setContentType(headers, 'application/x-www-urlencoded');
+        break;
+      case 'json':
+        headers = setContentType(headers, 'application/json');
+        break;
+    }
+    console.log('headers', headers);
+    yield put(change(requestForm, 'headers', headers));
+  } catch (e) {
+    console.log('e', e);
+  }
+}
+
 export default function* rootSaga() {
   yield takeLatest(SEND_REQUEST, fetchData);
   yield takeEvery(SELECT_REQUESTED, selectRequest);
+  yield takeEvery(CHANGE_BODY_TYPE, setTypeHeaderSaga);
 }
 

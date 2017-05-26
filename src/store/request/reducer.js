@@ -3,7 +3,7 @@ import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
   CLEAR_RESPONSE,
-  USE_FORM_DATA,
+  CHANGE_BODY_TYPE,
 } from './types';
 
 const initialState = {
@@ -35,9 +35,11 @@ export default function (state = initialState, action) {
         loading: false,
       });
 
-    case USE_FORM_DATA:
+    case CHANGE_BODY_TYPE:
+      // Set Content-Type header to application/x-www-form-urlencoded
+      // Unset Content-Type when set to application/x-www-form-urlencoded
       return Object.assign({}, state, {
-        useFormData: action.useFormData,
+        bodyType: action.bodyType,
       });
 
     default:

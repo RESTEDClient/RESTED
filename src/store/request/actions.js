@@ -3,7 +3,7 @@ import {
   EXECUTE_REQUEST,
   RECEIVE_RESPONSE,
   CLEAR_RESPONSE,
-  USE_FORM_DATA,
+  CHANGE_BODY_TYPE,
   SELECT_REQUESTED,
 } from './types';
 
@@ -19,8 +19,8 @@ export function clearRequest() {
   return { type: CLEAR_RESPONSE };
 }
 
-export function setUseFormData(useFormData) {
-  return { type: USE_FORM_DATA, useFormData };
+export function changeBodyType(bodyType) {
+  return { type: CHANGE_BODY_TYPE, bodyType };
 }
 
 export function selectRequest(request) {
