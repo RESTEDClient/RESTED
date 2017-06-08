@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
 import { fetchData, createResource, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
-import { getPlaceholderUrl } from 'store/request/selectors';
+import { getPlaceholderUrl, getUseFormData } from 'store/request/selectors';
 import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
@@ -44,8 +44,14 @@ describe('fetchData saga', () => {
     }));
   });
 
-  it('should call createResource to build a URL', () => {
+  it('should fetch the "useFormData" bool from the request store', () => {
     expect(iterator.next().value).toEqual(
+      select(getUseFormData),
+    );
+  });
+
+  it('should call createResource to build a URL', () => {
+    expect(iterator.next(true).value).toEqual(
       call(createResource, mockRequest),
     );
   });

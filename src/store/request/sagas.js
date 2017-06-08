@@ -10,7 +10,7 @@ import { pushHistory } from 'store/history/actions';
 import { getUrlVariables } from 'store/urlVariables/selectors';
 import { requestForm } from 'components/Request';
 
-import { getPlaceholderUrl } from './selectors';
+import { getPlaceholderUrl, getUseFormData } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
 import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED } from './types';
 
@@ -104,10 +104,13 @@ function createUUID() {
 export function* fetchData({ request }) {
   try {
     yield put(executeRequest());
+    const useFormData = yield select(getUseFormData);
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
-    const body = buildFormData(request);
+    const body = useFormData
+      ? buildFormData(request)
+      : request.data;
 
     const historyEntry = Immutable.fromJS(request)
       .set('url', resource)
