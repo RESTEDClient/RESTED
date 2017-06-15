@@ -64,10 +64,16 @@ export function Response(props) {
     : approximateSizeFromLength(body);
   const type = getContentType(contentType && contentType.value);
 
-  if (type.json) {
-    body = JSON.stringify(JSON.parse(body), null, 2);
-  } else if (type.xml) {
-    body = formatXml(body);
+  try {
+    if (type.json) {
+      body = JSON.stringify(JSON.parse(body), null, 2);
+    } else if (type.xml) {
+      body = formatXml(body);
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Encountered an error while formatting response as ' +
+      `${contentType && contentType.value}. Falling back to plain text`, e);
   }
 
   return (
