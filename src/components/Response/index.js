@@ -34,10 +34,19 @@ Titlebar.propTypes = {
 export function Response(props) {
   const {
     response,
+    error,
     loading,
     highlightingDisabled,
     wrapResponse,
   } = props;
+
+  if (error) {
+    return (
+      <Alert bsStyle="danger">
+        {`An error occured while fetching the resource: ${error}`}
+      </Alert>
+    );
+  }
 
   if (loading) {
     return (
@@ -64,10 +73,16 @@ export function Response(props) {
     : approximateSizeFromLength(body);
   const type = getContentType(contentType && contentType.value);
 
-  if (type.json) {
-    body = JSON.stringify(JSON.parse(body), null, 2);
-  } else if (type.xml) {
-    body = formatXml(body);
+  try {
+    if (type.json) {
+      body = JSON.stringify(JSON.parse(body), null, 2);
+    } else if (type.xml) {
+      body = formatXml(body);
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Encountered an error while formatting response as ' +
+      `${contentType && contentType.value}. Falling back to plain text`, e);
   }
 
   return (
@@ -114,6 +129,10 @@ export function Response(props) {
 
 Response.propTypes = {
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Error),
+  ]),
   response: responsePropTypes,
   highlightingDisabled: PropTypes.bool.isRequired,
   wrapResponse: PropTypes.bool.isRequired,
@@ -121,6 +140,7 @@ Response.propTypes = {
 
 const mapStateToProps = state => ({
   response: getResponse(state),
+  error: state.request.error,
   loading: getLoading(state),
   highlightingDisabled: isDisabledHighlighting(state),
   wrapResponse: isWrapResponse(state),

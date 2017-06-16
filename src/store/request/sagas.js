@@ -21,7 +21,7 @@ export function* getUrl(request) {
     return fallbackUrl;
   }
 
-  return request.url;
+  return request.url.trim();
 }
 
 export function* getParameters() {

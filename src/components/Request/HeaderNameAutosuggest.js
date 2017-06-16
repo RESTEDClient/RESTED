@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { FormControl } from 'react-bootstrap';
+import classNames from 'classnames';
 import Autosuggest from 'react-autosuggest';
 
 import headers from 'constants/commonHeaders';
@@ -38,9 +38,13 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
-const renderInputComponent = inputProps => (
-  <FormControl type="text" {...inputProps} />
+const renderInputComponent = ({ className, ...rest }) => (
+  <input className={classNames(className, 'form-control')} {...rest} />
 );
+
+renderInputComponent.propTypes = {
+  className: PropTypes.string,
+};
 
 export default class HeaderNameAutosuggest extends React.PureComponent {
   static propTypes = {
