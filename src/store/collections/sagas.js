@@ -67,6 +67,11 @@ function* toggleCollapsedSaga({ collectionIndex }) {
 }
 
 function* addRequestSaga({ request, collectionIndex }) {
+  /* eslint-disable */
+  // Debugging for #98
+  console.log('Adding request', request, 'to collection', collectionIndex);
+  /* eslint-enable */
+
   yield put({ type: ADD_REQUEST, request, collectionIndex });
   yield call(updateLocalStorage);
 }
