@@ -108,9 +108,14 @@ export function* fetchData({ request }) {
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
-    const body = useFormData
-      ? buildFormData(request)
-      : request.data;
+
+    // Build body for requests that support it
+    let body;
+    if (!['GET', 'HEAD'].includes(request.method)) {
+      body = useFormData
+        ? buildFormData(request)
+        : request.data;
+    }
 
     const historyEntry = Immutable.fromJS(request)
       .set('url', resource)
