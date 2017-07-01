@@ -1,4 +1,4 @@
-![RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-logo-full.png)
+![RESTED](https://github.com/esphen/RESTED/raw/master/doc/images/rested-logo-full.png)
 
 A REST client for the rest of us.
 
@@ -22,7 +22,7 @@ it is also awesomely easy to contribute to the project! Everything is
 javascript and html using React.js and Redux, so come join! All contributions
 welcome.
 
-![Image of RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-app.png)
+![Image of RESTED](https://github.com/esphen/RESTED/raw/master/doc/images/rested-app.png)
 
 ## How to contribute
 In order to work on this project, you're going to need a few things:
@@ -78,4 +78,3 @@ following command. Then open the provided URL in Chrome.
 
     yarn run test:watch
 
-![Image of RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-app.png)

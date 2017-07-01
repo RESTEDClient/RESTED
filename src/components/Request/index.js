@@ -51,7 +51,7 @@ function Request(props) {
           names={['basicAuth.username', 'basicAuth.password']}
           component={BasicAuthField}
         />
-        {['POST', 'PUT', 'PATCH', 'CUSTOM'].includes(formValues.method) && (
+        {!['GET', 'HEAD'].includes(formValues.method) && (
           <BodyField />
         )}
       </Form>

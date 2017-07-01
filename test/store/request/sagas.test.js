@@ -11,7 +11,7 @@ import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
 
 const mockRequest = {
-  method: 'GET',
+  method: 'POST',
   url: 'http://visitnorway.com',
   headers: [{
     name: 'Foo',
@@ -85,7 +85,7 @@ describe('fetchData saga', () => {
 
     expect(iterator.next(timeBefore).value).toEqual(
       call(fetch, 'foo', {
-        method: 'GET',
+        method: 'POST',
         body,
         redirect: 'follow',
         headers: new Headers({
@@ -113,7 +113,7 @@ describe('fetchData saga', () => {
     expect(iterator.next().value).toEqual(put({
       type: types.RECEIVE_RESPONSE,
       response: {
-        method: 'GET',
+        method: 'POST',
         time: timePassed,
         url: mockResponse.url,
         body: undefined,

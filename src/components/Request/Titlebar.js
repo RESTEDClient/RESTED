@@ -53,6 +53,15 @@ function Titlebar(props) {
       <IconButton
         onClick={() => {
           if (formPristine || formInvalid) {
+            /* eslint-disable */
+            // Debugging for #98
+            console.log(
+              'Not adding request because ' +
+              `formPristine=${formPristine} || formInvalid=${formInvalid}`,
+              props,
+            );
+            /* eslint-enable */
+
             // Set URL as touched to give feedback to user
             props.touch('request', 'url');
             return;
