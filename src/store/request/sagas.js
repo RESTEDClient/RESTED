@@ -145,7 +145,7 @@ export function* fetchData({ request }) {
       body: responseBody,
       headers: responseHeaders,
       method: request.method,
-      time: millisPassed,
+      totalTime: millisPassed,
     }));
   } catch (error) {
     yield put({ type: REQUEST_FAILED, error });

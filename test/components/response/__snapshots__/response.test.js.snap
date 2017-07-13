@@ -9,12 +9,12 @@ exports[`response component renders a result when given one 1`] = `
     className="panel-heading"
   >
     <div
-      className="hUDfQX"
+      className="fOYyKI"
     >
       <h3>
         Response (
-        NaN
-        s) - 
+        0.123s
+        ) - 
         <a
           className="text-muted"
           href="http://example.com"

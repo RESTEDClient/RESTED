@@ -1,150 +1,91 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Panel, Alert } from 'react-bootstrap';
-import Highlight from 'react-highlight';
-import formatXml from 'xml-formatter';
+import { Panel, Alert, Accordion } from 'react-bootstrap';
 
-import * as Actions from 'store/request/actions';
-import { getResponse, getLoading } from 'store/request/selectors';
-import { isDisabledHighlighting, isWrapResponse } from 'store/options/selectors';
-import responsePropTypes, { responseShape } from 'propTypes/response';
-import getContentType from 'utils/contentType';
-import approximateSizeFromLength from 'utils/approximateSizeFromLength';
+import { getResponse, getInterceptedResponse, getRedirectChain, getLoading } from 'store/request/selectors';
+import responsePropTypes from 'propTypes/response';
 
-import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Loading from './Loading';
-import Headers from './Headers';
-import RenderedResponse from './RenderedResponse';
+import Redirect from './Redirect';
+import Response from './Response';
 
-function Titlebar({ url, time }) {
-  return (
-    <StyledHeader>
-      <h3>
-        Response ({time / 1000}s) - <a href={url} className="text-muted">{url}</a>
-      </h3>
-    </StyledHeader>
-  );
-}
+export class ResponseAccordion extends React.Component {
+  // TODO How to reset when user sends a new request?
+  state = {
+    expanded: 'response',
+  };
 
-Titlebar.propTypes = {
-  url: responseShape.url,
-  time: responseShape.time,
-};
+  setActivePanel = activeKey => this.setState({ activeKey });
 
-export function Response(props) {
-  const {
-    response,
-    error,
-    loading,
-    highlightingDisabled,
-    wrapResponse,
-  } = props;
+  toggleExpanded = index => {
+    this.setState({ expanded: index === this.state.expanded ? null : index });
+  };
 
-  if (error) {
-    return (
-      <Alert bsStyle="danger">
-        {`An error occured while fetching the resource: ${error}`}
-      </Alert>
-    );
-  }
+  render() {
+    const {
+      response,
+      error,
+      loading,
+      redirectChain,
+      interceptedResponse,
+    } = this.props;
 
-  if (loading) {
-    return (
-      <Panel>
-        <Loading />
-      </Panel>
-    );
-  }
-
-  if (!response) return null;
-
-  const { method, url, headers, time } = response;
-  let { body } = response;
-
-  const contentLength = headers.find(header => (
-    header.name.toLowerCase() === 'content-length'
-  ));
-  const contentType = headers.find(header => (
-    header.name.toLowerCase() === 'content-type'
-  ));
-
-  const contentSize = contentLength
-    ? Number(contentLength.value)
-    : approximateSizeFromLength(body);
-  const type = getContentType(contentType && contentType.value);
-
-  try {
-    if (type.json) {
-      body = JSON.stringify(JSON.parse(body), null, 2);
-    } else if (type.xml) {
-      body = formatXml(body);
+    if (error) {
+      return (
+        <Alert bsStyle="danger">
+          {`An error occured while fetching the resource: ${error}`}
+        </Alert>
+      );
     }
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.warn('Encountered an error while formatting response as ' +
-      `${contentType && contentType.value}. Falling back to plain text`, e);
+
+    if (loading) {
+      return (
+        <Panel>
+          <Loading />
+        </Panel>
+      );
+    }
+
+    if (!response) return null;
+
+    return (
+      <Accordion>
+        {redirectChain.map((redirectResponse, i) => (
+          <Redirect
+            response={redirectResponse}
+            headers={redirectResponse.responseHeaders}
+            isExpanded={this.state.expanded === i}
+            setExpanded={() => this.toggleExpanded(i)}
+          />
+        ))}
+        <Response
+          response={response}
+          redirectChain={redirectChain}
+          interceptedResponse={interceptedResponse}
+        />
+      </Accordion>
+    );
   }
-
-  return (
-    <StyledResponse
-      wrapResponse={wrapResponse}
-      header={<Titlebar method={method} url={url} time={time} />}
-    >
-      <h3>
-        <Status
-          green={response.status >= 200 && response.status < 300}
-          red={response.status >= 400 && response.status < 600}
-        >
-          {response.status}
-        </Status>
-        <small> {response.statusText}</small>
-      </h3>
-
-      <Headers headers={headers} />
-      {type.html && <RenderedResponse html={body} />}
-
-      {!highlightingDisabled && contentSize < 20000
-        ? (
-          <Highlight>
-            {body}
-          </Highlight>
-        ) : (
-          <span>
-            {contentSize >= 20000 && (
-              <Alert bsStyle="warning">
-                The size of the response is greater than 20KB, syntax
-                highlighting has been disabled for performance reasons.
-              </Alert>
-            )}
-
-            <code><pre>
-              {body}
-            </pre></code>
-          </span>
-        )
-      }
-    </StyledResponse>
-  );
 }
 
-Response.propTypes = {
+ResponseAccordion.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.instanceOf(Error),
   ]),
   response: responsePropTypes,
-  highlightingDisabled: PropTypes.bool.isRequired,
-  wrapResponse: PropTypes.bool.isRequired,
+  redirectChain: PropTypes.arrayOf(),
+  interceptedResponse: PropTypes.shape({}),
 };
 
 const mapStateToProps = state => ({
   response: getResponse(state),
+  interceptedResponse: getInterceptedResponse(state),
+  redirectChain: getRedirectChain(state),
   error: state.request.error,
   loading: getLoading(state),
-  highlightingDisabled: isDisabledHighlighting(state),
-  wrapResponse: isWrapResponse(state),
 });
 
-export default connect(mapStateToProps, Actions)(Response);
+export default connect(mapStateToProps)(ResponseAccordion);
 

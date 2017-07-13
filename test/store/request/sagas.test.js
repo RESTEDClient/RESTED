@@ -41,6 +41,7 @@ describe('fetchData saga', () => {
   it('should dispatch an executeRequest action', () => {
     expect(iterator.next().value).toEqual(put({
       type: types.EXECUTE_REQUEST,
+      lastRequestTime: 1482363367071,
     }));
   });
 
@@ -114,7 +115,7 @@ describe('fetchData saga', () => {
       type: types.RECEIVE_RESPONSE,
       response: {
         method: 'POST',
-        time: timePassed,
+        totalTime: timePassed,
         url: mockResponse.url,
         body: undefined,
         status: mockResponse.status,

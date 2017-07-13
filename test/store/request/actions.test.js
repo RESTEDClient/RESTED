@@ -23,6 +23,7 @@ describe('actions', () => {
   it('should create an action to execute a request', () => {
     const expectedAction = {
       type: types.EXECUTE_REQUEST,
+      lastRequestTime: 1482363367071,
     };
 
     expect(actions.executeRequest()).toEqual(expectedAction);

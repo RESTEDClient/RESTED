@@ -38,6 +38,7 @@
   },
   "permissions": [
     "<all_urls>",
+    "webRequest",
     "storage"
   ]
 }

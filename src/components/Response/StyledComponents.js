@@ -23,6 +23,8 @@ export const LoadingSpinner = styled(Fonticon)`
 `;
 
 export const StyledHeader = styled.div`
+  ${props => props.expandable && 'cursor: pointer;'}
+
   h3 {
     font-size: 15px;
     margin: 4px 0;
