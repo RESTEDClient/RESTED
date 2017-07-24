@@ -10,7 +10,7 @@ import { pushHistory } from 'store/history/actions';
 import { getUrlVariables } from 'store/urlVariables/selectors';
 import { requestForm } from 'components/Request';
 
-import { getPlaceholderUrl, getHeaders } from './selectors';
+import { getPlaceholderUrl, getUseFormData, getHeaders  } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
 import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED, CHANGE_BODY_TYPE } from './types';
 
@@ -21,7 +21,7 @@ export function* getUrl(request) {
     return fallbackUrl;
   }
 
-  return request.url;
+  return request.url.trim();
 }
 
 export function* getParameters() {
@@ -133,10 +133,18 @@ function createUUID() {
 export function* fetchData({ request }) {
   try {
     yield put(executeRequest());
+    const useFormData = yield select(getUseFormData);
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
-    const body = buildRequestData(request);
+
+    // Build body for requests that support it
+    let body;
+    if (!['GET', 'HEAD'].includes(request.method)) {
+      body = useFormData
+        ? buildRequestData(request)
+        : request.data;
+    }
 
     const historyEntry = Immutable.fromJS(request)
       .set('url', resource)
@@ -166,7 +174,7 @@ export function* fetchData({ request }) {
       body: responseBody,
       headers: responseHeaders,
       method: request.method,
-      time: millisPassed,
+      totalTime: millisPassed,
     }));
   } catch (error) {
     yield put({ type: REQUEST_FAILED, error });

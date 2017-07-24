@@ -5,13 +5,13 @@ import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
 import { fetchData, createResource, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
-import { getPlaceholderUrl } from 'store/request/selectors';
+import { getPlaceholderUrl, getUseFormData } from 'store/request/selectors';
 import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
 
 const mockRequest = {
-  method: 'GET',
+  method: 'POST',
   url: 'http://visitnorway.com',
   headers: [{
     name: 'Foo',
@@ -41,11 +41,18 @@ describe('fetchData saga', () => {
   it('should dispatch an executeRequest action', () => {
     expect(iterator.next().value).toEqual(put({
       type: types.EXECUTE_REQUEST,
+      lastRequestTime: 1482363367071,
     }));
   });
 
-  it('should call createResource to build a URL', () => {
+  it('should fetch the "useFormData" bool from the request store', () => {
     expect(iterator.next().value).toEqual(
+      select(getUseFormData),
+    );
+  });
+
+  it('should call createResource to build a URL', () => {
+    expect(iterator.next(true).value).toEqual(
       call(createResource, mockRequest),
     );
   });
@@ -79,7 +86,7 @@ describe('fetchData saga', () => {
 
     expect(iterator.next(timeBefore).value).toEqual(
       call(fetch, 'foo', {
-        method: 'GET',
+        method: 'POST',
         body,
         redirect: 'follow',
         headers: new Headers({
@@ -107,8 +114,8 @@ describe('fetchData saga', () => {
     expect(iterator.next().value).toEqual(put({
       type: types.RECEIVE_RESPONSE,
       response: {
-        method: 'GET',
-        time: timePassed,
+        method: 'POST',
+        totalTime: timePassed,
         url: mockResponse.url,
         body: undefined,
         status: mockResponse.status,

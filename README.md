@@ -1,4 +1,4 @@
-![RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-logo-full.png)
+![RESTED](https://github.com/esphen/RESTED/raw/master/doc/images/rested-logo-full.png)
 
 A REST client for the rest of us.
 
@@ -8,7 +8,8 @@ _Note: This is the source code, the extension download is [here](https://addons.
 [![Coverage Status](https://coveralls.io/repos/github/esphen/RESTED/badge.svg?branch=next)](https://coveralls.io/github/esphen/RESTED?branch=next)
 [![Join the chat at https://gitter.im/RESTEDclient](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RESTEDclient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**RESTED** is a new take on rest clients for browsers.
+**RESTED** is a new take on REST clients for browsers.
+
 It is designed to be easy to use to let you work as effective as possible.
 It features all the most commonly used HTTP methods, setting headers, beautiful themes,
 saving requests in your browser, and more.
@@ -21,7 +22,7 @@ it is also awesomely easy to contribute to the project! Everything is
 javascript and html using React.js and Redux, so come join! All contributions
 welcome.
 
-![Image of RESTED](https://github.com/esphen/RESTED/raw/master/images/rested-app.png)
+![Image of RESTED](https://github.com/esphen/RESTED/raw/master/doc/images/rested-app.png)
 
 ## How to contribute
 In order to work on this project, you're going to need a few things:
@@ -57,8 +58,7 @@ If you need to empty and reset the database, enter
 the entire database and force a clean install on refresh.
 
 **Please develop on the next branch.**
-This is where all the magic happens, and all the development on the react
-rewrite takes place.
+This is where all the magic happens.
 
 ### Tests
 

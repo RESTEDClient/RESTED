@@ -7,7 +7,6 @@ import flow from 'lodash.flow';
 import * as requestActions from 'store/request/actions';
 import * as collectionsActions from 'store/collections/actions';
 import { isEditMode } from 'store/config/selectors';
-import requestValidation from 'utils/requestValidation';
 import { DEFAULT_REQUEST } from 'constants/constants';
 
 import Titlebar from './Titlebar';
@@ -52,7 +51,7 @@ function Request(props) {
           names={['basicAuth.username', 'basicAuth.password']}
           component={BasicAuthField}
         />
-        {['POST', 'PUT', 'PATCH', 'CUSTOM'].includes(formValues.method) && (
+        {!['GET', 'HEAD'].includes(formValues.method) && (
           <BodyField />
         )}
       </Form>
@@ -72,7 +71,6 @@ Request.propTypes = {
 
 const formOptions = {
   form: requestForm,
-  validate: requestValidation,
 };
 
 const mapStateToProps = state => ({

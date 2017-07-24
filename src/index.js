@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import localforage from 'localforage';
 import localDriver from 'localforage-webextensionstorage-driver/local';
 import syncDriver from 'localforage-webextensionstorage-driver/sync';
+import { initializeInterceptors } from 'utils/requestInterceptors';
 
 const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 
@@ -26,8 +27,11 @@ Promise.all([
   return null;
 })
 .then(() => {
+  const store = configureStore.default();
+  initializeInterceptors(store);
+
   ReactDOM.render(
-    <Provider store={configureStore.default()}>
+    <Provider store={store}>
       <Root.default />
     </Provider>,
     document.getElementById('app'),

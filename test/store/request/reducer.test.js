@@ -11,6 +11,9 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
       useFormData: true,
     });
@@ -20,11 +23,15 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: types.EXECUTE_REQUEST,
+        lastRequestTime: 1482363367071,
       }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: 1482363367071,
       loading: true,
       useFormData: true,
     });
@@ -40,6 +47,9 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
       useFormData: true,
     });
@@ -54,6 +64,9 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
       useFormData: true,
     });
@@ -69,6 +82,9 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
       useFormData: true,
     });
@@ -82,6 +98,9 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
       useFormData: false,
     });
