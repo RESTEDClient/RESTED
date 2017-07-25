@@ -15,7 +15,6 @@ describe('reducer', () => {
       redirectChain: [],
       lastRequestTime: null,
       loading: false,
-      useFormData: true,
     });
   });
 
@@ -33,7 +32,6 @@ describe('reducer', () => {
       redirectChain: [],
       lastRequestTime: 1482363367071,
       loading: true,
-      useFormData: true,
     });
   });
 
@@ -51,7 +49,6 @@ describe('reducer', () => {
       redirectChain: [],
       lastRequestTime: null,
       loading: false,
-      useFormData: true,
     });
   });
 
@@ -68,41 +65,6 @@ describe('reducer', () => {
       redirectChain: [],
       lastRequestTime: null,
       loading: false,
-      useFormData: true,
-    });
-  });
-
-  it('should handle USE_FORM_DATA', () => {
-    expect(
-      reducer(undefined, {
-        type: types.USE_FORM_DATA,
-        useFormData: true,
-      }),
-    ).toEqual({
-      placeholderUrl: 'https://example.com',
-      request: null,
-      response: null,
-      interceptedResponse: null,
-      redirectChain: [],
-      lastRequestTime: null,
-      loading: false,
-      useFormData: true,
-    });
-
-    expect(
-      reducer(undefined, {
-        type: types.USE_FORM_DATA,
-        useFormData: false,
-      }),
-    ).toEqual({
-      placeholderUrl: 'https://example.com',
-      request: null,
-      response: null,
-      interceptedResponse: null,
-      redirectChain: [],
-      lastRequestTime: null,
-      loading: false,
-      useFormData: false,
     });
   });
 });

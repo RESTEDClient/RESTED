@@ -12,11 +12,10 @@
     "multiprocess": true
   },
   "scripts": {
-    "test": "jest --coverage --config test/jest.conf.js",
-    "test:watch": "jest --watchman --watchAll --config test/jest.conf.js",
-    "test:snapshot": "jest --update-snapshot --config test/jest.conf.js",
-    "test:debugger": "node --debug-brk --inspect ./node_modules/.bin/jest -i --config test/jest.conf.js",
-    "load": "web-ext run --no-reload",
+    "test": "jest --coverage",
+    "test:watch": "jest --watchman --watchAll",
+    "test:snapshot": "jest --update-snapshot",
+    "test:debugger": "node --debug-brk --inspect ./node_modules/.bin/jest -i",
     "eslint": "eslint src test",
     "eslint:fix": "eslint --fix src test",
     "start": "npm run dev",
@@ -42,7 +41,7 @@
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
-    "redux-form": "^6.6.0",
+    "redux-form": "^7.0.1",
     "redux-saga": "^0.14.3",
     "reselect": "^3.0.0",
     "styled-components": "^1.4.4",
@@ -72,15 +71,14 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
     "husky": "^0.13.3",
-    "jest": "^19.0.2",
+    "jest": "^20.0.4",
     "react-addons-test-utils": "^15.4.2",
     "react-dnd-test-backend": "^2.3.0",
     "react-test-renderer": "^15.4.2",
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
-    "web-ext": "^1.9.1",
-    "webpack": "^2.3.2",
+    "webpack": "^3.4.0",
     "whatwg-fetch": "^2.0.3"
   }
 }

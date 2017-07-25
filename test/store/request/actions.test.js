@@ -46,20 +46,20 @@ describe('actions', () => {
     expect(actions.clearRequest()).toEqual(expectedAction);
   });
 
-  it('should create an action to set useFormData', () => {
+  it('should create an action to change body type', () => {
     let expectedAction = {
-      type: types.USE_FORM_DATA,
-      useFormData: true,
+      type: types.CHANGE_BODY_TYPE,
+      bodyType: 'json',
     };
 
-    expect(actions.setUseFormData(true)).toEqual(expectedAction);
+    expect(actions.changeBodyType('json')).toEqual(expectedAction);
 
     expectedAction = {
-      type: types.USE_FORM_DATA,
-      useFormData: false,
+      type: types.CHANGE_BODY_TYPE,
+      bodyType: 'custom',
     };
 
-    expect(actions.setUseFormData(false)).toEqual(expectedAction);
+    expect(actions.changeBodyType('custom')).toEqual(expectedAction);
   });
 
   it('should an action to send a request', () => {

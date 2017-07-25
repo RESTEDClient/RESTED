@@ -4,7 +4,11 @@ import {
   TOGGLE_EDIT,
 } from './types';
 
-const initialState = {};
+const initialState = {
+  requestBody: {
+    expanded: true,
+  },
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {

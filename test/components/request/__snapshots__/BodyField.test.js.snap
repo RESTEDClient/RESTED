@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
+exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
 <div
   className="hNpSwj"
 >
@@ -29,13 +29,13 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
         className="form-group"
       >
         <label
-          className="col-sm-2 control-label"
+          className="col-xs-2 control-label"
           htmlFor="bodyType"
         >
           Type
         </label>
         <div
-          className="col-sm-10"
+          className="col-xs-8"
         >
           <select
             className="form-control"
@@ -99,7 +99,7 @@ exports[`BodyField should match the previous snapshot when !!useFormData 1`] = `
 </div>
 `;
 
-exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
+exports[`BodyField should match the previous snapshot when bodyType is json 1`] = `
 <div
   className="hNpSwj"
 >
@@ -128,13 +128,13 @@ exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
         className="form-group"
       >
         <label
-          className="col-sm-2 control-label"
+          className="col-xs-2 control-label"
           htmlFor="bodyType"
         >
           Type
         </label>
         <div
-          className="col-sm-10"
+          className="col-xs-8"
         >
           <select
             className="form-control"
@@ -173,24 +173,234 @@ exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
         </div>
       </div>
       <div
-        className="col-xs-12"
+        className="eWjddY"
       >
         <div
-          className="form-group"
+          className="row"
         >
-          <textarea
+          <div
+            className="col-xs-12"
+          >
+            <button
+              className="hvMBRh btn btn-link"
+              disabled={false}
+              id="addParameter"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="fa fa-plus"
+                role="presentation"
+              />
+              Add parameter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BodyField should match the previous snapshot when bodyType is multipart 1`] = `
+<div
+  className="hNpSwj"
+>
+  <button
+    className="btn btn-link"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <h4>
+      Request body
+      <i
+        className="fa fa-angle-right"
+        role="presentation"
+      />
+    </h4>
+  </button>
+  <div
+    aria-expanded={null}
+    className="collapse row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="col-xs-2 control-label"
+          htmlFor="bodyType"
+        >
+          Type
+        </label>
+        <div
+          className="col-xs-8"
+        >
+          <select
             className="form-control"
-            id="requestBody"
-            name="data"
+            id="bodyType"
+            name="bodyType"
             onBlur={[Function]}
             onChange={[Function]}
             onDragStart={[Function]}
             onDrop={[Function]}
             onFocus={[Function]}
-            rows={10}
+            placeholder="Body type"
             type={undefined}
             value=""
-          />
+          >
+            <option
+              value="custom"
+            >
+              Custom
+            </option>
+            <option
+              value="json"
+            >
+              JSON
+            </option>
+            <option
+              value="multipart"
+            >
+              Multipart form data
+            </option>
+            <option
+              value="urlencoded"
+            >
+              URLencoded form data
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="eWjddY"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-xs-12"
+          >
+            <button
+              className="hvMBRh btn btn-link"
+              disabled={false}
+              id="addParameter"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="fa fa-plus"
+                role="presentation"
+              />
+              Add parameter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BodyField should match the previous snapshot when bodyType is urlencoded 1`] = `
+<div
+  className="hNpSwj"
+>
+  <button
+    className="btn btn-link"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <h4>
+      Request body
+      <i
+        className="fa fa-angle-right"
+        role="presentation"
+      />
+    </h4>
+  </button>
+  <div
+    aria-expanded={null}
+    className="collapse row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="col-xs-2 control-label"
+          htmlFor="bodyType"
+        >
+          Type
+        </label>
+        <div
+          className="col-xs-8"
+        >
+          <select
+            className="form-control"
+            id="bodyType"
+            name="bodyType"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            placeholder="Body type"
+            type={undefined}
+            value=""
+          >
+            <option
+              value="custom"
+            >
+              Custom
+            </option>
+            <option
+              value="json"
+            >
+              JSON
+            </option>
+            <option
+              value="multipart"
+            >
+              Multipart form data
+            </option>
+            <option
+              value="urlencoded"
+            >
+              URLencoded form data
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="eWjddY"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-xs-12"
+          >
+            <button
+              className="hvMBRh btn btn-link"
+              disabled={false}
+              id="addParameter"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="fa fa-plus"
+                role="presentation"
+              />
+              Add parameter
+            </button>
+          </div>
         </div>
       </div>
     </div>

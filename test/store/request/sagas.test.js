@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
 import { fetchData, createResource, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
-import { getPlaceholderUrl, getUseFormData } from 'store/request/selectors';
+import { getPlaceholderUrl } from 'store/request/selectors';
 import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
@@ -13,6 +13,7 @@ import { prependHttp } from 'utils/request';
 const mockRequest = {
   method: 'POST',
   url: 'http://visitnorway.com',
+  bodyType: 'multipart',
   headers: [{
     name: 'Foo',
     value: 'Bar',
@@ -43,12 +44,6 @@ describe('fetchData saga', () => {
       type: types.EXECUTE_REQUEST,
       lastRequestTime: 1482363367071,
     }));
-  });
-
-  it('should fetch the "useFormData" bool from the request store', () => {
-    expect(iterator.next().value).toEqual(
-      select(getUseFormData),
-    );
   });
 
   it('should call createResource to build a URL', () => {

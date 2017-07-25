@@ -173,8 +173,12 @@ export function BodyField({ bodyType, changeBodyType }) {
   );
 }
 
+BodyField.defaultProps = {
+  bodyType: 'json',
+};
+
 BodyField.propTypes = {
-  bodyType: PropTypes.oneOf(['json', 'multipart', 'urlencoded', 'custom']).isRequired,
+  bodyType: PropTypes.oneOf(['json', 'multipart', 'urlencoded', 'custom']),
   changeBodyType: PropTypes.func.isRequired,
 };
 

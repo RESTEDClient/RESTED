@@ -5,7 +5,6 @@ import {
   PUSH_REDIRECT_CHAIN,
   RECEIVE_RESPONSE,
   CLEAR_RESPONSE,
-  CHANGE_BODY_TYPE,
   REQUEST_FAILED,
 } from './types';
 
@@ -19,7 +18,6 @@ const initialState = {
   redirectChain: [],
   lastRequestTime: null,
   loading: false,
-  useFormData: true,
 };
 
 export default function (state = initialState, action) {
@@ -58,13 +56,6 @@ export default function (state = initialState, action) {
         response: null,
         loading: false,
         error: undefined,
-      });
-
-    case CHANGE_BODY_TYPE:
-      // Set Content-Type header to application/x-www-form-urlencoded
-      // Unset Content-Type when set to application/x-www-form-urlencoded
-      return Object.assign({}, state, {
-        bodyType: action.bodyType,
       });
 
     case REQUEST_FAILED:

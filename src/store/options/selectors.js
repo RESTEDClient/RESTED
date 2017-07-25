@@ -33,6 +33,11 @@ export const getHistorySize = createSelector(
   options => options && options.getIn(['options', 'historySize'], 10),
 );
 
+export const getBodyType = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'bodyType'], 'json'),
+);
+
 export const isDisabledHighlighting = createSelector(
   [getOptions],
   options => options && options.getIn(['options', 'disableHighlighting'], false),

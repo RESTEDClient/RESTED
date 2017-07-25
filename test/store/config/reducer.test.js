@@ -11,10 +11,15 @@ describe('reducer', () => {
       expanded: true,
     },
   };
+
+  const defaultState = {
+    requestBody: {
+      expanded: true,
+    },
+  };
+
   it('should return the initial state', () => {
-    expect(
-      reducer(undefined, {}),
-    ).toEqual({});
+    expect(reducer(undefined, {})).toEqual(defaultState);
   });
 
   it('should handle SET_EXPANDED', () => {
@@ -24,6 +29,7 @@ describe('reducer', () => {
         id: 'foo',
       }),
     ).toEqual({
+      ...defaultState,
       foo: {
         expanded: true,
       },
@@ -35,6 +41,7 @@ describe('reducer', () => {
         id: 'headers',
       }),
     ).toEqual({
+      ...defaultState,
       headers: {
         expanded: true,
       },

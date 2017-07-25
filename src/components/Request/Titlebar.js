@@ -107,7 +107,7 @@ Titlebar.propTypes = {
   removeModal: PropTypes.func.isRequired,
   formPristine: PropTypes.bool.isRequired,
   formInvalid: PropTypes.bool.isRequired,
-  collectionsMinimized: PropTypes.bool.isRequired,
+  collectionsMinimized: PropTypes.bool,
   isEditing: PropTypes.bool.isRequired,
   editingRequest: PropTypes.shape({
     name: PropTypes.string,
