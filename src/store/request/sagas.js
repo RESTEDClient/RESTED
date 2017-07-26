@@ -4,6 +4,7 @@ import { initialize, change } from 'redux-form';
 import { call, apply, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import base64Encode from 'utils/base64';
+import buildRequestData from 'utils/buildRequestData';
 import { reMapHeaders, focusUrlField } from 'utils/requestUtils';
 import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
@@ -56,49 +57,6 @@ export function* buildHeaders({ headers, basicAuth }) {
   return requestHeaders;
 }
 
-function buildRequestData({ bodyType, formData }) {
-  switch (bodyType) {
-    case 'multipart':
-      if (formData && formData.filter(f => f.name).length > 0) {
-        const body = new FormData();
-
-        formData.forEach(f => {
-          body.append(f.name, f.value);
-        });
-
-        return body;
-      }
-      break;
-
-    case 'urlencoded':
-      if (formData && formData.filter(f => f.name).length > 0) {
-        let body = '';
-
-        formData.forEach((field, index) => {
-          if (index !== 0) {
-            body += '&';
-          }
-          body += `${field.name}=${field.value}`;
-        });
-
-        return body;
-      }
-      break;
-
-    case 'json':
-      if (formData && formData.filter(f => f.name).length > 0) {
-        const body = reMapHeaders(formData);
-
-        return JSON.stringify(body);
-      }
-      break;
-
-    default:
-      return null;
-  }
-  return null;
-}
-
 // Needed for unit tests to be consistent
 export function getBeforeTime() {
   return Date.now();
@@ -143,7 +101,7 @@ export function* fetchData({ request }) {
     let body;
     if (!['GET', 'HEAD'].includes(request.method)) {
       body = bodyType !== 'custom'
-        ? buildRequestData(request)
+        ? buildRequestData(request.bodyType, request.formData)
         : request.data;
     }
 
