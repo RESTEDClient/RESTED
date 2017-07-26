@@ -32,9 +32,13 @@ function Headers({ headers, expanded }) {
   );
 }
 
+Headers.defaultProps = {
+  expanded: false,
+};
+
 Headers.propTypes = {
   headers: responseShape.headers,
-  expanded: PropTypes.bool.isRequired,
+  expanded: PropTypes.bool,
 };
 
 export default Headers;

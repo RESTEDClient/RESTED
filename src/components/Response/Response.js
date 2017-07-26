@@ -26,7 +26,7 @@ function Titlebar({ url, time }) {
 
 Titlebar.propTypes = {
   url: responseShape.url,
-  time: responseShape.time,
+  time: PropTypes.node.isRequired,
 };
 
 export function Response(props) {
@@ -120,7 +120,7 @@ Response.propTypes = {
   response: responsePropTypes,
   highlightingDisabled: PropTypes.bool.isRequired,
   wrapResponse: PropTypes.bool.isRequired,
-  redirectChain: PropTypes.arrayOf().isRequired,
+  redirectChain: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   interceptedResponse: PropTypes.shape({}),
 };
 

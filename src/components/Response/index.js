@@ -10,6 +10,17 @@ import Redirect from './Redirect';
 import Response from './Response';
 
 export class ResponseAccordion extends React.Component {
+  static propTypes = {
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Error),
+    ]),
+    response: responsePropTypes,
+    redirectChain: PropTypes.arrayOf(PropTypes.shape({})),
+    interceptedResponse: PropTypes.shape({}),
+  };
+
   // TODO How to reset when user sends a new request?
   state = {
     expanded: 'response',
@@ -67,17 +78,6 @@ export class ResponseAccordion extends React.Component {
     );
   }
 }
-
-ResponseAccordion.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.instanceOf(Error),
-  ]),
-  response: responsePropTypes,
-  redirectChain: PropTypes.arrayOf(),
-  interceptedResponse: PropTypes.shape({}),
-};
 
 const mapStateToProps = state => ({
   response: getResponse(state),
