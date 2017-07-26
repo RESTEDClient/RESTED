@@ -16,65 +16,18 @@ saving requests in your browser, and more.
 **RESTED** is built upon all the latest web technologies to make
 both the user's and developer's experience as great as possible. _Enjoy!_
 
-
-Since this is a relatively new project, I am also happy to announce that
-it is also awesomely easy to contribute to the project! Everything is
-javascript and html using React.js and Redux, so come join! All contributions
-welcome.
-
 ![Image of RESTED](https://github.com/esphen/RESTED/raw/master/doc/images/rested-app.png)
 
 ## How to contribute
-In order to work on this project, you're going to need a few things:
- - [nvm](https://github.com/creationix/nvm)
-   - Alternately node 6.x and npm 3.x
- - [yarn](https://yarnpkg.com/en/docs/install)
- - A browser with WebExtension support
+You want to help out? Wow, that's so cool! Have a look at [the contribution
+guidelines](CONTRIBUTING.md) for a guide on how to do so.
 
-Now to set up your development environment. First, check out the repository from
-git and open a terminal in it. Then you need to symlink in the correct manifest
-file to the root directory of the project.
+Since this is a relatively new project, I am also happy to announce that
+it is also pretty easy to contribute to the project! Everything is
+javascript and html using React.js and Redux, so come join!
 
-    # For Firefox
-    ln -s firefox/manifest.json
+See also the [good first bug filter](issue-filter) for some tips on what are
+good first bugs.
 
-    # For Chrome and Opera
-    ln -s google-chrome/manifest.json
-
-Once these formalities are in order, you can start the development server which
-will compile the code into something that can be loaded in the browser.
-
-    nvm install
-    yarn
-    yarn start
-
-Now you can go into your favourite browser's extension panel and enable
-developer mode. Then manually load the extension as a "Temporary Add-on" or
-an "Unpackaged extension". In Firefox, this panel is hidden in
-`about:debugging#addons`.
-
-If you need to empty and reset the database, enter
-`chrome.storage.local.clear()` into your developer console. That should clear
-the entire database and force a clean install on refresh.
-
-**Please develop on the next branch.**
-This is where all the magic happens.
-
-### Tests
-
-To run the tests, run one of the following commands.
-
-    yarn run test
-    yarn run test:watch
-
-If you get snapshot mismatches, inspect the changes, and if they look OK, run
-this command:
-
-    yarn run test:snapshot
-
-You can use Chrome's debugger if you need to inspect any part of a test. Simply
-place a `debugger;` statement where you want the debugger to start and run the
-following command. Then open the provided URL in Chrome.
-
-    yarn run test:watch
+[issue-filter]: https://github.com/esphen/RESTED/issues?q=is%3Aopen+is%3Aissue+label%3A%22D+-+Good+First+Bug%22
 
