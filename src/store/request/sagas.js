@@ -174,7 +174,7 @@ function setContentType(array, value) {
   ];
 }
 
-function* changeBodyTypeSaga({ bodyType }) {
+export function* changeBodyTypeSaga({ bodyType }) {
   let headers = yield select(getHeaders);
   switch (bodyType) {
     case 'multipart':
