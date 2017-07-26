@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
 
     case PUSH_REDIRECT_CHAIN:
       return Object.assign({}, state, {
-        lastRequestTime: new Date(),
+        lastRequestTime: Date.now(),
         redirectChain: !state.redirectChain
           ? [action.response]
           : [...state.redirectChain, action.response],

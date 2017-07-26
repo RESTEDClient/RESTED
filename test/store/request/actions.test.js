@@ -38,6 +38,24 @@ describe('actions', () => {
     expect(actions.receiveResponse(response)).toEqual(expectedAction);
   });
 
+  it('should create an action to receive an intercepted response', () => {
+    const expectedAction = {
+      type: types.RECEIVE_INTERCEPTED_RESPONSE,
+      response,
+    };
+
+    expect(actions.receiveInterceptedResponse(response)).toEqual(expectedAction);
+  });
+
+  it('should create an action to receive a redirect', () => {
+    const expectedAction = {
+      type: types.PUSH_REDIRECT_CHAIN,
+      response,
+    };
+
+    expect(actions.pushRedirectChain(response)).toEqual(expectedAction);
+  });
+
   it('should create an action to clear the request', () => {
     const expectedAction = {
       type: types.CLEAR_RESPONSE,
@@ -60,6 +78,15 @@ describe('actions', () => {
     };
 
     expect(actions.changeBodyType('custom')).toEqual(expectedAction);
+  });
+
+  it('should an action to select a request', () => {
+    const expectedAction = {
+      type: types.SELECT_REQUESTED,
+      request,
+    };
+
+    expect(actions.selectRequest(request)).toEqual(expectedAction);
   });
 
   it('should an action to send a request', () => {
