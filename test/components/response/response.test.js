@@ -35,7 +35,7 @@ describe('response component', () => {
   it('renders nothing given no props', () => {
     const tree = renderer.create(
       <Response loading={false} />,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -62,7 +62,7 @@ describe('response component', () => {
       <Provider store={store}>
         <Response {...props} loading={false} />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

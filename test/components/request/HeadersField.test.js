@@ -61,7 +61,7 @@ describe('HeadersField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

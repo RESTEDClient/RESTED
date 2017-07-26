@@ -21,7 +21,7 @@ describe('MethodField', () => {
   it('should match the previous snapshot', () => {
     const tree = renderer.create(
       <MethodField {...initialProps} />,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -32,7 +32,7 @@ describe('MethodField', () => {
 
     const tree = renderer.create(
       <MethodField {...initialProps} />,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

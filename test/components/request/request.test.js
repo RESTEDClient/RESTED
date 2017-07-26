@@ -35,7 +35,7 @@ it('should render correctly', () => {
     <Provider store={store}>
       <Decorated {...props} />
     </Provider>,
-  ).toJSON();
+  );
 
   expect(tree).toMatchSnapshot();
   expect(onSubmitFail).not.toHaveBeenCalled();

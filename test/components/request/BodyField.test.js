@@ -25,7 +25,7 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -63,7 +63,7 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -82,7 +82,7 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

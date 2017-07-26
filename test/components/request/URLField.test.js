@@ -22,7 +22,7 @@ describe('URLField', () => {
   it('should match the previous snapshot', () => {
     const tree = renderer.create(
       <URLField {...initialProps} />,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('URLField', () => {
 
     const tree = renderer.create(
       <URLField {...initialProps} />,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

@@ -8,7 +8,7 @@ describe('Loading', () => {
   it('matches the previous snapshot', () => {
     const tree = renderer.create(
       <Loading icon="cog" />,
-    ).toJSON();
+    );
     expect(tree).toMatchSnapshot();
   });
 });
