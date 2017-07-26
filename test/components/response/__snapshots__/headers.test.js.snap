@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Headers when not passed the expanded prop should render a heading 1`] = `undefined`;
+
+exports[`Headers when not passed the expanded prop should render the headers 1`] = `
+<Highlight
+  className="http"
+  element={null}
+  innerHTML={false}
+>
+  test: 123
+  spasibo: comrade
+</Highlight>
+`;
+
+exports[`Headers when passed the expanded prop should render a heading 1`] = `
+<h4>
+  Headers
+</h4>
+`;
+
+exports[`Headers when passed the expanded prop should render the headers 1`] = `
+<Highlight
+  className="http"
+  element={null}
+  innerHTML={false}
+>
+  test: 123
+  spasibo: comrade
+</Highlight>
+`;
