@@ -21,7 +21,6 @@ export class ResponseAccordion extends React.Component {
     interceptedResponse: PropTypes.shape({}),
   };
 
-  // TODO How to reset when user sends a new request?
   state = {
     expanded: 'response',
   };
@@ -67,6 +66,7 @@ export class ResponseAccordion extends React.Component {
             headers={redirectResponse.responseHeaders}
             isExpanded={this.state.expanded === i}
             setExpanded={() => this.toggleExpanded(i)}
+            key={i}
           />
         ))}
         <Response

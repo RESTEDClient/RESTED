@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import responsePropTypes, { responseShape } from 'propTypes/response';
+import responsePropTypes, { redirectShape } from 'propTypes/redirect';
 
 import { StyledResponse, StyledHeader, Status } from './StyledComponents';
 import Headers from './Headers';
@@ -15,8 +15,8 @@ function Titlebar({ url, time, onClick }) {
 }
 
 Titlebar.propTypes = {
-  url: responseShape.url,
-  time: responseShape.time,
+  url: redirectShape.url,
+  time: redirectShape.time,
   onClick: PropTypes.func.isRequired,
 };
 
@@ -55,7 +55,7 @@ function Redirect(props) {
 
 Redirect.propTypes = {
   response: responsePropTypes,
-  headers: responseShape.headers,
+  headers: redirectShape.responseHeaders,
   isExpanded: PropTypes.bool.isRequired,
   setExpanded: PropTypes.func.isRequired,
 };
