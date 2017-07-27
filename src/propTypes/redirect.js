@@ -7,7 +7,6 @@ export const redirectShape = {
   documentUrl: string.isRequired,
   frameId: number.isRequired,
   fromCache: bool.isRequired,
-  ip: string.isRequired,
   method: oneOf(REQUEST_METHODS).isRequired,
   originUrl: string.isRequired,
   parentFrameId: number.isRequired,
@@ -19,13 +18,15 @@ export const redirectShape = {
       value: string.isRequired,
     }).isRequired,
   ).isRequired,
-  statusCode: number.isRequired,
-  statusLine: string.isRequired,
   tabId: number.isRequired,
   time: number.isRequired,
   timeStamp: number.isRequired,
   type: string.isRequired,
   url: string.isRequired,
+  // Not present on HSTS upgrade requests in Firefox
+  ip: string,
+  statusCode: number,
+  statusLine: string,
 };
 
 export default shape(redirectShape);

@@ -45,7 +45,7 @@ function Redirect(props) {
         >
           {response.statusCode}
         </Status>
-        <small> {response.statusLine.replace(/.*\d{3} /, '')}</small>
+        <small> {response.statusLine && response.statusLine.replace(/.*\d{3} /, '')}</small>
       </h3>
 
       <Headers expanded headers={headers} />
