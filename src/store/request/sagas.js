@@ -92,7 +92,6 @@ function createUUID() {
 export function* fetchData({ request }) {
   try {
     yield put(executeRequest());
-    const bodyType = request.bodyType;
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
@@ -100,7 +99,7 @@ export function* fetchData({ request }) {
     // Build body for requests that support it
     let body;
     if (!['GET', 'HEAD'].includes(request.method)) {
-      body = bodyType !== 'custom'
+      body = request.bodyType !== 'custom'
         ? buildRequestData(request.bodyType, request.formData)
         : request.data;
     }
@@ -185,6 +184,8 @@ export function* changeBodyTypeSaga({ bodyType }) {
       break;
     case 'json':
       headers = setContentType(headers, 'application/json');
+      break;
+    case 'custom':
       break;
     default:
       throw new Error(`Body type ${bodyType} is not supported`);
