@@ -33,7 +33,7 @@ describe('HeadersField', () => {
   beforeEach(() => {
     props = {
       fields: {
-        map: Array.map.bind(this, headers),
+        map: headers.map.bind(headers),
         remove: jest.fn(),
         push: jest.fn(),
       },
@@ -61,7 +61,7 @@ describe('HeadersField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

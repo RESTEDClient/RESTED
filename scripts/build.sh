@@ -23,6 +23,7 @@ echo Packaging for Chrome
 rm -fv manifest.json
 ln -vs google-chrome/manifest.json
 bash $DIR/mkcrx.sh $DIR "${PEM:-$TMPFILE}" || exit 1
+zip -qr RESTED.zip $FILES
 
 echo Done
 

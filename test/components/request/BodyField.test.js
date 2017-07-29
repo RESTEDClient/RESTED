@@ -16,8 +16,8 @@ describe('BodyField', () => {
       form: 'testForm',
     })(() => (
       <BodyField
-        useFormData={false}
-        setUseFormData={() => {}}
+        bodyType="custom"
+        changeBodyType={() => {}}
       />
     ));
 
@@ -25,18 +25,18 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
 
-  it('should match the previous snapshot when !!useFormData', () => {
+  it('should match the previous snapshot when bodyType is json', () => {
     const Decorated = reduxForm({
       form: 'testForm',
     })(() => (
       <BodyField
-        useFormData
-        setUseFormData={() => {}}
+        bodyType="json"
+        changeBodyType={() => {}}
       />
     ));
 
@@ -44,7 +44,45 @@ describe('BodyField', () => {
       <Provider store={store}>
         <Decorated />
       </Provider>,
-    ).toJSON();
+    );
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should match the previous snapshot when bodyType is urlencoded', () => {
+    const Decorated = reduxForm({
+      form: 'testForm',
+    })(() => (
+      <BodyField
+        bodyType="urlencoded"
+        changeBodyType={() => {}}
+      />
+    ));
+
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Decorated />
+      </Provider>,
+    );
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should match the previous snapshot when bodyType is multipart', () => {
+    const Decorated = reduxForm({
+      form: 'testForm',
+    })(() => (
+      <BodyField
+        bodyType="multipart"
+        changeBodyType={() => {}}
+      />
+    ));
+
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Decorated />
+      </Provider>,
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -66,8 +104,8 @@ describe('BodyField', () => {
       form: 'testForm',
     })(() => (
       <BodyField
-        useFormData
-        setUseFormData={() => {}}
+        bodyType="json"
+        changeBodyType={() => {}}
       />
     ));
 
@@ -109,8 +147,8 @@ describe('BodyField', () => {
       form: 'testForm',
     })(() => (
       <BodyField
-        useFormData={false}
-        setUseFormData={() => {}}
+        bodyType="custom"
+        changeBodyType={() => {}}
       />
     ));
 
@@ -129,15 +167,15 @@ describe('BodyField', () => {
     expect(input.length).toBe(1);
   });
 
-  it('should call setUseFormData when !!useFormData checkbox is clicked', () => {
-    const setUseFormData = jest.fn();
+  it('should handle chaning the selected body type', () => {
+    const changeBodyType = jest.fn();
 
     const Decorated = reduxForm({
       form: 'testForm',
     })(() => (
       <BodyField
-        useFormData
-        setUseFormData={setUseFormData}
+        bodyType="json"
+        changeBodyType={changeBodyType}
       />
     ));
 
@@ -147,38 +185,15 @@ describe('BodyField', () => {
       </Provider>,
     );
 
-    expect(setUseFormData).not.toHaveBeenCalled();
+    expect(changeBodyType).not.toHaveBeenCalled();
 
-    const checkbox = tree.find('input').first();
-    checkbox.simulate('change');
+    const select = tree.find('select').first();
+    select.simulate('change', { target: { value: 'multipart' } });
 
-    expect(setUseFormData).toHaveBeenCalledWith(false);
-  });
+    expect(changeBodyType).toHaveBeenCalledWith('multipart');
 
-  it('should call setUseFormData when !useFormData checkbox is clicked', () => {
-    const setUseFormData = jest.fn();
-
-    const Decorated = reduxForm({
-      form: 'testForm',
-    })(() => (
-      <BodyField
-        useFormData={false}
-        setUseFormData={setUseFormData}
-      />
-    ));
-
-    const tree = mount(
-      <Provider store={store}>
-        <Decorated />
-      </Provider>,
-    );
-
-    expect(setUseFormData).not.toHaveBeenCalled();
-
-    const checkbox = tree.find('input').first();
-    checkbox.simulate('change');
-
-    expect(setUseFormData).toHaveBeenCalledWith(true);
+    select.simulate('change', { target: { value: 'custom' } });
+    expect(changeBodyType).toHaveBeenCalledWith('custom');
   });
 });
 

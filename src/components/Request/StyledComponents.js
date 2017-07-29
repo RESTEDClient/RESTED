@@ -22,6 +22,10 @@ export const TrashButton = styled(IconButton)`
   height: 40px;
 `;
 
+export const FormDataFields = styled.div`
+  margin-top: 15px;
+`;
+
 export const SuggestWrapper = styled.div`
   .react-autosuggest__container {
     position: relative;

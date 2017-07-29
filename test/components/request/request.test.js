@@ -9,24 +9,33 @@ import { Request } from 'components/Request';
 import makeStore from '../../makeStore';
 
 it('should render correctly', () => {
+  const props = {
+    updateRequest() {},
+    sendRequest() {},
+    editMode: false,
+    collectionsMinimized: false,
+  };
   const onSubmitFail = jest.fn();
   const store = makeStore({
     form: {
-      testForm: {
+      request: {
+        values: {
+          bodyType: 'json',
+        },
       },
     },
   });
 
   const Decorated = reduxForm({
-    form: 'testForm',
+    form: 'request',
     onSubmitFail,
   })(Request);
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Decorated sendRequest={() => {}} />
+      <Decorated {...props} />
     </Provider>,
-  ).toJSON();
+  );
 
   expect(tree).toMatchSnapshot();
   expect(onSubmitFail).not.toHaveBeenCalled();

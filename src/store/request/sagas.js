@@ -4,15 +4,17 @@ import { initialize, change } from 'redux-form';
 import { call, apply, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import base64Encode from 'utils/base64';
+import buildRequestData from 'utils/buildRequestData';
 import { reMapHeaders, focusUrlField } from 'utils/requestUtils';
 import { prependHttp, mapParameters } from 'utils/request';
 import { pushHistory } from 'store/history/actions';
 import { getUrlVariables } from 'store/urlVariables/selectors';
 import { requestForm } from 'components/Request';
+import { updateOption } from 'store/options/actions';
 
-import { getPlaceholderUrl, getUseFormData } from './selectors';
+import { getPlaceholderUrl, getHeaders } from './selectors';
 import { executeRequest, receiveResponse } from './actions';
-import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED } from './types';
+import { SEND_REQUEST, REQUEST_FAILED, SELECT_REQUESTED, CHANGE_BODY_TYPE } from './types';
 
 export function* getUrl(request) {
   if (!request.url) {
@@ -55,20 +57,6 @@ export function* buildHeaders({ headers, basicAuth }) {
   return requestHeaders;
 }
 
-function buildFormData({ formData }) {
-  if (formData && formData.filter(f => f.name).length > 0) {
-    const body = new FormData();
-
-    formData.forEach(f => {
-      body.append(f.name, f.value);
-    });
-
-    return body;
-  }
-
-  return null;
-}
-
 // Needed for unit tests to be consistent
 export function getBeforeTime() {
   return Date.now();
@@ -104,7 +92,6 @@ function createUUID() {
 export function* fetchData({ request }) {
   try {
     yield put(executeRequest());
-    const useFormData = yield select(getUseFormData);
 
     const resource = yield call(createResource, request);
     const headers = yield call(buildHeaders, request);
@@ -112,8 +99,8 @@ export function* fetchData({ request }) {
     // Build body for requests that support it
     let body;
     if (!['GET', 'HEAD'].includes(request.method)) {
-      body = useFormData
-        ? buildFormData(request)
+      body = request.bodyType !== 'custom'
+        ? buildRequestData(request.bodyType, request.formData)
         : request.data;
     }
 
@@ -145,7 +132,7 @@ export function* fetchData({ request }) {
       body: responseBody,
       headers: responseHeaders,
       method: request.method,
-      time: millisPassed,
+      totalTime: millisPassed,
     }));
   } catch (error) {
     yield put({ type: REQUEST_FAILED, error });
@@ -157,8 +144,60 @@ function* selectRequest({ request }) {
   yield call(focusUrlField);
 }
 
+function setContentType(array, value) {
+  const index = array.findIndex(item => item.name === 'Content-Type');
+
+  // Replace any existing Content-Type headers
+  if (index > -1) {
+    return [
+      ...array.slice(0, index),
+      { name: 'Content-Type', value },
+      ...array.slice(index + 1),
+    ];
+  }
+
+  // When the last row is empty, overwrite it instead of pushing
+  const lastItem = array.length >= 1
+    ? array[array.length - 1]
+    : null;
+  if (lastItem && !lastItem.name) {
+    return [
+      ...array.slice(0, array.length - 1),
+      { name: 'Content-Type', value },
+    ];
+  }
+
+  return [
+    ...array,
+    { name: 'Content-Type', value },
+  ];
+}
+
+export function* changeBodyTypeSaga({ bodyType }) {
+  let headers = yield select(getHeaders);
+  switch (bodyType) {
+    case 'multipart':
+      headers = setContentType(headers, 'multipart/form-data');
+      break;
+    case 'urlencoded':
+      headers = setContentType(headers, 'application/x-www-urlencoded');
+      break;
+    case 'json':
+      headers = setContentType(headers, 'application/json');
+      break;
+    case 'custom':
+      break;
+    default:
+      throw new Error(`Body type ${bodyType} is not supported`);
+  }
+  yield put(change(requestForm, 'headers', headers));
+  // For persistence on load
+  yield put(updateOption('bodyType', bodyType));
+}
+
 export default function* rootSaga() {
   yield takeLatest(SEND_REQUEST, fetchData);
   yield takeEvery(SELECT_REQUESTED, selectRequest);
+  yield takeEvery(CHANGE_BODY_TYPE, changeBodyTypeSaga);
 }
 

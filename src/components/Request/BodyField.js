@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, FieldArray } from 'redux-form';
-import { FormGroup, FormControl, Checkbox, Row, Col } from 'react-bootstrap';
+import { FormGroup, FormControl, Row, Col, ControlLabel } from 'react-bootstrap';
 
 import Fonticon from 'components/Fonticon';
 import Collapsable from 'components/Collapsable';
 import IconButton from 'components/IconButton';
 import * as RequestActions from 'store/request/actions';
+import { getBodyType } from 'store/request/selectors';
 
-import { UnstyledButton } from './StyledComponents';
+import { UnstyledButton, FormDataFields } from './StyledComponents';
 
 function renderField({ input, placeholder }) {
   return (
@@ -26,20 +27,9 @@ renderField.propTypes = {
 };
 
 function renderFormDataFields(props) {
-  const { fields, meta, setUseFormData } = props;
+  const { fields, meta } = props;
   return (
-    <Collapsable
-      title="Request body"
-      id="requestBody"
-    >
-      <Col xs={12}>
-        <Checkbox
-          checked
-          onChange={() => { setUseFormData(false); }}
-        >
-          Use form data
-        </Checkbox>
-      </Col>
+    <FormDataFields>
       {fields.map((field, key) => (
         <FormGroup
           key={key}
@@ -53,14 +43,14 @@ function renderFormDataFields(props) {
               placeholder="Name"
             />
           </Col>
-          <Col xs={6}>
+          <Col xs={5}>
             <Field
               name={`${field}.value`}
               component={renderField}
               placeholder="Value"
             />
           </Col>
-          <Col xs={1}>
+          <Col xs={2}>
             <IconButton
               id={`removeFormDataButton${key}`}
               tooltip="Remove form field"
@@ -82,13 +72,12 @@ function renderFormDataFields(props) {
           </UnstyledButton>
         </Col>
       </Row>
-    </Collapsable>
+    </FormDataFields>
   );
 }
 
 /* eslint-disable react/no-unused-prop-types */
 renderFormDataFields.propTypes = {
-  setUseFormData: PropTypes.func.isRequired,
   fields: PropTypes.shape({
     map: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired,
@@ -100,65 +89,101 @@ renderFormDataFields.propTypes = {
 };
 /* eslint-enable react/no-unused-prop-types */
 
-function renderDataField({ input, setUseFormData }) {
+function renderSingleField({ input }) {
   return (
-    <Collapsable
-      title="Request body"
-      id="requestBody"
-    >
-      <Col xs={12}>
-        <Checkbox
-          onChange={() => { setUseFormData(true); }}
-        >
-          Use form data
-        </Checkbox>
+    <Col xs={12}>
+      <FormGroup controlId="requestBody">
+        <FormControl
+          componentClass="textarea"
+          rows={10}
+          {...input}
+        />
+      </FormGroup>
+    </Col>
+  );
+}
+
+renderSingleField.propTypes = {
+  input: PropTypes.shape({}).isRequired,
+};
+
+function renderBodyType({ input, changeBodyType }) {
+  return (
+    <FormGroup controlId="bodyType">
+      <Col componentClass={ControlLabel} xs={2}>
+        Type
       </Col>
 
-      <Col xs={12}>
-        <FormGroup controlId="requestBody">
-          <FormControl
-            componentClass="textarea"
-            rows={10}
-            {...input}
-          />
-        </FormGroup>
+      <Col xs={8}>
+        <FormControl
+          componentClass="select"
+          placeholder="Body type"
+          {...input}
+          onChange={newVal => {
+            changeBodyType(newVal.target.value);
+            input.onChange(newVal);
+          }}
+        >
+          <option value="custom">Custom</option>
+          <option value="json">JSON</option>
+          <option value="multipart">Multipart form data</option>
+          <option value="urlencoded">URLencoded form data</option>
+        </FormControl>
       </Col>
+    </FormGroup>
+  );
+}
+
+renderBodyType.propTypes = {
+  input: PropTypes.shape({}).isRequired,
+  changeBodyType: PropTypes.func.isRequired,
+};
+
+function renderDataField(type) {
+  switch (type) {
+    case 'json':
+    case 'multipart':
+    case 'urlencoded':
+      return (
+        <FieldArray
+          name="formData"
+          component={renderFormDataFields}
+        />
+      );
+    default:
+      return (
+        <Field
+          name="data"
+          component={renderSingleField}
+        />
+      );
+  }
+}
+
+export function BodyField({ bodyType, changeBodyType }) {
+  return (
+    <Collapsable title="Request body" id="requestBody">
+      <Field
+        name="bodyType"
+        component={renderBodyType}
+        changeBodyType={changeBodyType}
+      />
+      {renderDataField(bodyType)}
     </Collapsable>
   );
 }
 
-renderDataField.propTypes = {
-  input: PropTypes.shape({}).isRequired,
-  setUseFormData: PropTypes.func.isRequired,
+BodyField.defaultProps = {
+  bodyType: 'json',
 };
-
-export function BodyField({ useFormData, setUseFormData }) {
-  if (useFormData) {
-    return (
-      <FieldArray
-        name="formData"
-        component={renderFormDataFields}
-        setUseFormData={setUseFormData}
-      />
-    );
-  }
-
-  return (
-    <Field
-      name="data"
-      component={renderDataField}
-      setUseFormData={setUseFormData}
-    />
-  );
-}
 
 BodyField.propTypes = {
-  useFormData: PropTypes.bool,
-  setUseFormData: PropTypes.func.isRequired,
+  bodyType: PropTypes.oneOf(['json', 'multipart', 'urlencoded', 'custom']),
+  changeBodyType: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ request: { useFormData } }) => ({
-  useFormData,
+const mapStateToProps = state => ({
+  bodyType: getBodyType(state),
 });
 
 export default connect(mapStateToProps, RequestActions)(BodyField);

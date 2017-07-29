@@ -2,7 +2,10 @@ import reducer from 'store/request/reducer';
 import * as types from 'store/request/types';
 
 describe('reducer', () => {
-  let response;
+  const response = {
+    url: 'foo',
+    status: 404,
+  };
 
   it('should return the initial state', () => {
     expect(
@@ -11,8 +14,10 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
-      useFormData: true,
     });
   });
 
@@ -20,13 +25,16 @@ describe('reducer', () => {
     expect(
       reducer(undefined, {
         type: types.EXECUTE_REQUEST,
+        lastRequestTime: 1482363367071,
       }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: 1482363367071,
       loading: true,
-      useFormData: true,
     });
   });
 
@@ -40,8 +48,44 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
-      useFormData: true,
+    });
+  });
+
+  it('should handle RECEIVE_INTERCEPTED_RESPONSE', () => {
+    expect(
+      reducer(undefined, {
+        type: types.RECEIVE_INTERCEPTED_RESPONSE,
+        response,
+      }),
+    ).toEqual({
+      placeholderUrl: 'https://example.com',
+      request: null,
+      response: null,
+      interceptedResponse: response,
+      redirectChain: [],
+      lastRequestTime: null,
+      loading: false,
+    });
+  });
+
+  it('should handle PUSH_REDIRECT_CHAIN', () => {
+    expect(
+      reducer(undefined, {
+        type: types.PUSH_REDIRECT_CHAIN,
+        response,
+      }),
+    ).toEqual({
+      placeholderUrl: 'https://example.com',
+      request: null,
+      response: null,
+      interceptedResponse: null,
+      redirectChain: [response],
+      lastRequestTime: 1482363367071, // Date.now mock
+      loading: false,
     });
   });
 
@@ -54,36 +98,30 @@ describe('reducer', () => {
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
-      useFormData: true,
     });
   });
 
-  it('should handle USE_FORM_DATA', () => {
-    expect(
-      reducer(undefined, {
-        type: types.USE_FORM_DATA,
-        useFormData: true,
-      }),
-    ).toEqual({
-      placeholderUrl: 'https://example.com',
-      request: null,
-      response: null,
-      loading: false,
-      useFormData: true,
-    });
+  it('should handle REQUEST_FAILED', () => {
+    const error = new Error('It failed!');
 
     expect(
       reducer(undefined, {
-        type: types.USE_FORM_DATA,
-        useFormData: false,
+        type: types.REQUEST_FAILED,
+        error,
       }),
     ).toEqual({
       placeholderUrl: 'https://example.com',
       request: null,
       response: null,
+      interceptedResponse: null,
+      redirectChain: [],
+      lastRequestTime: null,
       loading: false,
-      useFormData: false,
+      error,
     });
   });
 });

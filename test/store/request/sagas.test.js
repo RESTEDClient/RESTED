@@ -4,8 +4,9 @@ import { change } from 'redux-form';
 import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
-import { fetchData, createResource, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
-import { getPlaceholderUrl, getUseFormData } from 'store/request/selectors';
+import { fetchData, createResource, changeBodyTypeSaga, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
+import { getPlaceholderUrl, getHeaders } from 'store/request/selectors';
+import { updateOption } from 'store/options/actions';
 import { pushHistory } from 'store/history/actions';
 import * as types from 'store/request/types';
 import { prependHttp } from 'utils/request';
@@ -13,6 +14,7 @@ import { prependHttp } from 'utils/request';
 const mockRequest = {
   method: 'POST',
   url: 'http://visitnorway.com',
+  bodyType: 'multipart',
   headers: [{
     name: 'Foo',
     value: 'Bar',
@@ -41,13 +43,8 @@ describe('fetchData saga', () => {
   it('should dispatch an executeRequest action', () => {
     expect(iterator.next().value).toEqual(put({
       type: types.EXECUTE_REQUEST,
+      lastRequestTime: 1482363367071,
     }));
-  });
-
-  it('should fetch the "useFormData" bool from the request store', () => {
-    expect(iterator.next().value).toEqual(
-      select(getUseFormData),
-    );
   });
 
   it('should call createResource to build a URL', () => {
@@ -114,7 +111,7 @@ describe('fetchData saga', () => {
       type: types.RECEIVE_RESPONSE,
       response: {
         method: 'POST',
-        time: timePassed,
+        totalTime: timePassed,
         url: mockResponse.url,
         body: undefined,
         status: mockResponse.status,
@@ -175,6 +172,127 @@ describe('createResource saga', () => {
 
   it('should be done', () => {
     expect(iterator.next().done).toEqual(true);
+  });
+});
+
+describe('changeBodyTypeSaga saga', () => {
+  describe('when bodyType is multipart', () => {
+    const payload = {
+      bodyType: 'multipart',
+    };
+    const iterator = changeBodyTypeSaga(payload);
+
+    it('should fetch headers', () => {
+      expect(iterator.next().value).toEqual(
+        select(getHeaders),
+      );
+    });
+
+    it('should put the headers into the store', () => {
+      expect(iterator.next([]).value).toEqual(
+        put(change(requestForm, 'headers', [{
+          name: 'Content-Type',
+          value: 'multipart/form-data',
+        }])),
+      );
+    });
+
+    it('should persist the bodyType into the options store', () => {
+      expect(iterator.next().value).toEqual(
+        put(updateOption('bodyType', 'multipart')),
+      );
+    });
+
+    it('should be done', () => {
+      expect(iterator.next().done).toEqual(true);
+    });
+  });
+
+  describe('when bodyType is urlencoded', () => {
+    const payload = {
+      bodyType: 'urlencoded',
+    };
+    const iterator = changeBodyTypeSaga(payload);
+
+    it('should fetch headers', () => {
+      expect(iterator.next().value).toEqual(
+        select(getHeaders),
+      );
+    });
+
+    it('should put the headers into the store', () => {
+      expect(iterator.next([]).value).toEqual(
+        put(change(requestForm, 'headers', [{
+          name: 'Content-Type',
+          value: 'application/x-www-urlencoded',
+        }])),
+      );
+    });
+
+    it('should persist the bodyType into the options store', () => {
+      expect(iterator.next().value).toEqual(
+        put(updateOption('bodyType', 'urlencoded')),
+      );
+    });
+
+    it('should be done', () => {
+      expect(iterator.next().done).toEqual(true);
+    });
+  });
+
+  describe('when bodyType is json', () => {
+    const payload = {
+      bodyType: 'json',
+    };
+    const iterator = changeBodyTypeSaga(payload);
+
+    it('should fetch headers', () => {
+      expect(iterator.next().value).toEqual(
+        select(getHeaders),
+      );
+    });
+
+    it('should put the headers into the store', () => {
+      expect(iterator.next([]).value).toEqual(
+        put(change(requestForm, 'headers', [{
+          name: 'Content-Type',
+          value: 'application/json',
+        }])),
+      );
+    });
+
+    it('should persist the bodyType into the options store', () => {
+      expect(iterator.next().value).toEqual(
+        put(updateOption('bodyType', 'json')),
+      );
+    });
+
+    it('should be done', () => {
+      expect(iterator.next().done).toEqual(true);
+    });
+  });
+
+  describe('when bodyType is anything else', () => {
+    const payload = {
+      bodyType: 'foo',
+    };
+    const iterator = changeBodyTypeSaga(payload);
+
+    it('should fetch headers', () => {
+      expect(iterator.next().value).toEqual(
+        select(getHeaders),
+      );
+    });
+
+    it('should throw', () => {
+      expect(() => {
+        iterator.next([]);
+      }).toThrowErrorMatchingSnapshot();
+    });
+
+    it('should be done', () => {
+      expect(iterator.next().done).toEqual(true);
+    });
   });
 });
 

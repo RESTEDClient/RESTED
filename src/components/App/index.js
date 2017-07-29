@@ -20,6 +20,7 @@ import './GlobalStyles';
 
 import { LeftCol, RightCol } from './StyledComponents';
 
+
 /*
  * This must be a React.Component because DragDropContext
  * attaches a ref to the component, which as we know will
