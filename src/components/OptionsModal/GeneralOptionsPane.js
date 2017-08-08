@@ -5,7 +5,7 @@ import Highlight from 'react-highlight';
 import { Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
 import * as Actions from 'store/options/actions';
-import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/constants';
+import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE, DEFAULT_RESPONSE_RENDERER } from 'constants/constants';
 
 import { StyledGeneralOptions } from './StyledComponents';
 
@@ -135,6 +135,39 @@ function GeneralOptionsPane({ options, updateOption }) {
                     you use named requests
                   </p>
                 </Checkbox>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <FormGroup>
+                  <ControlLabel>
+                    Response display
+                  </ControlLabel>
+                  <FormControl
+                    componentClass="select"
+                    value={options.get('responseRenderer', DEFAULT_RESPONSE_RENDERER)}
+                    onChange={e => {
+                      updateOption('responseRenderer', e.target.value);
+                    }}
+                  >
+                    <option value="tree">Tree</option>
+                    <option value="table">Table</option>
+                    <option value="classic">Classic</option>
+                  </FormControl>
+                </FormGroup>
+                <FormGroup>
+                  <ControlLabel>
+                    Auto expands response to depth
+                  </ControlLabel>
+                  <FormControl
+                    type="number"
+                    value={options.get('responseExpandLevel', 1)}
+                    onChange={e => {
+                      updateOption('responseExpandLevel', e.target.value);
+                    }}
+                  />
+                </FormGroup>
               </td>
             </tr>
           </tbody>

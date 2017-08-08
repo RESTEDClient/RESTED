@@ -53,3 +53,13 @@ export const isDefaultCompact = createSelector(
   options => options && options.getIn(['options', 'defaultCompact'], false),
 );
 
+export const getResponseRenderer = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'responseRenderer'], 'tree'),
+);
+
+export const getExpandDepth = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'responseExpandLevel'], 1),
+);
+

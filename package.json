@@ -39,6 +39,7 @@
     "react-dom": "^15.4.2",
     "react-highlight": "^0.9.0",
     "react-immutable-proptypes": "^2.1.0",
+    "react-inspector": "^2.1.3",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
     "redux-form": "^7.0.1",

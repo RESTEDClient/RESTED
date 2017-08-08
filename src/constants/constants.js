@@ -89,6 +89,12 @@ export const REQUEST_METHODS = [
 export const DEFAULT_REQUEST_METHOD = 'GET';
 
 /**
+ * The default view mode for responses. This
+ * decides how the responses will be rendered.
+ */
+export const DEFAULT_RESPONSE_RENDERER = 'tree';
+
+/**
  * The milliseconds we delay showing spinners
  * after a request has been sent.
  */
