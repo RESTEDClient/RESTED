@@ -224,7 +224,7 @@ describe('changeBodyTypeSaga saga', () => {
       expect(iterator.next([]).value).toEqual(
         put(change(requestForm, 'headers', [{
           name: 'Content-Type',
-          value: 'application/x-www-urlencoded',
+          value: 'application/x-www-form-urlencoded',
         }])),
       );
     });

@@ -180,7 +180,7 @@ export function* changeBodyTypeSaga({ bodyType }) {
       headers = setContentType(headers, 'multipart/form-data');
       break;
     case 'urlencoded':
-      headers = setContentType(headers, 'application/x-www-urlencoded');
+      headers = setContentType(headers, 'application/x-www-form-urlencoded');
       break;
     case 'json':
       headers = setContentType(headers, 'application/json');
