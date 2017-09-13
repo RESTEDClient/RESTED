@@ -135,6 +135,18 @@ function GeneralOptionsPane({ options, updateOption }) {
                     you use named requests
                   </p>
                 </Checkbox>
+                <Checkbox
+                  checked={options.get('headerDescriptionEnabled', true)}
+                  onChange={e => {
+                    updateOption('headerDescriptionEnabled', e.target.checked);
+                  }}
+                >
+                  Show header descriptions
+                  <p>
+                    Displays a short description of each header below each
+                    search suggestion
+                  </p>
+                </Checkbox>
               </td>
             </tr>
           </tbody>
