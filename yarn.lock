@@ -2244,6 +2244,10 @@ function.prototype.name@^1.0.0:
     function-bind "^1.1.0"
     is-callable "^1.1.2"
 
+fuzzysort@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/fuzzysort/-/fuzzysort-0.9.3.tgz#5747104160882e55b63ddf4a590ef84819c0c42d"
+
 gauge@~2.7.1:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/gauge/-/gauge-2.7.2.tgz#15cecc31b02d05345a5d6b0e171cdb3ad2307774"
