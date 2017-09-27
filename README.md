@@ -26,7 +26,7 @@ Since this is a relatively new project, I am also happy to announce that
 it is also pretty easy to contribute to the project! Everything is
 javascript and html using React.js and Redux, so come join!
 
-See also the [good first bug filter](issue-filter) for some tips on what are
+See also the [good first bug filter][issue-filter] for some tips on what are
 good first bugs.
 
 [issue-filter]: https://github.com/esphen/RESTED/issues?q=is%3Aopen+is%3Aissue+label%3A%22D+-+Good+First+Bug%22
