@@ -147,6 +147,17 @@ function GeneralOptionsPane({ options, updateOption }) {
                     search suggestion
                   </p>
                 </Checkbox>
+                <Checkbox
+                  checked={options.get('ignoreCache', false)}
+                  onChange={e => {
+                    updateOption('ignoreCache', e.target.checked);
+                  }}
+                >
+                  Ignore cache
+                  <p>
+                    Force all requests to ignore the browser cache
+                  </p>
+                </Checkbox>
               </td>
             </tr>
           </tbody>
