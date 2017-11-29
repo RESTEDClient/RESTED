@@ -5,6 +5,7 @@ import localforage from 'localforage';
 import localDriver from 'localforage-webextensionstorage-driver/local';
 import syncDriver from 'localforage-webextensionstorage-driver/sync';
 import { initializeInterceptors } from 'utils/requestInterceptors';
+import handleProtocolHandlers from 'utils/handleProtocolHandlers';
 
 const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 
@@ -29,6 +30,7 @@ Promise.all([
 .then(() => {
   const store = configureStore.default();
   initializeInterceptors(store);
+  handleProtocolHandlers(store);
 
   ReactDOM.render(
     <Provider store={store}>

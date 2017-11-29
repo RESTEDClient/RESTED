@@ -26,6 +26,6 @@ export function mapParameters(url, params) {
   return url.replace(/\{\{(\w+)\}\}/g, (match, capture) => {
     const param = params ? params[capture] : null;
     return param || '';
-  }).replace(/([^:]\/)\/+/g, '$1');
+  }).replace(/([^:]\/)\//g, '$1');
 }
 

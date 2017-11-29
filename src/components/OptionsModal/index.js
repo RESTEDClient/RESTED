@@ -7,20 +7,28 @@ import SyncPane from './SyncPane';
 import ImportPane from './ImportPane';
 import ExportPane from './ExportPane';
 
-export default class OptionsModalBody extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTab: 0,
-    };
+const getDefaultTab = (props) => {
+  const params = new URLSearchParams(location.search);
+  const action = params.get('action');
+  if (action === '') {
   }
+};
+
+export default class OptionsModalBody extends React.Component {
+  state = {
+    // TODO move to redux
+    activeTab: getDefaultTab(this.props),
+  };
+
+  setActiveTab = (activeTab) => {
+    this.setState({ activeTab });
+  };
 
   render() {
     return (
       <Tabs
         activeKey={this.state.activeTab}
-        onSelect={activeTab => this.setState({ activeTab })}
+        onSelect={this.setActiveTab}
         id="OptionTabs"
       >
         <Tab eventKey={0} title="URL Templates">

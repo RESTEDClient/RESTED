@@ -13,6 +13,7 @@ module.exports = {
 
   entry: [
     'babel-polyfill',
+    'url-search-params-polyfill',
     './src/index.js',
   ],
 

@@ -36,6 +36,13 @@
   "background": {
     "scripts": ["main.js"]
   },
+  "protocol_handlers": [
+    {
+      "protocol": "ext+har",
+      "name": "Import HAR to RESTED",
+      "uriTemplate": "dist/index.html?action=importHar&data=%s"
+    }
+  ],
   "permissions": [
     "<all_urls>",
     "webRequest",
