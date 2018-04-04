@@ -5,5 +5,10 @@ injectGlobal`
   body {
     overflow-x: hidden;
   }
+
+  .pseudo-hidden {
+    position: absolute;
+    left: -10000px;
+  }
 `;
 

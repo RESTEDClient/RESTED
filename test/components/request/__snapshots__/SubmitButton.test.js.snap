@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubmitButton EditMode: false should match the previous snapshot with editMode false 1`] = `
+<button
+  className="btn btn-primary"
+  disabled={false}
+  type="submit"
+>
+  Send request
+</button>
+`;
+
+exports[`SubmitButton EditMode: true should match the previous snapshot with editMode true 1`] = `
+<button
+  className="btn btn-success"
+  disabled={false}
+  type="submit"
+>
+  Update request
+</button>
+`;

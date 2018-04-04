@@ -1,29 +1,33 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Col, Row, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Col, Row, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 import * as Actions from 'store/config/actions';
 import { isEditMode } from 'store/config/selectors';
 import { REQUEST_METHODS } from 'constants/constants';
 
-function MethodField({ input, meta, editMode }) {
-  const isCustom = !REQUEST_METHODS.slice(0, -1).includes(input.value);
+export function checkIfCustom(value) {
+  return !REQUEST_METHODS.slice(0, -1).includes(value);
+}
+function MethodField({ input, meta }) {
+  const isCustom = checkIfCustom(input.value);
 
   return (
     <FormGroup
       controlId="method"
       validationState={meta.invalid ? 'error' : undefined}
     >
-      <Col
-        componentClass={ControlLabel}
-        sm={2}
-      >
-        Method
-      </Col>
 
-      <Col sm={7}>
+      <Col sm={12}>
         <Row>
           <Col xs={isCustom ? 6 : 12}>
+
+            <ControlLabel
+              bsClass="pseudo-hidden"
+            >
+              Method
+            </ControlLabel>
+
             <FormControl
               componentClass="select"
               placeholder="Method"
@@ -44,26 +48,11 @@ function MethodField({ input, meta, editMode }) {
           )}
         </Row>
       </Col>
-      <Col sm={3}>
-        {editMode
-          ? (
-            <Button type="submit" bsStyle="success">
-              Update request
-            </Button>
-          )
-          : (
-            <Button type="submit" bsStyle="primary">
-              Send request
-            </Button>
-          )
-        }
-      </Col>
     </FormGroup>
   );
 }
 
 MethodField.propTypes = {
-  editMode: PropTypes.bool.isRequired,
   /* eslint-disable react/forbid-prop-types */
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
