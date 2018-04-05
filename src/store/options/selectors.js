@@ -53,3 +53,12 @@ export const isDefaultCompact = createSelector(
   options => options && options.getIn(['options', 'defaultCompact'], false),
 );
 
+export const isHeaderDescriptionEnabled = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'headerDescriptionEnabled'], true),
+);
+
+export const getIgnoreCache = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'ignoreCache'], false),
+);

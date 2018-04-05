@@ -3,12 +3,6 @@
   "version": "2.1.1",
   "description": "A REST client for the rest of us",
   "homepage_url": "https://github.com/esphen/RESTED",
-  "contributors": [
-    "Espen Henriksen",
-    "Mostafa Mirmousavi",
-    "Tibor Katelbach"
-  ],
-  "license": "GPL-2.0",
   "manifest_version": 2,
   "applications": {
     "gecko": {
@@ -24,7 +18,7 @@
     "128": "dist/img/favicon/favicon-128x128.png"
   },
   "browser_action": {
-    "default_title": "RESTED",
+    "default_title": "Open RESTED tab",
     "default_icon": {
       "16": "dist/img/favicon/favicon-16x16.png",
       "32": "dist/img/favicon/favicon-32x32.png",

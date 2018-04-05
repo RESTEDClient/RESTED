@@ -26,6 +26,7 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
+    "fuzzysort": "^0.9.3",
     "immutable": "^3.8.1",
     "localforage": "^1.5.0",
     "localforage-webextensionstorage-driver": "^1.1.2",

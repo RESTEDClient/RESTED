@@ -1,29 +1,48 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import Autosuggest from 'react-autosuggest';
+import fuzzysort from 'fuzzysort';
 
 import headers from 'constants/commonHeaders';
-import { SuggestWrapper } from './StyledComponents';
+import { isHeaderDescriptionEnabled } from 'store/options/selectors';
+import { SuggestWrapper, Suggestion } from './StyledComponents';
 
+// Make search indexes ahead of time to go fast!
+const preparedHeaders = headers.map(header => fuzzysort.prepare(header.name));
+const preparedHeadersWithDescriptions = headers.map(header => ({
+  ...fuzzysort.prepare(header.name),
+  ...header,
+}));
 const maxEntries = 7;
 
-// Calculate suggestions for any given input value.
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
+const compare = (a, b) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
 
-  return inputLength === 0
-    ? []
-    : headers
-      .filter(header =>
-        header.toLowerCase().includes(inputValue),
-      )
-      .slice(0, maxEntries);
+// Calculate suggestions for any given input value.
+const getSuggestions = (value, descriptionEnabled) => {
+  const inputValue = value.trim();
+  const inputLength = inputValue.length;
+  const searchTarget = descriptionEnabled
+    ? preparedHeadersWithDescriptions
+    : preparedHeaders;
+
+  if (inputLength === 0) return [];
+
+  const matches = fuzzysort
+    .go(inputValue, searchTarget)
+    .sort((a, b) => compare(a.score, b.score));
+
+  return matches.slice(0, maxEntries);
 };
 
 // Teach Autosuggest how to calculate the input value for
 // every given suggestion.
-const getSuggestionValue = suggestion => suggestion;
+// eslint-disable-next-line no-underscore-dangle
+const getSuggestionValue = suggestion => suggestion._target;
 
 // Ensure the user does not send a request when selecting using enter
 function preventDefaultOnEnter(event, { method }) {
@@ -32,11 +51,18 @@ function preventDefaultOnEnter(event, { method }) {
   }
 }
 
+// This unsafe is fine, as it is from a trusted source
+/* eslint-disable react/no-danger */
 const renderSuggestion = suggestion => (
-  <div>
-    {suggestion}
-  </div>
+  <Suggestion>
+    <p dangerouslySetInnerHTML={{ __html: suggestion.highlighted }} />
+    {suggestion.description &&
+      <small>
+        {suggestion.description}
+      </small>}
+  </Suggestion>
 );
+/* eslint-enable react/no-danger */
 
 const renderInputComponent = ({ className, ...rest }) => (
   <input className={classNames(className, 'form-control')} {...rest} />
@@ -46,10 +72,11 @@ renderInputComponent.propTypes = {
   className: PropTypes.string,
 };
 
-export default class HeaderNameAutosuggest extends React.PureComponent {
+export class HeaderNameAutosuggest extends React.PureComponent {
   static propTypes = {
     input: PropTypes.shape({}).isRequired,
     placeholder: PropTypes.string.isRequired,
+    headerDescriptionEnabled: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -58,7 +85,7 @@ export default class HeaderNameAutosuggest extends React.PureComponent {
 
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value),
+      suggestions: getSuggestions(value, this.props.headerDescriptionEnabled),
     });
   };
 
@@ -95,3 +122,8 @@ export default class HeaderNameAutosuggest extends React.PureComponent {
   }
 }
 
+const mapStateToProps = state => ({
+  headerDescriptionEnabled: isHeaderDescriptionEnabled(state),
+});
+
+export default connect(mapStateToProps)(HeaderNameAutosuggest);

@@ -135,6 +135,29 @@ function GeneralOptionsPane({ options, updateOption }) {
                     you use named requests
                   </p>
                 </Checkbox>
+                <Checkbox
+                  checked={options.get('headerDescriptionEnabled', true)}
+                  onChange={e => {
+                    updateOption('headerDescriptionEnabled', e.target.checked);
+                  }}
+                >
+                  Show header descriptions
+                  <p>
+                    Displays a short description of each header below each
+                    search suggestion
+                  </p>
+                </Checkbox>
+                <Checkbox
+                  checked={options.get('ignoreCache', false)}
+                  onChange={e => {
+                    updateOption('ignoreCache', e.target.checked);
+                  }}
+                >
+                  Ignore cache
+                  <p>
+                    Force all requests to ignore the browser cache
+                  </p>
+                </Checkbox>
               </td>
             </tr>
           </tbody>
