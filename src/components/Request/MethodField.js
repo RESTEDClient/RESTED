@@ -18,12 +18,12 @@ function MethodField({ input, meta }) {
       validationState={meta.invalid ? 'error' : undefined}
     >
 
-      <Col sm={12}>
+      <Col xs={12}>
         <Row>
           <Col xs={isCustom ? 6 : 12}>
 
             <ControlLabel
-              bsClass="pseudo-hidden"
+              srOnly
             >
               Method
             </ControlLabel>

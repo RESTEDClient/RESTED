@@ -10,7 +10,7 @@ function URLField(props) {
     >
       <Col sm={12}>
         <ControlLabel
-          bsClass="pseudo-hidden"
+          srOnly
         >
           URL
         </ControlLabel>

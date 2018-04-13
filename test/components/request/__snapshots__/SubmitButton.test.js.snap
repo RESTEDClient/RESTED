@@ -1,8 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SubmitButton Compact: true should match the previous snapshot with compact true 1`] = `
+<button
+  className="btn btn-primary btn-block"
+  disabled={false}
+  type="submit"
+>
+  Send
+</button>
+`;
+
 exports[`SubmitButton EditMode: false should match the previous snapshot with editMode false 1`] = `
 <button
-  className="btn btn-primary"
+  className="btn btn-primary btn-block"
   disabled={false}
   type="submit"
 >
@@ -12,7 +22,7 @@ exports[`SubmitButton EditMode: false should match the previous snapshot with ed
 
 exports[`SubmitButton EditMode: true should match the previous snapshot with editMode true 1`] = `
 <button
-  className="btn btn-success"
+  className="btn btn-success btn-block"
   disabled={false}
   type="submit"
 >

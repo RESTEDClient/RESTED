@@ -44,15 +44,18 @@ function Request(props) {
               component={MethodField}
             />
           </Col>
-          <Col sm={isCustom ? 6 : 8}>
+          <Col sm={isCustom ? 6 : 7}>
             <Field
               name="url"
               component={URLField}
               placeholderUrl={placeholderUrl}
             />
           </Col>
-          <Col sm={2}>
-            <SubmitButton editMode={editMode} />
+          <Col xsHidden mdHidden lgHidden sm={3}>
+            <SubmitButton compact editMode={editMode} />
+          </Col>
+          <Col smHidden xs={12} md={3}>
+            <SubmitButton compact={false} editMode={editMode} />
           </Col>
         </Row>
 

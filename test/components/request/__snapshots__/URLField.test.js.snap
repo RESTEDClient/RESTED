@@ -8,7 +8,7 @@ exports[`URLField should match the previous snapshot 1`] = `
     className="col-sm-12"
   >
     <label
-      className="pseudo-hidden"
+      className="control-label sr-only"
       htmlFor="url"
     >
       URL
@@ -32,7 +32,7 @@ exports[`URLField should match the previous snapshot with invalid field state 1`
     className="col-sm-12"
   >
     <label
-      className="pseudo-hidden"
+      className="control-label sr-only"
       htmlFor="url"
     >
       URL

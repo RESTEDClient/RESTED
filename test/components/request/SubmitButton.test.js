@@ -56,5 +56,32 @@ describe('SubmitButton', () => {
       expect(tree.find('button').text()).toBe('Update request');
     });
   });
+
+  describe('Compact: true', () => {
+    let initialProps;
+
+    beforeEach(() => {
+      initialProps = {
+        editMode: false,
+        compact: true,
+      };
+    });
+
+    it('should match the previous snapshot with compact true', () => {
+      const tree = renderer
+        .create(<SubmitButton {...initialProps} />);
+
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('should render a submit button with a Compact Request Label', () => {
+      const tree = mount(
+        <SubmitButton {...initialProps} />,
+      );
+
+      expect(tree.find('button').length).toBe(1);
+      expect(tree.find('button').text()).toBe('Send');
+    });
+  });
 });
 

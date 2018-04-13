@@ -5,7 +5,7 @@ exports[`MethodField should match the previous snapshot 1`] = `
   className="form-group"
 >
   <div
-    className="col-sm-12"
+    className="col-xs-12"
   >
     <div
       className="row"
@@ -14,7 +14,7 @@ exports[`MethodField should match the previous snapshot 1`] = `
         className="col-xs-6"
       >
         <label
-          className="pseudo-hidden"
+          className="control-label sr-only"
           htmlFor="method"
         >
           Method
@@ -87,7 +87,7 @@ exports[`MethodField should match the previous snapshot with invalid field state
   className="form-group has-error"
 >
   <div
-    className="col-sm-12"
+    className="col-xs-12"
   >
     <div
       className="row"
@@ -96,7 +96,7 @@ exports[`MethodField should match the previous snapshot with invalid field state
         className="col-xs-6"
       >
         <label
-          className="pseudo-hidden"
+          className="control-label sr-only"
           htmlFor="method"
         >
           Method
