@@ -4,15 +4,15 @@ exports[`URLField should match the previous snapshot 1`] = `
 <div
   className="form-group"
 >
-  <label
-    className="col-sm-2 control-label"
-    htmlFor="url"
-  >
-    URL
-  </label>
   <div
-    className="col-sm-10"
+    className="col-sm-12"
   >
+    <label
+      className="control-label sr-only"
+      htmlFor="url"
+    >
+      URL
+    </label>
     <input
       autoFocus={true}
       className="form-control"
@@ -28,15 +28,15 @@ exports[`URLField should match the previous snapshot with invalid field state 1`
 <div
   className="form-group has-error"
 >
-  <label
-    className="col-sm-2 control-label"
-    htmlFor="url"
-  >
-    URL
-  </label>
   <div
-    className="col-sm-10"
+    className="col-sm-12"
   >
+    <label
+      className="control-label sr-only"
+      htmlFor="url"
+    >
+      URL
+    </label>
     <input
       autoFocus={true}
       className="form-control"

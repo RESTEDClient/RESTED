@@ -5,6 +5,7 @@ import 'whatwg-fetch';
 
 import { requestForm } from 'components/Request';
 import { fetchData, createResource, changeBodyTypeSaga, buildHeaders, getParameters, getUrl, getBeforeTime, getMillisPassed } from 'store/request/sagas';
+import { getIgnoreCache } from 'store/options/selectors';
 import { getPlaceholderUrl, getHeaders } from 'store/request/selectors';
 import { updateOption } from 'store/options/actions';
 import { pushHistory } from 'store/history/actions';
@@ -59,8 +60,14 @@ describe('fetchData saga', () => {
     );
   });
 
-  it('should push the history', () => {
+  it('should select the ignoreCache option from the store', () => {
     expect(iterator.next(mockHeaders).value).toEqual(
+      select(getIgnoreCache),
+    );
+  });
+
+  it('should push the history', () => {
+    expect(iterator.next(false).value).toEqual(
       put(pushHistory(Immutable.fromJS(mockRequest)
         .set('url', 'foo')
         .set('id', 'test-UUID'),
@@ -89,6 +96,7 @@ describe('fetchData saga', () => {
           Foo: 'Bar',
         }),
         credentials: 'include',
+        cache: 'default',
       }),
     );
   });

@@ -74,3 +74,9 @@ export const SuggestWrapper = styled.div`
   }
 `;
 
+export const Suggestion = styled.div`
+  p {
+    margin: 0;
+  }
+`;
+

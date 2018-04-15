@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Row } from 'react-bootstrap';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import flow from 'lodash.flow';
@@ -9,6 +8,7 @@ import Header from 'components/Header';
 import LeftPanel from 'components/LeftPanel';
 import Request from 'components/Request';
 import Response from 'components/Response';
+import Footer from 'components/Footer';
 import Modal from 'components/Modal';
 import updateTheme from 'utils/updateTheme';
 import updateHighlightStyle from 'utils/updateHighlightStyle';
@@ -18,7 +18,7 @@ import { fetchUrlVariables } from 'store/urlVariables/actions';
 import { THEMES, HIGHLIGHT_STYLES } from 'constants/constants';
 import './GlobalStyles';
 
-import { LeftCol, RightCol } from './StyledComponents';
+import { Wrapper, MainContent, LeftCol, RightCol } from './StyledComponents';
 
 
 /*
@@ -58,9 +58,9 @@ class App extends React.Component {
     const { collectionsMinimized } = this.props;
 
     return (
-      <div>
+      <Wrapper>
         <Header />
-        <Row>
+        <MainContent>
           <LeftCol
             xsHidden
             sm={collectionsMinimized ? null : 4}
@@ -79,9 +79,10 @@ class App extends React.Component {
               <Response />
             </main>
           </RightCol>
-        </Row>
+        </MainContent>
+        <Footer />
         <Modal />
-      </div>
+      </Wrapper>
     );
   }
 }

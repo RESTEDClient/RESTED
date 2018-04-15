@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, Fields, FieldArray, getFormValues } from 'redux-form';
-import { Panel, Form } from 'react-bootstrap';
+import { Row, Col, Panel, Form } from 'react-bootstrap';
 import flow from 'lodash.flow';
 
 import * as requestActions from 'store/request/actions';
@@ -11,7 +11,8 @@ import { DEFAULT_REQUEST } from 'constants/constants';
 
 import Titlebar from './Titlebar';
 import URLField from './URLField';
-import MethodField from './MethodField';
+import MethodField, { checkIfCustom } from './MethodField';
+import SubmitButton from './SubmitButton';
 import HeadersField from './HeadersField';
 import BasicAuthField from './BasicAuthField';
 import BodyField from './BodyField';
@@ -28,21 +29,36 @@ function Request(props) {
     editMode,
   } = props;
 
+  const isCustom = checkIfCustom(formValues.method);
+
   return (
     <Panel header={<Titlebar />}>
       <Form
         horizontal
         onSubmit={handleSubmit(editMode ? updateRequest : sendRequest)}
       >
-        <Field
-          name="url"
-          component={URLField}
-          placeholderUrl={placeholderUrl}
-        />
-        <Field
-          name="method"
-          component={MethodField}
-        />
+        <Row>
+          <Col sm={isCustom ? 4 : 2}>
+            <Field
+              name="method"
+              component={MethodField}
+            />
+          </Col>
+          <Col sm={isCustom ? 6 : 7}>
+            <Field
+              name="url"
+              component={URLField}
+              placeholderUrl={placeholderUrl}
+            />
+          </Col>
+          <Col xsHidden mdHidden lgHidden sm={3}>
+            <SubmitButton compact editMode={editMode} />
+          </Col>
+          <Col smHidden xs={12} md={3}>
+            <SubmitButton compact={false} editMode={editMode} />
+          </Col>
+        </Row>
+
         <FieldArray
           name="headers"
           component={HeadersField}

@@ -1,9 +1,10 @@
 {
   "name": "RESTED",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A REST client for the rest of us",
   "homepage_url": "https://github.com/esphen/RESTED",
   "manifest_version": 2,
+  "minimum_chrome_version": "60.0",
   "icons": {
     "16": "dist/img/favicon/favicon-16x16.png",
     "32": "dist/img/favicon/favicon-32x32.png",
@@ -12,7 +13,7 @@
     "128": "dist/img/favicon/favicon-128x128.png"
   },
   "browser_action": {
-    "default_title": "RESTED",
+    "default_title": "Open RESTED tab",
     "default_icon": {
       "16": "dist/img/favicon/favicon-16x16.png",
       "32": "dist/img/favicon/favicon-32x32.png",
