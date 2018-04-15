@@ -1,20 +1,19 @@
 import React, { PropTypes } from 'react';
 import { Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-function URLField({ input, meta, placeholderUrl }) {
+function URLField(props) {
+  const { input, meta, placeholderUrl } = props;
   return (
     <FormGroup
       controlId="url"
       validationState={meta.touched && meta.invalid ? 'error' : null}
     >
-      <Col
-        componentClass={ControlLabel}
-        sm={2}
-      >
-        URL
-      </Col>
-
-      <Col sm={10}>
+      <Col sm={12}>
+        <ControlLabel
+          srOnly
+        >
+          URL
+        </ControlLabel>
         <FormControl
           type="text"
           placeholder={placeholderUrl}
