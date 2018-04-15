@@ -17,26 +17,6 @@ export default function Footer() {
       ·
       <small>
         <a
-          href="https://github.com/esphen/RESTED/issues"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Report a bug
-        </a>
-      </small>
-      ·
-      <small>
-        <a
-          href="https://gitter.im/RESTEDclient"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Chat
-        </a>
-      </small>
-      ·
-      <small>
-        <a
           href="https://gist.github.com/esphen/f50cc049c8ed1256a11763826dac97db"
           target="_blank"
           rel="noopener noreferrer"
