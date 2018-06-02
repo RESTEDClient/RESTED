@@ -11,17 +11,40 @@
     }
   },
   "icons": {
-    "32": "dist/img/rested-logo.svg"
+    "16": "dist/img/rested-logo.svg",
+    "32": "dist/img/rested-logo.svg",
+    "64": "dist/img/rested-logo.svg",
+    "96": "dist/img/rested-logo.svg",
+    "128": "dist/img/rested-logo.svg"
   },
   "browser_action": {
     "default_title": "Open RESTED tab",
-    "browser_style": true,
     "default_icon": "dist/img/rested-logo.svg",
     "theme_icons": [
       {
         "light": "dist/img/rested-logo-inv.svg",
         "dark": "dist/img/rested-logo.svg",
+        "size": 16
+      },
+      {
+        "light": "dist/img/rested-logo-inv.svg",
+        "dark": "dist/img/rested-logo.svg",
         "size": 32
+      },
+      {
+        "light": "dist/img/rested-logo-inv.svg",
+        "dark": "dist/img/rested-logo.svg",
+        "size": 64
+      },
+      {
+        "light": "dist/img/rested-logo-inv.svg",
+        "dark": "dist/img/rested-logo.svg",
+        "size": 96
+      },
+      {
+        "light": "dist/img/rested-logo-inv.svg",
+        "dark": "dist/img/rested-logo.svg",
+        "size": 128
       }
     ]
   },
