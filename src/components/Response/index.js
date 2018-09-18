@@ -43,7 +43,7 @@ export class ResponseAccordion extends React.Component {
     if (error) {
       return (
         <Alert bsStyle="danger">
-          {`An error occured while fetching the resource: ${error}`}
+          {`An error occurred while fetching the resource: ${error}`}
         </Alert>
       );
     }
