@@ -29,5 +29,11 @@ export const LeftCol = styled(Left)`
 
 export const RightCol = styled(Col)`
   transition: 0.2s ease;
+
+  input.form-control:not([type]),
+  input.form-control[type=text],
+  textarea.form-control {
+    font-family: monospace;
+  }
 `;
 
