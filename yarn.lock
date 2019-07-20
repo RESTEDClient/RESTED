@@ -3846,10 +3846,10 @@ loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
-localforage-webextensionstorage-driver@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/localforage-webextensionstorage-driver/-/localforage-webextensionstorage-driver-1.1.2.tgz#69c0a52f3e4c3f38ecbfa8ba82e0109e3d1fa055"
-  integrity sha1-acClLz5MPzjsv6i6guAQnj0foFU=
+localforage-webextensionstorage-driver@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/localforage-webextensionstorage-driver/-/localforage-webextensionstorage-driver-1.2.1.tgz#51c22facc9cea655d25cd7fa46ef01cd9ff04399"
+  integrity sha512-WTFTvmSU+eXAjabhm1NC2ytgK6v8jGbCWQKKs61HB9kmFLoY+g9wslvYel4HYGqkEbbDvx5SRBr2fP5Jheayew==
   dependencies:
     babel-runtime "^6.22.0"
 
