@@ -6,7 +6,7 @@
   "description": "A REST client for the rest of us",
   "author": "Espen Henriksen",
   "license": "MIT",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "./main.js",
   "permissions": {
     "multiprocess": true
@@ -29,7 +29,7 @@
     "fuzzysort": "^0.9.3",
     "immutable": "^3.8.1",
     "localforage": "^1.5.0",
-    "localforage-webextensionstorage-driver": "^1.1.2",
+    "localforage-webextensionstorage-driver": "^1.2.1",
     "lodash.flow": "^3.5.0",
     "md5": "^2.2.1",
     "react": "^15.4.2",
