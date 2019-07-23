@@ -29,7 +29,7 @@
     "fuzzysort": "^0.9.3",
     "immutable": "^3.8.1",
     "localforage": "^1.5.0",
-    "localforage-webextensionstorage-driver": "^1.1.2",
+    "localforage-webextensionstorage-driver": "^1.2.1",
     "lodash.flow": "^3.5.0",
     "md5": "^2.2.1",
     "react": "^15.4.2",
