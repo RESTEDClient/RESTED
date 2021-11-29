@@ -4,8 +4,10 @@ import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import { Collapse } from 'react-bootstrap';
 import flow from 'lodash.flow';
+import classNames from 'classnames';
 
 import IconButton from 'components/IconButton';
+import Fonticon from 'components/Fonticon';
 import * as CollectionsActions from 'store/collections/actions';
 import * as ModalActions from 'store/modal/actions';
 import requestPropType from 'propTypes/request';
@@ -129,6 +131,12 @@ function PanelHeader(props) {
             toggleCollapsed(index);
           }}
         >
+          <Fonticon
+            icon="angle-right"
+            className={classNames({
+              'fa-rotate-90': !minimized,
+            })}
+          />
           {name}
         </h3>
       )}
