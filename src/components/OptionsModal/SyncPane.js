@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { Clearfix, Col, Table, Checkbox } from 'react-bootstrap';
+import { Alert, Clearfix, Col, Table, Checkbox } from 'react-bootstrap';
 
 import syncIsSupported from 'utils/syncIsSupported';
 import replicateStorage from 'utils/replicateStorage';
@@ -88,10 +88,10 @@ function SyncPane(props) {
                     Firefox to Chrome and vice versa does not work,
                     use export/import instead.
                   </p>
-                  <p>
-                    NOTE: Data is stored unencrypted, so do not enable if you
-                    do not trust your browser vendor with your data
-                  </p>
+                  <Alert bsStyle="warning">
+                    Data is stored unencrypted, so do not enable if you
+                    do not trust your browser vendor with your data!
+                  </Alert>
                 </Checkbox>
               </td>
             </tr>
