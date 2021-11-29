@@ -29,10 +29,14 @@ exports[`Collection component should match the previous snapshot 1`] = `
             Change name
           </span>
         </div>
-        <i
-          className="fa fa-pencil"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-pencil"
+            role="presentation"
+          />
+        </div>
       </button>
       <button
         className="pull-right exyKyC"
@@ -52,10 +56,14 @@ exports[`Collection component should match the previous snapshot 1`] = `
             Delete
           </span>
         </div>
-        <i
-          className="fa fa-trash"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-trash"
+            role="presentation"
+          />
+        </div>
       </button>
       <hr />
     </span>
@@ -94,10 +102,14 @@ exports[`Collection component should match the previous snapshot 1`] = `
                       Toggle edit
                     </span>
                   </div>
-                  <i
-                    className="fa fa-cog"
-                    role="presentation"
-                  />
+                  <div
+                    className="jsiZnw clearfix"
+                  >
+                    <i
+                      className="fa fa-cog"
+                      role="presentation"
+                    />
+                  </div>
                 </button>
                 <button
                   className="exyKyC"
@@ -117,10 +129,14 @@ exports[`Collection component should match the previous snapshot 1`] = `
                       Minimize
                     </span>
                   </div>
-                  <i
-                    className="fa fa-minus"
-                    role="presentation"
-                  />
+                  <div
+                    className="jsiZnw clearfix"
+                  >
+                    <i
+                      className="fa fa-minus"
+                      role="presentation"
+                    />
+                  </div>
                 </button>
               </div>
               <div
@@ -173,10 +189,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
             Add new collection
           </span>
         </div>
-        <i
-          className="fa fa-plus"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-plus"
+            role="presentation"
+          />
+        </div>
       </button>
     </span>
   </div>
@@ -214,10 +234,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   Change name
                 </span>
               </div>
-              <i
-                className="fa fa-pencil"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-pencil"
+                  role="presentation"
+                />
+              </div>
             </button>
             <button
               className="pull-right exyKyC"
@@ -237,10 +261,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   Delete
                 </span>
               </div>
-              <i
-                className="fa fa-trash"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-trash"
+                  role="presentation"
+                />
+              </div>
             </button>
             <hr />
           </span>
@@ -279,10 +307,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Toggle edit
                           </span>
                         </div>
-                        <i
-                          className="fa fa-cog"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-cog"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                       <button
                         className="exyKyC"
@@ -302,10 +334,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Minimize
                           </span>
                         </div>
-                        <i
-                          className="fa fa-minus"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-minus"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                     </div>
                     <div
@@ -357,10 +393,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   Change name
                 </span>
               </div>
-              <i
-                className="fa fa-pencil"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-pencil"
+                  role="presentation"
+                />
+              </div>
             </button>
             <button
               className="pull-right exyKyC"
@@ -380,10 +420,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                   Delete
                 </span>
               </div>
-              <i
-                className="fa fa-trash"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-trash"
+                  role="presentation"
+                />
+              </div>
             </button>
             <hr />
           </span>
@@ -422,10 +466,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Toggle edit
                           </span>
                         </div>
-                        <i
-                          className="fa fa-cog"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-cog"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                       <button
                         className="exyKyC"
@@ -445,10 +493,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Minimize
                           </span>
                         </div>
-                        <i
-                          className="fa fa-minus"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-minus"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                     </div>
                     <div
@@ -498,10 +550,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Toggle edit
                           </span>
                         </div>
-                        <i
-                          className="fa fa-cog"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-cog"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                       <button
                         className="exyKyC"
@@ -521,10 +577,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Minimize
                           </span>
                         </div>
-                        <i
-                          className="fa fa-minus"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-minus"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                     </div>
                     <div
@@ -574,10 +634,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Toggle edit
                           </span>
                         </div>
-                        <i
-                          className="fa fa-cog"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-cog"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                       <button
                         className="exyKyC"
@@ -597,10 +661,14 @@ exports[`Collections component should match the previous snapshot 1`] = `
                             Minimize
                           </span>
                         </div>
-                        <i
-                          className="fa fa-minus"
-                          role="presentation"
-                        />
+                        <div
+                          className="jsiZnw clearfix"
+                        >
+                          <i
+                            className="fa fa-minus"
+                            role="presentation"
+                          />
+                        </div>
                       </button>
                     </div>
                     <div

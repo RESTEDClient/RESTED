@@ -49,10 +49,14 @@ exports[`response component renders a result when given one 1`] = `
       >
         <h4>
           Headers
-          <i
-            className="fa fa-angle-right"
-            role="presentation"
-          />
+          <div
+            className="jsiZnw clearfix"
+          >
+            <i
+              className="fa fa-angle-right"
+              role="presentation"
+            />
+          </div>
         </h4>
       </button>
       <div
