@@ -153,11 +153,12 @@ function PanelHeader(props) {
         className="pull-right"
         onClick={() => {
           setModalData({
-            title: 'Goodbye collection',
-            body: `You are about to delete the collection "${name}". ` +
-              'Are you sure?',
+            title: 'Delete collection',
+            body: `Are you sure you want to permanently delete the collection: "${name}"? All requests saved under this collection will also be deleted.`,
             actions: [{
               text: 'Delete',
+              type: 'danger',
+              icon: 'trash',
               click() {
                 deleteCollection(collectionId);
                 removeModal();
