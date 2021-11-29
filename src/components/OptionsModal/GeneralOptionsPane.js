@@ -9,6 +9,12 @@ import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/consta
 
 import { StyledGeneralOptions } from './StyledComponents';
 
+const CodeHighlightPreviewText = `{
+    example: "json",
+    soThatYouCan: 7357,
+    your: "HIGHLIGHT_STYLE"
+}`;
+
 function GeneralOptionsPane({ options, updateOption }) {
   return (
     <StyledGeneralOptions>
@@ -58,21 +64,8 @@ function GeneralOptionsPane({ options, updateOption }) {
                       </option>
                     ))}
                   </FormControl>
-                </FormGroup>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <FormGroup>
                   <Highlight className="json">
-                    {`
-              {
-                example: "json",
-                soThatYouCan: 7357,
-                your: "HIGHLIGHT_STYLE"
-              }
-                    `}
+                    {CodeHighlightPreviewText}
                   </Highlight>
                 </FormGroup>
               </td>
