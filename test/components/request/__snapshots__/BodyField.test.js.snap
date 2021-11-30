@@ -12,10 +12,14 @@ exports[`BodyField should match the previous snapshot when !useFormData 1`] = `
   >
     <h4>
       Request body
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
@@ -111,10 +115,14 @@ exports[`BodyField should match the previous snapshot when bodyType is json 1`] 
   >
     <h4>
       Request body
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
@@ -188,10 +196,14 @@ exports[`BodyField should match the previous snapshot when bodyType is json 1`] 
               onClick={[Function]}
               type="button"
             >
-              <i
-                className="fa fa-plus"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-plus"
+                  role="presentation"
+                />
+              </div>
               Add parameter
             </button>
           </div>
@@ -214,10 +226,14 @@ exports[`BodyField should match the previous snapshot when bodyType is multipart
   >
     <h4>
       Request body
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
@@ -291,10 +307,14 @@ exports[`BodyField should match the previous snapshot when bodyType is multipart
               onClick={[Function]}
               type="button"
             >
-              <i
-                className="fa fa-plus"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-plus"
+                  role="presentation"
+                />
+              </div>
               Add parameter
             </button>
           </div>
@@ -317,10 +337,14 @@ exports[`BodyField should match the previous snapshot when bodyType is urlencode
   >
     <h4>
       Request body
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
@@ -394,10 +418,14 @@ exports[`BodyField should match the previous snapshot when bodyType is urlencode
               onClick={[Function]}
               type="button"
             >
-              <i
-                className="fa fa-plus"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-plus"
+                  role="presentation"
+                />
+              </div>
               Add parameter
             </button>
           </div>

@@ -4,9 +4,13 @@ exports[`Loading matches the previous snapshot 1`] = `
 <div
   className="text-center col-xs-12"
 >
-  <i
-    className="fa fa-gear fa-spin iKhhRu"
-    role="presentation"
-  />
+  <div
+    className="jsiZnw clearfix"
+  >
+    <i
+      className="fa fa-gear fa-spin iKhhRu"
+      role="presentation"
+    />
+  </div>
 </div>
 `;

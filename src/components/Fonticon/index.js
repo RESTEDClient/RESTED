@@ -1,12 +1,16 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
+import { StyledFonticon } from './StyledComponents';
+
 function Fonticon({ icon, className }) {
   return (
-    <i
-      className={classNames('fa', `fa-${icon}`, className)}
-      role="presentation"
-    />
+    <StyledFonticon>
+      <i
+        className={classNames('fa', `fa-${icon}`, className)}
+        role="presentation"
+      />
+    </StyledFonticon>
   );
 }
 

@@ -12,10 +12,14 @@ exports[`HeadersField should match the previous snapshot 1`] = `
   >
     <h4>
       Headers
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
@@ -103,10 +107,14 @@ exports[`HeadersField should match the previous snapshot 1`] = `
                 Remove header
               </span>
             </div>
-            <i
-              className="fa fa-trash"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-trash"
+                role="presentation"
+              />
+            </div>
           </button>
         </div>
       </div>
@@ -188,10 +196,14 @@ exports[`HeadersField should match the previous snapshot 1`] = `
                 Remove header
               </span>
             </div>
-            <i
-              className="fa fa-trash"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-trash"
+                role="presentation"
+              />
+            </div>
           </button>
         </div>
       </div>
@@ -273,10 +285,14 @@ exports[`HeadersField should match the previous snapshot 1`] = `
                 Remove header
               </span>
             </div>
-            <i
-              className="fa fa-trash"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-trash"
+                role="presentation"
+              />
+            </div>
           </button>
         </div>
       </div>
@@ -293,10 +309,14 @@ exports[`HeadersField should match the previous snapshot 1`] = `
             onClick={[Function]}
             type="button"
           >
-            <i
-              className="fa fa-plus"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-plus"
+                role="presentation"
+              />
+            </div>
             Add header
           </button>
         </div>

@@ -12,10 +12,14 @@ exports[`should render correctly 1`] = `
   >
     <h4>
       Test
-      <i
-        className="fa fa-angle-right"
-        role="presentation"
-      />
+      <div
+        className="jsiZnw clearfix"
+      >
+        <i
+          className="fa fa-angle-right"
+          role="presentation"
+        />
+      </div>
     </h4>
   </button>
   <div
