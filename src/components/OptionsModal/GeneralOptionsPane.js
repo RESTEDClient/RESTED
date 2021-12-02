@@ -9,6 +9,12 @@ import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/consta
 
 import { StyledGeneralOptions } from './StyledComponents';
 
+const CodeHighlightPreviewText = `{
+    example: "json",
+    soThatYouCan: 7357,
+    your: "HIGHLIGHT_STYLE"
+}`;
+
 function GeneralOptionsPane({ options, updateOption }) {
   return (
     <StyledGeneralOptions>
@@ -58,21 +64,8 @@ function GeneralOptionsPane({ options, updateOption }) {
                       </option>
                     ))}
                   </FormControl>
-                </FormGroup>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <FormGroup>
                   <Highlight className="json">
-                    {`
-              {
-                example: "json",
-                soThatYouCan: 7357,
-                your: "HIGHLIGHT_STYLE"
-              }
-                    `}
+                    {CodeHighlightPreviewText}
                   </Highlight>
                 </FormGroup>
               </td>
@@ -97,67 +90,72 @@ function GeneralOptionsPane({ options, updateOption }) {
 
             <tr>
               <td>
-                <Checkbox
-                  checked={options.get('disableHighlighting', false)}
-                  onChange={e => {
-                    updateOption('disableHighlighting', e.target.checked);
-                  }}
-                >
-                  Disable highlight styles
-                  <p>
-                    If you struggle with performance on large responses,
-                    disabling hightlight styles may help
-                  </p>
-                </Checkbox>
-                <Checkbox
-                  checked={options.get('wrapResponse', false)}
-                  onChange={e => {
-                    updateOption('wrapResponse', e.target.checked);
-                  }}
-                >
-                  Wrap response
-                  <p>
-                    Wrap the lines of the response automatically when it
-                    overflows the box. Enabling this will ensure you don&apos;t
-                    need to scroll left/right
-                  </p>
-                </Checkbox>
-                <Checkbox
-                  checked={options.get('defaultCompact', false)}
-                  onChange={e => {
-                    updateOption('defaultCompact', e.target.checked);
-                  }}
-                >
-                  Compact mode
-                  <p>
-                    Sets the default view on load for requests in collections to
-                    compact. Useful if you have large collections, especially if
-                    you use named requests
-                  </p>
-                </Checkbox>
-                <Checkbox
-                  checked={options.get('headerDescriptionEnabled', true)}
-                  onChange={e => {
-                    updateOption('headerDescriptionEnabled', e.target.checked);
-                  }}
-                >
-                  Show header descriptions
-                  <p>
-                    Displays a short description of each header below each
-                    search suggestion
-                  </p>
-                </Checkbox>
-                <Checkbox
-                  checked={options.get('ignoreCache', false)}
-                  onChange={e => {
-                    updateOption('ignoreCache', e.target.checked);
-                  }}
-                >
-                  Ignore cache
-                  <p>
-                    Force all requests to ignore the browser cache
-                  </p>
-                </Checkbox>
+                <FormGroup>
+                  <ControlLabel>
+                    Miscellaneous
+                  </ControlLabel>
+                  <Checkbox
+                    checked={options.get('disableHighlighting', false)}
+                    onChange={e => {
+                      updateOption('disableHighlighting', e.target.checked);
+                    }}
+                  >
+                    Disable highlight styles
+                    <p>
+                      If you struggle with performance on large responses,
+                      disabling hightlight styles may help
+                    </p>
+                  </Checkbox>
+                  <Checkbox
+                    checked={options.get('wrapResponse', false)}
+                    onChange={e => {
+                      updateOption('wrapResponse', e.target.checked);
+                    }}
+                  >
+                    Wrap response
+                    <p>
+                      Wrap the lines of the response automatically when it
+                      overflows the box. Enabling this will ensure you don&apos;t
+                      need to scroll left/right
+                    </p>
+                  </Checkbox>
+                  <Checkbox
+                    checked={options.get('defaultCompact', false)}
+                    onChange={e => {
+                      updateOption('defaultCompact', e.target.checked);
+                    }}
+                  >
+                    Compact mode
+                    <p>
+                      Sets the default view on load for requests in collections to
+                      compact. Useful if you have large collections, especially if
+                      you use named requests
+                    </p>
+                  </Checkbox>
+                  <Checkbox
+                    checked={options.get('headerDescriptionEnabled', true)}
+                    onChange={e => {
+                      updateOption('headerDescriptionEnabled', e.target.checked);
+                    }}
+                  >
+                    Show header descriptions
+                    <p>
+                      Displays a short description of each header below each
+                      search suggestion
+                    </p>
+                  </Checkbox>
+                  <Checkbox
+                    checked={options.get('ignoreCache', false)}
+                    onChange={e => {
+                      updateOption('ignoreCache', e.target.checked);
+                    }}
+                  >
+                    Ignore cache
+                    <p>
+                      Force all requests to ignore the browser cache
+                    </p>
+                  </Checkbox>
+                </FormGroup>
               </td>
             </tr>
           </tbody>

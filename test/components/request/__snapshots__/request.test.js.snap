@@ -34,10 +34,14 @@ exports[`should render correctly 1`] = `
             Add to collection
           </span>
         </div>
-        <i
-          className="fa fa-plus"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-plus"
+            role="presentation"
+          />
+        </div>
       </button>
       <button
         className="pull-right exyKyC"
@@ -57,10 +61,14 @@ exports[`should render correctly 1`] = `
             Options
           </span>
         </div>
-        <i
-          className="fa fa-cog"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-cog"
+            role="presentation"
+          />
+        </div>
       </button>
       <button
         className="pull-right hidden-xs exyKyC"
@@ -80,10 +88,14 @@ exports[`should render correctly 1`] = `
             Hide collections
           </span>
         </div>
-        <i
-          className="fa fa-expand"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-expand"
+            role="presentation"
+          />
+        </div>
       </button>
     </div>
   </div>
@@ -259,10 +271,14 @@ exports[`should render correctly 1`] = `
         >
           <h4>
             Headers
-            <i
-              className="fa fa-angle-right"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-angle-right"
+                role="presentation"
+              />
+            </div>
           </h4>
         </button>
         <div
@@ -285,10 +301,14 @@ exports[`should render correctly 1`] = `
                   onClick={[Function]}
                   type="button"
                 >
-                  <i
-                    className="fa fa-plus"
-                    role="presentation"
-                  />
+                  <div
+                    className="jsiZnw clearfix"
+                  >
+                    <i
+                      className="fa fa-plus"
+                      role="presentation"
+                    />
+                  </div>
                   Add header
                 </button>
               </div>
@@ -307,10 +327,14 @@ exports[`should render correctly 1`] = `
         >
           <h4>
             Basic auth
-            <i
-              className="fa fa-angle-right"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-angle-right"
+                role="presentation"
+              />
+            </div>
           </h4>
         </button>
         <div
@@ -390,10 +414,14 @@ exports[`should render correctly 1`] = `
         >
           <h4>
             Request body
-            <i
-              className="fa fa-angle-right"
-              role="presentation"
-            />
+            <div
+              className="jsiZnw clearfix"
+            >
+              <i
+                className="fa fa-angle-right"
+                role="presentation"
+              />
+            </div>
           </h4>
         </button>
         <div
@@ -467,10 +495,14 @@ exports[`should render correctly 1`] = `
                     onClick={[Function]}
                     type="button"
                   >
-                    <i
-                      className="fa fa-plus"
-                      role="presentation"
-                    />
+                    <div
+                      className="jsiZnw clearfix"
+                    >
+                      <i
+                        className="fa fa-plus"
+                        role="presentation"
+                      />
+                    </div>
                     Add parameter
                   </button>
                 </div>
