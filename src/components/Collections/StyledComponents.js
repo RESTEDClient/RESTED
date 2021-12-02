@@ -52,6 +52,7 @@ export const StyledCollectionHeader = styled.span`
   }
   i.fa {
     margin-right: 4px;
+    transition: 0.25s ease transform;
   }
 `;
 
