@@ -10,6 +10,8 @@ export const modalShape = {
   cancelClick: func,
   actions: arrayOf(shape({
     text: string.isRequired,
+    type: string,
+    icon: string,
     click: func.isRequired,
   })),
 };

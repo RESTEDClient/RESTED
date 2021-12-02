@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
+import Fonticon from 'components/Fonticon';
+
 import modalPropTypes from 'propTypes/modal';
 import * as Actions from 'store/modal/actions';
 
@@ -33,9 +35,11 @@ function ModalComponent({ modal, removeModal, clearModalData }) {
         {modal.actions && modal.actions.map((action, index) => (
           <Button
             key={index}
+            bsStyle={action.type || 'default'}
             data-dismiss="modal"
             onClick={action.click}
           >
+            {action.icon && <Fonticon icon={action.icon} />}
             {action.text}
           </Button>
         ))}

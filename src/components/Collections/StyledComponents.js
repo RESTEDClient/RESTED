@@ -50,11 +50,10 @@ export const StyledCollectionHeader = styled.span`
   input {
     width: 130px;
   }
-  ${props => props.minimized && css`
-    h3 {
-      font-style: italic;
-    }
-  `}
+  i.fa {
+    margin-right: 4px;
+    transition: 0.25s ease transform;
+  }
 `;
 
 export const StyledRequest = styled.div`
