@@ -54,6 +54,14 @@ export const DEFAULT_SELECTED_COLLECTION = '0';
 export const DEFAULT_HISTORY_SIZE = 10;
 
 /**
+ * The default maximum response size for which
+ * syntax highlighting is enabled (kilobytes). Any
+ * value greater than this will have highlighting
+ * turned off for performance reasons.
+ */
+export const DEFAULT_SYNTAX_HIGHLIGHTING_RESPONSE_SIZE = 20;
+
+/**
  * This is the request used to initialize the
  * request panel. This can be either on
  * application load or on request reset.

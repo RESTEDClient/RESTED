@@ -5,7 +5,7 @@ import Highlight from 'react-highlight';
 import formatXml from 'xml-formatter';
 
 import * as Actions from 'store/request/actions';
-import { isDisabledHighlighting, isWrapResponse } from 'store/options/selectors';
+import { isDisabledHighlighting, getSyntaxHighlightingMaxSize, isWrapResponse } from 'store/options/selectors';
 import responsePropTypes, { responseShape } from 'propTypes/response';
 import getContentType from 'utils/contentType';
 import approximateSizeFromLength from 'utils/approximateSizeFromLength';
@@ -33,6 +33,7 @@ export function Response(props) {
   const {
     response,
     highlightingDisabled,
+    syntaxHighlightingMaxSize,
     wrapResponse,
     redirectChain,
     interceptedResponse,
@@ -92,17 +93,18 @@ export function Response(props) {
       <Headers headers={interceptedResponse.responseHeaders} />
       {type.html && <RenderedResponse html={body} />}
 
-      {!highlightingDisabled && contentSize < 20000
+      {!highlightingDisabled && contentSize < (syntaxHighlightingMaxSize * 1000)
         ? (
           <Highlight>
             {body}
           </Highlight>
         ) : (
           <span>
-            {contentSize >= 20000 && (
+            {contentSize >= (syntaxHighlightingMaxSize * 1000) && (
               <Alert bsStyle="warning">
-                The size of the response is greater than 20KB, syntax
-                highlighting has been disabled for performance reasons.
+                The response size exceeds {syntaxHighlightingMaxSize} KB. Syntax highlighting
+                has been disabled for performance reasons. This value is configurable in the
+                options menu.
               </Alert>
             )}
 
@@ -119,6 +121,7 @@ export function Response(props) {
 Response.propTypes = {
   response: responsePropTypes,
   highlightingDisabled: PropTypes.bool.isRequired,
+  syntaxHighlightingMaxSize: PropTypes.number.isRequired,
   wrapResponse: PropTypes.bool.isRequired,
   redirectChain: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   interceptedResponse: PropTypes.shape({}),
@@ -126,6 +129,7 @@ Response.propTypes = {
 
 const mapStateToProps = state => ({
   highlightingDisabled: isDisabledHighlighting(state),
+  syntaxHighlightingMaxSize: getSyntaxHighlightingMaxSize(state),
   wrapResponse: isWrapResponse(state),
 });
 
