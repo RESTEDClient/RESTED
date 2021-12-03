@@ -79,9 +79,17 @@ function GeneralOptionsPane({ options, updateOption }) {
                   </ControlLabel>
                   <FormControl
                     type="number"
+                    min="0"
                     value={options.get('historySize', DEFAULT_HISTORY_SIZE)}
                     onChange={e => {
-                      updateOption('historySize', e.target.value);
+                      try {
+                        let value = parseInt(e.target.value, 10);
+                        if (value < 0) value = 0; // prevents manually typing negative value
+                        updateOption('historySize', value);
+                      } catch (parseIntException) {
+                        // Ignore any attempts to type an invalid value,
+                        // like letters, or a negative sign
+                      }
                     }}
                   />
                 </FormGroup>
