@@ -79,9 +79,13 @@ function GeneralOptionsPane({ options, updateOption }) {
                   </ControlLabel>
                   <FormControl
                     type="number"
+                    min="0"
                     value={options.get('historySize', DEFAULT_HISTORY_SIZE)}
                     onChange={e => {
-                      updateOption('historySize', e.target.value);
+                      const value = e.target.valueAsNumber;
+                      // Prevent invalid input
+                      if (isNaN(value)) return;
+                      updateOption('historySize', value >= 0 ? value : 0);
                     }}
                   />
                 </FormGroup>
