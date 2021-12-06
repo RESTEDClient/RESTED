@@ -23,6 +23,11 @@ export const getHighlightStyle = createSelector(
   options => options && options.getIn(['options', 'highlightStyle'], 'default'),
 );
 
+export const getSyntaxHighlightingMaxSize = createSelector(
+  [getOptions],
+  options => options && options.getIn(['options', 'syntaxHighlightingMaxSize'], 20),
+);
+
 export const getCollectionsMinimized = createSelector(
   [getOptions],
   options => options && options.getIn(['options', 'collectionsMinimized'], false),
