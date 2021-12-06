@@ -6,15 +6,19 @@ exports[`Collection component should match the previous snapshot 1`] = `
     className="gRaYYP"
   >
     <span
-      className="gBchMk"
+      className="dHlQCx"
     >
       <h3
         onClick={[Function]}
       >
-        <i
-          className="fa fa-angle-right fa-rotate-90"
-          role="presentation"
-        />
+        <div
+          className="jsiZnw clearfix"
+        >
+          <i
+            className="fa fa-angle-right fa-rotate-90"
+            role="presentation"
+          />
+        </div>
       </h3>
       <button
         className="pull-right exyKyC"
@@ -214,15 +218,19 @@ exports[`Collections component should match the previous snapshot 1`] = `
           className="gRaYYP"
         >
           <span
-            className="gBchMk"
+            className="dHlQCx"
           >
             <h3
               onClick={[Function]}
             >
-              <i
-                className="fa fa-angle-right"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-angle-right"
+                  role="presentation"
+                />
+              </div>
               Collection
             </h3>
             <button
@@ -377,15 +385,19 @@ exports[`Collections component should match the previous snapshot 1`] = `
           className="gRaYYP"
         >
           <span
-            className="gBchMk"
+            className="dHlQCx"
           >
             <h3
               onClick={[Function]}
             >
-              <i
-                className="fa fa-angle-right"
-                role="presentation"
-              />
+              <div
+                className="jsiZnw clearfix"
+              >
+                <i
+                  className="fa fa-angle-right"
+                  role="presentation"
+                />
+              </div>
               Collection 2
             </h3>
             <button
