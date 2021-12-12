@@ -5,7 +5,7 @@ import Highlight from 'react-highlight';
 import { Col, Table, FormGroup, FormControl, ControlLabel, Checkbox } from 'react-bootstrap';
 
 import * as Actions from 'store/options/actions';
-import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE } from 'constants/constants';
+import { THEMES, HIGHLIGHT_STYLES, DEFAULT_HISTORY_SIZE, DEFAULT_SYNTAX_HIGHLIGHTING_RESPONSE_SIZE } from 'constants/constants';
 
 import { StyledGeneralOptions } from './StyledComponents';
 
@@ -75,13 +75,37 @@ function GeneralOptionsPane({ options, updateOption }) {
               <td>
                 <FormGroup>
                   <ControlLabel>
+                    Max syntax highlighting size (KB)
+                  </ControlLabel>
+                  <FormControl
+                    type="number"
+                    min="0"
+                    value={options.get('syntaxHighlightingMaxSize', DEFAULT_SYNTAX_HIGHLIGHTING_RESPONSE_SIZE)}
+                    onChange={e => {
+                      const highlightSizeKB = e.target.valueAsNumber;
+                      if (isNaN(highlightSizeKB)) return;
+                      updateOption('syntaxHighlightingMaxSize', highlightSizeKB >= 0 ? highlightSizeKB : 0);
+                    }}
+                  />
+                </FormGroup>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <FormGroup>
+                  <ControlLabel>
                     Max history size
                   </ControlLabel>
                   <FormControl
                     type="number"
+                    min="0"
                     value={options.get('historySize', DEFAULT_HISTORY_SIZE)}
                     onChange={e => {
-                      updateOption('historySize', e.target.value);
+                      const value = e.target.valueAsNumber;
+                      // Prevent invalid input
+                      if (isNaN(value)) return;
+                      updateOption('historySize', value >= 0 ? value : 0);
                     }}
                   />
                 </FormGroup>

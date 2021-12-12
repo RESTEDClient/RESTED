@@ -33,7 +33,8 @@ export default function (state = initialState, action) {
     case PRUNE_HISTORY:
       return state
         .update('data', history => (
-          history.slice(0, action.historySize)
+          // Max history size cannot go below zero
+          history.slice(0, action.historySize >= 0 ? action.historySize : 0)
         ));
 
     case DELETE_ITEM:

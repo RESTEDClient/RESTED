@@ -68,6 +68,13 @@ exports[`response component renders a result when given one 1`] = `
         />
       </div>
     </div>
+    <span>
+      <code>
+        <pre>
+          Some long body
+        </pre>
+      </code>
+    </span>
   </div>
 </div>
 `;
