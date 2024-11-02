@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Alert } from 'react-bootstrap';
+import { Alert, Label } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 import formatXml from 'xml-formatter';
 
@@ -10,15 +10,22 @@ import responsePropTypes, { responseShape } from 'propTypes/response';
 import getContentType from 'utils/contentType';
 import approximateSizeFromLength from 'utils/approximateSizeFromLength';
 
-import { StyledResponse, StyledHeader, Status } from './StyledComponents';
+import { StyledResponse, StyledHeader } from './StyledComponents';
 import Headers from './Headers';
 import RenderedResponse from './RenderedResponse';
+import StatusChip from './StatusChip';
 
-function Titlebar({ url, time }) {
+function Titlebar({ url, time, statusCode }) {
+  let labelStyle = 'default'
+  if (statusCode >= 200 && statusCode < 300) labelStyle = 'success'
+  else if (statusCode >= 400 && statusCode < 600) labelStyle = 'danger'
+
   return (
     <StyledHeader>
       <h3>
-        Response ({time}) - <a href={url} className="text-muted">{url}</a>
+        <StatusChip statusCode={statusCode} />
+        Response ({time})
+        <a href={url} className="text-muted">{url}</a>
       </h3>
     </StyledHeader>
   );
@@ -27,6 +34,7 @@ function Titlebar({ url, time }) {
 Titlebar.propTypes = {
   url: responseShape.url,
   time: PropTypes.node.isRequired,
+  statusCode: PropTypes.number.isRequired
 };
 
 export function Response(props) {
@@ -41,7 +49,7 @@ export function Response(props) {
 
   if (!response || !interceptedResponse) return null;
 
-  const { method, url, totalTime } = response;
+  const { method, url, totalTime, status } = response;
   let { body } = response;
 
   let time;
@@ -78,18 +86,8 @@ export function Response(props) {
   return (
     <StyledResponse
       wrapResponse={wrapResponse}
-      header={<Titlebar method={method} url={url} time={time} />}
+      header={<Titlebar statusCode={status} method={method} url={url} time={time} />}
     >
-      <h3>
-        <Status
-          green={response.status >= 200 && response.status < 300}
-          red={response.status >= 400 && response.status < 600}
-        >
-          {response.status}
-        </Status>
-        <small> {response.statusText}</small>
-      </h3>
-
       <Headers headers={interceptedResponse.responseHeaders} />
       {type.html && <RenderedResponse html={body} />}
 
