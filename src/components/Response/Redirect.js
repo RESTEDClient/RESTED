@@ -23,6 +23,7 @@ function Titlebar({ url, time, size, statusCode, onClick }) {
 Titlebar.propTypes = {
   url: redirectShape.url,
   time: redirectShape.time,
+  size: PropTypes.number.isRequired,
   statusCode: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
@@ -39,8 +40,8 @@ function Redirect(props) {
 
   const { method, url, time, statusCode } = response;
 
-  const contentLength = headers.find((header) => header.name.toLowerCase() === 'content-length')
-  const contentSize = contentLength ? Number(contentLength.value) : 0
+  const contentLength = headers.find(header => (header.name.toLowerCase() === 'content-length'));
+  const contentSize = contentLength ? Number(contentLength.value) : 0;
 
   return (
     <StyledResponse

@@ -11,7 +11,7 @@ function SizeBytes({ size }) {
 }
 
 SizeBytes.propTypes = {
-  size: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired,
 };
 
 export default SizeBytes;

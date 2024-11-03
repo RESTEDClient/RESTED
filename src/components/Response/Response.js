@@ -33,6 +33,7 @@ function Titlebar({ url, time, size, statusCode }) {
 Titlebar.propTypes = {
   url: responseShape.url,
   time: PropTypes.node.isRequired,
+  size: PropTypes.number.isRequired,
   statusCode: PropTypes.number.isRequired,
 };
 
@@ -85,7 +86,15 @@ export function Response(props) {
   return (
     <StyledResponse
       wrapResponse={wrapResponse}
-      header={<Titlebar statusCode={status} method={method} url={url} size={contentSize} time={time} />}
+      header={(
+        <Titlebar
+          statusCode={status}
+          method={method}
+          url={url}
+          size={contentSize}
+          time={time}
+        />
+      )}
     >
       <Headers headers={interceptedResponse.responseHeaders} />
       {type.html && <RenderedResponse html={body} />}
