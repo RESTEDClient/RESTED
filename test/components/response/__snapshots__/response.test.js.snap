@@ -17,9 +17,19 @@ exports[`response component renders a result when given one 1`] = `
         >
           200
         </span>
-        Response (
-        0.123s
-        )
+        <span>
+          Response
+        </span>
+        <span
+          title="14 bytes"
+        >
+          14 bytes
+        </span>
+        <span>
+          (
+          0.123s
+          )
+        </span>
         <a
           className="text-muted"
           href="http://example.com"
