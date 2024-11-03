@@ -4,13 +4,16 @@ import responsePropTypes, { redirectShape } from 'propTypes/redirect';
 import { StyledResponse, StyledHeader } from './StyledComponents';
 import Headers from './Headers';
 import StatusChip from './StatusChip';
+import SizeBytes from './SizeBytes';
 
-function Titlebar({ url, time, statusCode, onClick }) {
+function Titlebar({ url, time, size, statusCode, onClick }) {
   return (
     <StyledHeader expandable onClick={onClick}>
       <h3>
         <StatusChip statusCode={statusCode} />
-        Redirect ({(time / 1000).toFixed(3)}s)
+        <span>Redirect</span>
+        <SizeBytes size={size} />
+        <span>({(time / 1000).toFixed(3)}s)</span>
         <a href={url} className="text-muted">{url}</a>
       </h3>
     </StyledHeader>
@@ -36,6 +39,9 @@ function Redirect(props) {
 
   const { method, url, time, statusCode } = response;
 
+  const contentLength = headers.find((header) => header.name.toLowerCase() === 'content-length')
+  const contentSize = contentLength ? Number(contentLength.value) : 0
+
   return (
     <StyledResponse
       collapsible
@@ -45,6 +51,7 @@ function Redirect(props) {
           method={method}
           statusCode={statusCode}
           url={url}
+          size={contentSize}
           time={time}
           onClick={setExpanded}
         />

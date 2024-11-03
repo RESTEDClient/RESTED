@@ -14,13 +14,16 @@ import { StyledResponse, StyledHeader } from './StyledComponents';
 import Headers from './Headers';
 import RenderedResponse from './RenderedResponse';
 import StatusChip from './StatusChip';
+import SizeBytes from './SizeBytes';
 
-function Titlebar({ url, time, statusCode }) {
+function Titlebar({ url, time, size, statusCode }) {
   return (
     <StyledHeader>
       <h3>
         <StatusChip statusCode={statusCode} />
-        Response ({time})
+        <span>Response</span>
+        <SizeBytes size={size} />
+        <span>({time})</span>
         <a href={url} className="text-muted">{url}</a>
       </h3>
     </StyledHeader>
@@ -82,7 +85,7 @@ export function Response(props) {
   return (
     <StyledResponse
       wrapResponse={wrapResponse}
-      header={<Titlebar statusCode={status} method={method} url={url} time={time} />}
+      header={<Titlebar statusCode={status} method={method} url={url} size={contentSize} time={time} />}
     >
       <Headers headers={interceptedResponse.responseHeaders} />
       {type.html && <RenderedResponse html={body} />}
