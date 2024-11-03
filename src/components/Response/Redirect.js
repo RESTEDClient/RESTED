@@ -40,7 +40,15 @@ function Redirect(props) {
     <StyledResponse
       collapsible
       expanded={isExpanded}
-      header={<Titlebar method={method} statusCode={statusCode} url={url} time={time} onClick={setExpanded} />}
+      header={(
+        <Titlebar
+          method={method}
+          statusCode={statusCode}
+          url={url}
+          time={time}
+          onClick={setExpanded}
+        />
+      )}
     >
       <Headers expanded headers={headers} />
     </StyledResponse>
