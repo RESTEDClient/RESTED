@@ -7,7 +7,7 @@ import UUID from 'uuid-js';
 
 import { immutableCollectionShape } from 'propTypes/collection';
 import IconButton from 'components/IconButton';
-import { showChooseCollectionModal, showOptionsModal } from 'utils/modal';
+import { showChooseCollectionModal } from 'utils/modal';
 import { getCollections } from 'store/collections/selectors';
 import { getCollectionsMinimized } from 'store/options/selectors';
 import { getEditingRequest, isEditMode } from 'store/config/selectors';
@@ -85,12 +85,6 @@ function Titlebar(props) {
         tooltip="Add to collection"
         icon="plus"
         className="pull-right hidden-xs"
-      />
-      <IconButton
-        onClick={() => showOptionsModal(props)}
-        tooltip="Options"
-        icon="cog"
-        className="pull-right"
       />
       <IconButton
         onClick={() => toggleCollectionsExpanded(props)}
