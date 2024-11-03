@@ -8,7 +8,6 @@ import Header from 'components/Header';
 import LeftPanel from 'components/LeftPanel';
 import Request from 'components/Request';
 import Response from 'components/Response';
-import Footer from 'components/Footer';
 import Modal from 'components/Modal';
 import updateTheme from 'utils/updateTheme';
 import updateHighlightStyle from 'utils/updateHighlightStyle';
@@ -80,7 +79,6 @@ class App extends React.Component {
             </main>
           </RightCol>
         </MainContent>
-        <Footer />
         <Modal />
       </Wrapper>
     );
