@@ -20,6 +20,7 @@ function Titlebar({ url, time, statusCode, onClick }) {
 Titlebar.propTypes = {
   url: redirectShape.url,
   time: redirectShape.time,
+  statusCode: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

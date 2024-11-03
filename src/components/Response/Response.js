@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Alert, Label } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import Highlight from 'react-highlight';
 import formatXml from 'xml-formatter';
 
@@ -30,7 +30,7 @@ function Titlebar({ url, time, statusCode }) {
 Titlebar.propTypes = {
   url: responseShape.url,
   time: PropTypes.node.isRequired,
-  statusCode: PropTypes.number.isRequired
+  statusCode: PropTypes.number.isRequired,
 };
 
 export function Response(props) {
