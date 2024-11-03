@@ -25,13 +25,15 @@ export function Header({ darkMode, ...props }) {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav pullRight>
-          <NavItem onClick={() => {
-            showOptionsModal(props)
-          }}>
+          <NavItem onClick={() => showOptionsModal(props)}>
             <Fonticon icon="cog" />
             Options
           </NavItem>
-          <NavItem href="https://github.com/RESTEDClient/RESTED" target="_blank">
+          <NavItem
+            href="https://github.com/RESTEDClient/RESTED"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Fonticon icon="github" />
             GitHub
           </NavItem>
