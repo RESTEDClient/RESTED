@@ -132,10 +132,14 @@ export const THEMES = [
  * being darker than the others
  */
 export const DARK_THEMES = [
+  'cosmo',
   'cyborg',
   'darkly',
+  'flatly',
+  'sandstone',
   'slate',
   'superhero',
+  'yeti'
 ];
 
 /**

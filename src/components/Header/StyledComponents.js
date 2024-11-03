@@ -2,21 +2,23 @@ import styled, { css } from 'styled-components';
 
 /* eslint-disable import/prefer-default-export */
 export const StyledHeader = styled.header`
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin: 20px 0px 0px 0px;
+  color: black;
 
-  img {
-    margin-top: -7px;
-    margin-right: 10px;
+  .navbar-brand {
+    display: flex;
+    alignItems: center;
+    gap: 8px;
   }
 
-  h1 {
-    color: black;
+  h3, li a {
+    color: rgb(51, 51, 51) !important;
+    margin: 0;
   }
 
   ${props => props.darkMode && css`
-    h1 {
-      color: white;
+    h3, li a {
+      color: white !important;
     }
     img {
       filter: invert(100%);
