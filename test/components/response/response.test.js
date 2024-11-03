@@ -67,21 +67,7 @@ describe('response component', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('displays the status and statusText', () => {
-    const tree = mount(
-      <Provider store={store}>
-        <Response {...props} loading={false} />
-      </Provider>,
-    );
-
-    const h3 = tree.find('.panel-body h3');
-    expect(h3.text()).toEqual('200 OK');
-
-    const small = h3.find('small');
-    expect(small.prop('children')).toContain('OK');
-  });
-
-  it('displays the URL and method in the titlebar', () => {
+  it('displays the URL and status in the titlebar', () => {
     const tree = mount(
       <Provider store={store}>
         <Response {...props} loading={false} />
@@ -94,8 +80,11 @@ describe('response component', () => {
       </a>
     );
 
-    const heading = tree.find('.panel-heading');
+    const heading = tree.find('.panel-heading h3');
+    const statusLabel = heading.find('.label-success');
+
     expect(heading.contains(expectedLink)).toEqual(true);
+    expect(statusLabel).toBePresent();
   });
 });
 

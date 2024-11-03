@@ -28,14 +28,10 @@ export const StyledHeader = styled.div`
   h3 {
     font-size: 15px;
     margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-`;
-
-export const Status = styled.span`
-  fontSize: 32px;
-  color: orange;
-  ${props => props.green && 'color: green;'}
-  ${props => props.red && 'color: red;'}
 `;
 
 export const PreviewContainer = styled(Panel)`

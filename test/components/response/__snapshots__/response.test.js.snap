@@ -9,12 +9,17 @@ exports[`response component renders a result when given one 1`] = `
     className="panel-heading"
   >
     <div
-      className="fOYyKI"
+      className="cYruAa"
     >
       <h3>
+        <span
+          className="label label-success"
+        >
+          200
+        </span>
         Response (
         0.123s
-        ) - 
+        )
         <a
           className="text-muted"
           href="http://example.com"
@@ -27,17 +32,6 @@ exports[`response component renders a result when given one 1`] = `
   <div
     className="panel-body"
   >
-    <h3>
-      <span
-        className="cSFbuC"
-      >
-        200
-      </span>
-      <small>
-         
-        OK
-      </small>
-    </h3>
     <div
       className="hNpSwj"
     >

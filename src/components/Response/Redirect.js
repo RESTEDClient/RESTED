@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
 import responsePropTypes, { redirectShape } from 'propTypes/redirect';
 
-import { StyledResponse, StyledHeader, Status } from './StyledComponents';
+import { StyledResponse, StyledHeader } from './StyledComponents';
 import Headers from './Headers';
+import StatusChip from './StatusChip';
 
-function Titlebar({ url, time, onClick }) {
+function Titlebar({ url, time, statusCode, onClick }) {
   return (
     <StyledHeader expandable onClick={onClick}>
       <h3>
-        Redirect ({(time / 1000).toFixed(3)}s) - <a href={url} className="text-muted">{url}</a>
+        <StatusChip statusCode={statusCode} />
+        Redirect ({(time / 1000).toFixed(3)}s)
+        <a href={url} className="text-muted">{url}</a>
       </h3>
     </StyledHeader>
   );
@@ -17,6 +20,7 @@ function Titlebar({ url, time, onClick }) {
 Titlebar.propTypes = {
   url: redirectShape.url,
   time: redirectShape.time,
+  statusCode: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
@@ -30,24 +34,22 @@ function Redirect(props) {
 
   if (!response || !headers) return null;
 
-  const { method, url, time } = response;
+  const { method, url, time, statusCode } = response;
 
   return (
     <StyledResponse
       collapsible
       expanded={isExpanded}
-      header={<Titlebar method={method} url={url} time={time} onClick={setExpanded} />}
+      header={(
+        <Titlebar
+          method={method}
+          statusCode={statusCode}
+          url={url}
+          time={time}
+          onClick={setExpanded}
+        />
+      )}
     >
-      <h3>
-        <Status
-          green={response.statusCode >= 200 && response.statusCode < 300}
-          red={response.statusCode >= 400 && response.statusCode < 600}
-        >
-          {response.statusCode}
-        </Status>
-        <small> {response.statusLine && response.statusLine.replace(/.*\d{3} /, '')}</small>
-      </h3>
-
       <Headers expanded headers={headers} />
     </StyledResponse>
   );
