@@ -16,10 +16,6 @@ import RenderedResponse from './RenderedResponse';
 import StatusChip from './StatusChip';
 
 function Titlebar({ url, time, statusCode }) {
-  let labelStyle = 'default'
-  if (statusCode >= 200 && statusCode < 300) labelStyle = 'success'
-  else if (statusCode >= 400 && statusCode < 600) labelStyle = 'danger'
-
   return (
     <StyledHeader>
       <h3>
