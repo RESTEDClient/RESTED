@@ -107,7 +107,7 @@ Now that you have compiled the extension and prepared it for being loaded, we
 can load it into your browser to run it. This differs depending on which browser
 you are using, so you will find resources for loading the extension below.
 
-- [Load unpacked extension in Firefox](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox)
+- [Load unpacked extension in Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Temporary_Installation_in_Firefox)
 - [Load unpacked extension in Chrome](https://developer.chrome.com/extensions/getstarted#unpacked)
 
 ## Getting help
