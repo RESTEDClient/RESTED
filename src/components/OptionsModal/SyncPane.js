@@ -60,7 +60,7 @@ function SyncPane(props) {
       <Col xs={12}>
         {!syncIsSupported() && (
           <a
-            href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/Storage/sync#Browser_compatibility"
+            href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/Storage/sync#Browser_compatibility"
             target="_blank"
             rel="noopener noreferrer"
             className="red"
